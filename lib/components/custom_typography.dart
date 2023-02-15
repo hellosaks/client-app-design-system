@@ -1,8 +1,12 @@
 import "package:client_app_design_system/theme/theme_saks.dart";
+import "package:client_app_design_system/utils/app_size.dart";
 import "package:client_app_design_system/utils/enums.dart";
+import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:mix/mix.dart";
 
+@docWidget
 class CustomTypography extends StatelessWidget {
   const CustomTypography({
     Key? key,
@@ -38,9 +42,9 @@ class CustomTypography extends StatelessWidget {
   }
 
   Mix<TextAttributes> _adjustFontSize(Mix<TextAttributes> type) {
-    // final double fontSizeAdjust = AppSize(context: Get.context)
-    //     .getHeight(type.attributes[1].style!.fontSize!);
-    return Mix.combine(type, Mix(fontSize(type.attributes[1].style!.fontSize)));
+    final double fontSizeAdjust = AppSize(context: Get.context)
+        .getHeight(type.attributes[1].style!.fontSize!);
+    return Mix.combine(type, Mix(fontSize(fontSizeAdjust)));
   }
 
   Mix<TextAttributes> _getFontVariant() {

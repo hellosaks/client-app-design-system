@@ -78,6 +78,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  doc_widget:
+    dependency: "direct main"
+    description:
+      name: doc_widget
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
+  doc_widget_annotation:
+    dependency: transitive
+    description:
+      name: doc_widget_annotation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.8"
   fake_async:
     dependency: transitive
     description:
@@ -111,6 +125,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  flutter_highlight:
+    dependency: transitive
+    description:
+      name: flutter_highlight
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -142,13 +163,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.0"
-  go_router:
-    dependency: transitive
-    description:
-      name: go_router
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.1.1"
   google_fonts:
     dependency: transitive
     description:
@@ -156,6 +170,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.3"
+  highlight:
+    dependency: transitive
+    description:
+      name: highlight
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.0"
   http:
     dependency: transitive
     description:
@@ -191,13 +212,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  logging:
-    dependency: transitive
-    description:
-      name: logging
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
   markdown:
     dependency: transitive
     description:
@@ -233,13 +247,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.7"
-  nested:
-    dependency: transitive
-    description:
-      name: nested
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -310,13 +317,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
-  provider:
-    dependency: transitive
-    description:
-      name: provider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "6.0.5"
   shared_preferences:
     dependency: transitive
     description:
@@ -483,20 +483,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-  widgetbook:
-    dependency: "direct main"
-    description:
-      name: widgetbook
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.4.1"
-  widgetbook_models:
-    dependency: transitive
-    description:
-      name: widgetbook_models
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.7"
   win32:
     dependency: transitive
     description:

@@ -33,9 +33,7 @@ dependencies:
     sdk: flutter
   client_app_design_system:
     path: ../
-  widgetbook: any
-  
-
+  doc_widget: any
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
