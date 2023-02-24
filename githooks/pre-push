@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# case shell not recognize path of flutter
+export PATH="$PATH:$FLUTTER_PATH"
+
+#    .---------- constant part!
+#    vvvv vvvv-- the code from above
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+
+verify() {
+    NAME="$1"
+    echo "=> ${YELLOW}Running: $1"
+
+    # executes command and supress results
+    $1 > /dev/null
+    
+    if [ $? = 0 ]; then
+        echo "=> ✔️ ${GREEN}PASSED IN: $1"
+    else
+        echo "=> ❌ ${RED}ERROR IN STEP: $1"
+        exit 1
+    fi
+}
+
+verify "flutter analyze"
+verify "flutter test --coverage"
+
+# commit the coverage file to verify coverage in GA 
+git add ./coverage/lcov.info
+git commit --amend --no-edit
