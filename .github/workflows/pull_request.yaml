@@ -1,0 +1,36 @@
+name: Run analyze and tests
+
+on:
+  pull_request:
+    types: [ labeled ]
+
+jobs:
+  analyze-and-test:
+    if: ${{ github.event.label.name == 'ready-for-merge' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Step
+        uses: actions/checkout@v1
+
+      - name: Java Install Step
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+
+      - name: Install flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.3.4'
+          channel: 'stable'
+
+      - name: Flutter Package Install
+        run: flutter pub get && cd playground && flutter pub get
+
+      - name: Flutter Generate Mocks
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Flutter Analyze
+        run: flutter analyze
+
+      - name: Flutter Test
+        run: flutter test
