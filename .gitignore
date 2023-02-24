@@ -31,4 +31,5 @@ migrate_working_dir/
 .packages
 build/
 **/*.doc_widget.dart
+coverage/html
 

@@ -1,0 +1,17 @@
+name: Check coverage code
+
+on: pull_request
+
+jobs:
+  check-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Step
+        uses: actions/checkout@v1
+
+      - name: Report code coverage
+        uses: zgosalvez/github-actions-report-lcov@v1
+        with:
+          coverage-files: coverage/lcov.info
+          minimum-coverage: 1
+          github-token: ${{ secrets.GITHUB_TOKEN }}

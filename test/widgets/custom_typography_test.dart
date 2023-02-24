@@ -3,7 +3,7 @@ import "package:client_app_design_system/utils/enums.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 
-import "utils/test_wrappers.dart";
+import "../utils/test_wrappers.dart";
 
 void main() {
   testWidgets("Typography shown", (WidgetTester tester) async {
@@ -34,18 +34,33 @@ void main() {
   });
 
   testWidgets("Typography render correct variant", (WidgetTester tester) async {
-    const widget = CustomTypography(
-      variant: TypographyVariant.h4,
-      text: "This is a test",
-    );
+    variantFont(int fs, TypographyVariant variant) =>
+        {"font-size": fs, "variant": variant};
 
-    await tester.pumpWidget(wrapWithMaterialApp(widget));
-    final Text findedWidget = tester.widget<Text>(find.byType(Text));
+    final variants = [
+      variantFont(28, TypographyVariant.h1),
+      variantFont(24, TypographyVariant.h2),
+      variantFont(18, TypographyVariant.h3),
+      variantFont(16, TypographyVariant.h4),
+      variantFont(14, TypographyVariant.h5),
+      variantFont(12, TypographyVariant.h6),
+      variantFont(10, TypographyVariant.h7),
+      variantFont(18, TypographyVariant.t1),
+      variantFont(16, TypographyVariant.t2),
+      variantFont(14, TypographyVariant.t3),
+      variantFont(12, TypographyVariant.t4),
+    ];
 
-    expect(
-      findedWidget.style?.fontSize,
-      16,
-    );
+    for (final variant in variants) {
+      final widget = CustomTypography(
+        variant: variant["variant"] as TypographyVariant,
+        text: "This is a test",
+      );
+
+      await tester.pumpWidget(wrapWithMaterialApp(widget));
+      final Text findedWidget = tester.widget<Text>(find.byType(Text));
+      expect(findedWidget.style?.fontSize, variant["font-size"]);
+    }
   });
 
   testWidgets("Typography render correct font weight",

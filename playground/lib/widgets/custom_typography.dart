@@ -48,5 +48,40 @@ final customTypographyDoc = ElementPreview(
       ),
       description: 'H6 variant',
     ),
+    WidgetPreview(
+      widget: const CustomTypography(
+        text: "Hello, world!",
+        variant: TypographyVariant.h7,
+      ),
+      description: 'H7 variant',
+    ),
+    WidgetPreview(
+      widget: const CustomTypography(
+        text: "Hello, world!",
+        variant: TypographyVariant.t1,
+      ),
+      description: 't1 variant',
+    ),
+    WidgetPreview(
+      widget: const CustomTypography(
+        text: "Hello, world!",
+        variant: TypographyVariant.t2,
+      ),
+      description: 't2 variant',
+    ),
+    WidgetPreview(
+      widget: const CustomTypography(
+        text: "Hello, world!",
+        variant: TypographyVariant.t3,
+      ),
+      description: 't3 variant',
+    ),
+    WidgetPreview(
+      widget: const CustomTypography(
+        text: "Hello, world!",
+        variant: TypographyVariant.t4,
+      ),
+      description: 't4 variant',
+    ),
   ],
 );

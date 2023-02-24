@@ -1,8 +1,13 @@
 import "package:client_app_design_system/theme/theme_saks.dart";
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:mix/mix.dart";
 
 void main() {
+  setUpAll(() {
+    WidgetsFlutterBinding.ensureInitialized();
+  });
+
   test("Typography theme h1 correct attributes", () {
     final List<TextAttributes> attr = ThemeSAKS.typography.h1Typo.attributes;
 
@@ -17,6 +22,7 @@ void main() {
 
     expect(isFontOk, [true, true, true]);
   });
+
   test("Typography theme h2 correct attributes", () {
     final List<TextAttributes> attr = ThemeSAKS.typography.h2Typo.attributes;
 
