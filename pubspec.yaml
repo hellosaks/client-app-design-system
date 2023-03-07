@@ -14,6 +14,8 @@ dependencies:
   google_fonts: 4.0.3
   mix: 0.0.6
   get: 4.6.5
+  heroicons: 0.7.0
+  unicons: 2.1.0
 
 dev_dependencies:
   flutter_test:
