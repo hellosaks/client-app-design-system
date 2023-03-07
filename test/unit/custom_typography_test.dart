@@ -14,7 +14,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 28 ||
               e.style?.letterSpacing == 0.23,
         )
@@ -29,7 +29,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 24 ||
               e.style?.letterSpacing == 0.23,
         )
@@ -43,7 +43,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 18 ||
               e.style?.letterSpacing == 0.23,
         )
@@ -57,7 +57,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 16 ||
               e.style?.letterSpacing == 0.23,
         )
@@ -71,7 +71,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 14 ||
               e.style?.letterSpacing == 0.23,
         )
@@ -85,7 +85,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 12 ||
               e.style?.letterSpacing == 0.23,
         )
@@ -99,7 +99,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 10 ||
               e.style?.letterSpacing == 0.23,
         )
@@ -114,7 +114,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 18 ||
               e.style?.letterSpacing == 2,
         )
@@ -128,7 +128,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 16 ||
               e.style?.letterSpacing == 2,
         )
@@ -142,7 +142,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 14 ||
               e.style?.letterSpacing == 2,
         )
@@ -156,7 +156,7 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 12 ||
               e.style?.letterSpacing == 2,
         )

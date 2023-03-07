@@ -4,11 +4,11 @@ import "package:mix/mix.dart";
 
 class Typography {
   /// Font used in project
-  final fontMontserratTextTheme = GoogleFonts.montserratTextTheme;
-  final fontMontserrat = GoogleFonts.montserrat;
+  final fontPlusJakartaTextTheme = GoogleFonts.plusJakartaSansTextTheme;
+  final fontPlusJakarta = GoogleFonts.plusJakartaSans;
 
   static final _defaultFont = Mix(
-    textStyle(const TextStyle(fontFamily: "montserrat")),
+    textStyle(const TextStyle(fontFamily: "plus_jakarta_sans")),
   );
 
   final double textScaleFactor = 1.0;
@@ -33,27 +33,27 @@ class Typography {
   final t3Typo = Mix.combine(_defaultFont, Mix(fontSize(14), letterSpacing(2)));
   final t4Typo = Mix.combine(_defaultFont, Mix(fontSize(12), letterSpacing(2)));
 
-  final inputTypo = GoogleFonts.montserrat(
+  final inputTypo = GoogleFonts.plusJakartaSans(
     fontSize: 12,
     letterSpacing: 0.23,
   );
 
-  final helperTextTypo = GoogleFonts.montserrat(
+  final helperTextTypo = GoogleFonts.plusJakartaSans(
     fontSize: 12,
     letterSpacing: 0.23,
   );
 
   final termsUseTypo = const TextStyle(
-    fontFamily: "montserrat",
+    fontFamily: "plus_jakarta_sans",
     fontSize: 16,
   );
 
-  final otpInputTypo = GoogleFonts.montserrat(
+  final otpInputTypo = GoogleFonts.plusJakartaSans(
     fontSize: 16,
   );
 
   final boldTypo = const TextStyle(
-    fontFamily: "montserrat",
+    fontFamily: "plus_jakarta_sans",
     fontWeight: FontWeight.w600,
     fontSize: 16,
   );

@@ -4,7 +4,7 @@ version: 0.0.1
 homepage: "https://github.com/"
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
+  sdk: ">=2.18.2 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -24,22 +24,23 @@ dev_dependencies:
   build_runner: ^2.3.3
   doc_widget_builder: ^0.4.0
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
   fonts:
-    - family: montserrat
+    - family: jakarta
       fonts:
-        - asset: assets/fonts/montserrat/Montserrat-Regular.ttf
+        - asset: assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Regular.ttf
           weight: 400
-        - asset: assets/fonts/montserrat/Montserrat-SemiBold.ttf
+        - asset: assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
+        - asset: assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Bold.ttf
           weight: 700
-        - asset: assets/fonts/montserrat/Montserrat-ExtraBold.ttf
+        - asset: assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-ExtraBold.ttf
           weight: 800
 
   # To add assets to your package, add an assets section, like this:
