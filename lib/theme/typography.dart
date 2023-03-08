@@ -57,4 +57,28 @@ class Typography {
     fontWeight: FontWeight.w600,
     fontSize: 16,
   );
+
+  final extraBoldCtaTypo = TextStyle(
+    fontFamily: "plus_jakarta_sans",
+    fontWeight: FontWeight.w800,
+    fontSize: 14,
+    letterSpacing : 10.0,
+    color: ThemeSAKS.colors.blackTone.colorBlack02,
+  );
+
+  final boldUnderlineTypo = TextStyle(
+    fontFamily: "plus_jakarta_sans",
+    fontWeight: FontWeight.w700,
+    fontSize: 14,
+    decoration: TextDecoration.underline,
+    color: ThemeSAKS.colors.blackTone.colorBlack02,
+  );
+
+  final boldStrikethroughTypo = TextStyle(
+    fontFamily: "plus_jakarta_sans",
+    fontWeight: FontWeight.w700,
+    fontSize: 14,
+    decoration: TextDecoration.lineThrough,
+    color: ThemeSAKS.colors.blackTone.colorBlack02,
+  );
 }
