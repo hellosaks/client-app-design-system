@@ -1,9 +1,8 @@
-import "package:client_app_design_system/utils/enums.dart";
+import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" as material_icon show Icon;
 import "package:flutter/material.dart" hide Icon;
 import "package:heroicons/heroicons.dart";
-import "package:unicons/unicons.dart";
 
 class HeroIconsProps {
   HeroIcons icon;
