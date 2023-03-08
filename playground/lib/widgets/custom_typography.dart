@@ -58,30 +58,23 @@ final customTypographyDoc = ElementPreview(
     WidgetPreview(
       widget: const CustomTypography(
         text: "Hello, world!",
-        variant: TypographyVariant.t1,
+        variant: TypographyVariant.cta,
       ),
-      description: 't1 variant',
+      description: 'CTA variant',
     ),
     WidgetPreview(
       widget: const CustomTypography(
         text: "Hello, world!",
-        variant: TypographyVariant.t2,
+        variant: TypographyVariant.underline,
       ),
-      description: 't2 variant',
+      description: 'Underline variant',
     ),
     WidgetPreview(
       widget: const CustomTypography(
         text: "Hello, world!",
-        variant: TypographyVariant.t3,
+        variant: TypographyVariant.strikethrough,
       ),
-      description: 't3 variant',
-    ),
-    WidgetPreview(
-      widget: const CustomTypography(
-        text: "Hello, world!",
-        variant: TypographyVariant.t4,
-      ),
-      description: 't4 variant',
+      description: 'Strikethrough variant',
     ),
   ],
 );

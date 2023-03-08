@@ -13,25 +13,34 @@ class Typography {
 
   final double textScaleFactor = 1.0;
 
-  final h1Typo =
-      Mix.combine(_defaultFont, Mix(fontSize(28), letterSpacing(0.23)));
-  final h2Typo =
-      Mix.combine(_defaultFont, Mix(fontSize(24), letterSpacing(0.23)));
-  final h3Typo =
-      Mix.combine(_defaultFont, Mix(fontSize(18), letterSpacing(0.23)));
-  final h4Typo =
-      Mix.combine(_defaultFont, Mix(fontSize(16), letterSpacing(0.23)));
-  final h5Typo =
-      Mix.combine(_defaultFont, Mix(fontSize(14), letterSpacing(0.23)));
-  final h6Typo =
-      Mix.combine(_defaultFont, Mix(fontSize(12), letterSpacing(0.23)));
-  final h7Typo =
-      Mix.combine(_defaultFont, Mix(fontSize(10), letterSpacing(0.23)));
+  final h1Typo = Mix.combine(_defaultFont, Mix(fontSize(24)));
+  final h2Typo = Mix.combine(_defaultFont, Mix(fontSize(22)));
+  final h3Typo = Mix.combine(_defaultFont, Mix(fontSize(20)));
+  final h4Typo = Mix.combine(_defaultFont, Mix(fontSize(18)));
+  final h5Typo = Mix.combine(_defaultFont, Mix(fontSize(16)));
+  final h6Typo = Mix.combine(_defaultFont, Mix(fontSize(14)));
+  final h7Typo = Mix.combine(_defaultFont, Mix(fontSize(12)));
 
-  final t1Typo = Mix.combine(_defaultFont, Mix(fontSize(18), letterSpacing(2)));
-  final t2Typo = Mix.combine(_defaultFont, Mix(fontSize(16), letterSpacing(2)));
-  final t3Typo = Mix.combine(_defaultFont, Mix(fontSize(14), letterSpacing(2)));
-  final t4Typo = Mix.combine(_defaultFont, Mix(fontSize(12), letterSpacing(2)));
+  final ctaTypo = Mix.combine(
+    _defaultFont,
+    Mix(fontSize(14), fontWeight(FontWeight.w800), letterSpacing(2)),
+  );
+  final underlineTypo = Mix.combine(
+    _defaultFont,
+    Mix(
+      fontSize(14),
+      fontWeight(FontWeight.w700),
+      textStyle(const TextStyle(decoration: TextDecoration.underline)),
+    ),
+  );
+  final strikethroughTypo = Mix.combine(
+    _defaultFont,
+    Mix(
+      fontSize(14),
+      fontWeight(FontWeight.w700),
+      textStyle(const TextStyle(decoration: TextDecoration.lineThrough)),
+    ),
+  );
 
   final inputTypo = GoogleFonts.plusJakartaSans(
     fontSize: 12,
@@ -56,29 +65,5 @@ class Typography {
     fontFamily: "plus_jakarta_sans",
     fontWeight: FontWeight.w600,
     fontSize: 16,
-  );
-
-  final extraBoldCtaTypo = TextStyle(
-    fontFamily: "plus_jakarta_sans",
-    fontWeight: FontWeight.w800,
-    fontSize: 14,
-    letterSpacing : 10.0,
-    color: ThemeSAKS.colors.blackTone.colorBlack02,
-  );
-
-  final boldUnderlineTypo = TextStyle(
-    fontFamily: "plus_jakarta_sans",
-    fontWeight: FontWeight.w700,
-    fontSize: 14,
-    decoration: TextDecoration.underline,
-    color: ThemeSAKS.colors.blackTone.colorBlack02,
-  );
-
-  final boldStrikethroughTypo = TextStyle(
-    fontFamily: "plus_jakarta_sans",
-    fontWeight: FontWeight.w700,
-    fontSize: 14,
-    decoration: TextDecoration.lineThrough,
-    color: ThemeSAKS.colors.blackTone.colorBlack02,
   );
 }

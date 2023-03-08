@@ -28,20 +28,6 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
-flutter:
-  fonts:
-    - family: jakarta
-      fonts:
-        - asset: assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-ExtraBold.ttf
-          weight: 800
 
   # To add assets to your package, add an assets section, like this:
   # assets:

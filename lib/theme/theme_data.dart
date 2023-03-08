@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 
 ThemeData createTheme(BuildContext context) {
   return ThemeData(
-    textTheme: ThemeSAKS.typography.fontPlusJakartaSansTextTheme(
+    textTheme: ThemeSAKS.typography.fontPlusJakartaTextTheme(
       Theme.of(context).textTheme,
     ),
     primaryColor: ThemeSAKS.colors.primary.saks,
