@@ -32,3 +32,5 @@ enum TypographyVariant {
   /// font-size: 12; letter-spacing: 2
   t4,
 }
+
+enum IconVariant { heroicons, unicons }

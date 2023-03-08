@@ -1,4 +1,3 @@
-import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:mix/mix.dart";
@@ -53,10 +52,9 @@ class Typography {
     fontSize: 16,
   );
 
-  final boldTypo = TextStyle(
+  final boldTypo = const TextStyle(
     fontFamily: "montserrat",
     fontWeight: FontWeight.w600,
     fontSize: 16,
-    color: ThemeSAKS.colors.blackTone.colorBlack02,
   );
 }

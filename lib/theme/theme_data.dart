@@ -6,10 +6,10 @@ ThemeData createTheme(BuildContext context) {
     textTheme: ThemeSAKS.typography.fontMontserratTextTheme(
       Theme.of(context).textTheme,
     ),
-    primaryColor: ThemeSAKS.colors.primary,
+    primaryColor: ThemeSAKS.colors.primary.saks,
     colorScheme: Theme.of(context).colorScheme.copyWith(
-          primary: ThemeSAKS.colors.primary,
-          secondary: ThemeSAKS.colors.secondary,
+          primary: ThemeSAKS.colors.primary.saks,
+          secondary: ThemeSAKS.colors.secondary.bay,
         ),
   );
 }
