@@ -35,6 +35,18 @@ class IconProps {
             "unicons needs to have uniconsProps");
 }
 
+/// ```dart
+/// final icon = Icon(
+///   props: IconProps(
+///     variant: IconVariant.heroicons,
+///     heroIconsProps: HeroIconsProps(
+///       icon: HeroIcons.academicCap,
+///       color: ThemeSAKS.colors.primary.sea,
+///       size: 40,
+///     ),
+///   ),
+/// );
+/// ```
 @docWidget
 class Icon extends StatelessWidget {
   final IconProps props;
