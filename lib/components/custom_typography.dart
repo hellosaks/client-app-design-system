@@ -33,7 +33,7 @@ class CustomTypography extends StatelessWidget {
       Mix(
         textColor(color),
         textAlign(align),
-        textScaleFactor(ThemeSAKS.typography.textScaleFactor),
+        textScaleFactor(NewThemeSAKS.typography.textScaleFactor),
       ),
       mix,
     );
@@ -50,17 +50,17 @@ class CustomTypography extends StatelessWidget {
   Mix<TextAttributes> _getFontVariant() {
     switch (variant) {
       case TypographyVariant.h1:
-        return _adjustFontSize(ThemeSAKS.typography.h1Typo);
+        return _adjustFontSize(NewThemeSAKS.typography.h1Typo);
       case TypographyVariant.h2:
-        return _adjustFontSize(ThemeSAKS.typography.h2Typo);
+        return _adjustFontSize(NewThemeSAKS.typography.h2Typo);
       case TypographyVariant.h3:
-        return _adjustFontSize(ThemeSAKS.typography.h3Typo);
+        return _adjustFontSize(NewThemeSAKS.typography.h3Typo);
       case TypographyVariant.h4:
-        return _adjustFontSize(ThemeSAKS.typography.h4Typo);
+        return _adjustFontSize(NewThemeSAKS.typography.h4Typo);
       case TypographyVariant.h5:
-        return _adjustFontSize(ThemeSAKS.typography.h5Typo);
+        return _adjustFontSize(NewThemeSAKS.typography.h5Typo);
       case TypographyVariant.h6:
-        return _adjustFontSize(ThemeSAKS.typography.h6Typo);
+        return _adjustFontSize(NewThemeSAKS.typography.h6Typo);
       case TypographyVariant.h7:
         return _adjustFontSize(ThemeSAKS.typography.h7Typo);
       case TypographyVariant.cta:
