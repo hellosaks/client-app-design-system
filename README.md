@@ -79,3 +79,27 @@ void main() {
 ### 3. Using branches to develop new components
 
 When creating a new component, it is necessary that the changes are merged into the `dev` branch, and later, the changes will be merged into the `master` branch, where a tag with the new version will be automatically created.
+
+### 4. Using and configuring project using this library
+
+#### 4.1 Typography
+
+When adding this library to the project, it is important to configure the correct typography, for this the following code snippet must be used to import the correct fonts.
+
+in pubspec.yaml, add this to your project:
+
+```yaml
+fonts:
+  - family: plus_jakarta_sans
+    fonts:
+      - asset: packages/client_app_design_system/assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Regular.ttf
+        weight: 400
+      - asset: packages/client_app_design_system/assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Medium.ttf
+        weight: 500
+      - asset: packages/client_app_design_system/assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-SemiBold.ttf
+        weight: 600
+      - asset: packages/client_app_design_system/assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Bold.ttf
+        weight: 700
+      - asset: packages/client_app_design_system/assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-ExtraBold.ttf
+        weight: 800
+```

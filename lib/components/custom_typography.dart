@@ -28,9 +28,9 @@ class CustomTypography extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = Mix.combine(
+      Mix(fontWeight(weight)),
       _getFontVariant(),
       Mix(
-        fontWeight(weight),
         textColor(color),
         textAlign(align),
         textScaleFactor(ThemeSAKS.typography.textScaleFactor),
@@ -63,14 +63,12 @@ class CustomTypography extends StatelessWidget {
         return _adjustFontSize(ThemeSAKS.typography.h6Typo);
       case TypographyVariant.h7:
         return _adjustFontSize(ThemeSAKS.typography.h7Typo);
-      case TypographyVariant.t1:
-        return _adjustFontSize(ThemeSAKS.typography.t1Typo);
-      case TypographyVariant.t2:
-        return _adjustFontSize(ThemeSAKS.typography.t2Typo);
-      case TypographyVariant.t3:
-        return _adjustFontSize(ThemeSAKS.typography.t3Typo);
-      case TypographyVariant.t4:
-        return _adjustFontSize(ThemeSAKS.typography.t4Typo);
+      case TypographyVariant.cta:
+        return _adjustFontSize(ThemeSAKS.typography.ctaTypo);
+      case TypographyVariant.underline:
+        return _adjustFontSize(ThemeSAKS.typography.underlineTypo);
+      case TypographyVariant.strikethrough:
+        return _adjustFontSize(ThemeSAKS.typography.strikethroughTypo);
     }
   }
 }
