@@ -31,3 +31,5 @@ enum TypographyVariant {
 }
 
 enum IconVariant { heroicons, unicons }
+
+enum Filter { activated, pending }
