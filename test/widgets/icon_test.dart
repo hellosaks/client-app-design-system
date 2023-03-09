@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/enums.dart";
 import "package:flutter/material.dart" as material show Icon;
 import "package:flutter_test/flutter_test.dart";
 import "package:heroicons/heroicons.dart";

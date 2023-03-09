@@ -18,6 +18,9 @@ class ReferralButton extends StatefulWidget {
     required this.feedbackOnCopy,
   });
 
+  static const Key tagFeedbackKey = Key("tagFeedbackKey");
+  static const Key containerKey = Key("containerKey");
+
   @override
   State<ReferralButton> createState() => _ReferralButtonState();
 }
@@ -55,6 +58,7 @@ class _ReferralButtonState extends State<ReferralButton> {
       child: Stack(
         children: [
           Box(
+            key: ReferralButton.containerKey,
             mix: style,
             child: HBox(
               mix: styleHbox,
@@ -91,6 +95,7 @@ class _ReferralButtonState extends State<ReferralButton> {
             right: 20,
             top: 0,
             child: Box(
+              key: ReferralButton.tagFeedbackKey,
               mix: Mix(
                 bgColor(ThemeSAKS.colors.utility.conservative),
                 px(24),

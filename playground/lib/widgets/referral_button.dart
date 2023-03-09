@@ -9,7 +9,7 @@ final referralButtonDoc = ElementPreview(
       widget: ReferralButton(
         onCopy: (link) {},
         title: "Link de Indicação",
-        linkToCopy: "aalinked.hellosaks.com/referrals/XmCo",
+        linkToCopy: "https://linked.hellosaks.com/referrals/XmCo",
         feedbackOnCopy: "Link copiado!",
       ),
       description: 'Referral button',
