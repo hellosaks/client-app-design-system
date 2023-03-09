@@ -44,7 +44,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
     );
     final Mix pressableStyles = Mix(rounded(20));
     final Mix boxStyle =
-        Mix(bgColor(ThemeSAKS.colors.primary.sea), rounded(20));
+        Mix(bgColor(NewThemeSAKS.colors.primary.sea), rounded(20));
 
     return Box(
       key: IndicationFilters.boxKey,
@@ -66,8 +66,8 @@ class _IndicationFiltersState extends State<IndicationFilters> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
                   color: widget.filter == Filter.activated
-                      ? ThemeSAKS.colors.special.leaf
-                      : ThemeSAKS.colors.primary.sky,
+                      ? NewThemeSAKS.colors.special.leaf
+                      : NewThemeSAKS.colors.primary.sky,
                 ),
                 padding: const EdgeInsets.all(20.0),
                 child: VBox(
@@ -95,7 +95,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
       text: widget.text,
       variant: TypographyVariant.h4,
       weight: FontWeight.bold,
-      color: ThemeSAKS.colors.primary.sea,
+      color: NewThemeSAKS.colors.primary.sea,
     );
   }
 
@@ -107,15 +107,15 @@ class _IndicationFiltersState extends State<IndicationFilters> {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: widget.filter == Filter.activated
-            ? ThemeSAKS.colors.utility.conservative
-            : ThemeSAKS.colors.primary.sea,
+            ? NewThemeSAKS.colors.utility.conservative
+            : NewThemeSAKS.colors.primary.sea,
       ),
       child: Center(
         child: CustomTypography(
           text: widget.number,
           variant: TypographyVariant.h4,
           weight: FontWeight.bold,
-          color: ThemeSAKS.colors.special.leaf,
+          color: NewThemeSAKS.colors.special.leaf,
         ),
       ),
     );
@@ -130,7 +130,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
             variant: IconVariant.heroicons,
             heroIconsProps: HeroIconsProps(
               icon: HeroIcons.arrowRightCircle,
-              color: ThemeSAKS.colors.primary.sea,
+              color: NewThemeSAKS.colors.primary.sea,
               size: 20,
             ),
           ),

@@ -71,7 +71,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "Pendentes" &&
-                widget.color == ThemeSAKS.colors.primary.sea &&
+                widget.color == NewThemeSAKS.colors.primary.sea &&
                 widget.weight == FontWeight.bold &&
                 widget.variant == TypographyVariant.h4,
           ),
@@ -81,7 +81,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "2" &&
-                widget.color == ThemeSAKS.colors.special.leaf &&
+                widget.color == NewThemeSAKS.colors.special.leaf &&
                 widget.weight == FontWeight.bold &&
                 widget.variant == TypographyVariant.h4,
           ),
@@ -95,7 +95,7 @@ void main() {
                     HeroIcons.arrowRightCircle &&
                 widget.props.heroIconsProps!.size == 20 &&
                 widget.props.heroIconsProps!.color ==
-                    ThemeSAKS.colors.primary.sea,
+                    NewThemeSAKS.colors.primary.sea,
           ),
           findsOneWidget);
 
@@ -108,14 +108,14 @@ void main() {
         container.decoration,
         BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: ThemeSAKS.colors.primary.sky,
+          color: NewThemeSAKS.colors.primary.sky,
         ),
       );
       expect(
         circle.decoration,
         BoxDecoration(
           shape: BoxShape.circle,
-          color: ThemeSAKS.colors.primary.sea,
+          color: NewThemeSAKS.colors.primary.sea,
         ),
       );
     });
@@ -137,14 +137,14 @@ void main() {
         container.decoration,
         BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: ThemeSAKS.colors.special.leaf,
+          color: NewThemeSAKS.colors.special.leaf,
         ),
       );
       expect(
         circle.decoration,
         BoxDecoration(
           shape: BoxShape.circle,
-          color: ThemeSAKS.colors.utility.conservative,
+          color: NewThemeSAKS.colors.utility.conservative,
         ),
       );
     });
