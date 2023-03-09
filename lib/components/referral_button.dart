@@ -1,4 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:client_app_design_system/utils/util_functions.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:mix/mix.dart";
@@ -27,18 +28,11 @@ class ReferralButton extends StatefulWidget {
 
 class _ReferralButtonState extends State<ReferralButton> {
   bool copied = false;
-  String _shorLink() {
-    final link = widget.linkToCopy.replaceAll("https://", "");
-    final firstShorLink = link.substring(0, 10);
-    final secondShorLink = link.substring(link.length - 10, link.length);
-
-    return "$firstShorLink...$secondShorLink";
-  }
 
   @override
   Widget build(BuildContext context) {
     final style = Mix(
-      bgColor(ThemeSAKS.colors.primary.saks),
+      bgColor(NewThemeSAKS.colors.primary.saks),
       px(30),
       py(20),
       mt(15),
@@ -69,12 +63,12 @@ class _ReferralButtonState extends State<ReferralButton> {
                     CustomTypography(
                       variant: TypographyVariant.h4,
                       text: widget.title,
-                      color: ThemeSAKS.colors.primary.sky,
+                      color: NewThemeSAKS.colors.primary.sky,
                     ),
                     CustomTypography(
                       variant: TypographyVariant.h6,
-                      text: _shorLink(),
-                      color: ThemeSAKS.colors.primary.sky,
+                      text: shortLink(widget.linkToCopy),
+                      color: NewThemeSAKS.colors.primary.sky,
                     )
                   ],
                 ),
@@ -83,7 +77,7 @@ class _ReferralButtonState extends State<ReferralButton> {
                     variant: IconVariant.heroicons,
                     heroIconsProps: HeroIconsProps(
                       icon: HeroIcons.clipboardDocument,
-                      color: ThemeSAKS.colors.primary.sky,
+                      color: NewThemeSAKS.colors.primary.sky,
                       size: 30,
                     ),
                   ),
@@ -91,28 +85,34 @@ class _ReferralButtonState extends State<ReferralButton> {
               ],
             ),
           ),
-          Positioned(
-            right: 20,
-            top: 0,
-            child: Box(
-              key: ReferralButton.tagFeedbackKey,
-              mix: Mix(
-                bgColor(ThemeSAKS.colors.utility.conservative),
-                px(24),
-                py(7),
-                rounded(ThemeSAKS.shape.borderRadius),
-                opacity(copied ? 1 : 0),
-                animated(),
-              ),
-              child: CustomTypography(
-                text: widget.feedbackOnCopy,
-                variant: TypographyVariant.h6,
-                color: ThemeSAKS.colors.primary.sky,
-                weight: FontWeight.w500,
-              ),
-            ),
-          ),
+          _buildTagFeedback(),
         ],
+      ),
+    );
+  }
+
+  Widget _buildTagFeedback() {
+    final style = Mix(
+      bgColor(NewThemeSAKS.colors.utility.conservative),
+      px(24),
+      py(7),
+      rounded(ThemeSAKS.shape.borderRadius),
+      opacity(copied ? 1 : 0),
+      animated(),
+    );
+
+    return Positioned(
+      right: 20,
+      top: 0,
+      child: Box(
+        key: ReferralButton.tagFeedbackKey,
+        mix: style,
+        child: CustomTypography(
+          text: widget.feedbackOnCopy,
+          variant: TypographyVariant.h6,
+          color: NewThemeSAKS.colors.primary.sky,
+          weight: FontWeight.w500,
+        ),
       ),
     );
   }
