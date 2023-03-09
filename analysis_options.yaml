@@ -4,6 +4,11 @@ include: package:flutter_lints/flutter.yaml
 # https://dart.dev/guides/language/analysis-options
 
 analyzer:
+  errors:
+    # Remove when old theme is removed
+    deprecated_member_use: ignore
+    # Remove when old theme is removed
+    deprecated_member_use_from_same_package: ignore
   exclude:
     - "**/*.doc_widget.dart"
 
