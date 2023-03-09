@@ -1,3 +1,4 @@
+import "package:client_app_design_system/utils/constants.dart";
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:mix/mix.dart";
@@ -7,9 +8,8 @@ class Typography {
   final fontPlusJakartaTextTheme = GoogleFonts.plusJakartaSansTextTheme;
   final fontPlusJakarta = GoogleFonts.plusJakartaSans;
 
-  static final _defaultFont = Mix(
-    textStyle(const TextStyle(fontFamily: "plus_jakarta_sans")),
-  );
+  static final _defaultFont =
+      Mix(textStyle(const TextStyle(fontFamily: Constants.fontFamily)));
 
   final double textScaleFactor = 1.0;
 
@@ -52,17 +52,13 @@ class Typography {
     letterSpacing: 0.23,
   );
 
-  final termsUseTypo = const TextStyle(
-    fontFamily: "plus_jakarta_sans",
-    fontSize: 16,
-  );
+  final termsUseTypo =
+      const TextStyle(fontFamily: Constants.fontFamily, fontSize: 16);
 
-  final otpInputTypo = GoogleFonts.plusJakartaSans(
-    fontSize: 16,
-  );
+  final otpInputTypo = GoogleFonts.plusJakartaSans(fontSize: 16);
 
   final boldTypo = const TextStyle(
-    fontFamily: "plus_jakarta_sans",
+    fontFamily: Constants.fontFamily,
     fontWeight: FontWeight.w600,
     fontSize: 16,
   );
