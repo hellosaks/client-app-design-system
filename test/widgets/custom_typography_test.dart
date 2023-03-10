@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/enums.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 
@@ -38,17 +37,16 @@ void main() {
         {"font-size": fs, "variant": variant};
 
     final variants = [
-      variantFont(28, TypographyVariant.h1),
-      variantFont(24, TypographyVariant.h2),
-      variantFont(18, TypographyVariant.h3),
-      variantFont(16, TypographyVariant.h4),
-      variantFont(14, TypographyVariant.h5),
-      variantFont(12, TypographyVariant.h6),
-      variantFont(10, TypographyVariant.h7),
-      variantFont(18, TypographyVariant.t1),
-      variantFont(16, TypographyVariant.t2),
-      variantFont(14, TypographyVariant.t3),
-      variantFont(12, TypographyVariant.t4),
+      variantFont(24, TypographyVariant.h1),
+      variantFont(22, TypographyVariant.h2),
+      variantFont(20, TypographyVariant.h3),
+      variantFont(18, TypographyVariant.h4),
+      variantFont(16, TypographyVariant.h5),
+      variantFont(14, TypographyVariant.h6),
+      variantFont(12, TypographyVariant.h7),
+      variantFont(14, TypographyVariant.cta),
+      variantFont(14, TypographyVariant.underline),
+      variantFont(14, TypographyVariant.strikethrough),
     ];
 
     for (final variant in variants) {

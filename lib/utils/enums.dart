@@ -20,15 +20,14 @@ enum TypographyVariant {
   /// font-size: 10
   h7,
 
-  /// font-size: 18; letter-spacing: 2
-  t1,
+  /// font-size: 14, letter-spacing: 2px, font-weight: 800
+  cta,
 
-  /// font-size: 16; letter-spacing: 2
-  t2,
+  /// font-size: 14, font-weight: 700, text-decoration: underline
+  underline,
 
-  /// font-size: 14; letter-spacing: 2
-  t3,
-
-  /// font-size: 12; letter-spacing: 2
-  t4,
+  /// font-size: 14, font-weight: 700, text-decoration: strikethrough
+  strikethrough,
 }
+
+enum IconVariant { heroicons, unicons }

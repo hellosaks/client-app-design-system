@@ -14,13 +14,12 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
-              e.style?.fontSize == 28 ||
-              e.style?.letterSpacing == 0.23,
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 24,
         )
         .toList();
 
-    expect(isFontOk, [true, true, true]);
+    expect(isFontOk, [true, true]);
   });
 
   test("Typography theme h2 correct attributes", () {
@@ -29,13 +28,12 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
-              e.style?.fontSize == 24 ||
-              e.style?.letterSpacing == 0.23,
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 22,
         )
         .toList();
 
-    expect(isFontOk, [true, true, true]);
+    expect(isFontOk, [true, true]);
   });
   test("Typography theme h3 correct attributes", () {
     final List<TextAttributes> attr = ThemeSAKS.typography.h3Typo.attributes;
@@ -43,13 +41,12 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
-              e.style?.fontSize == 18 ||
-              e.style?.letterSpacing == 0.23,
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 20,
         )
         .toList();
 
-    expect(isFontOk, [true, true, true]);
+    expect(isFontOk, [true, true]);
   });
   test("Typography theme h4 correct attributes", () {
     final List<TextAttributes> attr = ThemeSAKS.typography.h4Typo.attributes;
@@ -57,13 +54,12 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
-              e.style?.fontSize == 16 ||
-              e.style?.letterSpacing == 0.23,
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 18,
         )
         .toList();
 
-    expect(isFontOk, [true, true, true]);
+    expect(isFontOk, [true, true]);
   });
   test("Typography theme h5 correct attributes", () {
     final List<TextAttributes> attr = ThemeSAKS.typography.h5Typo.attributes;
@@ -71,13 +67,12 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
-              e.style?.fontSize == 14 ||
-              e.style?.letterSpacing == 0.23,
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 16,
         )
         .toList();
 
-    expect(isFontOk, [true, true, true]);
+    expect(isFontOk, [true, true]);
   });
   test("Typography theme h6 correct attributes", () {
     final List<TextAttributes> attr = ThemeSAKS.typography.h6Typo.attributes;
@@ -85,13 +80,12 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
-              e.style?.fontSize == 12 ||
-              e.style?.letterSpacing == 0.23,
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 14,
         )
         .toList();
 
-    expect(isFontOk, [true, true, true]);
+    expect(isFontOk, [true, true]);
   });
   test("Typography theme h7 correct attributes", () {
     final List<TextAttributes> attr = ThemeSAKS.typography.h7Typo.attributes;
@@ -99,69 +93,59 @@ void main() {
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
-              e.style?.fontSize == 10 ||
-              e.style?.letterSpacing == 0.23,
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 12,
         )
         .toList();
 
-    expect(isFontOk, [true, true, true]);
+    expect(isFontOk, [true, true]);
   });
 
-  test("Typography theme t1 correct attributes", () {
-    final List<TextAttributes> attr = ThemeSAKS.typography.t1Typo.attributes;
+  test("Typography theme cta correct attributes", () {
+    final List<TextAttributes> attr = ThemeSAKS.typography.ctaTypo.attributes;
 
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
-              e.style?.fontSize == 18 ||
-              e.style?.letterSpacing == 2,
-        )
-        .toList();
-
-    expect(isFontOk, [true, true, true]);
-  });
-  test("Typography theme t2 correct attributes", () {
-    final List<TextAttributes> attr = ThemeSAKS.typography.t2Typo.attributes;
-
-    final List<bool> isFontOk = attr
-        .map(
-          (e) =>
-              e.style?.fontFamily == "montserrat" ||
-              e.style?.fontSize == 16 ||
-              e.style?.letterSpacing == 2,
-        )
-        .toList();
-
-    expect(isFontOk, [true, true, true]);
-  });
-  test("Typography theme t3 correct attributes", () {
-    final List<TextAttributes> attr = ThemeSAKS.typography.t3Typo.attributes;
-
-    final List<bool> isFontOk = attr
-        .map(
-          (e) =>
-              e.style?.fontFamily == "montserrat" ||
+              e.style?.fontFamily == "plus_jakarta_sans" ||
               e.style?.fontSize == 14 ||
+              e.style?.fontWeight == FontWeight.w800 ||
               e.style?.letterSpacing == 2,
         )
         .toList();
 
-    expect(isFontOk, [true, true, true]);
+    expect(isFontOk, [true, true, true, true]);
   });
-  test("Typography theme t4 correct attributes", () {
-    final List<TextAttributes> attr = ThemeSAKS.typography.t4Typo.attributes;
+  test("Typography theme underline correct attributes", () {
+    final List<TextAttributes> attr =
+        ThemeSAKS.typography.underlineTypo.attributes;
 
     final List<bool> isFontOk = attr
         .map(
           (e) =>
-              e.style?.fontFamily == "montserrat" ||
-              e.style?.fontSize == 12 ||
-              e.style?.letterSpacing == 2,
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 14 ||
+              e.style?.fontWeight == FontWeight.w700 ||
+              e.style?.decoration == TextDecoration.underline,
         )
         .toList();
 
-    expect(isFontOk, [true, true, true]);
+    expect(isFontOk, [true, true, true, true]);
+  });
+  test("Typography theme strikethrough correct attributes", () {
+    final List<TextAttributes> attr =
+        ThemeSAKS.typography.strikethroughTypo.attributes;
+
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 14 ||
+              e.style?.fontWeight == FontWeight.w700 ||
+              e.style?.decoration == TextDecoration.lineThrough,
+        )
+        .toList();
+
+    expect(isFontOk, [true, true, true, true]);
   });
 }
