@@ -10,9 +10,17 @@ import "package:skeletons/skeletons.dart";
 class CardBanner extends StatelessWidget {
   final String backgroundImage;
   final void Function()? onPressed;
+
+  /// add title bellow image
   final String? title;
+
+  /// show button to call action
   final String? buttonLabel;
+
+  /// used when loading image
   final String? blurHash;
+
+  /// used when loading image to show skeleton or blurhash
   final double aspectRatio;
 
   const CardBanner({

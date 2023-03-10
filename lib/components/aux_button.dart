@@ -1,9 +1,11 @@
 import "package:client_app_design_system/components/custom_typography.dart";
 import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:client_app_design_system/utils/enums.dart";
+import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
 import "package:mix/mix.dart";
 
+@docWidget
 class AuxButton extends StatelessWidget {
   final void Function() onPressed;
   final bool disabled;
