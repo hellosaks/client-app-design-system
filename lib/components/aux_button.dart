@@ -23,15 +23,13 @@ class AuxButton extends StatelessWidget {
       bgColor(NewThemeSAKS.colors.primary.saks),
       animated(),
     );
-    final styleEnabled = Mix(
-      rounded(NewThemeSAKS.shape.borderRadius),
-      bgColor(NewThemeSAKS.colors.primary.saks),
+    final stylePressed = Mix(
       press(bgColor(NewThemeSAKS.colors.secondary.bay)),
     );
     final styleDisabled = Mix(opacity(0.5));
 
     return Pressable(
-      mix: Mix.combine(style, disabled ? styleDisabled : styleEnabled),
+      mix: Mix.combine(style, disabled ? styleDisabled : stylePressed),
       onPressed: disabled ? null : onPressed,
       child: _buildContainer(),
     );
