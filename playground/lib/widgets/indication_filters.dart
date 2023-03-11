@@ -10,7 +10,7 @@ final indicationFiltersDoc = ElementPreview(
       widget: IndicationFilters(
         text: "Ativados",
         filter: Filter.activated,
-        number: "1",
+        number: 1,
         onPressed: () {},
       ),
       description: 'IndicationFilters variant Filter.activated',
@@ -19,7 +19,7 @@ final indicationFiltersDoc = ElementPreview(
       widget: IndicationFilters(
         text: "Pendentes",
         filter: Filter.pending,
-        number: "2",
+        number: 2,
         onPressed: () {},
       ),
       description: 'IndicationFilters variant Filter.pending ',
