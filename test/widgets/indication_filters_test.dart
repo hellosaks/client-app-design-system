@@ -4,6 +4,7 @@ import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:client_app_design_system/utils/enums.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
+import "package:mix/mix.dart";
 
 import "../utils/test_wrappers.dart";
 
@@ -15,7 +16,7 @@ void main() {
         final widget = IndicationFilters(
           text: "Pendentes",
           filter: Filter.pending,
-          number: "2",
+          number: 2,
           onPressed: () {},
         );
 
@@ -30,7 +31,7 @@ void main() {
       final widget = IndicationFilters(
         text: "Pendentes",
         filter: Filter.pending,
-        number: "2",
+        number: 2,
         onPressed: () {
           pressed = true;
         },
@@ -46,7 +47,7 @@ void main() {
       final widget = IndicationFilters(
         text: "Pendentes",
         filter: Filter.pending,
-        number: "2",
+        number: 2,
         onPressed: () {},
       );
 
@@ -61,7 +62,7 @@ void main() {
       final widget = IndicationFilters(
         text: "Pendentes",
         filter: Filter.pending,
-        number: "2",
+        number: 2,
         onPressed: () {},
       );
 
@@ -93,60 +94,43 @@ void main() {
                 widget is Icon &&
                 widget.props.heroIconsProps!.icon ==
                     HeroIcons.arrowRightCircle &&
-                widget.props.heroIconsProps!.size == 20 &&
+                widget.props.heroIconsProps!.size == 24 &&
                 widget.props.heroIconsProps!.color ==
                     NewThemeSAKS.colors.primary.sea,
           ),
           findsOneWidget);
 
-      final container =
-          tester.widget<Container>(find.byKey(IndicationFilters.cardKey));
       final circle =
-          tester.widget<Container>(find.byKey(IndicationFilters.circleKey));
+          tester.widget<Box>(find.byKey(IndicationFilters.circleKey));
+      final List<Attribute> attributes = circle.mix.attributes;
+      expect((attributes[2] as BoxAttributes).color,
+          NewThemeSAKS.colors.primary.sea);
 
-      expect(
-        container.decoration,
-        BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-          color: NewThemeSAKS.colors.primary.sky,
-        ),
-      );
-      expect(
-        circle.decoration,
-        BoxDecoration(
-          shape: BoxShape.circle,
-          color: NewThemeSAKS.colors.primary.sea,
-        ),
-      );
+      final box = tester.widget<Box>(find.byKey(IndicationFilters.cardKey));
+      final List<Attribute> attributes2 = box.mix.attributes;
+      expect((attributes2[0] as BoxAttributes).color,
+          NewThemeSAKS.colors.primary.sky);
     });
 
     testWidgets(" Filter.activated attributes", (WidgetTester tester) async {
       final widget = IndicationFilters(
-        text: "Pendentes",
+        text: "Ativo",
         filter: Filter.activated,
-        number: "2",
+        number: 1,
         onPressed: () {},
       );
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      final container =
-          tester.widget<Container>(find.byKey(IndicationFilters.cardKey));
       final circle =
-          tester.widget<Container>(find.byKey(IndicationFilters.circleKey));
-      expect(
-        container.decoration,
-        BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-          color: NewThemeSAKS.colors.special.leaf,
-        ),
-      );
-      expect(
-        circle.decoration,
-        BoxDecoration(
-          shape: BoxShape.circle,
-          color: NewThemeSAKS.colors.utility.conservative,
-        ),
-      );
+          tester.widget<Box>(find.byKey(IndicationFilters.circleKey));
+      final List<Attribute> attributes = circle.mix.attributes;
+      expect((attributes[2] as BoxAttributes).color,
+          NewThemeSAKS.colors.utility.conservative);
+
+      final box = tester.widget<Box>(find.byKey(IndicationFilters.cardKey));
+      final List<Attribute> attributes2 = box.mix.attributes;
+      expect((attributes2[0] as BoxAttributes).color,
+          NewThemeSAKS.colors.special.leaf);
     });
   });
 }

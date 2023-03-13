@@ -44,52 +44,54 @@ class _IndicationFiltersState extends State<IndicationFilters> {
       mainAxis(MainAxisAlignment.start),
       crossAxis(CrossAxisAlignment.start),
     );
-    final Mix pressableStyles = Mix(rounded(20));
-    final Mix boxStyle =
-        Mix(bgColor(NewThemeSAKS.colors.primary.sea), rounded(20));
+    final Mix pressableStyles = Mix(rounded(ThemeSAKS.shape.borderRadius));
+    final Mix boxStyle = Mix(bgColor(NewThemeSAKS.colors.primary.sea),
+        rounded(ThemeSAKS.shape.borderRadius));
     final Mix cardBoxStyle = Mix(
         bgColor(widget.filter == Filter.activated
             ? NewThemeSAKS.colors.special.leaf
             : NewThemeSAKS.colors.primary.sky),
         padding(20),
-        rounded(20));
+        rounded(ThemeSAKS.shape.borderRadius));
 
     return Box(
-        key: IndicationFilters.boxKey,
-        mix: isOpacity ? boxStyle : null,
-        child: Opacity(
-          opacity: isOpacity ? 0.85 : 1,
-          child: SizedBox(
-            width: 155,
-            child: Pressable(
-              mix: pressableStyles,
-              onPressed: () {
-                widget.onPressed();
-                setState(() {
-                  isOpacity = !isOpacity;
-                });
-              },
-              child: Box(
-                key: IndicationFilters.cardKey,
-                mix: cardBoxStyle,
-                child: VBox(
-                  mix: vboxStyles,
-                  children: [
-                    _buildTitle(),
-                    const SizedBox(height: 16),
-                    HBox(
-                      mix: hboxStyles,
-                      children: [
-                        _buildCircle(),
-                        _buildArrow(),
-                      ],
-                    ),
-                  ],
-                ),
+      key: IndicationFilters.boxKey,
+      mix: boxStyle,
+      child: AnimatedOpacity(
+        opacity: isOpacity ? 0.85 : 1.0,
+        duration: const Duration(milliseconds: 125),
+        child: SizedBox(
+          width: 155,
+          child: Pressable(
+            mix: pressableStyles,
+            onPressed: () {
+              widget.onPressed();
+              setState(() {
+                isOpacity = !isOpacity;
+              });
+            },
+            child: Box(
+              key: IndicationFilters.cardKey,
+              mix: cardBoxStyle,
+              child: VBox(
+                mix: vboxStyles,
+                children: [
+                  _buildTitle(),
+                  const SizedBox(height: 16),
+                  HBox(
+                    mix: hboxStyles,
+                    children: [
+                      _buildCircle(),
+                      _buildArrow(),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget _buildTitle() {
@@ -110,8 +112,9 @@ class _IndicationFiltersState extends State<IndicationFilters> {
               ? NewThemeSAKS.colors.utility.conservative
               : NewThemeSAKS.colors.primary.sea,
         ),
-        rounded(20));
+        rounded(ThemeSAKS.shape.borderRadius));
     return Box(
+      key: IndicationFilters.circleKey,
       mix: circleStyle,
       child: Center(
         child: CustomTypography(
