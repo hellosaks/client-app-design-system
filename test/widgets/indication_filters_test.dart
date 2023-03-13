@@ -1,7 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:client_app_design_system/components/indication_filters.dart";
-import "package:client_app_design_system/theme/theme_saks.dart";
-import "package:client_app_design_system/utils/enums.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
 import "package:mix/mix.dart";
@@ -106,9 +104,13 @@ void main() {
       expect((attributes[2] as BoxAttributes).color,
           NewThemeSAKS.colors.primary.sea);
 
-      final box = tester.widget<Box>(find.byKey(IndicationFilters.cardKey));
+      final box = tester.widget<Box>(find.byKey(IndicationFilters.boxKey));
       final List<Attribute> attributes2 = box.mix.attributes;
       expect((attributes2[0] as BoxAttributes).color,
+          NewThemeSAKS.colors.primary.sea);
+
+      final VBox vbox = tester.widget(find.byKey(IndicationFilters.vboxKey));
+      expect((vbox.mix.attributes.elementAt(2) as BoxAttributes).color,
           NewThemeSAKS.colors.primary.sky);
     });
 
@@ -127,9 +129,8 @@ void main() {
       expect((attributes[2] as BoxAttributes).color,
           NewThemeSAKS.colors.utility.conservative);
 
-      final box = tester.widget<Box>(find.byKey(IndicationFilters.cardKey));
-      final List<Attribute> attributes2 = box.mix.attributes;
-      expect((attributes2[0] as BoxAttributes).color,
+      final VBox vbox = tester.widget(find.byKey(IndicationFilters.vboxKey));
+      expect((vbox.mix.attributes.elementAt(2) as BoxAttributes).color,
           NewThemeSAKS.colors.special.leaf);
     });
   });

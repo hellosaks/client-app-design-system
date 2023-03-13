@@ -25,8 +25,8 @@ class IndicationFilters extends StatefulWidget {
   }) : super(key: key);
 
   static const ValueKey circleKey = ValueKey("circleKey");
-  static const ValueKey cardKey = ValueKey("cardKey");
   static const ValueKey boxKey = ValueKey("boxKey");
+  static const ValueKey vboxKey = ValueKey("vboxKey");
 
   @override
   State<IndicationFilters> createState() => _IndicationFiltersState();
@@ -39,55 +39,54 @@ class _IndicationFiltersState extends State<IndicationFilters> {
   Widget build(BuildContext context) {
     final hboxStyles = Mix(
       mainAxis(MainAxisAlignment.spaceBetween),
+      crossAxis(CrossAxisAlignment.end),
     );
     final vboxStyles = Mix(
       mainAxis(MainAxisAlignment.start),
       crossAxis(CrossAxisAlignment.start),
+      bgColor(widget.filter == Filter.activated
+          ? NewThemeSAKS.colors.special.leaf
+          : NewThemeSAKS.colors.primary.sky),
+      padding(20),
     );
-    final Mix pressableStyles = Mix(rounded(ThemeSAKS.shape.borderRadius));
-    final Mix boxStyle = Mix(bgColor(NewThemeSAKS.colors.primary.sea),
-        rounded(ThemeSAKS.shape.borderRadius));
-    final Mix cardBoxStyle = Mix(
-        bgColor(widget.filter == Filter.activated
-            ? NewThemeSAKS.colors.special.leaf
-            : NewThemeSAKS.colors.primary.sky),
-        padding(20),
-        rounded(ThemeSAKS.shape.borderRadius));
+    final Mix pressableStyles = Mix(
+      w(155),
+      opacity(isOpacity ? 0.85 : 1),
+      animated(),
+    );
+    final Mix boxStyle = Mix(
+      bgColor(NewThemeSAKS.colors.primary.sea),
+    );
 
-    return Box(
-      key: IndicationFilters.boxKey,
-      mix: boxStyle,
-      child: AnimatedOpacity(
-        opacity: isOpacity ? 0.85 : 1.0,
-        duration: const Duration(milliseconds: 125),
-        child: SizedBox(
-          width: 155,
-          child: Pressable(
-            mix: pressableStyles,
-            onPressed: () {
-              widget.onPressed();
-              setState(() {
-                isOpacity = !isOpacity;
-              });
-            },
-            child: Box(
-              key: IndicationFilters.cardKey,
-              mix: cardBoxStyle,
-              child: VBox(
-                mix: vboxStyles,
+    return ClipRRect(
+      borderRadius: BorderRadius.all(
+        Radius.circular(ThemeSAKS.shape.borderRadiusCard),
+      ),
+      child: Box(
+        key: IndicationFilters.boxKey,
+        mix: boxStyle,
+        child: Pressable(
+          mix: pressableStyles,
+          onPressed: () {
+            widget.onPressed();
+            setState(() {
+              isOpacity = !isOpacity;
+            });
+          },
+          child: VBox(
+            key: IndicationFilters.vboxKey,
+            mix: vboxStyles,
+            children: [
+              _buildTitle(),
+              const SizedBox(height: 16),
+              HBox(
+                mix: hboxStyles,
                 children: [
-                  _buildTitle(),
-                  const SizedBox(height: 16),
-                  HBox(
-                    mix: hboxStyles,
-                    children: [
-                      _buildCircle(),
-                      _buildArrow(),
-                    ],
-                  ),
+                  _buildCircle(),
+                  _buildArrow(),
                 ],
               ),
-            ),
+            ],
           ),
         ),
       ),
@@ -105,14 +104,16 @@ class _IndicationFiltersState extends State<IndicationFilters> {
 
   Widget _buildCircle() {
     final circleStyle = Mix(
-        height(40),
-        width(40),
-        bgColor(
-          widget.filter == Filter.activated
-              ? NewThemeSAKS.colors.utility.conservative
-              : NewThemeSAKS.colors.primary.sea,
-        ),
-        rounded(ThemeSAKS.shape.borderRadius));
+      height(40),
+      width(40),
+      bgColor(
+        widget.filter == Filter.activated
+            ? NewThemeSAKS.colors.utility.conservative
+            : NewThemeSAKS.colors.primary.sea,
+      ),
+      rounded(ThemeSAKS.shape.borderRadius),
+    );
+
     return Box(
       key: IndicationFilters.circleKey,
       mix: circleStyle,
@@ -128,20 +129,15 @@ class _IndicationFiltersState extends State<IndicationFilters> {
   }
 
   Widget _buildArrow() {
-    return VBox(
-      children: [
-        const SizedBox(height: 16),
-        Icon(
-          props: IconProps(
-            variant: IconVariant.heroicons,
-            heroIconsProps: HeroIconsProps(
-              icon: HeroIcons.arrowRightCircle,
-              color: NewThemeSAKS.colors.primary.sea,
-              size: 24,
-            ),
-          ),
+    return Icon(
+      props: IconProps(
+        variant: IconVariant.heroicons,
+        heroIconsProps: HeroIconsProps(
+          icon: HeroIcons.arrowRightCircle,
+          color: NewThemeSAKS.colors.primary.sea,
+          size: 24,
         ),
-      ],
+      ),
     );
   }
 }
