@@ -113,14 +113,14 @@ in pubspec.yaml, add this to your project:
 fonts:
   - family: plus_jakarta_sans
     fonts:
-      - asset: packages/client_app_design_system/assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Regular.ttf
+      - asset: packages/client_app_design_system/fonts/plus-Jakarta-Sans/PlusJakartaSans-Regular.ttf
         weight: 400
-      - asset: packages/client_app_design_system/assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Medium.ttf
+      - asset: packages/client_app_design_system/fonts/plus-Jakarta-Sans/PlusJakartaSans-Medium.ttf
         weight: 500
-      - asset: packages/client_app_design_system/assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-SemiBold.ttf
+      - asset: packages/client_app_design_system/fonts/plus-Jakarta-Sans/PlusJakartaSans-SemiBold.ttf
         weight: 600
-      - asset: packages/client_app_design_system/assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-Bold.ttf
+      - asset: packages/client_app_design_system/fonts/plus-Jakarta-Sans/PlusJakartaSans-Bold.ttf
         weight: 700
-      - asset: packages/client_app_design_system/assets/fonts/plus-Jakarta-Sans/PlusJakartaSans-ExtraBold.ttf
+      - asset: packages/client_app_design_system/fonts/plus-Jakarta-Sans/PlusJakartaSans-ExtraBold.ttf
         weight: 800
 ```
