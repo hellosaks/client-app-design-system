@@ -92,7 +92,7 @@ class CardBanner extends StatelessWidget {
                 color: NewThemeSAKS.colors.primary.sea,
               ),
               if (buttonLabel != null)
-                AuxButton(label: buttonLabel!, onPressed: onPressed!),
+                AuxiliarButton(label: buttonLabel!, onPressed: onPressed!),
             ],
           )
         ],

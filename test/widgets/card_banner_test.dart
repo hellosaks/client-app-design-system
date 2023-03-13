@@ -117,7 +117,7 @@ void main() {
       expect(
         find.byWidgetPredicate(
           (widget) =>
-              widget is AuxButton &&
+              widget is AuxiliarButton &&
               widget.label == "ver mais" &&
               // same onPressed function is used in card and button
               widget.onPressed == onPressed,

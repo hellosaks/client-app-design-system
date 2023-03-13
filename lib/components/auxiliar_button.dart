@@ -6,12 +6,12 @@ import "package:flutter/material.dart";
 import "package:mix/mix.dart";
 
 @docWidget
-class AuxButton extends StatelessWidget {
+class AuxiliarButton extends StatelessWidget {
   final void Function() onPressed;
   final bool disabled;
   final String label;
 
-  const AuxButton({
+  const AuxiliarButton({
     super.key,
     required this.label,
     required this.onPressed,

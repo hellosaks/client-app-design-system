@@ -1,19 +1,19 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
-import 'package:client_app_design_system/components/aux_button.doc_widget.dart';
+import 'package:client_app_design_system/components/auxiliar_button.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
 
 final auxButtonDoc = ElementPreview(
-  document: AuxButtonDocWidget(), // From generated file
+  document: AuxiliarButtonDocWidget(), // From generated file
   previews: [
     WidgetPreview(
-      widget: AuxButton(
+      widget: AuxiliarButton(
         label: "Ver mais",
         onPressed: () {},
       ),
       description: 'Example of aux button with label and onPressed handler.',
     ),
     WidgetPreview(
-      widget: AuxButton(
+      widget: AuxiliarButton(
         label: "Ver mais",
         onPressed: () {},
         disabled: true,

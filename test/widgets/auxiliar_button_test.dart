@@ -1,7 +1,4 @@
-import "package:client_app_design_system/components/aux_button.dart";
-import "package:client_app_design_system/components/custom_typography.dart";
-import "package:client_app_design_system/theme/theme_saks.dart";
-import "package:client_app_design_system/utils/enums.dart";
+import "package:client_app_design_system/client_app_design_system.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:mix/mix.dart";
@@ -9,9 +6,9 @@ import "package:mix/mix.dart";
 import "../utils/test_wrappers.dart";
 
 void main() {
-  group("AuxButton", () {
+  group("AuxiliarButton", () {
     testWidgets("should render correctly", (tester) async {
-      final widget = AuxButton(label: "label", onPressed: () {});
+      final widget = AuxiliarButton(label: "label", onPressed: () {});
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
@@ -20,7 +17,7 @@ void main() {
 
     testWidgets("should call correctly onPressed", (tester) async {
       bool pressed = false;
-      final widget = AuxButton(
+      final widget = AuxiliarButton(
         label: "label",
         onPressed: () {
           pressed = true;
@@ -28,14 +25,14 @@ void main() {
       );
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
-      await tester.tap(find.byType(AuxButton));
+      await tester.tap(find.byType(AuxiliarButton));
       await tester.pumpAndSettle();
 
       expect(pressed, true);
     });
 
     testWidgets("should render correctly styles", (tester) async {
-      final widget = AuxButton(label: "label", onPressed: () {});
+      final widget = AuxiliarButton(label: "label", onPressed: () {});
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
@@ -54,7 +51,7 @@ void main() {
 
     testWidgets("should render correctly styles when is disabled",
         (tester) async {
-      final widget = AuxButton(
+      final widget = AuxiliarButton(
         label: "label",
         onPressed: () {},
         disabled: true,
@@ -69,7 +66,7 @@ void main() {
     });
 
     testWidgets("should render correctly styles when pressed", (tester) async {
-      final widget = AuxButton(
+      final widget = AuxiliarButton(
         label: "label",
         onPressed: () {},
       );
@@ -94,7 +91,7 @@ void main() {
 
     testWidgets("dont call onPress when is disabled", (tester) async {
       bool pressed = false;
-      final widget = AuxButton(
+      final widget = AuxiliarButton(
         label: "label",
         onPressed: () {
           pressed = true;
@@ -103,7 +100,7 @@ void main() {
       );
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
-      await tester.tap(find.byType(AuxButton));
+      await tester.tap(find.byType(AuxiliarButton));
       await tester.pumpAndSettle();
 
       expect(pressed, false);
