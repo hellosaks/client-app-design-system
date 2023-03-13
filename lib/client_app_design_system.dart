@@ -5,6 +5,7 @@ export "package:unicons/unicons.dart"
     show UniconsLine, UniconsSolid, UniconsThinline;
 
 export "components/auxiliar_button.dart";
+export "components/buttons/button_tertiary.dart";
 export "components/card_banner.dart";
 export "components/custom_typography.dart";
 export "components/icon.dart";
