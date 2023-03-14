@@ -33,3 +33,5 @@ enum TypographyVariant {
 enum IconVariant { heroicons, unicons, custom }
 
 enum Filter { activated, pending }
+
+enum SpecialButtonVariant { whatsapp, share }
