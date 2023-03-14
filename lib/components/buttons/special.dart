@@ -50,6 +50,7 @@ class _SpecialButtonState extends State<SpecialButton> {
       py(16),
       rounded(NewThemeSAKS.shape.borderRadiusSpecialButton),
       widget.disabled ? opacity(0.5) : null,
+      w(170),
       animated(),
     );
     final styleHbox = Mix(mainAxisSize(MainAxisSize.min));
@@ -71,11 +72,14 @@ class _SpecialButtonState extends State<SpecialButton> {
             ),
           ),
           const SizedBox(width: 10),
-          CustomTypography(
-            variant: TypographyVariant.h7,
-            text: widget.label,
-            weight: FontWeight.w600,
-            color: NewThemeSAKS.colors.grayscale.snow,
+          Expanded(
+            child: CustomTypography(
+              variant: TypographyVariant.h7,
+              text: widget.label,
+              weight: FontWeight.w600,
+              color: NewThemeSAKS.colors.grayscale.snow,
+              align: TextAlign.center,
+            ),
           ),
         ],
       ),

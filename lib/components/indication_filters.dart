@@ -1,12 +1,11 @@
+import "package:client_app_design_system/components/custom_typography.dart";
+import "package:client_app_design_system/components/icon.dart";
+import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:client_app_design_system/utils/enums.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:heroicons/heroicons.dart";
 import "package:mix/mix.dart";
-
-import "../theme/theme_saks.dart";
-import "custom_typography.dart";
-import "icon.dart";
 
 @docWidget
 class IndicationFilters extends StatefulWidget {
@@ -17,12 +16,12 @@ class IndicationFilters extends StatefulWidget {
   final void Function() onPressed;
 
   const IndicationFilters({
-    Key? key,
+    super.key,
     required this.text,
     required this.filter,
     required this.number,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   static const ValueKey circleKey = ValueKey("circleKey");
   static const ValueKey boxKey = ValueKey("boxKey");
