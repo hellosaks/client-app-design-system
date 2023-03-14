@@ -26,7 +26,7 @@ void main() {
               widget is ClipRRect &&
               widget.borderRadius ==
                   BorderRadius.all(
-                    Radius.circular(NewThemeSAKS.shape.borderRadiusCard),
+                    Radius.circular(ThemeSAKS.shape.borderRadiusCard),
                   ),
         ),
         findsOneWidget,
@@ -50,7 +50,7 @@ void main() {
               widget is ClipRRect &&
               widget.borderRadius ==
                   BorderRadius.all(
-                    Radius.circular(NewThemeSAKS.shape.borderRadiusCard),
+                    Radius.circular(ThemeSAKS.shape.borderRadiusCard),
                   ),
         ),
         findsOneWidget,
@@ -95,7 +95,7 @@ void main() {
                 widget.text == "title" &&
                 widget.variant == TypographyVariant.h6 &&
                 widget.weight == FontWeight.w700 &&
-                widget.color == NewThemeSAKS.colors.primary.sea,
+                widget.color == ThemeSAKS.colors.primary.sea,
           ),
           findsOneWidget);
     });

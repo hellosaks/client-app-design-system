@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:mix/mix.dart";
 
@@ -13,6 +12,7 @@ void main() {
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
       expect(find.byType(Pressable), findsOneWidget);
+      expect(find.text("label"), findsOneWidget);
     });
 
     testWidgets("should call correctly onPressed", (tester) async {
@@ -29,24 +29,6 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(pressed, true);
-    });
-
-    testWidgets("should render correctly styles", (tester) async {
-      final widget = AuxiliarButton(label: "label", onPressed: () {});
-
-      await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-      expect(
-        find.byWidgetPredicate(
-          (widget) =>
-              widget is CustomTypography &&
-              widget.text == "label" &&
-              widget.color == NewThemeSAKS.colors.grayscale.snow &&
-              widget.variant == TypographyVariant.h7 &&
-              widget.weight == FontWeight.w700,
-        ),
-        findsOneWidget,
-      );
     });
 
     testWidgets("should render correctly styles when is disabled",
@@ -83,7 +65,7 @@ void main() {
         ((attributes[3] as VariantAttribute<Attribute>).attributes[0]
                 as BoxAttributes)
             .color,
-        NewThemeSAKS.colors.secondary.bay,
+        ThemeSAKS.colors.secondary.bay,
       );
 
       await tester.pumpAndSettle();

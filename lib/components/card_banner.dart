@@ -52,8 +52,8 @@ class CardBanner extends StatelessWidget {
 
   Widget _buildBackgroundImage(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.all(
-          Radius.circular(NewThemeSAKS.shape.borderRadiusCard)),
+      borderRadius:
+          BorderRadius.all(Radius.circular(ThemeSAKS.shape.borderRadiusCard)),
       child: CachedNetworkImage(
         imageUrl: backgroundImage,
         fit: BoxFit.fill,
@@ -65,13 +65,13 @@ class CardBanner extends StatelessWidget {
   }
 
   Widget _buildBackgroundImageWithTitle(BuildContext context) {
-    final style = Mix(bgColor(NewThemeSAKS.colors.primary.sky));
+    final style = Mix(bgColor(ThemeSAKS.colors.primary.sky));
     final styleHbox =
         Mix(px(25), py(20), mainAxis(MainAxisAlignment.spaceBetween));
 
     return ClipRRect(
-      borderRadius: BorderRadius.all(
-          Radius.circular(NewThemeSAKS.shape.borderRadiusCard)),
+      borderRadius:
+          BorderRadius.all(Radius.circular(ThemeSAKS.shape.borderRadiusCard)),
       child: VBox(
         mix: style,
         children: [
@@ -89,7 +89,7 @@ class CardBanner extends StatelessWidget {
                 variant: TypographyVariant.h6,
                 text: title!,
                 weight: FontWeight.w700,
-                color: NewThemeSAKS.colors.primary.sea,
+                color: ThemeSAKS.colors.primary.sea,
               ),
               if (buttonLabel != null)
                 AuxiliarButton(label: buttonLabel!, onPressed: onPressed!),

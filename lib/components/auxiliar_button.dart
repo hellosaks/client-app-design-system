@@ -21,12 +21,12 @@ class AuxiliarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = Mix(
-      rounded(NewThemeSAKS.shape.borderRadius),
-      bgColor(NewThemeSAKS.colors.primary.saks),
+      rounded(ThemeSAKS.shape.borderRadius),
+      bgColor(ThemeSAKS.colors.primary.saks),
       animated(),
     );
     final stylePressed = Mix(
-      press(bgColor(NewThemeSAKS.colors.secondary.bay)),
+      press(bgColor(ThemeSAKS.colors.secondary.bay)),
     );
     final styleDisabled = Mix(opacity(0.5));
 
@@ -46,7 +46,7 @@ class AuxiliarButton extends StatelessWidget {
         text: label,
         variant: TypographyVariant.h7,
         weight: FontWeight.w700,
-        color: NewThemeSAKS.colors.grayscale.snow,
+        color: ThemeSAKS.colors.grayscale.snow,
       ),
     );
   }
