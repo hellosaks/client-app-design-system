@@ -27,6 +27,7 @@ class IndicationFilters extends StatefulWidget {
   static const ValueKey circleKey = ValueKey("circleKey");
   static const ValueKey boxKey = ValueKey("boxKey");
   static const ValueKey vboxKey = ValueKey("vboxKey");
+  static const ValueKey pressableKey = ValueKey("pressableKey");
 
   @override
   State<IndicationFilters> createState() => _IndicationFiltersState();
@@ -66,6 +67,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
         key: IndicationFilters.boxKey,
         mix: boxStyle,
         child: Pressable(
+          key: IndicationFilters.pressableKey,
           mix: pressableStyles,
           onPressed: () {
             widget.onPressed();

@@ -36,8 +36,20 @@ void main() {
       );
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
+
+      Pressable pressable =
+          tester.widget(find.byKey(IndicationFilters.pressableKey));
+
+      List<Attribute> attributes = pressable.mix.attributes;
+      expect((attributes[1] as OpacityDecorator).opacity, 1);
+
       await tester.tap(find.byType(IndicationFilters));
       await tester.pumpAndSettle();
+
+      pressable = tester.widget(find.byKey(IndicationFilters.pressableKey));
+
+      attributes = pressable.mix.attributes;
+      expect((attributes[1] as OpacityDecorator).opacity, 0.85);
       expect(pressed, true);
     });
 
