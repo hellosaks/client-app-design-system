@@ -102,7 +102,6 @@ class Icon extends StatelessWidget {
           color: props.customIconsProps?.color,
           width: props.customIconsProps?.size,
           height: props.customIconsProps?.size,
-          alignment: Alignment.center,
         );
     }
   }
