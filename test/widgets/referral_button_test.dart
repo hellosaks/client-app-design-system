@@ -27,7 +27,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "Link de Indicação" &&
-                widget.color == NewThemeSAKS.colors.primary.sky &&
+                widget.color == ThemeSAKS.colors.primary.sky &&
                 widget.variant == TypographyVariant.h4,
           ),
           findsOneWidget);
@@ -38,7 +38,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "linked.hel...rrals/XmCo" &&
-                widget.color == NewThemeSAKS.colors.primary.sky &&
+                widget.color == ThemeSAKS.colors.primary.sky &&
                 widget.variant == TypographyVariant.h6,
           ),
           findsOneWidget);
@@ -52,7 +52,7 @@ void main() {
                     HeroIcons.clipboardDocument &&
                 widget.props.heroIconsProps!.size == 30 &&
                 widget.props.heroIconsProps!.color ==
-                    NewThemeSAKS.colors.primary.sky,
+                    ThemeSAKS.colors.primary.sky,
           ),
           findsOneWidget);
 
@@ -63,11 +63,11 @@ void main() {
           containerWidget.mix.attributes;
       expect(
         (containerAttributes[0] as BoxAttributes).color,
-        NewThemeSAKS.colors.primary.saks,
+        ThemeSAKS.colors.primary.saks,
       );
       expect(
         (containerAttributes[4] as BoxAttributes).borderRadius,
-        BorderRadiusDto.all(NewThemeSAKS.shape.borderRadiusCard),
+        BorderRadiusDto.all(ThemeSAKS.shape.borderRadiusCard),
       );
     });
 
@@ -91,19 +91,19 @@ void main() {
 
         expect(
           (tagStyleAttributes[0] as BoxAttributes).color,
-          NewThemeSAKS.colors.utility.conservative,
+          ThemeSAKS.colors.utility.conservative,
         );
         expect((tagStyleAttributes[4] as OpacityDecorator).opacity, 0);
         expect(
           (tagStyleAttributes[3] as BoxAttributes).borderRadius,
-          BorderRadiusDto.all(NewThemeSAKS.shape.borderRadius),
+          BorderRadiusDto.all(ThemeSAKS.shape.borderRadius),
         );
 
         expect(
           find.byWidgetPredicate(
             (widget) =>
                 widget is CustomTypography &&
-                widget.color == NewThemeSAKS.colors.primary.sky &&
+                widget.color == ThemeSAKS.colors.primary.sky &&
                 widget.weight == FontWeight.w500 &&
                 widget.variant == TypographyVariant.h6,
           ),

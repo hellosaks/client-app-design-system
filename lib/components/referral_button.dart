@@ -32,7 +32,7 @@ class _ReferralButtonState extends State<ReferralButton> {
   @override
   Widget build(BuildContext context) {
     final style = Mix(
-      bgColor(NewThemeSAKS.colors.primary.saks),
+      bgColor(ThemeSAKS.colors.primary.saks),
       px(30),
       py(20),
       mt(15),
@@ -63,12 +63,12 @@ class _ReferralButtonState extends State<ReferralButton> {
                     CustomTypography(
                       variant: TypographyVariant.h4,
                       text: widget.title,
-                      color: NewThemeSAKS.colors.primary.sky,
+                      color: ThemeSAKS.colors.primary.sky,
                     ),
                     CustomTypography(
                       variant: TypographyVariant.h6,
                       text: shortLink(widget.linkToCopy),
-                      color: NewThemeSAKS.colors.primary.sky,
+                      color: ThemeSAKS.colors.primary.sky,
                     )
                   ],
                 ),
@@ -77,7 +77,7 @@ class _ReferralButtonState extends State<ReferralButton> {
                     variant: IconVariant.heroicons,
                     heroIconsProps: HeroIconsProps(
                       icon: HeroIcons.clipboardDocument,
-                      color: NewThemeSAKS.colors.primary.sky,
+                      color: ThemeSAKS.colors.primary.sky,
                       size: 30,
                     ),
                   ),
@@ -93,7 +93,7 @@ class _ReferralButtonState extends State<ReferralButton> {
 
   Widget _buildTagFeedback() {
     final style = Mix(
-      bgColor(NewThemeSAKS.colors.utility.conservative),
+      bgColor(ThemeSAKS.colors.utility.conservative),
       px(24),
       py(7),
       rounded(ThemeSAKS.shape.borderRadius),
@@ -110,7 +110,7 @@ class _ReferralButtonState extends State<ReferralButton> {
         child: CustomTypography(
           text: widget.feedbackOnCopy,
           variant: TypographyVariant.h6,
-          color: NewThemeSAKS.colors.primary.sky,
+          color: ThemeSAKS.colors.primary.sky,
           weight: FontWeight.w500,
         ),
       ),

@@ -20,6 +20,27 @@ flutter packages pub run build_runner build --delete-conflicting-outputs
 - run `flutter pub get` to download packages in playground
 - to execute preview, run `flutter run` in playground
 
+#### 1.1 Flutter FVM
+
+This project uses FVM to manage flutter versions.
+
+##### 1.1.1 Install FVM
+
+[Official site](https://fvm.app/docs/getting_started/installation) to read documentation of FVM.
+
+1. install using this command:
+
+```bash
+flutter pub global activate fvm
+```
+
+2. After installation, add this configuration in your vscode, see [documentation](https://fvm.app/docs/getting_started/configuration#vs-code)
+3. Install flutter for current project using below command:
+
+```bash
+fvm install
+```
+
 ### 2. To add new components in library
 
 To add a new component, we must add it to the lib/components folder and decorate it with the decorator `@docWidget`, see this example bellow:

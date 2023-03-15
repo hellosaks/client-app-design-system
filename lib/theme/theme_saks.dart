@@ -5,14 +5,14 @@ import "package:client_app_design_system/theme/palette.dart";
 import "package:client_app_design_system/theme/shape.dart";
 import "package:client_app_design_system/theme/typography.dart";
 
-class NewThemeSAKS {
+class ThemeSAKS {
   static final colors = Palette();
   static final typography = Typography();
   static final shape = Shape();
 }
 
 @Deprecated("Use NewThemeSAKS")
-class ThemeSAKS {
+class OldThemeSAKS {
   @Deprecated("Use Palette")
   static final colors = OldPalette();
   static final typography = Typography();
