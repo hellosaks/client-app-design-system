@@ -40,7 +40,38 @@ final referralCardDoc = ElementPreview(
         onPressed: () {},
         dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
       ),
-      description: 'Referral card',
+      description: 'Referral card Payment.paid with data and input equals size',
+    ),
+    WidgetPreview(
+      widget: ReferralCard(
+        payment: Payment.pending,
+        icon: IconProps(
+          variant: IconVariant.heroicons,
+          heroIconsProps: HeroIconsProps(
+            icon: HeroIcons.star,
+          ),
+        ),
+        textBonus: "Bonus",
+        name: "Victor  Paulo",
+        valueBonus: "20 reais",
+        textPaid: "Pago",
+        dataLabel: DataLabel(label: [
+          "Indicado cadastrado",
+          "Plano contratado",
+          "Pagamento do plano efetuado"
+        ], data: [
+          DateFormat("dd/MM/yyyy").format(
+            DateTime(2023, 02, 15),
+          ),
+          DateFormat("dd/MM/yyyy").format(
+            DateTime(2022, 02, 16),
+          ),
+        ]),
+        onPressed: () {},
+        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
+      ),
+      description:
+          'Referral card Payment.pending with data and input different size',
     ),
   ],
 );
