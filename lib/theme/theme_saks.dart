@@ -11,7 +11,7 @@ class ThemeSAKS {
   static final shape = Shape();
 }
 
-@Deprecated("Use NewThemeSAKS")
+@Deprecated("Use ThemeSAKS")
 class OldThemeSAKS {
   @Deprecated("Use Palette")
   static final colors = OldPalette();

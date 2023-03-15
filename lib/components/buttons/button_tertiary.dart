@@ -12,14 +12,20 @@ class ColorAttributesButton {
   ColorAttributesButton({required this.bgColor, required this.pressColor});
 }
 
+/// ```dart
+/// final button =  ButtonTertiary(
+///   text: 'Button',
+///  onPressed: () {}
+///  );
+/// ```
 @docWidget
 class ButtonTertiary extends StatefulWidget {
   final String text;
   final bool underline;
   final bool strikethrough;
 
-  final HeroIcons? leftIcon;
-  final HeroIcons? rightIcon;
+  final IconProps? leftIcon;
+  final IconProps? rightIcon;
 
   final bool disable;
   final void Function()? onPressed;
@@ -29,7 +35,7 @@ class ButtonTertiary extends StatefulWidget {
   const ButtonTertiary({
     super.key,
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     this.colorAttributes,
     this.leftIcon,
     this.rightIcon,
@@ -47,10 +53,20 @@ class ButtonTertiary extends StatefulWidget {
 
 class _ButtonTertiaryState extends State<ButtonTertiary> {
   final defaultColorAttribures = ColorAttributesButton(
-      bgColor: NewThemeSAKS.colors.primary.saks,
-      pressColor: NewThemeSAKS.colors.secondary.bay);
+      bgColor: ThemeSAKS.colors.primary.saks,
+      pressColor: ThemeSAKS.colors.secondary.bay);
 
   Color? currentColor;
+
+  Color get _pressUpColor {
+    return widget.colorAttributes?.bgColor ?? defaultColorAttribures.bgColor;
+  }
+
+  Color get _pressDownColor {
+    return widget.colorAttributes?.pressColor ??
+        defaultColorAttribures.pressColor;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -68,8 +84,7 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
       onTapUp: (_) {
         if (widget.onPressed != null && widget.disable == false) {
           setState(() {
-            currentColor = widget.colorAttributes?.bgColor ??
-                defaultColorAttribures.bgColor;
+            currentColor = _pressUpColor;
           });
           widget.onPressed?.call();
         }
@@ -79,16 +94,14 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
       onTapCancel: () {
         if (widget.onPressed != null && widget.disable == false) {
           setState(() {
-            currentColor = widget.colorAttributes?.bgColor ??
-                defaultColorAttribures.bgColor;
+            currentColor = _pressDownColor;
           });
         }
       },
       onTapDown: (_) {
         if (widget.onPressed != null && widget.disable == false) {
           setState(() {
-            currentColor = widget.colorAttributes?.pressColor ??
-                defaultColorAttribures.pressColor;
+            currentColor = _pressDownColor;
           });
         }
       },
@@ -114,9 +127,6 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
   }
 
   Widget _buildLabel() {
-    final styles = Mix((widget.underline == false &&
-        widget.strikethrough == false)(fontWeight(FontWeight.w700)));
-
     TypographyVariant variant = TypographyVariant.h5;
 
     if (widget.underline == true) {
@@ -128,7 +138,7 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
     }
 
     return CustomTypography(
-      mix: styles,
+      weight: FontWeight.w700,
       variant: variant,
       color: currentColor!,
       text: widget.text,
@@ -136,28 +146,38 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
   }
 
   Widget _buildLeftIcon() {
+    if (widget.leftIcon?.variant == IconVariant.heroicons) {
+      widget.leftIcon?.heroIconsProps?.color = currentColor;
+      widget.leftIcon?.heroIconsProps?.size =
+          AppSize(context: Get.context).getHeight(12);
+    }
+
+    if (widget.leftIcon?.variant == IconVariant.unicons) {
+      widget.leftIcon?.uniconsProps?.color = currentColor;
+      widget.leftIcon?.uniconsProps?.size =
+          AppSize(context: Get.context).getHeight(12);
+    }
+
     return Icon(
-      props: IconProps(
-        variant: IconVariant.heroicons,
-        heroIconsProps: HeroIconsProps(
-          icon: widget.leftIcon!,
-          color: currentColor,
-          size: AppSize(context: Get.context).getHeight(12),
-        ),
-      ),
+      props: widget.leftIcon!,
     );
   }
 
   Widget _buildRightIcon() {
+    if (widget.rightIcon?.variant == IconVariant.heroicons) {
+      widget.rightIcon?.heroIconsProps?.color = currentColor;
+      widget.rightIcon?.heroIconsProps?.size =
+          AppSize(context: Get.context).getHeight(12);
+    }
+
+    if (widget.rightIcon?.variant == IconVariant.unicons) {
+      widget.rightIcon?.uniconsProps?.color = currentColor;
+      widget.rightIcon?.uniconsProps?.size =
+          AppSize(context: Get.context).getHeight(12);
+    }
+
     return Icon(
-      props: IconProps(
-        variant: IconVariant.heroicons,
-        heroIconsProps: HeroIconsProps(
-          icon: widget.rightIcon!,
-          color: currentColor,
-          size: AppSize(context: Get.context).getHeight(12),
-        ),
-      ),
+      props: widget.rightIcon!,
     );
   }
 }
