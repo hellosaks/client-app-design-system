@@ -1,5 +1,5 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
-import 'package:client_app_design_system/components/auxiliar_button.doc_widget.dart';
+import 'package:client_app_design_system/components/buttons/auxiliar_button.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
 
 final auxButtonDoc = ElementPreview(
