@@ -1,4 +1,5 @@
 import "package:client_app_design_system/components/cards/lib/components/custom_divider.dart";
+import "package:client_app_design_system/utils/data_label.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:heroicons/heroicons.dart";
@@ -10,15 +11,36 @@ import "../client_app_design_system.dart";
 class ReferralCard extends StatefulWidget {
   final Payment payment;
   final String textBonus;
+  final String name;
+  final String valueBonus;
 
-  const ReferralCard({Key? key, required this.payment, required this.textBonus})
+  final String dateCard;
+  final DataLabel dataLabel;
+
+  const ReferralCard(
+      {Key? key,
+      required this.payment,
+      required this.textBonus,
+      required this.name,
+      required this.dateCard,
+      required this.valueBonus,
+      required this.dataLabel})
       : super(key: key);
 
   @override
   State<ReferralCard> createState() => _ReferralCardState();
 }
 
-class _ReferralCardState extends State<ReferralCard> {
+class _ReferralCardState extends State<ReferralCard>
+    with TickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(milliseconds: 125),
+    vsync: this,
+  );
+  late final Animation<double> _animation = CurvedAnimation(
+    parent: _controller,
+    curve: Curves.fastOutSlowIn,
+  );
   bool _expanded = false;
   final styleVBoxText = Mix(crossAxis(CrossAxisAlignment.start));
   final styleVBox = Mix(
@@ -41,86 +63,78 @@ class _ReferralCardState extends State<ReferralCard> {
   final style2 = Mix(
     pl(10),
   );
-  final boxPending = Mix(
-    bgColor(NewThemeSAKS.colors.primary.sky),
-    rounded(ThemeSAKS.shape.borderRadiusCard),
-    width(315),
-  );
-  final box = Mix(
-    bgColor(NewThemeSAKS.colors.special.leaf),
-    rounded(ThemeSAKS.shape.borderRadiusCard),
-    width(315),
-  );
-  final Duration duration = const Duration(milliseconds: 500);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _expanded = !_expanded;
-        });
-      },
-      child: AnimatedContainer(
-        // decoration: BoxDecoration(
-        //   borderRadius: BorderRadius.circular(10.0),
-        // ),
-        color: widget.payment == Payment.paid
-            ? NewThemeSAKS.colors.special.leaf
-            : NewThemeSAKS.colors.primary.sky,
-        width: 315,
-        height: _expanded ? 324 : 86,
-        duration: duration,
-        child: VBox(
-          children: [
-            HBox(
-              mix: styleVBox,
-              children: [
-                HBox(
-                  children: [
-                    Icon(
-                      props: IconProps(
-                        variant: IconVariant.heroicons,
-                        heroIconsProps: HeroIconsProps(
-                          icon: HeroIcons.user,
-                          color: widget.payment == Payment.paid
-                              ? NewThemeSAKS.colors.utility.conservative
-                              : NewThemeSAKS.colors.primary.sea,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 24,
-                    ),
-                    _buildVertical3Texts(),
-                  ],
-                ),
-                _buildVertical2Texts(),
-              ],
-            ),
-            if (_expanded) ...[
-              const CustomDivider(),
-              const SizedBox(
-                height: 10,
-              ),
-              Box(
-                mix: style,
-                child: VBox(children: [
-                  _textWithIcon(),
-                  _buildHorizontalCircle(),
-                  _textWithIcon(),
-                  if (widget.payment == Payment.paid) ...[
-                    _buildHorizontalCircle(),
-                    _textWithIcon(),
-                  ],
-                ]),
-              )
-            ],
-          ],
-        ),
-      ),
+    final box = Mix(
+      bgColor(widget.payment == Payment.paid
+          ? NewThemeSAKS.colors.special.leaf
+          : NewThemeSAKS.colors.primary.sky),
+      rounded(ThemeSAKS.shape.borderRadiusCard),
+      width(315),
+      //  height(_expanded ? 324 : 86),
     );
+
+    return GestureDetector(
+        onTap: () {
+          setState(() {
+            _expanded = !_expanded;
+          });
+
+          _expanded ? _controller.reverse() : _controller.forward();
+        },
+        child: Box(
+          mix: box,
+          child: VBox(
+            children: [
+              HBox(
+                mix: styleVBox,
+                children: [
+                  HBox(
+                    children: [
+                      if (widget.payment == Payment.paid) ...[
+                        Icon(
+                          props: IconProps(
+                            variant: IconVariant.heroicons,
+                            heroIconsProps: HeroIconsProps(
+                              icon: HeroIcons.user,
+                              color: NewThemeSAKS.colors.utility.conservative,
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                      ] else ...[
+                        _buildCirclea(),
+                      ],
+                      const SizedBox(
+                        width: 24,
+                      ),
+                      _buildVertical3Texts(),
+                    ],
+                  ),
+                  _buildVertical2Texts(),
+                ],
+              ),
+              SizeTransition(
+                sizeFactor: _animation,
+                child: VBox(children: [
+                  const CustomDivider(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Box(
+                    mix: style,
+                    child: VBox(children: [
+                      _textWithIcon(),
+                      for (int i = 1; i < widget.dataLabel.label.length; i++)
+                        _textWithIconList(i),
+                    ]),
+                  )
+                ]),
+              ),
+            ],
+          ),
+        ));
   }
 
   Widget _buildVertical3Texts() {
@@ -140,7 +154,7 @@ class _ReferralCardState extends State<ReferralCard> {
         CustomTypography(
           variant: TypographyVariant.h6,
           weight: FontWeight.bold,
-          text: "Victor Paulo",
+          text: widget.name,
           color: NewThemeSAKS.colors.primary.sea,
         ),
         const SizedBox(
@@ -166,7 +180,7 @@ class _ReferralCardState extends State<ReferralCard> {
         CustomTypography(
           variant: TypographyVariant.h7,
           weight: FontWeight.bold,
-          text: "R\$ 25,00",
+          text: widget.valueBonus,
           color: NewThemeSAKS.colors.primary.sea,
         ),
         const SizedBox(
@@ -174,14 +188,14 @@ class _ReferralCardState extends State<ReferralCard> {
         ),
         CustomTypography(
           variant: TypographyVariant.h7,
-          text: "12/01/2023",
+          text: widget.dateCard,
           color: NewThemeSAKS.colors.primary.sea,
         ),
       ],
     );
   }
 
-  Widget _buildHorizontalCircle() {
+  Widget _buildHorizontalCircle(int index) {
     final style = Mix(
       pl(35),
       crossAxis(CrossAxisAlignment.start),
@@ -191,27 +205,44 @@ class _ReferralCardState extends State<ReferralCard> {
       children: [
         VBox(
           children: [
-            _buildCircle(),
+            _buildCircle(index),
             const SizedBox(
               height: 10,
             ),
-            _buildCircle(),
+            _buildCircle(index),
             const SizedBox(
               height: 10,
             ),
-            _buildCircle(),
+            _buildCircle(index),
           ],
         )
       ],
     );
   }
 
-  Widget _buildCircle() {
+  Widget _buildCircle(int index) {
     final style = Mix(
       crossAxis(CrossAxisAlignment.end),
       height(4),
       width(4),
-      bgColor(NewThemeSAKS.colors.utility.conservative),
+      bgColor(widget.dataLabel.data.length == index
+          ? NewThemeSAKS.colors.primary.sea
+          : NewThemeSAKS.colors.utility.conservative),
+      rounded(ThemeSAKS.shape.borderRadius),
+    );
+
+    return Box(
+      mix: style,
+      child: const Center(),
+    );
+  }
+
+  Widget _buildCirclea() {
+    final style = Mix(
+      crossAxis(CrossAxisAlignment.end),
+      height(4),
+      width(4),
+      bgColor(NewThemeSAKS.colors.primary.sea),
       rounded(ThemeSAKS.shape.borderRadius),
     );
 
@@ -243,12 +274,44 @@ class _ReferralCardState extends State<ReferralCard> {
         const SizedBox(
           width: 24,
         ),
-        _textExtended(),
+        _textExtended(0),
       ],
     );
   }
 
-  Widget _textExtended() {
+  Widget _textWithIconList(int index) {
+    final style = Mix(
+      pl(25),
+    );
+
+    return VBox(children: [
+      _buildHorizontalCircle(index),
+      HBox(
+        mix: style,
+        children: [
+          Icon(
+            props: IconProps(
+              variant: IconVariant.heroicons,
+              heroIconsProps: HeroIconsProps(
+                style: HeroIconStyle.solid,
+                icon: HeroIcons.checkCircle,
+                color: widget.dataLabel.data.length == index
+                    ? NewThemeSAKS.colors.primary.sea
+                    : NewThemeSAKS.colors.utility.conservative,
+                size: 24,
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 24,
+          ),
+          _textExtended(index),
+        ],
+      ),
+    ]);
+  }
+
+  Widget _textExtended(int index) {
     final style = Mix(
       crossAxis(CrossAxisAlignment.start),
     );
@@ -259,7 +322,7 @@ class _ReferralCardState extends State<ReferralCard> {
         CustomTypography(
           variant: TypographyVariant.h7,
           weight: FontWeight.bold,
-          text: "Pagamento do plano efetuado",
+          text: widget.dataLabel.label[index],
           color: NewThemeSAKS.colors.primary.sea,
         ),
         const SizedBox(
@@ -267,7 +330,9 @@ class _ReferralCardState extends State<ReferralCard> {
         ),
         CustomTypography(
           variant: TypographyVariant.h7,
-          text: "12/01/2023",
+          text: widget.dataLabel.data.length == index
+              ? "-"
+              : widget.dataLabel.data[index],
           color: NewThemeSAKS.colors.primary.sea,
         ),
       ],
