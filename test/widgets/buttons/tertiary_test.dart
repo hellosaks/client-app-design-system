@@ -73,7 +73,8 @@ void main() {
         expect(
             finded.props.heroIconsProps?.color, ThemeSAKS.colors.primary.saks);
       });
-      testWidgets("should render right correctly", (WidgetTester tester) async {
+      testWidgets("should render right icon props",
+          (WidgetTester tester) async {
         final widget = ButtonTertiary(
           rightIcon: IconProps(
             variant: IconVariant.heroicons,

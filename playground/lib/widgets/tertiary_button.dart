@@ -8,7 +8,7 @@ final withSeaColor = [
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
           bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.ice),
+          pressColor: ThemeSAKS.colors.secondary.stone),
       leftIcon: IconProps(
         variant: IconVariant.heroicons,
         heroIconsProps: HeroIconsProps(
@@ -24,7 +24,7 @@ final withSeaColor = [
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
           bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.ice),
+          pressColor: ThemeSAKS.colors.secondary.stone),
       rightIcon: IconProps(
         variant: IconVariant.heroicons,
         heroIconsProps: HeroIconsProps(
@@ -40,7 +40,7 @@ final withSeaColor = [
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
           bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.ice),
+          pressColor: ThemeSAKS.colors.secondary.stone),
       underline: true,
       onPressed: () {},
       text: 'Button',
@@ -51,7 +51,7 @@ final withSeaColor = [
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
           bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.ice),
+          pressColor: ThemeSAKS.colors.secondary.stone),
       strikethrough: true,
       onPressed: () {},
       text: 'Button',
@@ -62,7 +62,7 @@ final withSeaColor = [
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
           bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.ice),
+          pressColor: ThemeSAKS.colors.secondary.stone),
       onPressed: () {},
       text: 'Button disable',
       disable: true,
@@ -146,7 +146,7 @@ final withPrimaryColor = [
       leftIcon: IconProps(
         variant: IconVariant.heroicons,
         heroIconsProps: HeroIconsProps(
-          icon: HeroIcons.arrowRight,
+          icon: HeroIcons.arrowLeft,
         ),
       ),
       onPressed: () {},
@@ -204,7 +204,7 @@ final buButtonDoc = ElementPreview(
         ),
         CustomTypography(
           variant: TypographyVariant.h2,
-          text: "With PRIMARY color",
+          text: "Primary color",
           color: ThemeSAKS.colors.primary.saks,
         )
       ],
@@ -218,7 +218,7 @@ final buButtonDoc = ElementPreview(
         ),
         CustomTypography(
           variant: TypographyVariant.h2,
-          text: "SEA color",
+          text: "Sea color",
           color: ThemeSAKS.colors.primary.sea,
         ),
       ],

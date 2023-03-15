@@ -14,9 +14,7 @@ void main() {
       sections: [
         ElementsSection(
           title: 'Buttons',
-          elements: [
-            buButtonDoc,
-          ],
+          elements: [buButtonDoc, auxButtonDoc],
         ),
         ElementsSection(
           title: 'Widgets',
@@ -25,7 +23,6 @@ void main() {
             iconDoc,
             referralButtonDoc,
             indicationFiltersDoc,
-            auxButtonDoc,
             cardBannerDoc,
           ],
         ),

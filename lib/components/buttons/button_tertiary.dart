@@ -28,14 +28,14 @@ class ButtonTertiary extends StatefulWidget {
   final IconProps? rightIcon;
 
   final bool disable;
-  final void Function()? onPressed;
+  final void Function() onPressed;
 
   final ColorAttributesButton? colorAttributes;
 
   const ButtonTertiary({
     super.key,
     required this.text,
-    this.onPressed,
+    required this.onPressed,
     this.colorAttributes,
     this.leftIcon,
     this.rightIcon,
@@ -82,24 +82,24 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTapUp: (_) {
-        if (widget.onPressed != null && widget.disable == false) {
+        if (widget.disable == false) {
           setState(() {
             currentColor = _pressUpColor;
           });
-          widget.onPressed?.call();
+          widget.onPressed.call();
         }
 
         return;
       },
       onTapCancel: () {
-        if (widget.onPressed != null && widget.disable == false) {
+        if (widget.disable == false) {
           setState(() {
             currentColor = _pressDownColor;
           });
         }
       },
       onTapDown: (_) {
-        if (widget.onPressed != null && widget.disable == false) {
+        if (widget.disable == false) {
           setState(() {
             currentColor = _pressDownColor;
           });
@@ -110,15 +110,11 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
         child: HBox(children: [
           if (widget.leftIcon != null) ...[
             _buildLeftIcon(),
-            const SizedBox(
-              width: 11,
-            ),
+            const SizedBox(width: 11),
           ],
           _buildLabel(),
           if (widget.rightIcon != null) ...[
-            const SizedBox(
-              width: 11,
-            ),
+            const SizedBox(width: 11),
             _buildRightIcon()
           ]
         ]),
@@ -127,7 +123,7 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
   }
 
   Widget _buildLabel() {
-    TypographyVariant variant = TypographyVariant.h5;
+    TypographyVariant variant = TypographyVariant.h6;
 
     if (widget.underline == true) {
       variant = TypographyVariant.underline;
@@ -145,39 +141,36 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
     );
   }
 
-  Widget _buildLeftIcon() {
-    if (widget.leftIcon?.variant == IconVariant.heroicons) {
-      widget.leftIcon?.heroIconsProps?.color = currentColor;
-      widget.leftIcon?.heroIconsProps?.size =
-          AppSize(context: Get.context).getHeight(12);
-    }
+  IconProps get iconProps {
+    final IconVariant iconVariant = widget.leftIcon != null
+        ? widget.leftIcon!.variant
+        : widget.rightIcon!.variant;
 
-    if (widget.leftIcon?.variant == IconVariant.unicons) {
-      widget.leftIcon?.uniconsProps?.color = currentColor;
-      widget.leftIcon?.uniconsProps?.size =
-          AppSize(context: Get.context).getHeight(12);
-    }
+    final double size = AppSize(context: Get.context).getHeight(12);
 
-    return Icon(
-      props: widget.leftIcon!,
-    );
+    switch (iconVariant) {
+      case IconVariant.heroicons:
+        final HeroIconsProps heroIconProps = widget.leftIcon != null
+            ? widget.leftIcon!.heroIconsProps!
+            : widget.rightIcon!.heroIconsProps!;
+
+        heroIconProps.color = currentColor;
+        heroIconProps.size = size;
+        return IconProps(variant: iconVariant, heroIconsProps: heroIconProps);
+
+      case IconVariant.unicons:
+        final UniconsProps uniconsProps = widget.leftIcon != null
+            ? widget.leftIcon!.uniconsProps!
+            : widget.rightIcon!.uniconsProps!;
+
+        uniconsProps.color = currentColor;
+        uniconsProps.size = size;
+
+        return IconProps(variant: iconVariant, uniconsProps: uniconsProps);
+    }
   }
 
-  Widget _buildRightIcon() {
-    if (widget.rightIcon?.variant == IconVariant.heroicons) {
-      widget.rightIcon?.heroIconsProps?.color = currentColor;
-      widget.rightIcon?.heroIconsProps?.size =
-          AppSize(context: Get.context).getHeight(12);
-    }
+  Widget _buildLeftIcon() => Icon(props: iconProps);
 
-    if (widget.rightIcon?.variant == IconVariant.unicons) {
-      widget.rightIcon?.uniconsProps?.color = currentColor;
-      widget.rightIcon?.uniconsProps?.size =
-          AppSize(context: Get.context).getHeight(12);
-    }
-
-    return Icon(
-      props: widget.rightIcon!,
-    );
-  }
+  Widget _buildRightIcon() => Icon(props: iconProps);
 }
