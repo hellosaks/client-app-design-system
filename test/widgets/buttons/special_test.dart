@@ -35,7 +35,7 @@ void main() {
 
         expect(
           (attributes[0] as BoxAttributes).color,
-          NewThemeSAKS.colors.utility.conservative,
+          ThemeSAKS.colors.utility.conservative,
         );
 
         expect(
@@ -63,7 +63,7 @@ void main() {
 
         expect(
           (attributes[0] as BoxAttributes).color,
-          NewThemeSAKS.colors.primary.sea,
+          ThemeSAKS.colors.primary.sea,
         );
 
         expect(
@@ -135,7 +135,7 @@ void main() {
 
         expect(
           (attributes[0] as BoxAttributes).color,
-          NewThemeSAKS.colors.primary.sea,
+          ThemeSAKS.colors.primary.sea,
         );
 
         // press down button
@@ -148,7 +148,7 @@ void main() {
 
         expect(
           (attributes[0] as BoxAttributes).color,
-          NewThemeSAKS.colors.secondary.stone,
+          ThemeSAKS.colors.secondary.stone,
         );
 
         // release press button
@@ -162,7 +162,7 @@ void main() {
         // verify return to initial state
         expect(
           (attributes[0] as BoxAttributes).color,
-          NewThemeSAKS.colors.primary.sea,
+          ThemeSAKS.colors.primary.sea,
         );
       });
 

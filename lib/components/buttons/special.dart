@@ -48,7 +48,7 @@ class _SpecialButtonState extends State<SpecialButton> {
       bgColor(backgroundColor),
       px(28),
       py(16),
-      rounded(NewThemeSAKS.shape.borderRadiusSpecialButton),
+      rounded(ThemeSAKS.shape.borderRadiusSpecialButton),
       widget.disabled ? opacity(0.5) : null,
       w(170),
       animated(),
@@ -66,7 +66,7 @@ class _SpecialButtonState extends State<SpecialButton> {
               variant: IconVariant.custom,
               customIconsProps: CustomIconsProps(
                 icon: icon,
-                color: NewThemeSAKS.colors.grayscale.snow,
+                color: ThemeSAKS.colors.grayscale.snow,
                 size: 20,
               ),
             ),
@@ -77,7 +77,7 @@ class _SpecialButtonState extends State<SpecialButton> {
               variant: TypographyVariant.h7,
               text: widget.label,
               weight: FontWeight.w600,
-              color: NewThemeSAKS.colors.grayscale.snow,
+              color: ThemeSAKS.colors.grayscale.snow,
               align: TextAlign.center,
             ),
           ),
@@ -89,12 +89,12 @@ class _SpecialButtonState extends State<SpecialButton> {
   Color get backgroundColor {
     switch (widget.variant) {
       case SpecialButtonVariant.whatsapp:
-        return NewThemeSAKS.colors.utility.conservative;
+        return ThemeSAKS.colors.utility.conservative;
       case SpecialButtonVariant.share:
         if (tapped) {
-          return NewThemeSAKS.colors.secondary.stone;
+          return ThemeSAKS.colors.secondary.stone;
         }
-        return NewThemeSAKS.colors.primary.sea;
+        return ThemeSAKS.colors.primary.sea;
     }
   }
 

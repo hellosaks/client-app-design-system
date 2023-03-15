@@ -8,18 +8,19 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  cached_network_image: 3.2.3
   doc_widget: 0.4.0
   flutter:
     sdk: flutter
-  flutter_svg: 1.1.6
-  get: 4.6.5
-  heroicons: 0.8.0
-  unicons: 2.1.0
-  cached_network_image: 3.2.3
   flutter_blurhash: 0.7.0
-  skeletons: 0.0.3
-  flutter_svg: ^1.1.6
+  flutter_svg: 2.0.3
+  get: 4.6.5
+  google_fonts: 4.0.3
+  heroicons: 0.8.0
+  mix: 0.0.6
   path: ^1.8.2
+  skeletons: 0.0.3
+  unicons: 2.1.0
 
 dev_dependencies:
   build_runner: 2.3.3

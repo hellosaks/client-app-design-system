@@ -39,7 +39,7 @@ final iconDoc = ElementPreview(
           variant: IconVariant.custom,
           customIconsProps: CustomIconsProps(
             icon: CustomIcons.icWhatsapp,
-            color: NewThemeSAKS.colors.primary.sea,
+            color: ThemeSAKS.colors.primary.sea,
             size: 40,
           ),
         ),

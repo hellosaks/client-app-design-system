@@ -44,9 +44,11 @@ class _IndicationFiltersState extends State<IndicationFilters> {
     final vboxStyles = Mix(
       mainAxis(MainAxisAlignment.start),
       crossAxis(CrossAxisAlignment.start),
-      bgColor(widget.filter == Filter.activated
-          ? ThemeSAKS.colors.special.leaf
-          : ThemeSAKS.colors.primary.sky),
+      bgColor(
+        widget.filter == Filter.activated
+            ? ThemeSAKS.colors.special.leaf
+            : ThemeSAKS.colors.primary.sky,
+      ),
       padding(20),
     );
     final Mix pressableStyles = Mix(
