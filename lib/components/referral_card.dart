@@ -13,9 +13,12 @@ class ReferralCard extends StatefulWidget {
   final String textBonus;
   final String name;
   final String valueBonus;
+  final IconProps icon;
+  final String textPaid;
 
   final String dateCard;
   final DataLabel dataLabel;
+  final void Function() onPressed;
 
   const ReferralCard(
       {Key? key,
@@ -24,8 +27,14 @@ class ReferralCard extends StatefulWidget {
       required this.name,
       required this.dateCard,
       required this.valueBonus,
-      required this.dataLabel})
+      required this.dataLabel,
+      required this.icon,
+      required this.onPressed,
+      required this.textPaid})
       : super(key: key);
+
+  static const Key circleKey = Key("circleKey");
+  static const Key cardKey = Key("cardKey");
 
   @override
   State<ReferralCard> createState() => _ReferralCardState();
@@ -41,8 +50,8 @@ class _ReferralCardState extends State<ReferralCard>
     parent: _controller,
     curve: Curves.fastOutSlowIn,
   );
+
   bool _expanded = false;
-  final styleVBoxText = Mix(crossAxis(CrossAxisAlignment.start));
   final styleVBox = Mix(
     pt(10),
     pl(26),
@@ -50,18 +59,6 @@ class _ReferralCardState extends State<ReferralCard>
     pb(14),
     crossAxis(CrossAxisAlignment.center),
     mainAxis(MainAxisAlignment.spaceBetween),
-  );
-
-  final style = Mix(
-    crossAxis(CrossAxisAlignment.start),
-    pt(20),
-    pb(30),
-  );
-  final style1 = Mix(
-    pl(25),
-  );
-  final style2 = Mix(
-    pl(10),
   );
 
   @override
@@ -80,11 +77,13 @@ class _ReferralCardState extends State<ReferralCard>
           setState(() {
             _expanded = !_expanded;
           });
+          widget.onPressed();
 
-          _expanded ? _controller.reverse() : _controller.forward();
+          _expanded ? _controller.forward() : _controller.reverse();
         },
         child: Box(
           mix: box,
+          key: ReferralCard.cardKey,
           child: VBox(
             children: [
               HBox(
@@ -92,20 +91,7 @@ class _ReferralCardState extends State<ReferralCard>
                 children: [
                   HBox(
                     children: [
-                      if (widget.payment == Payment.paid) ...[
-                        Icon(
-                          props: IconProps(
-                            variant: IconVariant.heroicons,
-                            heroIconsProps: HeroIconsProps(
-                              icon: HeroIcons.user,
-                              color: NewThemeSAKS.colors.utility.conservative,
-                              size: 30,
-                            ),
-                          ),
-                        ),
-                      ] else ...[
-                        _buildCirclea(),
-                      ],
+                      _buildIcon(),
                       const SizedBox(
                         width: 24,
                       ),
@@ -115,26 +101,27 @@ class _ReferralCardState extends State<ReferralCard>
                   _buildVertical2Texts(),
                 ],
               ),
-              SizeTransition(
-                sizeFactor: _animation,
-                child: VBox(children: [
-                  const CustomDivider(),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Box(
-                    mix: style,
-                    child: VBox(children: [
-                      _textWithIcon(),
-                      for (int i = 1; i < widget.dataLabel.label.length; i++)
-                        _textWithIconList(i),
-                    ]),
-                  )
-                ]),
-              ),
+              _buildExtendedCard(),
             ],
           ),
         ));
+  }
+
+  Widget _buildIcon() {
+    if (widget.icon.variant == IconVariant.heroicons) {
+      widget.icon.heroIconsProps?.color = Payment.paid == widget.payment
+          ? NewThemeSAKS.colors.utility.conservative
+          : NewThemeSAKS.colors.primary.sea;
+      widget.icon.heroIconsProps?.size = 30;
+    }
+    if (widget.icon.variant == IconVariant.unicons) {
+      widget.icon.heroIconsProps?.color =
+          NewThemeSAKS.colors.utility.conservative;
+      widget.icon.heroIconsProps?.size = 30;
+    }
+    return Icon(
+      props: widget.icon,
+    );
   }
 
   Widget _buildVertical3Texts() {
@@ -162,7 +149,7 @@ class _ReferralCardState extends State<ReferralCard>
         ),
         CustomTypography(
           variant: TypographyVariant.h7,
-          text: "Pago",
+          text: widget.textPaid,
           color: widget.payment == Payment.paid
               ? NewThemeSAKS.colors.utility.conservative
               : NewThemeSAKS.colors.primary.sea,
@@ -195,60 +182,28 @@ class _ReferralCardState extends State<ReferralCard>
     );
   }
 
-  Widget _buildHorizontalCircle(int index) {
+  Widget _buildExtendedCard() {
     final style = Mix(
-      pl(35),
       crossAxis(CrossAxisAlignment.start),
+      pt(20),
+      pb(30),
     );
-    return HBox(
-      mix: style,
-      children: [
-        VBox(
-          children: [
-            _buildCircle(index),
-            const SizedBox(
-              height: 10,
-            ),
-            _buildCircle(index),
-            const SizedBox(
-              height: 10,
-            ),
-            _buildCircle(index),
-          ],
+    return SizeTransition(
+      sizeFactor: _animation,
+      child: VBox(children: [
+        const CustomDivider(),
+        const SizedBox(
+          height: 10,
+        ),
+        Box(
+          mix: style,
+          child: VBox(children: [
+            _textWithIcon(),
+            for (int i = 1; i < widget.dataLabel.label.length; i++)
+              _textWithIconList(i),
+          ]),
         )
-      ],
-    );
-  }
-
-  Widget _buildCircle(int index) {
-    final style = Mix(
-      crossAxis(CrossAxisAlignment.end),
-      height(4),
-      width(4),
-      bgColor(widget.dataLabel.data.length == index
-          ? NewThemeSAKS.colors.primary.sea
-          : NewThemeSAKS.colors.utility.conservative),
-      rounded(ThemeSAKS.shape.borderRadius),
-    );
-
-    return Box(
-      mix: style,
-      child: const Center(),
-    );
-  }
-
-  Widget _buildCirclea() {
-    final style = Mix(
-      crossAxis(CrossAxisAlignment.end),
-      height(4),
-      width(4),
-      bgColor(NewThemeSAKS.colors.primary.sea),
-      rounded(ThemeSAKS.shape.borderRadius),
-    );
-
-    return Box(
-      mix: style,
-      child: const Center(),
+      ]),
     );
   }
 
@@ -283,25 +238,28 @@ class _ReferralCardState extends State<ReferralCard>
     final style = Mix(
       pl(25),
     );
-
     return VBox(children: [
-      _buildHorizontalCircle(index),
+      _buildVerticalCircles(index),
       HBox(
         mix: style,
         children: [
-          Icon(
-            props: IconProps(
-              variant: IconVariant.heroicons,
-              heroIconsProps: HeroIconsProps(
-                style: HeroIconStyle.solid,
-                icon: HeroIcons.checkCircle,
-                color: widget.dataLabel.data.length == index
-                    ? NewThemeSAKS.colors.primary.sea
-                    : NewThemeSAKS.colors.utility.conservative,
-                size: 24,
+          if (widget.dataLabel.data.length == index) ...[
+            _buildCircleIcon(),
+          ] else ...[
+            Icon(
+              props: IconProps(
+                variant: IconVariant.heroicons,
+                heroIconsProps: HeroIconsProps(
+                  style: HeroIconStyle.solid,
+                  icon: HeroIcons.checkCircle,
+                  color: widget.dataLabel.data.length == index
+                      ? NewThemeSAKS.colors.primary.sea
+                      : NewThemeSAKS.colors.utility.conservative,
+                  size: 24,
+                ),
               ),
             ),
-          ),
+          ],
           const SizedBox(
             width: 24,
           ),
@@ -314,6 +272,9 @@ class _ReferralCardState extends State<ReferralCard>
   Widget _textExtended(int index) {
     final style = Mix(
       crossAxis(CrossAxisAlignment.start),
+    );
+    final styleText = Mix(
+      opacity(widget.dataLabel.data.length == index ? 0.5 : 1),
     );
 
     return VBox(
@@ -329,13 +290,80 @@ class _ReferralCardState extends State<ReferralCard>
           height: 5,
         ),
         CustomTypography(
+          mix: styleText,
           variant: TypographyVariant.h7,
           text: widget.dataLabel.data.length == index
-              ? "-"
+              ? "_"
               : widget.dataLabel.data[index],
           color: NewThemeSAKS.colors.primary.sea,
         ),
       ],
+    );
+  }
+
+  Widget _buildCircleIcon() {
+    final style = Mix(
+      height(19.5),
+      width(19.5),
+      bgColor(NewThemeSAKS.colors.primary.sea),
+      opacity(0.2),
+      rounded(ThemeSAKS.shape.borderRadius),
+    );
+    final styleBox = Mix(
+      height(24),
+      width(24),
+    );
+
+    return Box(
+      mix: styleBox,
+      child: Box(
+        mix: style,
+        child: const Center(),
+      ),
+    );
+  }
+
+  Widget _buildVerticalCircles(int index) {
+    final style = Mix(
+      pl(35),
+      crossAxis(CrossAxisAlignment.start),
+    );
+    return HBox(
+      key: ReferralCard.circleKey,
+      mix: style,
+      children: [
+        VBox(
+          children: [
+            _buildCircle(index),
+            const SizedBox(
+              height: 10,
+            ),
+            _buildCircle(index),
+            const SizedBox(
+              height: 10,
+            ),
+            _buildCircle(index),
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget _buildCircle(int index) {
+    final style = Mix(
+      crossAxis(CrossAxisAlignment.end),
+      opacity(widget.dataLabel.data.length == index ? 0.2 : 1),
+      height(4),
+      width(4),
+      bgColor(widget.dataLabel.data.length == index
+          ? NewThemeSAKS.colors.primary.sea
+          : NewThemeSAKS.colors.utility.conservative),
+      rounded(ThemeSAKS.shape.borderRadius),
+    );
+
+    return Box(
+      mix: style,
+      child: const Center(),
     );
   }
 }
