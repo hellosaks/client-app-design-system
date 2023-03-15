@@ -82,7 +82,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "Pendentes" &&
-                widget.color == NewThemeSAKS.colors.primary.sea &&
+                widget.color == ThemeSAKS.colors.primary.sea &&
                 widget.weight == FontWeight.bold &&
                 widget.variant == TypographyVariant.h4,
           ),
@@ -92,7 +92,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "2" &&
-                widget.color == NewThemeSAKS.colors.special.leaf &&
+                widget.color == ThemeSAKS.colors.special.leaf &&
                 widget.weight == FontWeight.bold &&
                 widget.variant == TypographyVariant.h4,
           ),
@@ -106,7 +106,7 @@ void main() {
                     HeroIcons.arrowRightCircle &&
                 widget.props.heroIconsProps!.size == 24 &&
                 widget.props.heroIconsProps!.color ==
-                    NewThemeSAKS.colors.primary.sea,
+                    ThemeSAKS.colors.primary.sea,
           ),
           findsOneWidget);
 
@@ -114,16 +114,16 @@ void main() {
           tester.widget<Box>(find.byKey(IndicationFilters.circleKey));
       final List<Attribute> attributes = circle.mix.attributes;
       expect((attributes[2] as BoxAttributes).color,
-          NewThemeSAKS.colors.primary.sea);
+          ThemeSAKS.colors.primary.sea);
 
       final box = tester.widget<Box>(find.byKey(IndicationFilters.boxKey));
       final List<Attribute> attributes2 = box.mix.attributes;
       expect((attributes2[0] as BoxAttributes).color,
-          NewThemeSAKS.colors.primary.sea);
+          ThemeSAKS.colors.primary.sea);
 
       final VBox vbox = tester.widget(find.byKey(IndicationFilters.vboxKey));
       expect((vbox.mix.attributes.elementAt(2) as BoxAttributes).color,
-          NewThemeSAKS.colors.primary.sky);
+          ThemeSAKS.colors.primary.sky);
     });
 
     testWidgets(" Filter.activated attributes", (WidgetTester tester) async {
@@ -139,11 +139,11 @@ void main() {
           tester.widget<Box>(find.byKey(IndicationFilters.circleKey));
       final List<Attribute> attributes = circle.mix.attributes;
       expect((attributes[2] as BoxAttributes).color,
-          NewThemeSAKS.colors.utility.conservative);
+          ThemeSAKS.colors.utility.conservative);
 
       final VBox vbox = tester.widget(find.byKey(IndicationFilters.vboxKey));
       expect((vbox.mix.attributes.elementAt(2) as BoxAttributes).color,
-          NewThemeSAKS.colors.special.leaf);
+          ThemeSAKS.colors.special.leaf);
     });
   });
 }

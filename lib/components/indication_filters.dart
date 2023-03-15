@@ -46,8 +46,8 @@ class _IndicationFiltersState extends State<IndicationFilters> {
       mainAxis(MainAxisAlignment.start),
       crossAxis(CrossAxisAlignment.start),
       bgColor(widget.filter == Filter.activated
-          ? NewThemeSAKS.colors.special.leaf
-          : NewThemeSAKS.colors.primary.sky),
+          ? ThemeSAKS.colors.special.leaf
+          : ThemeSAKS.colors.primary.sky),
       padding(20),
     );
     final Mix pressableStyles = Mix(
@@ -56,7 +56,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
       animated(),
     );
     final Mix boxStyle = Mix(
-      bgColor(NewThemeSAKS.colors.primary.sea),
+      bgColor(ThemeSAKS.colors.primary.sea),
     );
 
     return ClipRRect(
@@ -100,7 +100,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
       text: widget.text,
       variant: TypographyVariant.h4,
       weight: FontWeight.bold,
-      color: NewThemeSAKS.colors.primary.sea,
+      color: ThemeSAKS.colors.primary.sea,
     );
   }
 
@@ -110,8 +110,8 @@ class _IndicationFiltersState extends State<IndicationFilters> {
       width(40),
       bgColor(
         widget.filter == Filter.activated
-            ? NewThemeSAKS.colors.utility.conservative
-            : NewThemeSAKS.colors.primary.sea,
+            ? ThemeSAKS.colors.utility.conservative
+            : ThemeSAKS.colors.primary.sea,
       ),
       rounded(ThemeSAKS.shape.borderRadius),
     );
@@ -124,7 +124,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
           text: widget.number.toString(),
           variant: TypographyVariant.h4,
           weight: FontWeight.bold,
-          color: NewThemeSAKS.colors.special.leaf,
+          color: ThemeSAKS.colors.special.leaf,
         ),
       ),
     );
@@ -136,7 +136,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
         variant: IconVariant.heroicons,
         heroIconsProps: HeroIconsProps(
           icon: HeroIcons.arrowRightCircle,
-          color: NewThemeSAKS.colors.primary.sea,
+          color: ThemeSAKS.colors.primary.sea,
           size: 24,
         ),
       ),

@@ -11,7 +11,7 @@ final iconDoc = ElementPreview(
           variant: IconVariant.unicons,
           uniconsProps: UniconsProps(
             icon: UniconsLine.calculator,
-            color: NewThemeSAKS.colors.primary.saks,
+            color: ThemeSAKS.colors.primary.saks,
             size: 40,
           ),
         ),
@@ -25,7 +25,7 @@ final iconDoc = ElementPreview(
           variant: IconVariant.heroicons,
           heroIconsProps: HeroIconsProps(
             icon: HeroIcons.academicCap,
-            color: NewThemeSAKS.colors.primary.sea,
+            color: ThemeSAKS.colors.primary.sea,
             size: 40,
           ),
         ),
