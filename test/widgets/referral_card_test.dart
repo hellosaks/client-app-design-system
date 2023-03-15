@@ -123,7 +123,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "Bonus" &&
-                widget.color == NewThemeSAKS.colors.primary.sea &&
+                widget.color == ThemeSAKS.colors.primary.sea &&
                 widget.variant == TypographyVariant.h7,
           ),
           findsOneWidget);
@@ -133,7 +133,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "Victor" &&
-                widget.color == NewThemeSAKS.colors.primary.sea &&
+                widget.color == ThemeSAKS.colors.primary.sea &&
                 widget.variant == TypographyVariant.h6 &&
                 widget.weight == FontWeight.bold,
           ),
@@ -143,7 +143,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "Pago" &&
-                widget.color == NewThemeSAKS.colors.utility.conservative &&
+                widget.color == ThemeSAKS.colors.utility.conservative &&
                 widget.variant == TypographyVariant.h7,
           ),
           findsOneWidget);
@@ -153,7 +153,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "20 reais" &&
-                widget.color == NewThemeSAKS.colors.primary.sea &&
+                widget.color == ThemeSAKS.colors.primary.sea &&
                 widget.variant == TypographyVariant.h7 &&
                 widget.weight == FontWeight.bold,
           ),
@@ -164,7 +164,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "02/02/2022" &&
-                widget.color == NewThemeSAKS.colors.primary.sea &&
+                widget.color == ThemeSAKS.colors.primary.sea &&
                 widget.variant == TypographyVariant.h7,
           ),
           findsOneWidget);
@@ -174,7 +174,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "Indicado" &&
-                widget.color == NewThemeSAKS.colors.primary.sea &&
+                widget.color == ThemeSAKS.colors.primary.sea &&
                 widget.variant == TypographyVariant.h7 &&
                 widget.weight == FontWeight.bold,
           ),
@@ -184,7 +184,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "Plano" &&
-                widget.color == NewThemeSAKS.colors.primary.sea &&
+                widget.color == ThemeSAKS.colors.primary.sea &&
                 widget.variant == TypographyVariant.h7 &&
                 widget.weight == FontWeight.bold,
           ),
@@ -195,7 +195,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "15/02/2023" &&
-                widget.color == NewThemeSAKS.colors.primary.sea &&
+                widget.color == ThemeSAKS.colors.primary.sea &&
                 widget.variant == TypographyVariant.h7,
           ),
           findsOneWidget);
@@ -203,7 +203,7 @@ void main() {
           find.byWidgetPredicate((widget) =>
               widget is CustomTypography &&
               widget.text == "_" &&
-              widget.color == NewThemeSAKS.colors.primary.sea &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
               widget.variant == TypographyVariant.h7),
           findsOneWidget);
 
@@ -214,7 +214,7 @@ void main() {
                 widget.props.heroIconsProps!.icon == HeroIcons.star &&
                 widget.props.heroIconsProps!.size == 30 &&
                 widget.props.heroIconsProps!.color ==
-                    NewThemeSAKS.colors.utility.conservative,
+                    ThemeSAKS.colors.utility.conservative,
           ),
           findsOneWidget);
 
@@ -225,7 +225,7 @@ void main() {
                 widget.props.heroIconsProps!.icon == HeroIcons.checkCircle &&
                 widget.props.heroIconsProps!.size == 24 &&
                 widget.props.heroIconsProps!.color ==
-                    NewThemeSAKS.colors.utility.conservative,
+                    ThemeSAKS.colors.utility.conservative,
           ),
           findsOneWidget);
 
@@ -235,7 +235,7 @@ void main() {
       final List<Attribute> boxAttributes = box.mix.attributes;
       expect(
         (boxAttributes[0] as BoxAttributes).color,
-        NewThemeSAKS.colors.special.leaf,
+        ThemeSAKS.colors.special.leaf,
       );
       expect(
         (boxAttributes[2] as BoxAttributes).width,
@@ -284,7 +284,7 @@ void main() {
                 widget.props.heroIconsProps!.icon == HeroIcons.star &&
                 widget.props.heroIconsProps!.size == 30 &&
                 widget.props.heroIconsProps!.color ==
-                    NewThemeSAKS.colors.primary.sea,
+                    ThemeSAKS.colors.primary.sea,
           ),
           findsOneWidget);
 
@@ -293,7 +293,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "Pago" &&
-                widget.color == NewThemeSAKS.colors.primary.sea &&
+                widget.color == ThemeSAKS.colors.primary.sea &&
                 widget.variant == TypographyVariant.h7,
           ),
           findsOneWidget);
@@ -303,7 +303,7 @@ void main() {
             (widget) =>
                 widget is CustomTypography &&
                 widget.text == "16/02/2023" &&
-                widget.color == NewThemeSAKS.colors.primary.sea &&
+                widget.color == ThemeSAKS.colors.primary.sea &&
                 widget.variant == TypographyVariant.h7,
           ),
           findsOneWidget);
@@ -312,7 +312,7 @@ void main() {
           find.byWidgetPredicate((widget) =>
               widget is CustomTypography &&
               widget.text == "_" &&
-              widget.color == NewThemeSAKS.colors.primary.sea &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
               widget.variant == TypographyVariant.h7),
           findsNothing);
 
@@ -320,7 +320,7 @@ void main() {
       final List<Attribute> boxAttributes = box.mix.attributes;
       expect(
         (boxAttributes[0] as BoxAttributes).color,
-        NewThemeSAKS.colors.primary.sky,
+        ThemeSAKS.colors.primary.sky,
       );
     });
   });

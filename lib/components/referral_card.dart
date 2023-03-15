@@ -65,8 +65,8 @@ class _ReferralCardState extends State<ReferralCard>
   Widget build(BuildContext context) {
     final box = Mix(
       bgColor(widget.payment == Payment.paid
-          ? NewThemeSAKS.colors.special.leaf
-          : NewThemeSAKS.colors.primary.sky),
+          ? ThemeSAKS.colors.special.leaf
+          : ThemeSAKS.colors.primary.sky),
       rounded(ThemeSAKS.shape.borderRadiusCard),
       width(315),
       //  height(_expanded ? 324 : 86),
@@ -110,13 +110,12 @@ class _ReferralCardState extends State<ReferralCard>
   Widget _buildIcon() {
     if (widget.icon.variant == IconVariant.heroicons) {
       widget.icon.heroIconsProps?.color = Payment.paid == widget.payment
-          ? NewThemeSAKS.colors.utility.conservative
-          : NewThemeSAKS.colors.primary.sea;
+          ? ThemeSAKS.colors.utility.conservative
+          : ThemeSAKS.colors.primary.sea;
       widget.icon.heroIconsProps?.size = 30;
     }
     if (widget.icon.variant == IconVariant.unicons) {
-      widget.icon.heroIconsProps?.color =
-          NewThemeSAKS.colors.utility.conservative;
+      widget.icon.heroIconsProps?.color = ThemeSAKS.colors.utility.conservative;
       widget.icon.heroIconsProps?.size = 30;
     }
     return Icon(
@@ -133,7 +132,7 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           variant: TypographyVariant.h7,
           text: widget.textBonus,
-          color: NewThemeSAKS.colors.primary.sea,
+          color: ThemeSAKS.colors.primary.sea,
         ),
         const SizedBox(
           height: 7,
@@ -142,7 +141,7 @@ class _ReferralCardState extends State<ReferralCard>
           variant: TypographyVariant.h6,
           weight: FontWeight.bold,
           text: widget.name,
-          color: NewThemeSAKS.colors.primary.sea,
+          color: ThemeSAKS.colors.primary.sea,
         ),
         const SizedBox(
           height: 7,
@@ -151,8 +150,8 @@ class _ReferralCardState extends State<ReferralCard>
           variant: TypographyVariant.h7,
           text: widget.textPaid,
           color: widget.payment == Payment.paid
-              ? NewThemeSAKS.colors.utility.conservative
-              : NewThemeSAKS.colors.primary.sea,
+              ? ThemeSAKS.colors.utility.conservative
+              : ThemeSAKS.colors.primary.sea,
         ),
       ],
     );
@@ -168,7 +167,7 @@ class _ReferralCardState extends State<ReferralCard>
           variant: TypographyVariant.h7,
           weight: FontWeight.bold,
           text: widget.valueBonus,
-          color: NewThemeSAKS.colors.primary.sea,
+          color: ThemeSAKS.colors.primary.sea,
         ),
         const SizedBox(
           height: 7,
@@ -176,7 +175,7 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           variant: TypographyVariant.h7,
           text: widget.dateCard,
-          color: NewThemeSAKS.colors.primary.sea,
+          color: ThemeSAKS.colors.primary.sea,
         ),
       ],
     );
@@ -221,7 +220,7 @@ class _ReferralCardState extends State<ReferralCard>
             heroIconsProps: HeroIconsProps(
               style: HeroIconStyle.solid,
               icon: HeroIcons.checkCircle,
-              color: NewThemeSAKS.colors.utility.conservative,
+              color: ThemeSAKS.colors.utility.conservative,
               size: 24,
             ),
           ),
@@ -253,8 +252,8 @@ class _ReferralCardState extends State<ReferralCard>
                   style: HeroIconStyle.solid,
                   icon: HeroIcons.checkCircle,
                   color: widget.dataLabel.data.length == index
-                      ? NewThemeSAKS.colors.primary.sea
-                      : NewThemeSAKS.colors.utility.conservative,
+                      ? ThemeSAKS.colors.primary.sea
+                      : ThemeSAKS.colors.utility.conservative,
                   size: 24,
                 ),
               ),
@@ -284,7 +283,7 @@ class _ReferralCardState extends State<ReferralCard>
           variant: TypographyVariant.h7,
           weight: FontWeight.bold,
           text: widget.dataLabel.label[index],
-          color: NewThemeSAKS.colors.primary.sea,
+          color: ThemeSAKS.colors.primary.sea,
         ),
         const SizedBox(
           height: 5,
@@ -295,7 +294,7 @@ class _ReferralCardState extends State<ReferralCard>
           text: widget.dataLabel.data.length == index
               ? "_"
               : widget.dataLabel.data[index],
-          color: NewThemeSAKS.colors.primary.sea,
+          color: ThemeSAKS.colors.primary.sea,
         ),
       ],
     );
@@ -305,7 +304,7 @@ class _ReferralCardState extends State<ReferralCard>
     final style = Mix(
       height(19.5),
       width(19.5),
-      bgColor(NewThemeSAKS.colors.primary.sea),
+      bgColor(ThemeSAKS.colors.primary.sea),
       opacity(0.2),
       rounded(ThemeSAKS.shape.borderRadius),
     );
@@ -356,8 +355,8 @@ class _ReferralCardState extends State<ReferralCard>
       height(4),
       width(4),
       bgColor(widget.dataLabel.data.length == index
-          ? NewThemeSAKS.colors.primary.sea
-          : NewThemeSAKS.colors.utility.conservative),
+          ? ThemeSAKS.colors.primary.sea
+          : ThemeSAKS.colors.utility.conservative),
       rounded(ThemeSAKS.shape.borderRadius),
     );
 
