@@ -89,19 +89,20 @@ void main() {
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "title" &&
-                widget.variant == TypographyVariant.h6 &&
-                widget.weight == FontWeight.w700 &&
-                widget.color == ThemeSAKS.colors.primary.sea,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "title" &&
+              widget.variant == TypographyVariant.h6 &&
+              widget.weight == FontWeight.w700 &&
+              widget.color == ThemeSAKS.colors.primary.sea,
+        ),
+        findsOneWidget,
+      );
     });
 
     testWidgets("should render button", (tester) async {
-      onPressed() => {};
+      Map onPressed() => {};
       final widget = CardBanner(
         backgroundImage:
             "https://saks-app-banner-images.s3.us-east-2.amazonaws.com/banner_app_v2/banner_6.jpg",
@@ -127,7 +128,7 @@ void main() {
     });
 
     testWidgets("should render skeleton in loading image", (tester) async {
-      onPressed() => {};
+      Map onPressed() => {};
       final widget = CardBanner(
         backgroundImage:
             "https://saks-app-banner-images.s3.us-east-2.amazonaws.com/banner_app_v2/banner_6.jpg",
@@ -144,7 +145,7 @@ void main() {
     });
 
     testWidgets("should render blurhash in loading image", (tester) async {
-      onPressed() => {};
+      Map onPressed() => {};
       final widget = CardBanner(
         backgroundImage:
             "https://saks-app-banner-images.s3.us-east-2.amazonaws.com/banner_app_v2/banner_6.jpg",

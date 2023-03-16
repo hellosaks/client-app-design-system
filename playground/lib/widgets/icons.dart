@@ -33,5 +33,19 @@ final iconDoc = ElementPreview(
       description:
           'Example icon for heroicons, with 40 px size and primary sea color',
     ),
+    WidgetPreview(
+      widget: Icon(
+        props: IconProps(
+          variant: IconVariant.custom,
+          customIconsProps: CustomIconsProps(
+            icon: CustomIcons.icWhatsapp,
+            color: ThemeSAKS.colors.primary.sea,
+            size: 40,
+          ),
+        ),
+      ),
+      description:
+          'Example icon for custom, with 40 px size and primary sea color',
+    ),
   ],
 );

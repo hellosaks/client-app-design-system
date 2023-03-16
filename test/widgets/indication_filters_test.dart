@@ -78,52 +78,60 @@ void main() {
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "Pendentes" &&
-                widget.color == ThemeSAKS.colors.primary.sea &&
-                widget.weight == FontWeight.bold &&
-                widget.variant == TypographyVariant.h4,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "Pendentes" &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.weight == FontWeight.bold &&
+              widget.variant == TypographyVariant.h4,
+        ),
+        findsOneWidget,
+      );
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "2" &&
-                widget.color == ThemeSAKS.colors.special.leaf &&
-                widget.weight == FontWeight.bold &&
-                widget.variant == TypographyVariant.h4,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "2" &&
+              widget.color == ThemeSAKS.colors.special.leaf &&
+              widget.weight == FontWeight.bold &&
+              widget.variant == TypographyVariant.h4,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is Icon &&
-                widget.props.heroIconsProps!.icon ==
-                    HeroIcons.arrowRightCircle &&
-                widget.props.heroIconsProps!.size == 24 &&
-                widget.props.heroIconsProps!.color ==
-                    ThemeSAKS.colors.primary.sea,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Icon &&
+              widget.props.heroIconsProps!.icon == HeroIcons.arrowRightCircle &&
+              widget.props.heroIconsProps!.size == 24 &&
+              widget.props.heroIconsProps!.color ==
+                  ThemeSAKS.colors.primary.sea,
+        ),
+        findsOneWidget,
+      );
 
       final circle =
           tester.widget<Box>(find.byKey(IndicationFilters.circleKey));
       final List<Attribute> attributes = circle.mix.attributes;
-      expect((attributes[2] as BoxAttributes).color,
-          ThemeSAKS.colors.primary.sea);
+      expect(
+        (attributes[2] as BoxAttributes).color,
+        ThemeSAKS.colors.primary.sea,
+      );
 
       final box = tester.widget<Box>(find.byKey(IndicationFilters.boxKey));
       final List<Attribute> attributes2 = box.mix.attributes;
-      expect((attributes2[0] as BoxAttributes).color,
-          ThemeSAKS.colors.primary.sea);
+      expect(
+        (attributes2[0] as BoxAttributes).color,
+        ThemeSAKS.colors.primary.sea,
+      );
 
       final VBox vbox = tester.widget(find.byKey(IndicationFilters.vboxKey));
-      expect((vbox.mix.attributes.elementAt(2) as BoxAttributes).color,
-          ThemeSAKS.colors.primary.sky);
+      expect(
+        (vbox.mix.attributes.elementAt(2) as BoxAttributes).color,
+        ThemeSAKS.colors.primary.sky,
+      );
     });
 
     testWidgets(" Filter.activated attributes", (WidgetTester tester) async {
@@ -138,12 +146,16 @@ void main() {
       final circle =
           tester.widget<Box>(find.byKey(IndicationFilters.circleKey));
       final List<Attribute> attributes = circle.mix.attributes;
-      expect((attributes[2] as BoxAttributes).color,
-          ThemeSAKS.colors.utility.conservative);
+      expect(
+        (attributes[2] as BoxAttributes).color,
+        ThemeSAKS.colors.utility.conservative,
+      );
 
       final VBox vbox = tester.widget(find.byKey(IndicationFilters.vboxKey));
-      expect((vbox.mix.attributes.elementAt(2) as BoxAttributes).color,
-          ThemeSAKS.colors.special.leaf);
+      expect(
+        (vbox.mix.attributes.elementAt(2) as BoxAttributes).color,
+        ThemeSAKS.colors.special.leaf,
+      );
     });
   });
 }

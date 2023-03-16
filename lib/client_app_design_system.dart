@@ -5,8 +5,10 @@ export "package:unicons/unicons.dart"
     show UniconsLine, UniconsSolid, UniconsThinline;
 
 export "components/buttons/auxiliar_button.dart";
+export "components/buttons/button_special.dart";
 export "components/buttons/button_tertiary.dart";
 export "components/card_banner.dart";
+export "components/custom_icons.dart";
 export "components/custom_typography.dart";
 export "components/icon.dart";
 export "components/referral_button.dart";

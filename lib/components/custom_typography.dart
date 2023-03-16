@@ -9,14 +9,14 @@ import "package:mix/mix.dart";
 @docWidget
 class CustomTypography extends StatelessWidget {
   const CustomTypography({
-    Key? key,
+    super.key,
     required this.variant,
     required this.text,
     this.weight = FontWeight.w400,
     this.color = Colors.black,
     this.align = TextAlign.left,
     this.mix,
-  }) : super(key: key);
+  });
 
   final FontWeight weight;
   final TypographyVariant variant;
