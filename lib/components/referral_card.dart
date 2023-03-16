@@ -8,6 +8,7 @@ import "package:client_app_design_system/utils/data_label.dart";
 import "package:client_app_design_system/utils/enums.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
+import "package:get/get.dart";
 import "package:heroicons/heroicons.dart";
 import "package:mix/mix.dart";
 
@@ -21,7 +22,7 @@ class ReferralCard extends StatefulWidget {
   final String textPaid;
 
   final String dateCard;
-  final DataLabel dataLabel;
+  final List<DataLabel> dataLabel;
   final void Function() onPressed;
 
   const ReferralCard(
@@ -89,25 +90,33 @@ class _ReferralCardState extends State<ReferralCard>
           key: ReferralCard.cardKey,
           child: VBox(
             children: [
-              HBox(
-                mix: styleVBox,
-                children: [
-                  HBox(
-                    children: [
-                      _buildIcon(),
-                      const SizedBox(
-                        width: 24,
-                      ),
-                      _buildVertical3Texts(),
-                    ],
-                  ),
-                  _buildVertical2Texts(),
-                ],
-              ),
+              _buildClosedCardInfo(),
               _buildExtendedCard(),
             ],
           ),
         ));
+  }
+
+  Widget _buildClosedCardInfo() {
+    return HBox(
+      mix: styleVBox,
+      children: [
+        _buildIconWith3Texts(),
+        _buildVertical2Texts(),
+      ],
+    );
+  }
+
+  Widget _buildIconWith3Texts() {
+    return HBox(
+      children: [
+        _buildIcon(),
+        const SizedBox(
+          width: 24,
+        ),
+        _buildVertical3Texts(),
+      ],
+    );
   }
 
   Widget _buildIcon() {
@@ -115,11 +124,13 @@ class _ReferralCardState extends State<ReferralCard>
       widget.icon.heroIconsProps?.color = Payment.paid == widget.payment
           ? ThemeSAKS.colors.utility.conservative
           : ThemeSAKS.colors.primary.sea;
-      widget.icon.heroIconsProps?.size = AppSize().getHeight(30);
+      widget.icon.heroIconsProps?.size =
+          AppSize(context: Get.context).getHeight(30);
     }
     if (widget.icon.variant == IconVariant.unicons) {
       widget.icon.heroIconsProps?.color = ThemeSAKS.colors.utility.conservative;
-      widget.icon.heroIconsProps?.size = AppSize().getHeight(30);
+      widget.icon.heroIconsProps?.size =
+          AppSize(context: Get.context).getHeight(30);
     }
     return Icon(
       props: widget.icon,
@@ -138,7 +149,7 @@ class _ReferralCardState extends State<ReferralCard>
           color: ThemeSAKS.colors.primary.sea,
         ),
         SizedBox(
-          height: AppSize().getHeight(7),
+          height: AppSize(context: Get.context).getHeight(7),
         ),
         CustomTypography(
           variant: TypographyVariant.h6,
@@ -147,7 +158,7 @@ class _ReferralCardState extends State<ReferralCard>
           color: ThemeSAKS.colors.primary.sea,
         ),
         SizedBox(
-          height: AppSize().getHeight(7),
+          height: AppSize(context: Get.context).getHeight(7),
         ),
         CustomTypography(
           variant: TypographyVariant.h7,
@@ -164,7 +175,7 @@ class _ReferralCardState extends State<ReferralCard>
     return VBox(
       children: [
         SizedBox(
-          height: AppSize().getHeight(21),
+          height: AppSize(context: Get.context).getHeight(21),
         ),
         CustomTypography(
           variant: TypographyVariant.h7,
@@ -173,7 +184,7 @@ class _ReferralCardState extends State<ReferralCard>
           color: ThemeSAKS.colors.primary.sea,
         ),
         SizedBox(
-          height: AppSize().getHeight(7),
+          height: AppSize(context: Get.context).getHeight(7),
         ),
         CustomTypography(
           variant: TypographyVariant.h7,
@@ -195,13 +206,13 @@ class _ReferralCardState extends State<ReferralCard>
       child: VBox(children: [
         const CustomDivider(),
         SizedBox(
-          height: AppSize().getHeight(10),
+          height: AppSize(context: Get.context).getHeight(10),
         ),
         Box(
           mix: style,
           child: VBox(children: [
             _textWithIcon(),
-            ...widget.dataLabel.label
+            ...widget.dataLabel
                 .sublist(1)
                 .asMap()
                 .entries
@@ -235,13 +246,38 @@ class _ReferralCardState extends State<ReferralCard>
         const SizedBox(
           width: 24,
         ),
-        _textExtended(0),
+        _buildFirstTextExtended(),
+      ],
+    );
+  }
+
+  Widget _buildFirstTextExtended() {
+    final style = Mix(
+      crossAxis(CrossAxisAlignment.start),
+    );
+
+    return VBox(
+      mix: style,
+      children: [
+        CustomTypography(
+          variant: TypographyVariant.h7,
+          weight: FontWeight.bold,
+          text: widget.dataLabel[0].label,
+          color: ThemeSAKS.colors.primary.sea,
+        ),
+        SizedBox(
+          height: AppSize(context: Get.context).getHeight(5),
+        ),
+        CustomTypography(
+          variant: TypographyVariant.h7,
+          text: widget.dataLabel[0].data!,
+          color: ThemeSAKS.colors.primary.sea,
+        ),
       ],
     );
   }
 
   Widget _textWithIconList(int index) {
-    print(index);
     final style = Mix(
       pl(25),
     );
@@ -250,7 +286,7 @@ class _ReferralCardState extends State<ReferralCard>
       HBox(
         mix: style,
         children: [
-          if (widget.dataLabel.data.length == index) ...[
+          if (widget.dataLabel[index].data == null) ...[
             _buildCircleIcon(),
           ] else ...[
             Icon(
@@ -279,7 +315,7 @@ class _ReferralCardState extends State<ReferralCard>
       crossAxis(CrossAxisAlignment.start),
     );
     final styleText = Mix(
-      opacity(widget.dataLabel.data.length == index ? 0.5 : 1),
+      opacity(widget.dataLabel[index].data == null ? 0.5 : 1),
     );
 
     return VBox(
@@ -288,18 +324,18 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           variant: TypographyVariant.h7,
           weight: FontWeight.bold,
-          text: widget.dataLabel.label[index],
+          text: widget.dataLabel[index].label,
           color: ThemeSAKS.colors.primary.sea,
         ),
         SizedBox(
-          height: AppSize().getHeight(5),
+          height: AppSize(context: Get.context).getHeight(5),
         ),
         CustomTypography(
           mix: styleText,
           variant: TypographyVariant.h7,
-          text: widget.dataLabel.data.length == index
+          text: widget.dataLabel[index].data == null
               ? Constants.hyphen
-              : widget.dataLabel.data[index],
+              : widget.dataLabel[index].data!,
           color: ThemeSAKS.colors.primary.sea,
         ),
       ],
@@ -341,11 +377,11 @@ class _ReferralCardState extends State<ReferralCard>
           children: [
             _buildCircle(index),
             SizedBox(
-              height: AppSize().getHeight(10),
+              height: AppSize(context: Get.context).getHeight(10),
             ),
             _buildCircle(index),
             SizedBox(
-              height: AppSize().getHeight(10),
+              height: AppSize(context: Get.context).getHeight(10),
             ),
             _buildCircle(index),
           ],
@@ -357,10 +393,10 @@ class _ReferralCardState extends State<ReferralCard>
   Widget _buildCircle(int index) {
     final style = Mix(
       crossAxis(CrossAxisAlignment.end),
-      opacity(widget.dataLabel.data.length == index ? 0.2 : 1),
+      opacity(widget.dataLabel[index].data == null ? 0.2 : 1),
       height(4),
       width(4),
-      bgColor(widget.dataLabel.data.length == index
+      bgColor(widget.dataLabel[index].data == null
           ? ThemeSAKS.colors.primary.sea
           : ThemeSAKS.colors.utility.conservative),
       rounded(ThemeSAKS.shape.borderRadius),

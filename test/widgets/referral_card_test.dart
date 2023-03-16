@@ -19,32 +19,29 @@ void main() {
           icon: IconProps(
             variant: IconVariant.heroicons,
             heroIconsProps: HeroIconsProps(
-              icon: HeroIcons.star,
+              icon: HeroIcons.user,
             ),
           ),
           textBonus: "Bonus",
-          name: "Victor",
-          valueBonus: "20 reais",
+          name: "Victor  Paulo",
+          valueBonus: "R\$20,00",
           textPaid: "Pago",
-          dataLabel: DataLabel(label: [
-            "Indicado",
-            "Plano",
-            "Pagamento"
-          ], data: [
-            DateFormat("dd/MM/yyyy").format(
-              DateTime(2023, 02, 15),
-            ),
-            DateFormat("dd/MM/yyyy").format(
-              DateTime(2022, 02, 16),
-            ),
-            DateFormat("dd/MM/yyyy").format(
-              DateTime(2022, 02, 17),
-            ),
-          ]),
+          dataLabel: [
+            DataLabel(
+                data: DateFormat("dd/MM/yyyy").format(
+                  DateTime(2023, 02, 15),
+                ),
+                label: "Indicado cadastrado"),
+            DataLabel(
+                data: DateFormat("dd/MM/yyyy").format(
+                  DateTime(2023, 02, 15),
+                ),
+                label: "Plano contratado"),
+            DataLabel(label: "Pagamento do plano efetuado"),
+          ],
+          dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2023, 01, 12)),
           onPressed: () {},
-          dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
         );
-
         await tester.pumpWidget(wrapWithMaterialApp(widget));
 
         expect(find.byType(ReferralCard), findsOneWidget);
@@ -60,25 +57,30 @@ void main() {
           icon: IconProps(
             variant: IconVariant.heroicons,
             heroIconsProps: HeroIconsProps(
-              icon: HeroIcons.star,
+              icon: HeroIcons.user,
             ),
           ),
           textBonus: "Bonus",
-          name: "Victor",
-          valueBonus: "20 reais",
+          name: "Victor  Paulo",
+          valueBonus: "R\$20,00",
           textPaid: "Pago",
-          dataLabel: DataLabel(label: [
-            "Indicado",
-            "Plano",
-          ], data: [
-            DateFormat("dd/MM/yyyy").format(
-              DateTime(2023, 02, 15),
-            ),
-          ]),
+          dataLabel: [
+            DataLabel(
+                data: DateFormat("dd/MM/yyyy").format(
+                  DateTime(2023, 02, 15),
+                ),
+                label: "Indicado cadastrado"),
+            DataLabel(
+                data: DateFormat("dd/MM/yyyy").format(
+                  DateTime(2023, 02, 15),
+                ),
+                label: "Plano contratado"),
+            DataLabel(label: "Pagamento do plano efetuado"),
+          ],
+          dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2023, 01, 12)),
           onPressed: () {
             pressed = true;
           },
-          dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
         );
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
@@ -95,23 +97,28 @@ void main() {
         icon: IconProps(
           variant: IconVariant.heroicons,
           heroIconsProps: HeroIconsProps(
-            icon: HeroIcons.star,
+            icon: HeroIcons.user,
           ),
         ),
         textBonus: "Bonus",
-        name: "Victor",
-        valueBonus: "20 reais",
+        name: "Victor  Paulo",
+        valueBonus: "R\$20,00",
         textPaid: "Pago",
-        dataLabel: DataLabel(label: [
-          "Indicado",
-          "Plano",
-        ], data: [
-          DateFormat("dd/MM/yyyy").format(
-            DateTime(2023, 02, 15),
-          ),
-        ]),
+        dataLabel: [
+          DataLabel(
+              data: DateFormat("dd/MM/yyyy").format(
+                DateTime(2023, 02, 15),
+              ),
+              label: "Indicado cadastrado"),
+          DataLabel(
+              data: DateFormat("dd/MM/yyyy").format(
+                DateTime(2023, 02, 15),
+              ),
+              label: "Plano contratado"),
+          DataLabel(label: "Pagamento do plano efetuado"),
+        ],
+        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2023, 01, 12)),
         onPressed: () {},
-        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
       );
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
@@ -254,21 +261,22 @@ void main() {
             icon: HeroIcons.star,
           ),
         ),
-        textBonus: "Bonus",
-        name: "Victor",
-        valueBonus: "20 reais",
-        textPaid: "Pago",
-        dataLabel: DataLabel(label: [
-          "Indicado",
-          "Plano",
-        ], data: [
-          DateFormat("dd/MM/yyyy").format(
-            DateTime(2023, 02, 15),
-          ),
-          DateFormat("dd/MM/yyyy").format(
-            DateTime(2023, 02, 16),
-          ),
-        ]),
+        textBonus: "Bônus Campanha",
+        name: "10 amigos Icatú",
+        valueBonus: "R\$ 25,00",
+        textPaid: "Pendente",
+        dataLabel: [
+          DataLabel(
+              data: DateFormat("dd/MM/yyyy").format(
+                DateTime(2023, 02, 15),
+              ),
+              label: "Campanha iniciada"),
+          DataLabel(
+              data: DateFormat("dd/MM/yyyy").format(
+                DateTime(2023, 02, 15),
+              ),
+              label: "Objetivo alcançado"),
+        ],
         onPressed: () {},
         dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
       );
