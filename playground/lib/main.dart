@@ -6,6 +6,7 @@ import 'package:playground/widgets/custom_typography.dart';
 import 'package:playground/widgets/icons.dart';
 import 'package:playground/widgets/indication_filters.dart';
 import 'package:playground/widgets/referral_button.dart';
+import 'package:playground/widgets/special_button.dart';
 import 'package:playground/widgets/tertiary_button.dart';
 
 void main() {
@@ -14,7 +15,11 @@ void main() {
       sections: [
         ElementsSection(
           title: 'Buttons',
-          elements: [buButtonDoc, auxButtonDoc],
+          elements: [
+            tertiaryButtonDoc,
+            auxButtonDoc,
+            specialButtonDoc,
+          ],
         ),
         ElementsSection(
           title: 'Widgets',

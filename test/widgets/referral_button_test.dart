@@ -30,7 +30,7 @@ void main() {
                 widget.color == ThemeSAKS.colors.primary.sky &&
                 widget.variant == TypographyVariant.h4,
           ),
-          findsOneWidget);
+          findsOneWidget,);
 
       // verify linkToCopy
       expect(
@@ -41,7 +41,7 @@ void main() {
                 widget.color == ThemeSAKS.colors.primary.sky &&
                 widget.variant == TypographyVariant.h6,
           ),
-          findsOneWidget);
+          findsOneWidget,);
 
       // verify icon
       expect(
@@ -54,7 +54,7 @@ void main() {
                 widget.props.heroIconsProps!.color ==
                     ThemeSAKS.colors.primary.sky,
           ),
-          findsOneWidget);
+          findsOneWidget,);
 
       // verify styles for container box
       final Box containerWidget =

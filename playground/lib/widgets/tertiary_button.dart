@@ -7,8 +7,9 @@ final withSeaColor = [
   WidgetPreview(
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.stone),
+        bgColor: ThemeSAKS.colors.primary.sea,
+        pressColor: ThemeSAKS.colors.secondary.stone,
+      ),
       leftIcon: IconProps(
         variant: IconVariant.heroicons,
         heroIconsProps: HeroIconsProps(
@@ -23,8 +24,9 @@ final withSeaColor = [
   WidgetPreview(
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.stone),
+        bgColor: ThemeSAKS.colors.primary.sea,
+        pressColor: ThemeSAKS.colors.secondary.stone,
+      ),
       rightIcon: IconProps(
         variant: IconVariant.heroicons,
         heroIconsProps: HeroIconsProps(
@@ -39,8 +41,9 @@ final withSeaColor = [
   WidgetPreview(
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.stone),
+        bgColor: ThemeSAKS.colors.primary.sea,
+        pressColor: ThemeSAKS.colors.secondary.stone,
+      ),
       underline: true,
       onPressed: () {},
       text: 'Button',
@@ -50,8 +53,9 @@ final withSeaColor = [
   WidgetPreview(
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.stone),
+        bgColor: ThemeSAKS.colors.primary.sea,
+        pressColor: ThemeSAKS.colors.secondary.stone,
+      ),
       strikethrough: true,
       onPressed: () {},
       text: 'Button',
@@ -61,8 +65,9 @@ final withSeaColor = [
   WidgetPreview(
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.stone),
+        bgColor: ThemeSAKS.colors.primary.sea,
+        pressColor: ThemeSAKS.colors.secondary.stone,
+      ),
       onPressed: () {},
       text: 'Button disable',
       disable: true,
@@ -74,10 +79,9 @@ final withDangerColor = [
   WidgetPreview(
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.utility.aggressive,
-          pressColor: ThemeSAKS.colors.special.rose
-          // ThemeSAKS.colors.special.rose
-          ),
+        bgColor: ThemeSAKS.colors.utility.aggressive,
+        pressColor: ThemeSAKS.colors.special.rose,
+      ),
       leftIcon: IconProps(
         variant: IconVariant.heroicons,
         heroIconsProps: HeroIconsProps(
@@ -109,8 +113,9 @@ final withDangerColor = [
   WidgetPreview(
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.utility.aggressive,
-          pressColor: ThemeSAKS.colors.special.rose),
+        bgColor: ThemeSAKS.colors.utility.aggressive,
+        pressColor: ThemeSAKS.colors.special.rose,
+      ),
       underline: true,
       onPressed: () {},
       text: 'Button',
@@ -120,8 +125,9 @@ final withDangerColor = [
   WidgetPreview(
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.utility.aggressive,
-          pressColor: ThemeSAKS.colors.special.rose),
+        bgColor: ThemeSAKS.colors.utility.aggressive,
+        pressColor: ThemeSAKS.colors.special.rose,
+      ),
       strikethrough: true,
       onPressed: () {},
       text: 'Button',
@@ -131,8 +137,9 @@ final withDangerColor = [
   WidgetPreview(
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.utility.aggressive,
-          pressColor: ThemeSAKS.colors.special.rose),
+        bgColor: ThemeSAKS.colors.utility.aggressive,
+        pressColor: ThemeSAKS.colors.special.rose,
+      ),
       onPressed: () {},
       text: 'Button disable',
       disable: true,
@@ -193,50 +200,53 @@ final withPrimaryColor = [
   ),
 ];
 
-final buButtonDoc = ElementPreview(
+final tertiaryButtonDoc = ElementPreview(
   document: ButtonTertiaryDocWidget(),
   previews: [
     WidgetPreview(
-        widget: Column(
-      children: [
-        const SizedBox(
-          height: 30,
-        ),
-        CustomTypography(
-          variant: TypographyVariant.h2,
-          text: "Primary color",
-          color: ThemeSAKS.colors.primary.saks,
-        )
-      ],
-    )),
+      widget: Column(
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          CustomTypography(
+            variant: TypographyVariant.h2,
+            text: "Primary color",
+            color: ThemeSAKS.colors.primary.saks,
+          )
+        ],
+      ),
+    ),
     ...withPrimaryColor,
     WidgetPreview(
-        widget: Column(
-      children: [
-        const SizedBox(
-          height: 30,
-        ),
-        CustomTypography(
-          variant: TypographyVariant.h2,
-          text: "Sea color",
-          color: ThemeSAKS.colors.primary.sea,
-        ),
-      ],
-    )),
+      widget: Column(
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          CustomTypography(
+            variant: TypographyVariant.h2,
+            text: "Sea color",
+            color: ThemeSAKS.colors.primary.sea,
+          ),
+        ],
+      ),
+    ),
     ...withSeaColor,
     WidgetPreview(
-        widget: Column(
-      children: [
-        const SizedBox(
-          height: 30,
-        ),
-        CustomTypography(
-          variant: TypographyVariant.h2,
-          text: "Danger color",
-          color: ThemeSAKS.colors.utility.aggressive,
-        ),
-      ],
-    )),
+      widget: Column(
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          CustomTypography(
+            variant: TypographyVariant.h2,
+            text: "Danger color",
+            color: ThemeSAKS.colors.utility.aggressive,
+          ),
+        ],
+      ),
+    ),
     ...withDangerColor
   ],
 );

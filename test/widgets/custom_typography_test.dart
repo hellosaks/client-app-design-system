@@ -33,7 +33,7 @@ void main() {
   });
 
   testWidgets("Typography render correct variant", (WidgetTester tester) async {
-    variantFont(int fs, TypographyVariant variant) =>
+    Map<String, Object> variantFont(int fs, TypographyVariant variant) =>
         {"font-size": fs, "variant": variant};
 
     final variants = [
@@ -51,7 +51,7 @@ void main() {
 
     for (final variant in variants) {
       final widget = CustomTypography(
-        variant: variant["variant"] as TypographyVariant,
+        variant: variant["variant"]! as TypographyVariant,
         text: "This is a test",
       );
 

@@ -30,6 +30,8 @@ enum TypographyVariant {
   strikethrough,
 }
 
-enum IconVariant { heroicons, unicons }
+enum IconVariant { heroicons, unicons, custom }
 
 enum Filter { activated, pending }
+
+enum SpecialButtonVariant { whatsapp, share }

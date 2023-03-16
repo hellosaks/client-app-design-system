@@ -71,7 +71,9 @@ void main() {
 
         final Icon finded = tester.widget(find.byType(Icon));
         expect(
-            finded.props.heroIconsProps?.color, ThemeSAKS.colors.primary.saks);
+          finded.props.heroIconsProps?.color,
+          ThemeSAKS.colors.primary.saks,
+        );
       });
       testWidgets("should render right icon props",
           (WidgetTester tester) async {
@@ -108,7 +110,9 @@ void main() {
 
         final Icon finded = tester.widget(find.byType(Icon));
         expect(
-            finded.props.heroIconsProps?.color, ThemeSAKS.colors.primary.saks);
+          finded.props.heroIconsProps?.color,
+          ThemeSAKS.colors.primary.saks,
+        );
       });
     });
 
@@ -160,7 +164,7 @@ void main() {
         await tester.pumpWidget(wrapWithMaterialApp(widget));
 
         final finded =
-            (tester.widget(find.byType(CustomTypography)) as CustomTypography);
+            tester.widget(find.byType(CustomTypography)) as CustomTypography;
 
         expect(finded.variant, TypographyVariant.underline);
         expect(finded.color, ThemeSAKS.colors.primary.saks);
@@ -176,7 +180,7 @@ void main() {
         await tester.pumpWidget(wrapWithMaterialApp(widget));
 
         final finded =
-            (tester.widget(find.byType(CustomTypography)) as CustomTypography);
+            tester.widget(find.byType(CustomTypography)) as CustomTypography;
 
         expect(finded.variant, TypographyVariant.strikethrough);
         expect(finded.color, ThemeSAKS.colors.primary.saks);
@@ -200,7 +204,9 @@ void main() {
       final ButtonTertiary finded = tester.widget(find.byType(ButtonTertiary));
       expect(finded.colorAttributes?.bgColor, ThemeSAKS.colors.primary.sea);
       expect(
-          finded.colorAttributes?.pressColor, ThemeSAKS.colors.secondary.bay);
+        finded.colorAttributes?.pressColor,
+        ThemeSAKS.colors.secondary.bay,
+      );
     });
 
     testWidgets("should render DANGER color", (WidgetTester tester) async {
@@ -217,7 +223,9 @@ void main() {
 
       final ButtonTertiary finded = tester.widget(find.byType(ButtonTertiary));
       expect(
-          finded.colorAttributes?.bgColor, ThemeSAKS.colors.utility.aggressive);
+        finded.colorAttributes?.bgColor,
+        ThemeSAKS.colors.utility.aggressive,
+      );
       expect(finded.colorAttributes?.pressColor, ThemeSAKS.colors.special.rose);
     });
   });

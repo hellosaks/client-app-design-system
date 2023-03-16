@@ -1,8 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/app_size.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
-import "package:get/get.dart";
 import "package:mix/mix.dart";
 
 class ColorAttributesButton {
@@ -42,10 +40,14 @@ class ButtonTertiary extends StatefulWidget {
     this.disable = false,
     this.underline = false,
     this.strikethrough = false,
-  })  : assert(!(leftIcon != null && rightIcon != null),
-            "only direction can be used"),
-        assert(!(underline == true && strikethrough == true),
-            "only font style type can be used");
+  })  : assert(
+          !(leftIcon != null && rightIcon != null),
+          "only direction can be used",
+        ),
+        assert(
+          !(underline == true && strikethrough == true),
+          "only font style type can be used",
+        );
 
   @override
   State<ButtonTertiary> createState() => _ButtonTertiaryState();
@@ -53,8 +55,9 @@ class ButtonTertiary extends StatefulWidget {
 
 class _ButtonTertiaryState extends State<ButtonTertiary> {
   final defaultColorAttribures = ColorAttributesButton(
-      bgColor: ThemeSAKS.colors.primary.saks,
-      pressColor: ThemeSAKS.colors.secondary.bay);
+    bgColor: ThemeSAKS.colors.primary.saks,
+    pressColor: ThemeSAKS.colors.secondary.bay,
+  );
 
   Color? currentColor;
 
@@ -107,17 +110,19 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
       },
       child: Opacity(
         opacity: widget.disable == true ? 0.5 : 1,
-        child: HBox(children: [
-          if (widget.leftIcon != null) ...[
-            _buildLeftIcon(),
-            const SizedBox(width: 11),
+        child: HBox(
+          children: [
+            if (widget.leftIcon != null) ...[
+              _buildLeftIcon(),
+              const SizedBox(width: 11),
+            ],
+            _buildLabel(),
+            if (widget.rightIcon != null) ...[
+              const SizedBox(width: 11),
+              _buildRightIcon()
+            ]
           ],
-          _buildLabel(),
-          if (widget.rightIcon != null) ...[
-            const SizedBox(width: 11),
-            _buildRightIcon()
-          ]
-        ]),
+        ),
       ),
     );
   }
@@ -146,7 +151,7 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
         ? widget.leftIcon!.variant
         : widget.rightIcon!.variant;
 
-    final double size = AppSize(context: Get.context).getHeight(12);
+    const double size = 24;
 
     switch (iconVariant) {
       case IconVariant.heroicons:
@@ -167,6 +172,18 @@ class _ButtonTertiaryState extends State<ButtonTertiary> {
         uniconsProps.size = size;
 
         return IconProps(variant: iconVariant, uniconsProps: uniconsProps);
+      case IconVariant.custom:
+        final CustomIconsProps customIconsProps = widget.leftIcon != null
+            ? widget.leftIcon!.customIconsProps!
+            : widget.rightIcon!.customIconsProps!;
+
+        customIconsProps.color = currentColor;
+        customIconsProps.size = size;
+
+        return IconProps(
+          variant: iconVariant,
+          customIconsProps: customIconsProps,
+        );
     }
   }
 
