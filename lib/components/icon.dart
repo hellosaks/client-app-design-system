@@ -25,9 +25,9 @@ class UniconsProps {
 }
 
 class CustomIconsProps {
-  final CustomIcons icon;
-  final Color? color;
-  final double? size;
+  CustomIcons icon;
+  Color? color;
+  double? size;
 
   CustomIconsProps({required this.icon, this.color, this.size});
 }

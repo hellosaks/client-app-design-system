@@ -49,7 +49,7 @@ class _SpecialButtonState extends State<SpecialButton> {
       px(28),
       py(16),
       rounded(ThemeSAKS.shape.borderRadiusSpecialButton),
-      widget.disabled ? opacity(0.5) : null,
+      (widget.disabled)(opacity(0.5)),
       w(170),
       animated(),
     );
