@@ -11,16 +11,42 @@ final referralCardDoc = ElementPreview(
   previews: [
     WidgetPreview(
       widget: ReferralCard(
-        payment: Payment.paid,
+        payment: Payment.pending,
         icon: IconProps(
           variant: IconVariant.heroicons,
           heroIconsProps: HeroIconsProps(
             icon: HeroIcons.star,
           ),
         ),
+        textBonus: "Bônus Campanha",
+        name: "10 amigos Icatú",
+        valueBonus: "R\$ 25,00",
+        textPaid: "Pendente",
+        dataLabel: DataLabel(label: [
+          "Campanha iniciada",
+          "Objetivo alcançado",
+        ], data: [
+          DateFormat("dd/MM/yyyy").format(
+            DateTime(2023, 02, 15),
+          ),
+        ]),
+        onPressed: () {},
+        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
+      ),
+      description: 'Referral card Paid color',
+    ),
+    WidgetPreview(
+      widget: ReferralCard(
+        payment: Payment.paid,
+        icon: IconProps(
+          variant: IconVariant.heroicons,
+          heroIconsProps: HeroIconsProps(
+            icon: HeroIcons.user,
+          ),
+        ),
         textBonus: "Bonus",
         name: "Victor  Paulo",
-        valueBonus: "20 reais",
+        valueBonus: "R\$20,00",
         textPaid: "Pago",
         dataLabel: DataLabel(label: [
           "Indicado cadastrado",
@@ -37,41 +63,10 @@ final referralCardDoc = ElementPreview(
             DateTime(2022, 02, 17),
           ),
         ]),
+        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2023, 01, 12)),
         onPressed: () {},
-        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
       ),
-      description: 'Referral card Payment.paid with data and input equals size',
-    ),
-    WidgetPreview(
-      widget: ReferralCard(
-        payment: Payment.pending,
-        icon: IconProps(
-          variant: IconVariant.heroicons,
-          heroIconsProps: HeroIconsProps(
-            icon: HeroIcons.star,
-          ),
-        ),
-        textBonus: "Bonus",
-        name: "Victor  Paulo",
-        valueBonus: "20 reais",
-        textPaid: "Pago",
-        dataLabel: DataLabel(label: [
-          "Indicado cadastrado",
-          "Plano contratado",
-          "Pagamento do plano efetuado"
-        ], data: [
-          DateFormat("dd/MM/yyyy").format(
-            DateTime(2023, 02, 15),
-          ),
-          DateFormat("dd/MM/yyyy").format(
-            DateTime(2022, 02, 16),
-          ),
-        ]),
-        onPressed: () {},
-        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
-      ),
-      description:
-          'Referral card Payment.pending with data and input different size',
+      description: 'Referral card Pending color',
     ),
   ],
 );

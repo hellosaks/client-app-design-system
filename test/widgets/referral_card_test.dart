@@ -1,5 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:client_app_design_system/components/referral_card.dart";
+import "package:client_app_design_system/utils/constants.dart";
 import "package:client_app_design_system/utils/data_label.dart";
 import "package:flutter/painting.dart";
 import "package:flutter_test/flutter_test.dart";
@@ -202,7 +203,7 @@ void main() {
       expect(
           find.byWidgetPredicate((widget) =>
               widget is CustomTypography &&
-              widget.text == "_" &&
+              widget.text == Constants.hyphen &&
               widget.color == ThemeSAKS.colors.primary.sea &&
               widget.variant == TypographyVariant.h7),
           findsOneWidget);
@@ -311,7 +312,7 @@ void main() {
       expect(
           find.byWidgetPredicate((widget) =>
               widget is CustomTypography &&
-              widget.text == "_" &&
+              widget.text == Constants.hyphen &&
               widget.color == ThemeSAKS.colors.primary.sea &&
               widget.variant == TypographyVariant.h7),
           findsNothing);

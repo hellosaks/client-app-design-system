@@ -1,11 +1,15 @@
 import "package:client_app_design_system/components/cards/lib/components/custom_divider.dart";
+import "package:client_app_design_system/components/custom_typography.dart";
+import "package:client_app_design_system/components/icon.dart";
+import "package:client_app_design_system/theme/theme_saks.dart";
+import "package:client_app_design_system/utils/app_size.dart";
+import "package:client_app_design_system/utils/constants.dart";
 import "package:client_app_design_system/utils/data_label.dart";
+import "package:client_app_design_system/utils/enums.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:heroicons/heroicons.dart";
 import "package:mix/mix.dart";
-
-import "../client_app_design_system.dart";
 
 @docWidget
 class ReferralCard extends StatefulWidget {
@@ -69,7 +73,6 @@ class _ReferralCardState extends State<ReferralCard>
           : ThemeSAKS.colors.primary.sky),
       rounded(ThemeSAKS.shape.borderRadiusCard),
       width(315),
-      //  height(_expanded ? 324 : 86),
     );
 
     return GestureDetector(
@@ -112,11 +115,11 @@ class _ReferralCardState extends State<ReferralCard>
       widget.icon.heroIconsProps?.color = Payment.paid == widget.payment
           ? ThemeSAKS.colors.utility.conservative
           : ThemeSAKS.colors.primary.sea;
-      widget.icon.heroIconsProps?.size = 30;
+      widget.icon.heroIconsProps?.size = AppSize().getHeight(30);
     }
     if (widget.icon.variant == IconVariant.unicons) {
       widget.icon.heroIconsProps?.color = ThemeSAKS.colors.utility.conservative;
-      widget.icon.heroIconsProps?.size = 30;
+      widget.icon.heroIconsProps?.size = AppSize().getHeight(30);
     }
     return Icon(
       props: widget.icon,
@@ -134,8 +137,8 @@ class _ReferralCardState extends State<ReferralCard>
           text: widget.textBonus,
           color: ThemeSAKS.colors.primary.sea,
         ),
-        const SizedBox(
-          height: 7,
+        SizedBox(
+          height: AppSize().getHeight(7),
         ),
         CustomTypography(
           variant: TypographyVariant.h6,
@@ -143,8 +146,8 @@ class _ReferralCardState extends State<ReferralCard>
           text: widget.name,
           color: ThemeSAKS.colors.primary.sea,
         ),
-        const SizedBox(
-          height: 7,
+        SizedBox(
+          height: AppSize().getHeight(7),
         ),
         CustomTypography(
           variant: TypographyVariant.h7,
@@ -160,8 +163,8 @@ class _ReferralCardState extends State<ReferralCard>
   Widget _buildVertical2Texts() {
     return VBox(
       children: [
-        const SizedBox(
-          height: 21,
+        SizedBox(
+          height: AppSize().getHeight(21),
         ),
         CustomTypography(
           variant: TypographyVariant.h7,
@@ -169,8 +172,8 @@ class _ReferralCardState extends State<ReferralCard>
           text: widget.valueBonus,
           color: ThemeSAKS.colors.primary.sea,
         ),
-        const SizedBox(
-          height: 7,
+        SizedBox(
+          height: AppSize().getHeight(7),
         ),
         CustomTypography(
           variant: TypographyVariant.h7,
@@ -191,15 +194,19 @@ class _ReferralCardState extends State<ReferralCard>
       sizeFactor: _animation,
       child: VBox(children: [
         const CustomDivider(),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: AppSize().getHeight(10),
         ),
         Box(
           mix: style,
           child: VBox(children: [
             _textWithIcon(),
-            for (int i = 1; i < widget.dataLabel.label.length; i++)
-              _textWithIconList(i),
+            ...widget.dataLabel.label
+                .sublist(1)
+                .asMap()
+                .entries
+                .map((index) => _textWithIconList(index.key + 1))
+                .toList()
           ]),
         )
       ]),
@@ -234,6 +241,7 @@ class _ReferralCardState extends State<ReferralCard>
   }
 
   Widget _textWithIconList(int index) {
+    print(index);
     final style = Mix(
       pl(25),
     );
@@ -251,9 +259,7 @@ class _ReferralCardState extends State<ReferralCard>
                 heroIconsProps: HeroIconsProps(
                   style: HeroIconStyle.solid,
                   icon: HeroIcons.checkCircle,
-                  color: widget.dataLabel.data.length == index
-                      ? ThemeSAKS.colors.primary.sea
-                      : ThemeSAKS.colors.utility.conservative,
+                  color: ThemeSAKS.colors.utility.conservative,
                   size: 24,
                 ),
               ),
@@ -285,14 +291,14 @@ class _ReferralCardState extends State<ReferralCard>
           text: widget.dataLabel.label[index],
           color: ThemeSAKS.colors.primary.sea,
         ),
-        const SizedBox(
-          height: 5,
+        SizedBox(
+          height: AppSize().getHeight(5),
         ),
         CustomTypography(
           mix: styleText,
           variant: TypographyVariant.h7,
           text: widget.dataLabel.data.length == index
-              ? "_"
+              ? Constants.hyphen
               : widget.dataLabel.data[index],
           color: ThemeSAKS.colors.primary.sea,
         ),
@@ -334,12 +340,12 @@ class _ReferralCardState extends State<ReferralCard>
         VBox(
           children: [
             _buildCircle(index),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: AppSize().getHeight(10),
             ),
             _buildCircle(index),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: AppSize().getHeight(10),
             ),
             _buildCircle(index),
           ],
