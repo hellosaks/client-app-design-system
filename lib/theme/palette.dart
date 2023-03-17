@@ -58,7 +58,7 @@ class GrayColor {
   final strongGrey = const Color(0xFFA1A8B4);
 
   /// #D0D4DA ![](https://dummyimage.com/24/#D0D4DA.png&text=+)
-  final cinza = const Color(0xFFD0D4DA);
+  final gray = const Color(0xFFD0D4DA);
 }
 
 class Palette {
