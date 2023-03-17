@@ -12,14 +12,17 @@ class PrimaryColor {
 }
 
 class SecondaryColor {
+  /// ##363E4E ![](https://dummyimage.com/24/363E4E.png&text=+)
+  final anchor = const Color(0xFF363E4E);
+
   /// #7590E0 ![](https://dummyimage.com/24/7590E0.png&text=+)
   final bay = const Color(0xFF7590E0);
 
   /// #DCE3F7 ![](https://dummyimage.com/24/DCE3F7.png&text=+)
   final ice = const Color(0xFFDCE3F7);
 
-  /// #363E4E ![](https://dummyimage.com/24/363E4E.png&text=+)
-  final stone = const Color(0xFF363E4E);
+  /// #EDF1F5 ![](https://dummyimage.com/24/EDF1F5.png&text=+)
+  final background = const Color(0xFFEDF1F5);
 }
 
 class UtilityColor {
@@ -50,6 +53,12 @@ class GrayColor {
 
   /// #FFFFFF ![](https://dummyimage.com/24/FFFFFF.png&text=+)
   final snow = const Color(0xFFFFFFFF);
+
+  /// #A1A8B4 ![](https://dummyimage.com/24/A1A8B4.png&text=+)
+  final strongGrey = const Color(0xFFA1A8B4);
+
+  /// #D0D4DA ![](https://dummyimage.com/24/#D0D4DA.png&text=+)
+  final cinza = const Color(0xFFD0D4DA);
 }
 
 class Palette {

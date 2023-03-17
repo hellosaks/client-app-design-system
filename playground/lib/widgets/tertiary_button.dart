@@ -8,7 +8,7 @@ final withSeaColor = [
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
         bgColor: ThemeSAKS.colors.primary.sea,
-        pressColor: ThemeSAKS.colors.secondary.stone,
+        pressColor: ThemeSAKS.colors.secondary.anchor,
       ),
       leftIcon: IconProps(
         variant: IconVariant.heroicons,
@@ -25,7 +25,7 @@ final withSeaColor = [
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
         bgColor: ThemeSAKS.colors.primary.sea,
-        pressColor: ThemeSAKS.colors.secondary.stone,
+        pressColor: ThemeSAKS.colors.secondary.anchor,
       ),
       rightIcon: IconProps(
         variant: IconVariant.heroicons,
@@ -42,7 +42,7 @@ final withSeaColor = [
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
         bgColor: ThemeSAKS.colors.primary.sea,
-        pressColor: ThemeSAKS.colors.secondary.stone,
+        pressColor: ThemeSAKS.colors.secondary.anchor,
       ),
       underline: true,
       onPressed: () {},
@@ -54,7 +54,7 @@ final withSeaColor = [
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
         bgColor: ThemeSAKS.colors.primary.sea,
-        pressColor: ThemeSAKS.colors.secondary.stone,
+        pressColor: ThemeSAKS.colors.secondary.anchor,
       ),
       strikethrough: true,
       onPressed: () {},
@@ -66,7 +66,7 @@ final withSeaColor = [
     widget: ButtonTertiary(
       colorAttributes: ColorAttributesButton(
         bgColor: ThemeSAKS.colors.primary.sea,
-        pressColor: ThemeSAKS.colors.secondary.stone,
+        pressColor: ThemeSAKS.colors.secondary.anchor,
       ),
       onPressed: () {},
       text: 'Button disable',

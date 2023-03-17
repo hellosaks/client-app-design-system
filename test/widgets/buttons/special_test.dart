@@ -148,7 +148,7 @@ void main() {
 
         expect(
           (attributes[0] as BoxAttributes).color,
-          ThemeSAKS.colors.secondary.stone,
+          ThemeSAKS.colors.secondary.anchor,
         );
 
         // release press button
