@@ -28,15 +28,17 @@ void main() {
           textPaid: "Pago",
           dataLabel: [
             DataLabel(
-                data: DateFormat("dd/MM/yyyy").format(
-                  DateTime(2023, 02, 15),
-                ),
-                label: "Indicado"),
+              data: DateFormat("dd/MM/yyyy").format(
+                DateTime(2023, 02, 15),
+              ),
+              label: "Indicado",
+            ),
             DataLabel(
-                data: DateFormat("dd/MM/yyyy").format(
-                  DateTime(2023, 02, 15),
-                ),
-                label: "Plano "),
+              data: DateFormat("dd/MM/yyyy").format(
+                DateTime(2023, 02, 15),
+              ),
+              label: "Plano ",
+            ),
             DataLabel(label: "Pagamento"),
           ],
           dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2023, 01, 12)),
@@ -66,15 +68,17 @@ void main() {
           textPaid: "Pago",
           dataLabel: [
             DataLabel(
-                data: DateFormat("dd/MM/yyyy").format(
-                  DateTime(2023, 02, 15),
-                ),
-                label: "Indicado"),
+              data: DateFormat("dd/MM/yyyy").format(
+                DateTime(2023, 02, 15),
+              ),
+              label: "Indicado",
+            ),
             DataLabel(
-                data: DateFormat("dd/MM/yyyy").format(
-                  DateTime(2023, 02, 15),
-                ),
-                label: "Plan"),
+              data: DateFormat("dd/MM/yyyy").format(
+                DateTime(2023, 02, 15),
+              ),
+              label: "Plan",
+            ),
             DataLabel(label: "Pagamento"),
           ],
           dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2023, 01, 12)),
@@ -106,10 +110,11 @@ void main() {
         textPaid: "Pago",
         dataLabel: [
           DataLabel(
-              data: DateFormat("dd/MM/yyyy").format(
-                DateTime(2023, 02, 15),
-              ),
-              label: "Indicado"),
+            data: DateFormat("dd/MM/yyyy").format(
+              DateTime(2023, 02, 15),
+            ),
+            label: "Indicado",
+          ),
           DataLabel(label: "Pagamento"),
         ],
         dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
@@ -122,105 +127,117 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "Bonus" &&
-                widget.color == ThemeSAKS.colors.primary.sea &&
-                widget.variant == TypographyVariant.h7,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "Bonus" &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.variant == TypographyVariant.h7,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "Victor" &&
-                widget.color == ThemeSAKS.colors.primary.sea &&
-                widget.variant == TypographyVariant.h6 &&
-                widget.weight == FontWeight.bold,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "Victor" &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.variant == TypographyVariant.h6 &&
+              widget.weight == FontWeight.bold,
+        ),
+        findsOneWidget,
+      );
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "Pago" &&
-                widget.color == ThemeSAKS.colors.utility.conservative &&
-                widget.variant == TypographyVariant.h7,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "Pago" &&
+              widget.color == ThemeSAKS.colors.utility.conservative &&
+              widget.variant == TypographyVariant.h7,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "R\$20,00" &&
-                widget.color == ThemeSAKS.colors.primary.sea &&
-                widget.variant == TypographyVariant.h7 &&
-                widget.weight == FontWeight.bold,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "R\$20,00" &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.variant == TypographyVariant.h7 &&
+              widget.weight == FontWeight.bold,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "02/02/2022" &&
-                widget.color == ThemeSAKS.colors.primary.sea &&
-                widget.variant == TypographyVariant.h7,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "02/02/2022" &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.variant == TypographyVariant.h7,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "Indicado" &&
-                widget.color == ThemeSAKS.colors.primary.sea &&
-                widget.variant == TypographyVariant.h7 &&
-                widget.weight == FontWeight.bold,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "Indicado" &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.variant == TypographyVariant.h7 &&
+              widget.weight == FontWeight.bold,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "15/02/2023" &&
-                widget.color == ThemeSAKS.colors.primary.sea &&
-                widget.variant == TypographyVariant.h7,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "15/02/2023" &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.variant == TypographyVariant.h7,
+        ),
+        findsOneWidget,
+      );
       expect(
-          find.byWidgetPredicate((widget) =>
+        find.byWidgetPredicate(
+          (widget) =>
               widget is CustomTypography &&
               widget.text == Constants.hyphen &&
               widget.color == ThemeSAKS.colors.primary.sea &&
-              widget.variant == TypographyVariant.h7),
-          findsOneWidget);
+              widget.variant == TypographyVariant.h7,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is Icon &&
-                widget.props.heroIconsProps!.icon == HeroIcons.star &&
-                widget.props.heroIconsProps!.size == 30 &&
-                widget.props.heroIconsProps!.color ==
-                    ThemeSAKS.colors.utility.conservative,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Icon &&
+              widget.props.heroIconsProps!.icon == HeroIcons.star &&
+              widget.props.heroIconsProps!.size == 30 &&
+              widget.props.heroIconsProps!.color ==
+                  ThemeSAKS.colors.utility.conservative,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is Icon &&
-                widget.props.heroIconsProps!.icon == HeroIcons.checkCircle &&
-                widget.props.heroIconsProps!.size == 24 &&
-                widget.props.heroIconsProps!.color ==
-                    ThemeSAKS.colors.utility.conservative,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Icon &&
+              widget.props.heroIconsProps!.icon == HeroIcons.checkCircle &&
+              widget.props.heroIconsProps!.size == 24 &&
+              widget.props.heroIconsProps!.color ==
+                  ThemeSAKS.colors.utility.conservative,
+        ),
+        findsOneWidget,
+      );
 
       expect(find.byKey(ReferralCard.circleKey), findsOneWidget);
 
@@ -252,10 +269,11 @@ void main() {
         textPaid: "Pago",
         dataLabel: [
           DataLabel(
-              data: DateFormat("dd/MM/yyyy").format(
-                DateTime(2023, 02, 15),
-              ),
-              label: "Indicado"),
+            data: DateFormat("dd/MM/yyyy").format(
+              DateTime(2023, 02, 15),
+            ),
+            label: "Indicado",
+          ),
           DataLabel(
             label: "Pagamento",
             data: DateFormat("dd/MM/yyyy").format(
@@ -273,43 +291,49 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is Icon &&
-                widget.props.heroIconsProps!.icon == HeroIcons.star &&
-                widget.props.heroIconsProps!.size == 30 &&
-                widget.props.heroIconsProps!.color ==
-                    ThemeSAKS.colors.primary.sea,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Icon &&
+              widget.props.heroIconsProps!.icon == HeroIcons.star &&
+              widget.props.heroIconsProps!.size == 30 &&
+              widget.props.heroIconsProps!.color ==
+                  ThemeSAKS.colors.primary.sea,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "Pago" &&
-                widget.color == ThemeSAKS.colors.primary.sea &&
-                widget.variant == TypographyVariant.h7,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "Pago" &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.variant == TypographyVariant.h7,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "16/02/2023" &&
-                widget.color == ThemeSAKS.colors.primary.sea &&
-                widget.variant == TypographyVariant.h7,
-          ),
-          findsOneWidget);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "16/02/2023" &&
+              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.variant == TypographyVariant.h7,
+        ),
+        findsOneWidget,
+      );
 
       expect(
-          find.byWidgetPredicate((widget) =>
+        find.byWidgetPredicate(
+          (widget) =>
               widget is CustomTypography &&
               widget.text == Constants.hyphen &&
               widget.color == ThemeSAKS.colors.primary.sea &&
-              widget.variant == TypographyVariant.h7),
-          findsNothing);
+              widget.variant == TypographyVariant.h7,
+        ),
+        findsNothing,
+      );
 
       final Box box = tester.widget(find.byKey(ReferralCard.cardKey));
       final List<Attribute> boxAttributes = box.mix.attributes;

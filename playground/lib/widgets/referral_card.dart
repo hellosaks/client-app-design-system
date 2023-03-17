@@ -24,15 +24,17 @@ final referralCardDoc = ElementPreview(
         textPaid: "Pendente",
         dataLabel: [
           DataLabel(
-              data: DateFormat("dd/MM/yyyy").format(
-                DateTime(2023, 02, 15),
-              ),
-              label: "Campanha iniciada"),
+            data: DateFormat("dd/MM/yyyy").format(
+              DateTime(2023, 02, 15),
+            ),
+            label: "Campanha iniciada",
+          ),
           DataLabel(
-              data: DateFormat("dd/MM/yyyy").format(
-                DateTime(2023, 02, 15),
-              ),
-              label: "Objetivo alcançado"),
+            data: DateFormat("dd/MM/yyyy").format(
+              DateTime(2023, 02, 15),
+            ),
+            label: "Objetivo alcançado",
+          ),
         ],
         onPressed: () {},
         dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
@@ -54,15 +56,17 @@ final referralCardDoc = ElementPreview(
         textPaid: "Pago",
         dataLabel: [
           DataLabel(
-              data: DateFormat("dd/MM/yyyy").format(
-                DateTime(2023, 02, 15),
-              ),
-              label: "Indicado cadastrado"),
+            data: DateFormat("dd/MM/yyyy").format(
+              DateTime(2023, 02, 15),
+            ),
+            label: "Indicado cadastrado",
+          ),
           DataLabel(
-              data: DateFormat("dd/MM/yyyy").format(
-                DateTime(2023, 02, 15),
-              ),
-              label: "Plano contratado"),
+            data: DateFormat("dd/MM/yyyy").format(
+              DateTime(2023, 02, 15),
+            ),
+            label: "Plano contratado",
+          ),
           DataLabel(label: "Pagamento do plano efetuado"),
         ],
         dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2023, 01, 12)),
