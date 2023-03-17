@@ -1,112 +1,151 @@
-import "package:client_app_design_system/client_app_design_system.dart";
+import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
-
-import "../utils/test_wrappers.dart";
+import "package:mix/mix.dart";
 
 void main() {
-  testWidgets("Typography shown", (WidgetTester tester) async {
-    const widget = CustomTypography(
-      variant: TypographyVariant.h1,
-      text: "This is a test",
-    );
-
-    await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-    expect(find.byType(CustomTypography), findsOneWidget);
+  setUpAll(() {
+    WidgetsFlutterBinding.ensureInitialized();
   });
 
-  testWidgets("Typography render correct color", (WidgetTester tester) async {
-    const widget = CustomTypography(
-      variant: TypographyVariant.h1,
-      text: "This is a test",
-      color: Colors.blue,
-    );
+  test("Typography theme h1 correct attributes", () {
+    final List<TextAttributes> attr = ThemeSAKS.typography.h1Typo.attributes;
 
-    await tester.pumpWidget(wrapWithMaterialApp(widget));
-    final Text findedWidget = tester.widget<Text>(find.byType(Text));
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 24,
+        )
+        .toList();
 
-    expect(
-      findedWidget.style?.color,
-      Colors.blue,
-    );
+    expect(isFontOk, [true, true]);
   });
 
-  testWidgets("Typography render correct variant", (WidgetTester tester) async {
-    Map<String, Object> variantFont(int fs, TypographyVariant variant) =>
-        {"font-size": fs, "variant": variant};
+  test("Typography theme h2 correct attributes", () {
+    final List<TextAttributes> attr = ThemeSAKS.typography.h2Typo.attributes;
 
-    final variants = [
-      variantFont(24, TypographyVariant.h1),
-      variantFont(22, TypographyVariant.h2),
-      variantFont(20, TypographyVariant.h3),
-      variantFont(18, TypographyVariant.h4),
-      variantFont(16, TypographyVariant.h5),
-      variantFont(14, TypographyVariant.h6),
-      variantFont(12, TypographyVariant.h7),
-      variantFont(14, TypographyVariant.cta),
-      variantFont(14, TypographyVariant.underline),
-      variantFont(14, TypographyVariant.strikethrough),
-    ];
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 22,
+        )
+        .toList();
 
-    for (final variant in variants) {
-      final widget = CustomTypography(
-        variant: variant["variant"]! as TypographyVariant,
-        text: "This is a test",
-      );
+    expect(isFontOk, [true, true]);
+  });
+  test("Typography theme h3 correct attributes", () {
+    final List<TextAttributes> attr = ThemeSAKS.typography.h3Typo.attributes;
 
-      await tester.pumpWidget(wrapWithMaterialApp(widget));
-      final Text findedWidget = tester.widget<Text>(find.byType(Text));
-      expect(findedWidget.style?.fontSize, variant["font-size"]);
-    }
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 20,
+        )
+        .toList();
+
+    expect(isFontOk, [true, true]);
+  });
+  test("Typography theme h4 correct attributes", () {
+    final List<TextAttributes> attr = ThemeSAKS.typography.h4Typo.attributes;
+
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 18,
+        )
+        .toList();
+
+    expect(isFontOk, [true, true]);
+  });
+  test("Typography theme h5 correct attributes", () {
+    final List<TextAttributes> attr = ThemeSAKS.typography.h5Typo.attributes;
+
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 16,
+        )
+        .toList();
+
+    expect(isFontOk, [true, true]);
+  });
+  test("Typography theme h6 correct attributes", () {
+    final List<TextAttributes> attr = ThemeSAKS.typography.h6Typo.attributes;
+
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 14,
+        )
+        .toList();
+
+    expect(isFontOk, [true, true]);
+  });
+  test("Typography theme h7 correct attributes", () {
+    final List<TextAttributes> attr = ThemeSAKS.typography.h7Typo.attributes;
+
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 12,
+        )
+        .toList();
+
+    expect(isFontOk, [true, true]);
   });
 
-  testWidgets("Typography render correct font weight",
-      (WidgetTester tester) async {
-    const widget = CustomTypography(
-      variant: TypographyVariant.h1,
-      text: "This is a test",
-      weight: FontWeight.w600,
-    );
+  test("Typography theme cta correct attributes", () {
+    final List<TextAttributes> attr = ThemeSAKS.typography.ctaTypo.attributes;
 
-    await tester.pumpWidget(wrapWithMaterialApp(widget));
-    final Text findedWidget = tester.widget<Text>(find.byType(Text));
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 14 ||
+              e.style?.fontWeight == FontWeight.w800 ||
+              e.style?.letterSpacing == 2,
+        )
+        .toList();
 
-    expect(
-      findedWidget.style?.fontWeight,
-      FontWeight.w600,
-    );
+    expect(isFontOk, [true, true, true, true]);
   });
+  test("Typography theme underline correct attributes", () {
+    final List<TextAttributes> attr =
+        ThemeSAKS.typography.underlineTypo.attributes;
 
-  testWidgets("Typography render correct font alignment",
-      (WidgetTester tester) async {
-    const widget = CustomTypography(
-      variant: TypographyVariant.h1,
-      text: "This is a test",
-      align: TextAlign.justify,
-    );
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 14 ||
+              e.style?.fontWeight == FontWeight.w700 ||
+              e.style?.decoration == TextDecoration.underline,
+        )
+        .toList();
 
-    await tester.pumpWidget(wrapWithMaterialApp(widget));
-    final Text findedWidget = tester.widget<Text>(find.byType(Text));
-
-    expect(
-      findedWidget.textAlign,
-      TextAlign.justify,
-    );
+    expect(isFontOk, [true, true, true, true]);
   });
+  test("Typography theme strikethrough correct attributes", () {
+    final List<TextAttributes> attr =
+        ThemeSAKS.typography.strikethroughTypo.attributes;
 
-  testWidgets("Typography display 'This is a test' correctly",
-      (WidgetTester tester) async {
-    const widget = CustomTypography(
-      variant: TypographyVariant.h1,
-      text: "This is a test",
-    );
+    final List<bool> isFontOk = attr
+        .map(
+          (e) =>
+              e.style?.fontFamily == "plus_jakarta_sans" ||
+              e.style?.fontSize == 14 ||
+              e.style?.fontWeight == FontWeight.w700 ||
+              e.style?.decoration == TextDecoration.lineThrough,
+        )
+        .toList();
 
-    await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-    expect(
-      find.text("This is a test"),
-      findsOneWidget,
-    );
+    expect(isFontOk, [true, true, true, true]);
   });
 }

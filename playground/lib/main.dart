@@ -1,13 +1,14 @@
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:playground/widgets/auxiliar_button.dart';
+import 'package:playground/widgets/buttons/primary_button.dart';
+import 'package:playground/widgets/buttons/secondary_button.dart';
+import 'package:playground/widgets/buttons/tertiary_button.dart';
 import 'package:playground/widgets/card_banner.dart';
 import 'package:playground/widgets/custom_typography.dart';
 import 'package:playground/widgets/icons.dart';
 import 'package:playground/widgets/indication_filters.dart';
 import 'package:playground/widgets/referral_button.dart';
 import 'package:playground/widgets/special_button.dart';
-import 'package:playground/widgets/tertiary_button.dart';
 
 void main() {
   runApp(
@@ -16,8 +17,9 @@ void main() {
         ElementsSection(
           title: 'Buttons',
           elements: [
+            primaryButtonDoc,
+            secondaryButtonDoc,
             tertiaryButtonDoc,
-            auxButtonDoc,
             specialButtonDoc,
           ],
         ),

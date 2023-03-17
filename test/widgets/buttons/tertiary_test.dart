@@ -1,35 +1,62 @@
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:client_app_design_system/components/buttons/color_attributes.dart";
 import "package:flutter/material.dart" as material;
 import "package:flutter_test/flutter_test.dart";
 
 import "../../utils/test_wrappers.dart";
 
 void main() {
-  group("ButtonTertiary [SAKS]", () {
+  const text = "Button";
+
+  final withSeaColorProps = ColorAttributesButton(
+    bgColor: ThemeSAKS.colors.primary.sea,
+    pressColor: ThemeSAKS.colors.secondary.anchor,
+  );
+
+  final withDangerColorProps = ColorAttributesButton(
+    bgColor: ThemeSAKS.colors.utility.aggressive,
+    pressColor: ThemeSAKS.colors.special.rose,
+  );
+
+  final leftIconProps = IconProps(
+    variant: IconVariant.heroicons,
+    heroIconsProps: HeroIconsProps(
+      icon: HeroIcons.arrowLeft,
+    ),
+  );
+
+  final rightIconProps = IconProps(
+    variant: IconVariant.heroicons,
+    heroIconsProps: HeroIconsProps(
+      icon: HeroIcons.arrowRight,
+    ),
+  );
+
+  group("TertiaryButton [SAKS]", () {
     testWidgets("should render correctly", (WidgetTester tester) async {
-      final widget = ButtonTertiary(
+      final widget = TertiaryButton(
         onPressed: () {},
-        text: "Button",
+        text: text,
       );
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      expect(find.byType(ButtonTertiary), findsOneWidget);
+      expect(find.byType(TertiaryButton), findsOneWidget);
     });
 
     testWidgets("should correctly call onPress", (WidgetTester tester) async {
       bool pressed = false;
 
-      final widget = ButtonTertiary(
+      final widget = TertiaryButton(
         onPressed: () {
           pressed = true;
         },
-        text: "Button",
+        text: text,
       );
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      await tester.tap(find.byType(ButtonTertiary));
+      await tester.tap(find.byType(TertiaryButton));
       await tester.pump();
 
       expect(pressed, true);
@@ -38,15 +65,10 @@ void main() {
     group("with icons", () {
       testWidgets("should render correctly left icon",
           (WidgetTester tester) async {
-        final widget = ButtonTertiary(
-          leftIcon: IconProps(
-            variant: IconVariant.heroicons,
-            heroIconsProps: HeroIconsProps(
-              icon: HeroIcons.checkCircle,
-            ),
-          ),
+        final widget = TertiaryButton(
+          leftIcon: leftIconProps,
           onPressed: () {},
-          text: "Button",
+          text: text,
         );
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
@@ -56,15 +78,10 @@ void main() {
 
       testWidgets("should render correctly left icon props ",
           (WidgetTester tester) async {
-        final widget = ButtonTertiary(
-          leftIcon: IconProps(
-            variant: IconVariant.heroicons,
-            heroIconsProps: HeroIconsProps(
-              icon: HeroIcons.checkCircle,
-            ),
-          ),
+        final widget = TertiaryButton(
+          leftIcon: leftIconProps,
           onPressed: () {},
-          text: "Button",
+          text: text,
         );
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
@@ -77,15 +94,10 @@ void main() {
       });
       testWidgets("should render right icon props",
           (WidgetTester tester) async {
-        final widget = ButtonTertiary(
-          rightIcon: IconProps(
-            variant: IconVariant.heroicons,
-            heroIconsProps: HeroIconsProps(
-              icon: HeroIcons.checkCircle,
-            ),
-          ),
+        final widget = TertiaryButton(
+          rightIcon: rightIconProps,
           onPressed: () {},
-          text: "Button",
+          text: text,
         );
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
@@ -95,7 +107,7 @@ void main() {
 
       testWidgets("should render correctly right icon props",
           (WidgetTester tester) async {
-        final widget = ButtonTertiary(
+        final widget = TertiaryButton(
           rightIcon: IconProps(
             variant: IconVariant.heroicons,
             heroIconsProps: HeroIconsProps(
@@ -103,7 +115,7 @@ void main() {
             ),
           ),
           onPressed: () {},
-          text: "Button",
+          text: text,
         );
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
@@ -120,17 +132,17 @@ void main() {
       testWidgets("dont call onPress", (WidgetTester tester) async {
         bool pressed = false;
 
-        final widget = ButtonTertiary(
+        final widget = TertiaryButton(
           disable: true,
           onPressed: () {
             pressed = true;
           },
-          text: "Button",
+          text: text,
         );
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-        await tester.tap(find.byType(ButtonTertiary));
+        await tester.tap(find.byType(TertiaryButton));
         await tester.pump();
 
         expect(pressed, false);
@@ -138,9 +150,9 @@ void main() {
 
       testWidgets("should render correctly opacity",
           (WidgetTester tester) async {
-        final widget = ButtonTertiary(
+        final widget = TertiaryButton(
           onPressed: () {},
-          text: "Button",
+          text: text,
           disable: true,
         );
 
@@ -155,10 +167,10 @@ void main() {
 
     group("styles label", () {
       testWidgets("underline", (WidgetTester tester) async {
-        final widget = ButtonTertiary(
+        final widget = TertiaryButton(
           underline: true,
           onPressed: () {},
-          text: "Button",
+          text: text,
         );
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
@@ -171,10 +183,10 @@ void main() {
       });
 
       testWidgets("strikethrough", (WidgetTester tester) async {
-        final widget = ButtonTertiary(
+        final widget = TertiaryButton(
           strikethrough: true,
           onPressed: () {},
-          text: "Button",
+          text: text,
         );
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
@@ -188,40 +200,34 @@ void main() {
     });
   });
 
-  group("ButtonTertiary variant colors", () {
+  group("TertiaryButton variant colors", () {
     testWidgets("should render SEA color", (WidgetTester tester) async {
-      final widget = ButtonTertiary(
+      final widget = TertiaryButton(
         onPressed: () {},
-        colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.primary.sea,
-          pressColor: ThemeSAKS.colors.secondary.bay,
-        ),
-        text: "Button",
+        colorAttributes: withSeaColorProps,
+        text: text,
       );
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      final ButtonTertiary finded = tester.widget(find.byType(ButtonTertiary));
+      final TertiaryButton finded = tester.widget(find.byType(TertiaryButton));
       expect(finded.colorAttributes?.bgColor, ThemeSAKS.colors.primary.sea);
       expect(
         finded.colorAttributes?.pressColor,
-        ThemeSAKS.colors.secondary.bay,
+        ThemeSAKS.colors.secondary.anchor,
       );
     });
 
     testWidgets("should render DANGER color", (WidgetTester tester) async {
-      final widget = ButtonTertiary(
+      final widget = TertiaryButton(
         onPressed: () {},
-        colorAttributes: ColorAttributesButton(
-          bgColor: ThemeSAKS.colors.utility.aggressive,
-          pressColor: ThemeSAKS.colors.special.rose,
-        ),
-        text: "Button",
+        colorAttributes: withDangerColorProps,
+        text: text,
       );
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      final ButtonTertiary finded = tester.widget(find.byType(ButtonTertiary));
+      final TertiaryButton finded = tester.widget(find.byType(TertiaryButton));
       expect(
         finded.colorAttributes?.bgColor,
         ThemeSAKS.colors.utility.aggressive,

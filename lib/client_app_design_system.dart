@@ -6,7 +6,8 @@ export "package:unicons/unicons.dart"
 
 export "components/buttons/auxiliar_button.dart";
 export "components/buttons/button_special.dart";
-export "components/buttons/button_tertiary.dart";
+export "components/buttons/secondary_button.dart";
+export "components/buttons/tertiary_button.dart";
 export "components/card_banner.dart";
 export "components/custom_icons.dart";
 export "components/custom_typography.dart";
