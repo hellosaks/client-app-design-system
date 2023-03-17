@@ -119,23 +119,49 @@ class _ReferralCardState extends State<ReferralCard>
     );
   }
 
-  Widget _buildIcon() {
-    if (widget.icon.variant == IconVariant.heroicons) {
-      widget.icon.heroIconsProps?.color = Payment.paid == widget.payment
-          ? ThemeSAKS.colors.utility.conservative
-          : ThemeSAKS.colors.primary.sea;
-      widget.icon.heroIconsProps?.size =
-          AppSize(context: Get.context).getHeight(30);
+  IconProps get iconProps {
+    final IconVariant iconVariant = widget.icon.variant;
+
+    double size = AppSize(context: Get.context).getHeight(30);
+
+    switch (iconVariant) {
+      case IconVariant.heroicons:
+        final HeroIconsProps heroIconProps = widget.icon.heroIconsProps!;
+
+        heroIconProps.color = Payment.paid == widget.payment
+            ? ThemeSAKS.colors.utility.conservative
+            : ThemeSAKS.colors.primary.sea;
+        ;
+        heroIconProps.size = size;
+        return IconProps(variant: iconVariant, heroIconsProps: heroIconProps);
+
+      case IconVariant.unicons:
+        final UniconsProps uniconsProps = widget.icon.uniconsProps!;
+
+        uniconsProps.color = Payment.paid == widget.payment
+            ? ThemeSAKS.colors.utility.conservative
+            : ThemeSAKS.colors.primary.sea;
+        ;
+        uniconsProps.size = size;
+
+        return IconProps(variant: iconVariant, uniconsProps: uniconsProps);
+      case IconVariant.custom:
+        final CustomIconsProps customIconsProps = widget.icon.customIconsProps!;
+
+        customIconsProps.color = Payment.paid == widget.payment
+            ? ThemeSAKS.colors.utility.conservative
+            : ThemeSAKS.colors.primary.sea;
+        ;
+        customIconsProps.size = size;
+
+        return IconProps(
+          variant: iconVariant,
+          customIconsProps: customIconsProps,
+        );
     }
-    if (widget.icon.variant == IconVariant.unicons) {
-      widget.icon.heroIconsProps?.color = ThemeSAKS.colors.utility.conservative;
-      widget.icon.heroIconsProps?.size =
-          AppSize(context: Get.context).getHeight(30);
-    }
-    return Icon(
-      props: widget.icon,
-    );
   }
+
+  Widget _buildIcon() => Icon(props: iconProps);
 
   Widget _buildVertical3Texts() {
     final style = Mix(crossAxis(CrossAxisAlignment.start));
@@ -262,7 +288,7 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           variant: TypographyVariant.h7,
           weight: FontWeight.bold,
-          text: widget.dataLabel[0].label,
+          text: widget.dataLabel.first.label,
           color: ThemeSAKS.colors.primary.sea,
         ),
         SizedBox(
@@ -270,7 +296,7 @@ class _ReferralCardState extends State<ReferralCard>
         ),
         CustomTypography(
           variant: TypographyVariant.h7,
-          text: widget.dataLabel[0].data!,
+          text: widget.dataLabel.first.data!,
           color: ThemeSAKS.colors.primary.sea,
         ),
       ],
