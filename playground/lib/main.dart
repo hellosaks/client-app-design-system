@@ -1,5 +1,6 @@
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:playground/widgets/buttons/auxiliar_button.dart';
 import 'package:playground/widgets/buttons/primary_button.dart';
 import 'package:playground/widgets/buttons/secondary_button.dart';
 import 'package:playground/widgets/buttons/tertiary_button.dart';
@@ -21,6 +22,7 @@ void main() {
             secondaryButtonDoc,
             tertiaryButtonDoc,
             specialButtonDoc,
+            auxButtonDoc
           ],
         ),
         ElementsSection(

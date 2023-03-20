@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/components/buttons/core_button.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
 
@@ -66,7 +65,7 @@ void main() {
             text: text,
             color: seaColor,
             leftIcon: leftIconProps,
-            endIcon: true,
+            checked: true,
           ),
         ),
       );
@@ -87,12 +86,17 @@ void main() {
         ),
       );
 
-      final CoreButton finded = tester.widget(find.byType(CoreButton));
+      final CustomTypography findedCustomTypography =
+          tester.widget(find.byType(CustomTypography));
+      expect(findedCustomTypography.text, text);
+      expect(findedCustomTypography.variant, TypographyVariant.underline);
+      expect(findedCustomTypography.color, seaColor);
 
-      expect(finded.color, seaColor);
-      expect(finded.text, text);
-      expect(finded.underline, true);
-      expect(finded.rightIcon, rightIconProps);
+      final Icon findedIcon = tester.widget(find.byType(Icon));
+      expect(
+        findedIcon.props.heroIconsProps?.icon,
+        rightIconProps.heroIconsProps?.icon,
+      );
     });
 
     testWidgets("should render correctly properties", (tester) async {

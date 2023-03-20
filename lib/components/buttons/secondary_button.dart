@@ -1,6 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:client_app_design_system/components/buttons/color_attributes.dart";
-import "package:client_app_design_system/components/buttons/core_button.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:mix/mix.dart";
@@ -12,7 +11,7 @@ class SecondaryButton extends StatefulWidget {
   final IconProps? leftIcon;
   final IconProps? rightIcon;
 
-  final bool disable;
+  final bool disabled;
   final bool selected;
   final bool outlined;
   final void Function() onPressed;
@@ -28,7 +27,7 @@ class SecondaryButton extends StatefulWidget {
     this.colorAttributes,
     this.leftIcon,
     this.rightIcon,
-    this.disable = false,
+    this.disabled = false,
     this.selected = false,
     this.outlined = false,
   })  : assert(
@@ -86,7 +85,7 @@ class _SecondaryButtonState extends State<SecondaryButton> {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTapUp: (_) {
-        if (widget.disable == false) {
+        if (widget.disabled == false) {
           setState(() {
             currentColor = _pressUpColor;
             pressed = false;
@@ -97,7 +96,7 @@ class _SecondaryButtonState extends State<SecondaryButton> {
         return;
       },
       onTapCancel: () {
-        if (widget.disable == false) {
+        if (widget.disabled == false) {
           setState(() {
             currentColor = _pressDownColor;
             pressed = true;
@@ -105,7 +104,7 @@ class _SecondaryButtonState extends State<SecondaryButton> {
         }
       },
       onTapDown: (_) {
-        if (widget.disable == false) {
+        if (widget.disabled == false) {
           setState(() {
             currentColor = _pressDownColor;
             pressed = true;
@@ -118,13 +117,13 @@ class _SecondaryButtonState extends State<SecondaryButton> {
 
   Widget _buildContainer() {
     final styles = Mix(
-      mainAxis(MainAxisAlignment.center),
       rounded(ThemeSAKS.shape.borderRadius),
-      height(36),
-      crossAxis(CrossAxisAlignment.center),
-      width(315),
-      paddingHorizontal(15),
-      opacity(widget.disable == true ? 0.5 : 1),
+      width(double.infinity),
+      paddingHorizontal(10),
+      paddingVertical(
+        (widget.leftIcon != null || widget.rightIcon != null) ? 9 : 12,
+      ),
+      opacity(widget.disabled == true ? 0.5 : 1),
     );
 
     final stylesFilled = Mix.combine(
@@ -150,18 +149,19 @@ class _SecondaryButtonState extends State<SecondaryButton> {
         leftIcon: widget.leftIcon,
         rightIcon: widget.rightIcon,
         text: widget.text,
-        endIcon: widget.selected,
-        color: () {
-          if (widget.outlined == true) {
-            if (pressed == true) {
-              return _pressDownColor;
-            }
-            return _insideColor;
-          }
-
-          return _insideColor;
-        }(),
+        checked: widget.selected,
+        color: _color,
       ),
     );
+  }
+
+  Color get _color {
+    if (widget.outlined == true) {
+      if (pressed == true) {
+        return _pressDownColor;
+      }
+    }
+
+    return _insideColor;
   }
 }

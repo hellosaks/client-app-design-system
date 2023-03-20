@@ -1,4 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:client_app_design_system/utils/icon_props.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:mix/mix.dart";
 
@@ -8,7 +9,7 @@ class CoreButton extends StatelessWidget {
 
   final bool underline;
   final bool strikethrough;
-  final bool endIcon;
+  final bool checked;
 
   final IconProps? leftIcon;
   final IconProps? rightIcon;
@@ -17,7 +18,7 @@ class CoreButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.color,
-    this.endIcon = false,
+    this.checked = false,
     this.underline = false,
     this.strikethrough = false,
     this.leftIcon,
@@ -44,24 +45,24 @@ class CoreButton extends StatelessWidget {
               children: [
                 if (leftIcon != null) ...[
                   _buildLeftIcon(),
-                  const SizedBox(width: 11),
+                  const SizedBox(width: 10),
                 ],
                 _buildLabel(),
                 if (rightIcon != null) ...[
-                  const SizedBox(width: 11),
+                  const SizedBox(width: 10),
                   _buildRightIcon()
                 ],
               ],
             ),
           ),
-          _buildEndIcon()
+          _buildCheckedcon()
         ],
       ),
     );
   }
 
-  Widget _buildEndIcon() {
-    if (endIcon) {
+  Widget _buildCheckedcon() {
+    if (checked) {
       return Icon(
         key: const Key("end-icon"),
         props: IconProps(
@@ -98,47 +99,23 @@ class CoreButton extends StatelessWidget {
     );
   }
 
-  IconProps get iconProps {
-    final IconVariant iconVariant =
-        leftIcon != null ? leftIcon!.variant : rightIcon!.variant;
+  Widget _buildLeftIcon() => Icon(
+        props: iconProps(
+          variant: leftIcon!.variant,
+          props: leftIcon?.customIconsProps ??
+              leftIcon?.heroIconsProps ??
+              leftIcon?.uniconsProps,
+          color: color,
+        ),
+      );
 
-    const double size = 24;
-
-    switch (iconVariant) {
-      case IconVariant.heroicons:
-        final HeroIconsProps heroIconProps = leftIcon != null
-            ? leftIcon!.heroIconsProps!
-            : rightIcon!.heroIconsProps!;
-
-        heroIconProps.color = color;
-        heroIconProps.size = size;
-        return IconProps(variant: iconVariant, heroIconsProps: heroIconProps);
-
-      case IconVariant.unicons:
-        final UniconsProps uniconsProps = leftIcon != null
-            ? leftIcon!.uniconsProps!
-            : rightIcon!.uniconsProps!;
-
-        uniconsProps.color = color;
-        uniconsProps.size = size;
-
-        return IconProps(variant: iconVariant, uniconsProps: uniconsProps);
-      case IconVariant.custom:
-        final CustomIconsProps customIconsProps = leftIcon != null
-            ? leftIcon!.customIconsProps!
-            : rightIcon!.customIconsProps!;
-
-        customIconsProps.color = color;
-        customIconsProps.size = size;
-
-        return IconProps(
-          variant: iconVariant,
-          customIconsProps: customIconsProps,
-        );
-    }
-  }
-
-  Widget _buildLeftIcon() => Icon(props: iconProps);
-
-  Widget _buildRightIcon() => Icon(props: iconProps);
+  Widget _buildRightIcon() => Icon(
+        props: iconProps(
+          variant: rightIcon!.variant,
+          props: rightIcon?.customIconsProps ??
+              rightIcon?.heroIconsProps ??
+              rightIcon?.uniconsProps,
+          color: color,
+        ),
+      );
 }

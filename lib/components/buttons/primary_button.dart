@@ -1,6 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:client_app_design_system/components/buttons/color_attributes.dart";
-import "package:client_app_design_system/components/buttons/core_button.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:mix/mix.dart";
@@ -14,7 +13,7 @@ class PrimaryButton extends StatefulWidget {
   final IconProps? leftIcon;
   final IconProps? rightIcon;
 
-  final bool disable;
+  final bool disabled;
   final void Function() onPressed;
 
   final ColorAttributesButton? colorAttributes;
@@ -26,13 +25,17 @@ class PrimaryButton extends StatefulWidget {
     this.colorAttributes,
     this.leftIcon,
     this.rightIcon,
-    this.disable = false,
+    this.disabled = false,
     this.underline = false,
     this.strikethrough = false,
-  })  : assert(!(leftIcon != null && rightIcon != null),
-            "only direction can be used",),
-        assert(!(underline == true && strikethrough == true),
-            "only font style type can be used",);
+  })  : assert(
+          !(leftIcon != null && rightIcon != null),
+          "only direction can be used",
+        ),
+        assert(
+          !(underline == true && strikethrough == true),
+          "only font style type can be used",
+        );
 
   @override
   State<PrimaryButton> createState() => _PrimaryButtonState();
@@ -41,8 +44,9 @@ class PrimaryButton extends StatefulWidget {
 class _PrimaryButtonState extends State<PrimaryButton> {
   // default color is primary
   final defaultColorAttribures = ColorAttributesButton(
-      bgColor: ThemeSAKS.colors.primary.saks,
-      pressColor: ThemeSAKS.colors.secondary.bay,);
+    bgColor: ThemeSAKS.colors.primary.saks,
+    pressColor: ThemeSAKS.colors.secondary.bay,
+  );
 
   Color? currentColor;
 
@@ -75,7 +79,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTapUp: (_) {
-        if (widget.disable == false) {
+        if (widget.disabled == false) {
           setState(() {
             currentColor = _pressUpColor;
           });
@@ -85,14 +89,14 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         return;
       },
       onTapCancel: () {
-        if (widget.disable == false) {
+        if (widget.disabled == false) {
           setState(() {
             currentColor = _pressDownColor;
           });
         }
       },
       onTapDown: (_) {
-        if (widget.disable == false) {
+        if (widget.disabled == false) {
           setState(() {
             currentColor = _pressDownColor;
           });
@@ -109,11 +113,12 @@ class _PrimaryButtonState extends State<PrimaryButton> {
       ),
       mainAxis(MainAxisAlignment.center),
       rounded(ThemeSAKS.shape.borderRadius),
-      height(42),
-      crossAxis(CrossAxisAlignment.center),
-      width(335),
-      opacity(widget.disable == true ? 0.5 : 1),
-      paddingVertical(5),
+      paddingVertical(9),
+      width(double.infinity),
+      opacity(widget.disabled == true ? 0.5 : 1),
+      paddingVertical(
+        (widget.leftIcon != null || widget.rightIcon != null) ? 9 : 12,
+      ),
       paddingHorizontal(15),
     );
 

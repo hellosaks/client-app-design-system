@@ -133,7 +133,7 @@ void main() {
         bool pressed = false;
 
         final widget = TertiaryButton(
-          disable: true,
+          disabled: true,
           onPressed: () {
             pressed = true;
           },
@@ -153,7 +153,7 @@ void main() {
         final widget = TertiaryButton(
           onPressed: () {},
           text: text,
-          disable: true,
+          disabled: true,
         );
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));

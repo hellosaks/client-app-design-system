@@ -19,7 +19,7 @@ class TertiaryButton extends StatefulWidget {
   final IconProps? leftIcon;
   final IconProps? rightIcon;
 
-  final bool disable;
+  final bool disabled;
   final void Function() onPressed;
 
   final ColorAttributesButton? colorAttributes;
@@ -31,7 +31,7 @@ class TertiaryButton extends StatefulWidget {
     this.colorAttributes,
     this.leftIcon,
     this.rightIcon,
-    this.disable = false,
+    this.disabled = false,
     this.underline = false,
     this.strikethrough = false,
   })  : assert(
@@ -84,7 +84,7 @@ class _TertiaryButtonState extends State<TertiaryButton> {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTapUp: (_) {
-        if (widget.disable == false) {
+        if (widget.disabled == false) {
           setState(() {
             currentColor = _pressUpColor;
           });
@@ -94,21 +94,21 @@ class _TertiaryButtonState extends State<TertiaryButton> {
         return;
       },
       onTapCancel: () {
-        if (widget.disable == false) {
+        if (widget.disabled == false) {
           setState(() {
             currentColor = _pressDownColor;
           });
         }
       },
       onTapDown: (_) {
-        if (widget.disable == false) {
+        if (widget.disabled == false) {
           setState(() {
             currentColor = _pressDownColor;
           });
         }
       },
       child: Opacity(
-        opacity: widget.disable == true ? 0.5 : 1,
+        opacity: widget.disabled == true ? 0.5 : 1,
         child: CoreButton(
           leftIcon: widget.leftIcon,
           rightIcon: widget.rightIcon,

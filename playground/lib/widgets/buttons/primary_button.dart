@@ -1,6 +1,5 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
 import 'package:client_app_design_system/components/buttons/color_attributes.dart';
-import 'package:client_app_design_system/components/buttons/primary_button.dart';
 import 'package:client_app_design_system/components/buttons/primary_button.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
 
@@ -32,6 +31,14 @@ final primaryButtonDoc = ElementPreview(
       widget: PrimaryButton(
         onPressed: () {},
         colorAttributes: withSeaColorProps,
+        text: text,
+      ),
+      description: '',
+    ),
+    WidgetPreview(
+      widget: PrimaryButton(
+        onPressed: () {},
+        colorAttributes: withSeaColorProps,
         leftIcon: leftIconProps,
         text: text,
       ),
@@ -51,7 +58,7 @@ final primaryButtonDoc = ElementPreview(
         onPressed: () {},
         colorAttributes: withSeaColorProps,
         leftIcon: leftIconProps,
-        disable: true,
+        disabled: true,
         text: text,
       ),
       description: '',
