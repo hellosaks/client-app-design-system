@@ -92,7 +92,7 @@ class _SpecialButtonState extends State<SpecialButton> {
         return ThemeSAKS.colors.utility.conservative;
       case SpecialButtonVariant.share:
         if (tapped) {
-          return ThemeSAKS.colors.secondary.stone;
+          return ThemeSAKS.colors.secondary.anchor;
         }
         return ThemeSAKS.colors.primary.sea;
     }
