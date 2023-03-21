@@ -34,8 +34,6 @@ void main() {
     color: seaColor,
     rightIcon: rightIconProps,
   );
-  // final widgetPrimaryColor = CoreButton(text: text, color: primaryColor);
-  // final widgetDangerColor = CoreButton(text: text, color: dangerColor);
 
   group("Core button", () {
     testWidgets("should render correctly", (tester) async {
@@ -71,7 +69,7 @@ void main() {
       );
 
       expect(find.byType(CoreButton), findsOneWidget);
-      expect(find.byKey(const Key("end-icon")), findsOneWidget);
+      expect(find.byKey(CoreButton.keyEndIcon), findsOneWidget);
     });
 
     testWidgets("should render correctly properties", (tester) async {
@@ -96,6 +94,47 @@ void main() {
       expect(
         findedIcon.props.heroIconsProps?.icon,
         rightIconProps.heroIconsProps?.icon,
+      );
+
+      // box icon test
+      final SizedBox finded = tester.widget(find.byKey(CoreButton.keyIconBox));
+
+      expect(
+        finded.height,
+        20,
+      );
+
+      expect(
+        finded.height,
+        20,
+      );
+
+      // box icon test
+      Row findedRow = tester.widget(find.byKey(CoreButton.keyContent));
+
+      expect(
+        findedRow.children.length,
+        1,
+      );
+
+      //children on row container
+      await tester.pumpWidget(
+        wrapWithMaterialApp(
+          CoreButton(
+            text: text,
+            color: seaColor,
+            checked: true,
+            rightIcon: rightIconProps,
+            underline: true,
+          ),
+        ),
+      );
+
+      //children on row container when checked is true
+      findedRow = tester.widget(find.byKey(CoreButton.keyContent));
+      expect(
+        findedRow.children.length,
+        3,
       );
     });
   });

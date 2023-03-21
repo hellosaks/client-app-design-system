@@ -10,11 +10,15 @@ class CoreButton extends StatelessWidget {
   final bool underline;
   final bool strikethrough;
   final bool checked;
+  final bool cta;
 
   final IconProps? leftIcon;
   final IconProps? rightIcon;
 
   static double sizeIcon = 14;
+  static Key keyIconBox = const Key("icon-box");
+  static Key keyEndIcon = const Key("end-icon");
+  static Key keyContent = const Key("content-elements");
 
   const CoreButton({
     super.key,
@@ -23,6 +27,7 @@ class CoreButton extends StatelessWidget {
     this.checked = false,
     this.underline = false,
     this.strikethrough = false,
+    this.cta = false,
     this.leftIcon,
     this.rightIcon,
   });
@@ -36,6 +41,8 @@ class CoreButton extends StatelessWidget {
     return Box(
       mix: styles,
       child: Row(
+        key: keyContent,
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment:
             checked ? MainAxisAlignment.spaceBetween : MainAxisAlignment.center,
         children: [
@@ -71,7 +78,7 @@ class CoreButton extends StatelessWidget {
     return _buildBoxIcon(
       size: 24,
       child: Icon(
-        key: const Key("end-icon"),
+        key: keyEndIcon,
         props: IconProps(
           variant: IconVariant.unicons,
           uniconsProps: UniconsProps(
@@ -95,6 +102,10 @@ class CoreButton extends StatelessWidget {
       variant = TypographyVariant.strikethrough;
     }
 
+    if (cta == true) {
+      variant = TypographyVariant.cta;
+    }
+
     return CustomTypography(
       weight: FontWeight.w700,
       variant: variant,
@@ -105,6 +116,7 @@ class CoreButton extends StatelessWidget {
 
   Widget _buildBoxIcon({required Widget child, double size = 20}) {
     return SizedBox(
+      key: CoreButton.keyIconBox,
       width: size,
       height: size,
       child: child,

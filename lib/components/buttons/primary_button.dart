@@ -9,6 +9,7 @@ class PrimaryButton extends StatefulWidget {
   final String text;
   final bool underline;
   final bool strikethrough;
+  final bool cta;
 
   final IconProps? leftIcon;
   final IconProps? rightIcon;
@@ -27,6 +28,7 @@ class PrimaryButton extends StatefulWidget {
     this.disabled = false,
     this.underline = false,
     this.strikethrough = false,
+    this.cta = false,
   })  : assert(
           !(leftIcon != null && rightIcon != null),
           "only direction can be used",
@@ -118,6 +120,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
       key: PrimaryButton.boxContainerKey,
       mix: styles,
       child: CoreButton(
+        cta: widget.cta,
         leftIcon: widget.leftIcon,
         rightIcon: widget.rightIcon,
         text: widget.text,
