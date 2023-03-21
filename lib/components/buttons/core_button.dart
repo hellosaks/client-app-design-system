@@ -1,5 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/icon_props.dart";
+import "package:client_app_design_system/utils/util_functions.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:mix/mix.dart";
 
@@ -13,6 +13,8 @@ class CoreButton extends StatelessWidget {
 
   final IconProps? leftIcon;
   final IconProps? rightIcon;
+
+  static double sizeIcon = 14;
 
   const CoreButton({
     super.key,
@@ -29,54 +31,56 @@ class CoreButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final styles = Mix(
       bgColor(Colors.transparent),
-      mainAxisSize(MainAxisSize.min),
     );
+
     return Box(
       mix: styles,
       child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment:
+            checked ? MainAxisAlignment.spaceBetween : MainAxisAlignment.center,
         children: [
-          const SizedBox(
-            width: 20,
-          ),
-          Box(
-            child: HBox(
-              children: [
-                if (leftIcon != null) ...[
-                  _buildLeftIcon(),
-                  const SizedBox(width: 10),
-                ],
-                _buildLabel(),
-                if (rightIcon != null) ...[
-                  const SizedBox(width: 10),
-                  _buildRightIcon()
-                ],
-              ],
+          if (checked)
+            const SizedBox(
+              width: 20,
             ),
-          ),
-          _buildCheckedcon()
+          _buildContent(),
+          if (checked) _buildCheckedIcon()
         ],
       ),
     );
   }
 
-  Widget _buildCheckedcon() {
-    if (checked) {
-      return Icon(
+  Widget _buildContent() {
+    final HBox content = HBox(
+      children: [
+        if (leftIcon != null) ...[
+          _buildLeftIcon(),
+          const SizedBox(width: 5),
+        ],
+        _buildLabel(),
+        if (rightIcon != null) ...[const SizedBox(width: 5), _buildRightIcon()],
+      ],
+    );
+
+    return Box(
+      child: content,
+    );
+  }
+
+  Widget _buildCheckedIcon() {
+    return _buildBoxIcon(
+      size: 24,
+      child: Icon(
         key: const Key("end-icon"),
         props: IconProps(
           variant: IconVariant.unicons,
           uniconsProps: UniconsProps(
             icon: UniconsLine.check,
             color: color,
+            // size: 16,
           ),
         ),
-      );
-    }
-
-    return const SizedBox(
-      width: 20,
+      ),
     );
   }
 
@@ -99,23 +103,33 @@ class CoreButton extends StatelessWidget {
     );
   }
 
-  Widget _buildLeftIcon() => Icon(
-        props: iconProps(
-          variant: leftIcon!.variant,
-          props: leftIcon?.customIconsProps ??
-              leftIcon?.heroIconsProps ??
-              leftIcon?.uniconsProps,
-          color: color,
+  Widget _buildBoxIcon({required Widget child, double size = 20}) {
+    return SizedBox(
+      width: size,
+      height: size,
+      child: child,
+    );
+  }
+
+  Widget _buildLeftIcon() => _buildBoxIcon(
+        child: Icon(
+          props: iconProps(
+            variant: leftIcon!.variant,
+            props: leftIcon!,
+            color: color,
+            size: sizeIcon,
+          ),
         ),
       );
 
-  Widget _buildRightIcon() => Icon(
-        props: iconProps(
-          variant: rightIcon!.variant,
-          props: rightIcon?.customIconsProps ??
-              rightIcon?.heroIconsProps ??
-              rightIcon?.uniconsProps,
-          color: color,
+  Widget _buildRightIcon() => _buildBoxIcon(
+        child: Icon(
+          props: iconProps(
+            variant: rightIcon!.variant,
+            props: rightIcon!,
+            color: color,
+            size: sizeIcon,
+          ),
         ),
       );
 }

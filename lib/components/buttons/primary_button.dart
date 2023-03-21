@@ -16,13 +16,12 @@ class PrimaryButton extends StatefulWidget {
   final bool disabled;
   final void Function() onPressed;
 
-  final ColorAttributesButton? colorAttributes;
+  static const Key boxContainerKey = Key("box-container");
 
   const PrimaryButton({
     super.key,
     required this.text,
     required this.onPressed,
-    this.colorAttributes,
     this.leftIcon,
     this.rightIcon,
     this.disabled = false,
@@ -44,24 +43,22 @@ class PrimaryButton extends StatefulWidget {
 class _PrimaryButtonState extends State<PrimaryButton> {
   // default color is primary
   final defaultColorAttribures = ColorAttributesButton(
-    bgColor: ThemeSAKS.colors.primary.saks,
-    pressColor: ThemeSAKS.colors.secondary.bay,
+    bgColor: ThemeSAKS.colors.primary.sea,
+    pressColor: ThemeSAKS.colors.secondary.anchor,
   );
 
   Color? currentColor;
 
   Color get _pressUpColor {
-    return widget.colorAttributes?.bgColor ?? defaultColorAttribures.bgColor;
+    return defaultColorAttribures.bgColor;
   }
 
   Color get _pressDownColor {
-    return widget.colorAttributes?.pressColor ??
-        defaultColorAttribures.pressColor;
+    return defaultColorAttribures.pressColor;
   }
 
   Color get _insideColor {
-    return widget.colorAttributes?.insideColor ??
-        defaultColorAttribures.insideColor;
+    return defaultColorAttribures.insideColor;
   }
 
   @override
@@ -69,8 +66,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
     super.initState();
 
     setState(() {
-      currentColor =
-          widget.colorAttributes?.bgColor ?? defaultColorAttribures.bgColor;
+      currentColor = defaultColorAttribures.bgColor;
     });
   }
 
@@ -111,18 +107,15 @@ class _PrimaryButtonState extends State<PrimaryButton> {
       bgColor(
         currentColor!,
       ),
-      mainAxis(MainAxisAlignment.center),
       rounded(ThemeSAKS.shape.borderRadius),
-      paddingVertical(9),
       width(double.infinity),
       opacity(widget.disabled == true ? 0.5 : 1),
-      paddingVertical(
-        (widget.leftIcon != null || widget.rightIcon != null) ? 9 : 12,
-      ),
       paddingHorizontal(15),
+      paddingVertical(9),
     );
 
     return Box(
+      key: PrimaryButton.boxContainerKey,
       mix: styles,
       child: CoreButton(
         leftIcon: widget.leftIcon,

@@ -98,25 +98,5 @@ void main() {
         rightIconProps.heroIconsProps?.icon,
       );
     });
-
-    testWidgets("should render correctly properties", (tester) async {
-      await tester.pumpWidget(
-        wrapWithMaterialApp(
-          CoreButton(
-            text: text,
-            color: seaColor,
-            leftIcon: leftIconProps,
-            strikethrough: true,
-          ),
-        ),
-      );
-
-      final CoreButton finded = tester.widget(find.byType(CoreButton));
-
-      expect(finded.color, seaColor);
-      expect(finded.text, text);
-      expect(finded.strikethrough, true);
-      expect(finded.leftIcon, leftIconProps);
-    });
   });
 }

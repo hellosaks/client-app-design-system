@@ -30,7 +30,6 @@ final primaryButtonDoc = ElementPreview(
     WidgetPreview(
       widget: PrimaryButton(
         onPressed: () {},
-        colorAttributes: withSeaColorProps,
         text: text,
       ),
       description: '',
@@ -38,7 +37,6 @@ final primaryButtonDoc = ElementPreview(
     WidgetPreview(
       widget: PrimaryButton(
         onPressed: () {},
-        colorAttributes: withSeaColorProps,
         leftIcon: leftIconProps,
         text: text,
       ),
@@ -47,7 +45,6 @@ final primaryButtonDoc = ElementPreview(
     WidgetPreview(
       widget: PrimaryButton(
         onPressed: () {},
-        colorAttributes: withSeaColorProps,
         rightIcon: rightIconProps,
         text: text,
       ),
@@ -56,7 +53,6 @@ final primaryButtonDoc = ElementPreview(
     WidgetPreview(
       widget: PrimaryButton(
         onPressed: () {},
-        colorAttributes: withSeaColorProps,
         leftIcon: leftIconProps,
         disabled: true,
         text: text,

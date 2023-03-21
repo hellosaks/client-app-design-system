@@ -36,7 +36,7 @@ class SecondaryButton extends StatefulWidget {
         ),
         assert(
           !((leftIcon != null || rightIcon != null) && selected == true),
-          "only direction can be used",
+          "selected cannot be used with icon properties",
         ),
         assert(
           !(outlined == true && colorAttributes == null),
@@ -121,7 +121,7 @@ class _SecondaryButtonState extends State<SecondaryButton> {
       width(double.infinity),
       paddingHorizontal(10),
       paddingVertical(
-        (widget.leftIcon != null || widget.rightIcon != null) ? 9 : 12,
+        widget.selected ? 6 : 9,
       ),
       opacity(widget.disabled == true ? 0.5 : 1),
     );
