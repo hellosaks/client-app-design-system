@@ -1,49 +1,55 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
-import 'package:client_app_design_system/components/buttons/button_tertiary.doc_widget.dart';
+import 'package:client_app_design_system/components/buttons/color_attributes.dart';
+import 'package:client_app_design_system/components/buttons/tertiary_button.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
 
+final withSeaColorProps = ColorAttributesButton(
+  insideColor: ThemeSAKS.colors.primary.sea,
+  pressColor: ThemeSAKS.colors.secondary.anchor,
+);
+
+final withDangerColorProps = ColorAttributesButton(
+  insideColor: ThemeSAKS.colors.utility.aggressive,
+  pressColor: ThemeSAKS.colors.special.rose,
+);
+
+final leftIconProps = IconProps(
+  variant: IconVariant.heroicons,
+  heroIconsProps: HeroIconsProps(
+    icon: HeroIcons.arrowLeft,
+  ),
+);
+
+final rightIconProps = IconProps(
+  variant: IconVariant.heroicons,
+  heroIconsProps: HeroIconsProps(
+    icon: HeroIcons.arrowRight,
+  ),
+);
+
 final withSeaColor = [
   WidgetPreview(
-    widget: ButtonTertiary(
-      colorAttributes: ColorAttributesButton(
-        bgColor: ThemeSAKS.colors.primary.sea,
-        pressColor: ThemeSAKS.colors.secondary.anchor,
-      ),
-      leftIcon: IconProps(
-        variant: IconVariant.heroicons,
-        heroIconsProps: HeroIconsProps(
-          icon: HeroIcons.arrowLeft,
-        ),
-      ),
+    widget: TertiaryButton(
+      colorAttributes: withSeaColorProps,
+      leftIcon: leftIconProps,
       onPressed: () {},
       text: 'Button',
     ),
     description: 'Example left icon',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
-      colorAttributes: ColorAttributesButton(
-        bgColor: ThemeSAKS.colors.primary.sea,
-        pressColor: ThemeSAKS.colors.secondary.anchor,
-      ),
-      rightIcon: IconProps(
-        variant: IconVariant.heroicons,
-        heroIconsProps: HeroIconsProps(
-          icon: HeroIcons.arrowRight,
-        ),
-      ),
+    widget: TertiaryButton(
+      colorAttributes: withSeaColorProps,
+      rightIcon: rightIconProps,
       onPressed: () {},
       text: 'Button',
     ),
     description: 'Example right icon',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
-      colorAttributes: ColorAttributesButton(
-        bgColor: ThemeSAKS.colors.primary.sea,
-        pressColor: ThemeSAKS.colors.secondary.anchor,
-      ),
+    widget: TertiaryButton(
+      colorAttributes: withSeaColorProps,
       underline: true,
       onPressed: () {},
       text: 'Button',
@@ -51,11 +57,8 @@ final withSeaColor = [
     description: 'Example with text underline',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
-      colorAttributes: ColorAttributesButton(
-        bgColor: ThemeSAKS.colors.primary.sea,
-        pressColor: ThemeSAKS.colors.secondary.anchor,
-      ),
+    widget: TertiaryButton(
+      colorAttributes: withSeaColorProps,
       strikethrough: true,
       onPressed: () {},
       text: 'Button',
@@ -63,59 +66,37 @@ final withSeaColor = [
     description: 'Example with text strikethrough',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
-      colorAttributes: ColorAttributesButton(
-        bgColor: ThemeSAKS.colors.primary.sea,
-        pressColor: ThemeSAKS.colors.secondary.anchor,
-      ),
+    widget: TertiaryButton(
+      colorAttributes: withSeaColorProps,
       onPressed: () {},
       text: 'Button disable',
-      disable: true,
+      disabled: true,
     ),
     description: 'Example when is it is disabled',
   ),
 ];
 final withDangerColor = [
   WidgetPreview(
-    widget: ButtonTertiary(
-      colorAttributes: ColorAttributesButton(
-        bgColor: ThemeSAKS.colors.utility.aggressive,
-        pressColor: ThemeSAKS.colors.special.rose,
-      ),
-      leftIcon: IconProps(
-        variant: IconVariant.heroicons,
-        heroIconsProps: HeroIconsProps(
-          icon: HeroIcons.arrowLeft,
-        ),
-      ),
+    widget: TertiaryButton(
+      colorAttributes: withDangerColorProps,
+      leftIcon: leftIconProps,
       onPressed: () {},
       text: 'Button',
     ),
     description: 'Example with left icon',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
-      colorAttributes: ColorAttributesButton(
-        bgColor: ThemeSAKS.colors.utility.aggressive,
-        pressColor: ThemeSAKS.colors.special.rose,
-      ),
-      rightIcon: IconProps(
-        variant: IconVariant.heroicons,
-        heroIconsProps: HeroIconsProps(
-          icon: HeroIcons.arrowRight,
-        ),
-      ),
+    widget: TertiaryButton(
+      colorAttributes: withDangerColorProps,
+      rightIcon: rightIconProps,
       onPressed: () {},
       text: 'Button',
     ),
     description: 'Example with right icon',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
-      colorAttributes: ColorAttributesButton(
-        bgColor: ThemeSAKS.colors.utility.aggressive,
-        pressColor: ThemeSAKS.colors.special.rose,
-      ),
+    widget: TertiaryButton(
+      colorAttributes: withDangerColorProps,
       underline: true,
       onPressed: () {},
       text: 'Button',
@@ -123,11 +104,8 @@ final withDangerColor = [
     description: 'Example with text underline',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
-      colorAttributes: ColorAttributesButton(
-        bgColor: ThemeSAKS.colors.utility.aggressive,
-        pressColor: ThemeSAKS.colors.special.rose,
-      ),
+    widget: TertiaryButton(
+      colorAttributes: withDangerColorProps,
       strikethrough: true,
       onPressed: () {},
       text: 'Button',
@@ -135,47 +113,34 @@ final withDangerColor = [
     description: 'Example with text strikethrough',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
-      colorAttributes: ColorAttributesButton(
-        bgColor: ThemeSAKS.colors.utility.aggressive,
-        pressColor: ThemeSAKS.colors.special.rose,
-      ),
+    widget: TertiaryButton(
+      colorAttributes: withDangerColorProps,
       onPressed: () {},
       text: 'Button disable',
-      disable: true,
+      disabled: true,
     ),
     description: 'Example when it is disabled',
   ),
 ];
 final withPrimaryColor = [
   WidgetPreview(
-    widget: ButtonTertiary(
-      leftIcon: IconProps(
-        variant: IconVariant.heroicons,
-        heroIconsProps: HeroIconsProps(
-          icon: HeroIcons.arrowLeft,
-        ),
-      ),
+    widget: TertiaryButton(
+      leftIcon: leftIconProps,
       onPressed: () {},
       text: 'Button',
     ),
     description: 'Example with left icon',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
-      rightIcon: IconProps(
-        variant: IconVariant.heroicons,
-        heroIconsProps: HeroIconsProps(
-          icon: HeroIcons.arrowRight,
-        ),
-      ),
+    widget: TertiaryButton(
+      rightIcon: rightIconProps,
       onPressed: () {},
       text: 'Button',
     ),
     description: 'Example with right icon',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
+    widget: TertiaryButton(
       underline: true,
       onPressed: () {},
       text: 'Button',
@@ -183,7 +148,7 @@ final withPrimaryColor = [
     description: 'Example text underline',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
+    widget: TertiaryButton(
       strikethrough: true,
       onPressed: () {},
       text: 'Button',
@@ -191,17 +156,17 @@ final withPrimaryColor = [
     description: 'Example text strikethrough',
   ),
   WidgetPreview(
-    widget: ButtonTertiary(
+    widget: TertiaryButton(
       onPressed: () {},
       text: 'Button disable',
-      disable: true,
+      disabled: true,
     ),
     description: 'Example when it is disabled',
   ),
 ];
 
 final tertiaryButtonDoc = ElementPreview(
-  document: ButtonTertiaryDocWidget(),
+  document: TertiaryButtonDocWidget(),
   previews: [
     WidgetPreview(
       widget: Column(

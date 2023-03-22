@@ -31,6 +31,7 @@ class CustomTypography extends StatelessWidget {
       Mix(fontWeight(weight)),
       _getFontVariant(),
       Mix(
+        (variant == TypographyVariant.cta)(upperCase()),
         textColor(color),
         textAlign(align),
         textScaleFactor(ThemeSAKS.typography.textScaleFactor),
