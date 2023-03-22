@@ -35,12 +35,15 @@ void main() {
       expect(icon.customIconsProps, null);
       expect(icon.uniconsProps, null);
 
+      expect(icon.variant, IconVariant.heroicons);
+      expect(icon.heroIconsProps?.color, Colors.black);
+      expect(icon.heroIconsProps?.size, 24);
       expect(
         icon.heroIconsProps != null,
         true,
       );
     });
-    test("should return heroicons", () {
+    test("should return unicons icons", () {
       final icon = iconProps(
         variant: IconVariant.unicons,
         props: IconProps(
@@ -55,12 +58,15 @@ void main() {
       expect(icon.heroIconsProps, null);
       expect(icon.customIconsProps, null);
 
+      expect(icon.uniconsProps?.color, Colors.black);
+      expect(icon.uniconsProps?.size, 24);
       expect(
         icon.uniconsProps != null,
         true,
       );
+      expect(icon.variant, IconVariant.unicons);
     });
-    test("should return custom", () {
+    test("should return custom icon props", () {
       final icon = iconProps(
         variant: IconVariant.custom,
         props: IconProps(
@@ -75,6 +81,8 @@ void main() {
       expect(icon.heroIconsProps, null);
       expect(icon.uniconsProps, null);
 
+      expect(icon.customIconsProps?.size, 24);
+      expect(icon.customIconsProps?.color, Colors.black);
       expect(
         icon.customIconsProps != null,
         true,
