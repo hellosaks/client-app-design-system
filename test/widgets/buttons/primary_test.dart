@@ -133,7 +133,6 @@ void main() {
         final widget = PrimaryButton(
           text: text,
           onPressed: onPressed,
-          cta: true,
         );
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));

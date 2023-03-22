@@ -101,12 +101,12 @@ void main() {
 
       expect(
         finded.height,
-        20,
+        24,
       );
 
       expect(
         finded.height,
-        20,
+        24,
       );
 
       // box icon test

@@ -52,41 +52,16 @@ final primaryButtonDoc = ElementPreview(
             disabled: true,
             text: text,
           ),
-        ],
-      ),
-      description: '',
-    ),
-    WidgetPreview(
-      widget: Wrap(
-        runSpacing: 10,
-        children: [
-          const CustomTypography(
-            variant: TypographyVariant.cta,
-            text: "With CTA variant",
-          ),
           PrimaryButton(
             onPressed: () {},
-            text: text,
-            cta: true,
-          ),
-          PrimaryButton(
-            onPressed: () {},
-            leftIcon: leftIconProps,
-            text: text,
-            cta: true,
-          ),
-          PrimaryButton(
-            onPressed: () {},
-            rightIcon: rightIconProps,
-            text: text,
-            cta: true,
-          ),
-          PrimaryButton(
-            onPressed: () {},
-            leftIcon: leftIconProps,
+            leftIcon: IconProps(
+              variant: IconVariant.custom,
+              customIconsProps: CustomIconsProps(
+                icon: CustomIcons.icMultimedia,
+              ),
+            ),
             disabled: true,
             text: text,
-            cta: true,
           ),
         ],
       ),

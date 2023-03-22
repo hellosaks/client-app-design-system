@@ -121,7 +121,11 @@ class _SecondaryButtonState extends State<SecondaryButton> {
       width(double.infinity),
       paddingHorizontal(10),
       paddingVertical(
-        widget.selected ? 6 : 9,
+        (widget.leftIcon != null ||
+                widget.rightIcon != null ||
+                widget.selected == true)
+            ? 6
+            : 9,
       ),
       opacity(widget.disabled == true ? 0.5 : 1),
     );

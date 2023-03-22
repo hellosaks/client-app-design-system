@@ -7,9 +7,6 @@ import "package:mix/mix.dart";
 @docWidget
 class PrimaryButton extends StatefulWidget {
   final String text;
-  final bool underline;
-  final bool strikethrough;
-  final bool cta;
 
   final IconProps? leftIcon;
   final IconProps? rightIcon;
@@ -26,16 +23,9 @@ class PrimaryButton extends StatefulWidget {
     this.leftIcon,
     this.rightIcon,
     this.disabled = false,
-    this.underline = false,
-    this.strikethrough = false,
-    this.cta = false,
-  })  : assert(
+  }) : assert(
           !(leftIcon != null && rightIcon != null),
-          "only direction can be used",
-        ),
-        assert(
-          !(underline == true && strikethrough == true),
-          "only font style type can be used",
+          "only icon direction can be used",
         );
 
   @override
@@ -113,14 +103,16 @@ class _PrimaryButtonState extends State<PrimaryButton> {
       width(double.infinity),
       opacity(widget.disabled == true ? 0.5 : 1),
       paddingHorizontal(15),
-      paddingVertical(9),
+      paddingVertical(
+        (widget.leftIcon != null || widget.rightIcon != null) ? 6 : 9,
+      ),
     );
 
     return Box(
       key: PrimaryButton.boxContainerKey,
       mix: styles,
       child: CoreButton(
-        cta: widget.cta,
+        cta: true,
         leftIcon: widget.leftIcon,
         rightIcon: widget.rightIcon,
         text: widget.text,

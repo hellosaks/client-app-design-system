@@ -4,6 +4,13 @@ import 'package:client_app_design_system/components/buttons/secondary_button.doc
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
 
+final customIconProps = IconProps(
+  variant: IconVariant.custom,
+  customIconsProps: CustomIconsProps(
+    icon: CustomIcons.icMultimedia,
+  ),
+);
+
 final withSeaColorProps = ColorAttributesButton(
   bgColor: ThemeSAKS.colors.primary.sea,
   pressColor: ThemeSAKS.colors.secondary.anchor,
@@ -35,6 +42,32 @@ final outlinedColor = ColorAttributesButton(
 
 const text = "Button";
 final outlinedButton = [
+  WidgetPreview(
+    widget: Wrap(
+      runSpacing: 10,
+      children: [
+        SecondaryButton(
+          colorAttributes: outlinedColor,
+          leftIcon: customIconProps,
+          onPressed: () {},
+          outlined: true,
+          text: text,
+        ),
+        const SizedBox(
+          width: 100,
+        ),
+        SecondaryButton(
+          colorAttributes: outlinedColor,
+          leftIcon: customIconProps,
+          disabled: true,
+          onPressed: () {},
+          text: text,
+          outlined: true,
+        ),
+      ],
+    ),
+    description: '',
+  ),
   WidgetPreview(
     widget: Wrap(
       runSpacing: 10,
@@ -120,7 +153,32 @@ final withSeaColor = [
         SecondaryButton(
           colorAttributes: withSeaColorProps,
           onPressed: () {},
+          disabled: true,
           rightIcon: rightIconProps,
+          text: text,
+        ),
+      ],
+    ),
+    description: '',
+  ),
+  WidgetPreview(
+    widget: Wrap(
+      runSpacing: 10,
+      children: [
+        SecondaryButton(
+          colorAttributes: withSeaColorProps,
+          onPressed: () {},
+          rightIcon: customIconProps,
+          text: text,
+        ),
+        const SizedBox(
+          width: 100,
+        ),
+        SecondaryButton(
+          colorAttributes: withSeaColorProps,
+          onPressed: () {},
+          disabled: true,
+          rightIcon: customIconProps,
           text: text,
         ),
       ],
@@ -153,6 +211,28 @@ final withSeaColor = [
 ];
 
 final withPrimaryColor = [
+  WidgetPreview(
+    widget: Wrap(
+      runSpacing: 10,
+      children: [
+        SecondaryButton(
+          onPressed: () {},
+          rightIcon: customIconProps,
+          text: text,
+        ),
+        const SizedBox(
+          width: 100,
+        ),
+        SecondaryButton(
+          onPressed: () {},
+          disabled: true,
+          rightIcon: customIconProps,
+          text: text,
+        ),
+      ],
+    ),
+    description: '',
+  ),
   WidgetPreview(
     widget: Wrap(
       runSpacing: 10,
@@ -221,6 +301,30 @@ final withPrimaryColor = [
 ];
 
 final withDangerColor = [
+  WidgetPreview(
+    widget: Wrap(
+      runSpacing: 10,
+      children: [
+        SecondaryButton(
+          onPressed: () {},
+          rightIcon: customIconProps,
+          text: text,
+          colorAttributes: withDangerColorProps,
+        ),
+        const SizedBox(
+          width: 100,
+        ),
+        SecondaryButton(
+          onPressed: () {},
+          disabled: true,
+          colorAttributes: withDangerColorProps,
+          rightIcon: customIconProps,
+          text: text,
+        ),
+      ],
+    ),
+    description: '',
+  ),
   WidgetPreview(
     widget: Wrap(
       runSpacing: 10,
