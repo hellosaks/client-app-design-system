@@ -55,10 +55,8 @@ final primaryButtonDoc = ElementPreview(
           PrimaryButton(
             onPressed: () {},
             leftIcon: IconProps(
-              variant: IconVariant.custom,
-              customIconsProps: CustomIconsProps(
-                icon: CustomIcons.icMultimedia,
-              ),
+              variant: IconVariant.heroicons,
+              heroIconsProps: HeroIconsProps(icon: HeroIcons.photo),
             ),
             disabled: true,
             text: text,

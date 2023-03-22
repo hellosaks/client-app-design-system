@@ -4,11 +4,9 @@ import 'package:client_app_design_system/components/buttons/secondary_button.doc
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
 
-final customIconProps = IconProps(
-  variant: IconVariant.custom,
-  customIconsProps: CustomIconsProps(
-    icon: CustomIcons.icMultimedia,
-  ),
+final photoIconProps = IconProps(
+  variant: IconVariant.heroicons,
+  heroIconsProps: HeroIconsProps(icon: HeroIcons.photo),
 );
 
 final withSeaColorProps = ColorAttributesButton(
@@ -48,7 +46,7 @@ final outlinedButton = [
       children: [
         SecondaryButton(
           colorAttributes: outlinedColor,
-          leftIcon: customIconProps,
+          leftIcon: photoIconProps,
           onPressed: () {},
           outlined: true,
           text: text,
@@ -58,7 +56,7 @@ final outlinedButton = [
         ),
         SecondaryButton(
           colorAttributes: outlinedColor,
-          leftIcon: customIconProps,
+          leftIcon: photoIconProps,
           disabled: true,
           onPressed: () {},
           text: text,
@@ -168,7 +166,7 @@ final withSeaColor = [
         SecondaryButton(
           colorAttributes: withSeaColorProps,
           onPressed: () {},
-          rightIcon: customIconProps,
+          rightIcon: photoIconProps,
           text: text,
         ),
         const SizedBox(
@@ -178,7 +176,7 @@ final withSeaColor = [
           colorAttributes: withSeaColorProps,
           onPressed: () {},
           disabled: true,
-          rightIcon: customIconProps,
+          rightIcon: photoIconProps,
           text: text,
         ),
       ],
@@ -217,7 +215,7 @@ final withPrimaryColor = [
       children: [
         SecondaryButton(
           onPressed: () {},
-          rightIcon: customIconProps,
+          rightIcon: photoIconProps,
           text: text,
         ),
         const SizedBox(
@@ -226,7 +224,7 @@ final withPrimaryColor = [
         SecondaryButton(
           onPressed: () {},
           disabled: true,
-          rightIcon: customIconProps,
+          rightIcon: photoIconProps,
           text: text,
         ),
       ],
@@ -307,7 +305,7 @@ final withDangerColor = [
       children: [
         SecondaryButton(
           onPressed: () {},
-          rightIcon: customIconProps,
+          rightIcon: photoIconProps,
           text: text,
           colorAttributes: withDangerColorProps,
         ),
@@ -318,7 +316,7 @@ final withDangerColor = [
           onPressed: () {},
           disabled: true,
           colorAttributes: withDangerColorProps,
-          rightIcon: customIconProps,
+          rightIcon: photoIconProps,
           text: text,
         ),
       ],

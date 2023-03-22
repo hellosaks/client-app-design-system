@@ -15,11 +15,6 @@ class CoreButton extends StatelessWidget {
   final IconProps? leftIcon;
   final IconProps? rightIcon;
 
-  static double sizeIcon = 12;
-  static double sizeCustomIcon = 20;
-
-  static double defaultSizeBox = 24;
-
   static Key keyIconBox = const Key("icon-box");
   static Key keyEndIcon = const Key("end-icon");
   static Key keyContent = const Key("content-elements");
@@ -132,9 +127,6 @@ class CoreButton extends StatelessWidget {
             variant: leftIcon!.variant,
             props: leftIcon!,
             color: color,
-            size: leftIcon!.variant == IconVariant.custom
-                ? sizeCustomIcon
-                : sizeIcon,
           ),
         ),
       );
@@ -145,9 +137,6 @@ class CoreButton extends StatelessWidget {
             variant: rightIcon!.variant,
             props: rightIcon!,
             color: color,
-            size: rightIcon!.variant == IconVariant.custom
-                ? sizeCustomIcon
-                : sizeIcon,
           ),
         ),
       );
