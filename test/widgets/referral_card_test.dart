@@ -4,7 +4,6 @@ import "package:client_app_design_system/utils/constants.dart";
 import "package:client_app_design_system/utils/data_label.dart";
 import "package:flutter/painting.dart";
 import "package:flutter_test/flutter_test.dart";
-import "package:intl/intl.dart";
 import "package:mix/mix.dart";
 
 import "../utils/test_wrappers.dart";
@@ -28,20 +27,16 @@ void main() {
           textPaid: "Pago",
           dataLabel: [
             DataLabel(
-              data: DateFormat("dd/MM/yyyy").format(
-                DateTime(2023, 02, 15),
-              ),
+              data: "15/02/2023",
               label: "Indicado",
             ),
             DataLabel(
-              data: DateFormat("dd/MM/yyyy").format(
-                DateTime(2023, 02, 15),
-              ),
+              data: "15/02/2023",
               label: "Plano ",
             ),
             DataLabel(label: "Pagamento"),
           ],
-          dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2023, 01, 12)),
+          dateCard: "12/01/2023",
           onPressed: () {},
         );
         await tester.pumpWidget(wrapWithMaterialApp(widget));
@@ -68,20 +63,16 @@ void main() {
           textPaid: "Pago",
           dataLabel: [
             DataLabel(
-              data: DateFormat("dd/MM/yyyy").format(
-                DateTime(2023, 02, 15),
-              ),
+              data: "15/02/2023",
               label: "Indicado",
             ),
             DataLabel(
-              data: DateFormat("dd/MM/yyyy").format(
-                DateTime(2023, 02, 15),
-              ),
+              data: "15/02/2023",
               label: "Plan",
             ),
             DataLabel(label: "Pagamento"),
           ],
-          dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2023, 01, 12)),
+          dateCard: "12/01/2023",
           onPressed: () {
             pressed = true;
           },
@@ -110,14 +101,12 @@ void main() {
         textPaid: "Pago",
         dataLabel: [
           DataLabel(
-            data: DateFormat("dd/MM/yyyy").format(
-              DateTime(2023, 02, 15),
-            ),
+            data: "15/02/2023",
             label: "Indicado",
           ),
           DataLabel(label: "Pagamento"),
         ],
-        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
+        dateCard: "02/02/2022",
         onPressed: () {},
       );
 
@@ -269,19 +258,15 @@ void main() {
         textPaid: "Pago",
         dataLabel: [
           DataLabel(
-            data: DateFormat("dd/MM/yyyy").format(
-              DateTime(2023, 02, 15),
-            ),
+            data: "15/02/2023",
             label: "Indicado",
           ),
           DataLabel(
             label: "Pagamento",
-            data: DateFormat("dd/MM/yyyy").format(
-              DateTime(2023, 02, 16),
-            ),
+            data: "16/02/2023",
           ),
         ],
-        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
+        dateCard: "02/02/2022",
         onPressed: () {},
       );
 

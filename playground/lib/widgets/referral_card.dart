@@ -3,8 +3,6 @@ import 'package:client_app_design_system/components/referral_card.dart';
 import 'package:client_app_design_system/components/referral_card.doc_widget.dart';
 import 'package:client_app_design_system/utils/data_label.dart';
 import 'package:doc_widget/doc_widget.dart';
-// ignore: depend_on_referenced_packages
-import 'package:intl/intl.dart';
 
 final referralCardDoc = ElementPreview(
   document: ReferralCardDocWidget(), // From generated file
@@ -24,20 +22,16 @@ final referralCardDoc = ElementPreview(
         textPaid: "Pendente",
         dataLabel: [
           DataLabel(
-            data: DateFormat("dd/MM/yyyy").format(
-              DateTime(2023, 02, 15),
-            ),
+            data: "15/02/2023",
             label: "Campanha iniciada",
           ),
           DataLabel(
-            data: DateFormat("dd/MM/yyyy").format(
-              DateTime(2023, 02, 15),
-            ),
+            data: "15/02/2023",
             label: "Objetivo alcançado",
           ),
         ],
         onPressed: () {},
-        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2022, 02, 02)),
+        dateCard: "02/02/2022",
       ),
       description: 'Referral card Paid color',
     ),
@@ -56,20 +50,16 @@ final referralCardDoc = ElementPreview(
         textPaid: "Pago",
         dataLabel: [
           DataLabel(
-            data: DateFormat("dd/MM/yyyy").format(
-              DateTime(2023, 02, 15),
-            ),
+            data: "15/02/2023",
             label: "Indicado cadastrado",
           ),
           DataLabel(
-            data: DateFormat("dd/MM/yyyy").format(
-              DateTime(2023, 02, 15),
-            ),
+            data: "15/02/2023",
             label: "Plano contratado",
           ),
           DataLabel(label: "Pagamento do plano efetuado"),
         ],
-        dateCard: DateFormat("dd/MM/yyyy").format(DateTime(2023, 01, 12)),
+        dateCard: "12/01/2023",
         onPressed: () {},
       ),
       description: 'Referral card Pending color',

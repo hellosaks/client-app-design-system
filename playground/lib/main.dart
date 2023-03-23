@@ -30,6 +30,10 @@ void main() {
           ],
         ),
         ElementsSection(
+          title: 'Cards',
+          elements: [referralCardDoc],
+        ),
+        ElementsSection(
           title: 'Widgets',
           elements: [
             customTypographyDoc,
@@ -39,10 +43,6 @@ void main() {
             cardBannerDoc,
             customTabsDoc
           ],
-        ),
-        ElementsSection(
-          title: 'Cards',
-          elements: [referralCardDoc],
         ),
       ],
     ),

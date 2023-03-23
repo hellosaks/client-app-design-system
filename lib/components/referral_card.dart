@@ -25,18 +25,18 @@ class ReferralCard extends StatefulWidget {
   final List<DataLabel> dataLabel;
   final void Function() onPressed;
 
-  const ReferralCard(
-      {Key? key,
-      required this.payment,
-      required this.textBonus,
-      required this.name,
-      required this.dateCard,
-      required this.valueBonus,
-      required this.dataLabel,
-      required this.icon,
-      required this.onPressed,
-      required this.textPaid})
-      : super(key: key);
+  const ReferralCard({
+    super.key,
+    required this.payment,
+    required this.textBonus,
+    required this.name,
+    required this.dateCard,
+    required this.valueBonus,
+    required this.dataLabel,
+    required this.icon,
+    required this.onPressed,
+    required this.textPaid,
+  });
 
   static const Key circleKey = Key("circleKey");
   static const Key cardKey = Key("cardKey");
@@ -69,32 +69,35 @@ class _ReferralCardState extends State<ReferralCard>
   @override
   Widget build(BuildContext context) {
     final box = Mix(
-      bgColor(widget.payment == Payment.paid
-          ? ThemeSAKS.colors.special.leaf
-          : ThemeSAKS.colors.primary.sky),
+      bgColor(
+        widget.payment == Payment.paid
+            ? ThemeSAKS.colors.special.leaf
+            : ThemeSAKS.colors.primary.sky,
+      ),
       rounded(ThemeSAKS.shape.borderRadiusCard),
       width(315),
     );
 
     return GestureDetector(
-        onTap: () {
-          setState(() {
-            _expanded = !_expanded;
-          });
-          widget.onPressed();
+      onTap: () {
+        setState(() {
+          _expanded = !_expanded;
+        });
+        widget.onPressed();
 
-          _expanded ? _controller.forward() : _controller.reverse();
-        },
-        child: Box(
-          mix: box,
-          key: ReferralCard.cardKey,
-          child: VBox(
-            children: [
-              _buildClosedCardInfo(),
-              _buildExtendedCard(),
-            ],
-          ),
-        ));
+        _expanded ? _controller.forward() : _controller.reverse();
+      },
+      child: Box(
+        mix: box,
+        key: ReferralCard.cardKey,
+        child: VBox(
+          children: [
+            _buildClosedCardInfo(),
+            _buildExtendedCard(),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _buildClosedCardInfo() {
@@ -122,7 +125,7 @@ class _ReferralCardState extends State<ReferralCard>
   IconProps get iconProps {
     final IconVariant iconVariant = widget.icon.variant;
 
-    double size = AppSize(context: Get.context).getHeight(30);
+    final double size = AppSize(context: Get.context).getHeight(30);
 
     switch (iconVariant) {
       case IconVariant.heroicons:
@@ -131,7 +134,7 @@ class _ReferralCardState extends State<ReferralCard>
         heroIconProps.color = Payment.paid == widget.payment
             ? ThemeSAKS.colors.utility.conservative
             : ThemeSAKS.colors.primary.sea;
-        ;
+        {}
         heroIconProps.size = size;
         return IconProps(variant: iconVariant, heroIconsProps: heroIconProps);
 
@@ -141,7 +144,7 @@ class _ReferralCardState extends State<ReferralCard>
         uniconsProps.color = Payment.paid == widget.payment
             ? ThemeSAKS.colors.utility.conservative
             : ThemeSAKS.colors.primary.sea;
-        ;
+        {}
         uniconsProps.size = size;
 
         return IconProps(variant: iconVariant, uniconsProps: uniconsProps);
@@ -151,7 +154,7 @@ class _ReferralCardState extends State<ReferralCard>
         customIconsProps.color = Payment.paid == widget.payment
             ? ThemeSAKS.colors.utility.conservative
             : ThemeSAKS.colors.primary.sea;
-        ;
+        {}
         customIconsProps.size = size;
 
         return IconProps(
@@ -229,24 +232,27 @@ class _ReferralCardState extends State<ReferralCard>
     );
     return SizeTransition(
       sizeFactor: _animation,
-      child: VBox(children: [
-        const CustomDivider(),
-        SizedBox(
-          height: AppSize(context: Get.context).getHeight(10),
-        ),
-        Box(
-          mix: style,
-          child: VBox(children: [
-            _textWithIcon(),
-            ...widget.dataLabel
-                .sublist(1)
-                .asMap()
-                .entries
-                .map((index) => _textWithIconList(index.key + 1))
-                .toList()
-          ]),
-        )
-      ]),
+      child: VBox(
+        children: [
+          const CustomDivider(),
+          SizedBox(
+            height: AppSize(context: Get.context).getHeight(10),
+          ),
+          Box(
+            mix: style,
+            child: VBox(
+              children: [
+                _textWithIcon(),
+                ...widget.dataLabel
+                    .sublist(1)
+                    .asMap()
+                    .entries
+                    .map((index) => _textWithIconList(index.key + 1))
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -307,33 +313,35 @@ class _ReferralCardState extends State<ReferralCard>
     final style = Mix(
       pl(25),
     );
-    return VBox(children: [
-      _buildVerticalCircles(index),
-      HBox(
-        mix: style,
-        children: [
-          if (widget.dataLabel[index].data == null) ...[
-            _buildCircleIcon(),
-          ] else ...[
-            Icon(
-              props: IconProps(
-                variant: IconVariant.heroicons,
-                heroIconsProps: HeroIconsProps(
-                  style: HeroIconStyle.solid,
-                  icon: HeroIcons.checkCircle,
-                  color: ThemeSAKS.colors.utility.conservative,
-                  size: 24,
+    return VBox(
+      children: [
+        _buildVerticalCircles(index),
+        HBox(
+          mix: style,
+          children: [
+            if (widget.dataLabel[index].data == null) ...[
+              _buildCircleIcon(),
+            ] else ...[
+              Icon(
+                props: IconProps(
+                  variant: IconVariant.heroicons,
+                  heroIconsProps: HeroIconsProps(
+                    style: HeroIconStyle.solid,
+                    icon: HeroIcons.checkCircle,
+                    color: ThemeSAKS.colors.utility.conservative,
+                    size: 24,
+                  ),
                 ),
               ),
+            ],
+            const SizedBox(
+              width: 24,
             ),
+            _textExtended(index),
           ],
-          const SizedBox(
-            width: 24,
-          ),
-          _textExtended(index),
-        ],
-      ),
-    ]);
+        ),
+      ],
+    );
   }
 
   Widget _textExtended(int index) {
@@ -422,9 +430,11 @@ class _ReferralCardState extends State<ReferralCard>
       opacity(widget.dataLabel[index].data == null ? 0.2 : 1),
       height(4),
       width(4),
-      bgColor(widget.dataLabel[index].data == null
-          ? ThemeSAKS.colors.primary.sea
-          : ThemeSAKS.colors.utility.conservative),
+      bgColor(
+        widget.dataLabel[index].data == null
+            ? ThemeSAKS.colors.primary.sea
+            : ThemeSAKS.colors.utility.conservative,
+      ),
       rounded(ThemeSAKS.shape.borderRadius),
     );
 
