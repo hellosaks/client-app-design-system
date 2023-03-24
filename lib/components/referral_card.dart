@@ -14,16 +14,15 @@ import "package:mix/mix.dart";
 
 @docWidget
 class ReferralCard extends StatefulWidget {
-  final Payment payment;
+  final ReferralPaymentType payment;
   final String textBonus;
   final String name;
   final String valueBonus;
   final IconProps icon;
   final String textPaid;
-
   final String dateCard;
   final List<DataLabel> dataLabel;
-  final void Function() onPressed;
+  final void Function()? onPressed;
 
   const ReferralCard({
     super.key,
@@ -34,7 +33,7 @@ class ReferralCard extends StatefulWidget {
     required this.valueBonus,
     required this.dataLabel,
     required this.icon,
-    required this.onPressed,
+    this.onPressed,
     required this.textPaid,
   });
 
@@ -57,20 +56,12 @@ class _ReferralCardState extends State<ReferralCard>
   );
 
   bool _expanded = false;
-  final styleVBox = Mix(
-    pt(10),
-    pl(26),
-    pr(20),
-    pb(14),
-    crossAxis(CrossAxisAlignment.center),
-    mainAxis(MainAxisAlignment.spaceBetween),
-  );
 
   @override
   Widget build(BuildContext context) {
     final box = Mix(
       bgColor(
-        widget.payment == Payment.paid
+        widget.payment == ReferralPaymentType.paid
             ? ThemeSAKS.colors.special.leaf
             : ThemeSAKS.colors.primary.sky,
       ),
@@ -83,7 +74,7 @@ class _ReferralCardState extends State<ReferralCard>
         setState(() {
           _expanded = !_expanded;
         });
-        widget.onPressed();
+        widget.onPressed!();
 
         _expanded ? _controller.forward() : _controller.reverse();
       },
@@ -101,8 +92,16 @@ class _ReferralCardState extends State<ReferralCard>
   }
 
   Widget _buildClosedCardInfo() {
+    final style = Mix(
+      pt(10),
+      pl(26),
+      pr(20),
+      pb(14),
+      crossAxis(CrossAxisAlignment.end),
+      mainAxis(MainAxisAlignment.spaceBetween),
+    );
     return HBox(
-      mix: styleVBox,
+      mix: style,
       children: [
         _buildIconWith3Texts(),
         _buildVertical2Texts(),
@@ -131,7 +130,7 @@ class _ReferralCardState extends State<ReferralCard>
       case IconVariant.heroicons:
         final HeroIconsProps heroIconProps = widget.icon.heroIconsProps!;
 
-        heroIconProps.color = Payment.paid == widget.payment
+        heroIconProps.color = ReferralPaymentType.paid == widget.payment
             ? ThemeSAKS.colors.utility.conservative
             : ThemeSAKS.colors.primary.sea;
         {}
@@ -141,7 +140,7 @@ class _ReferralCardState extends State<ReferralCard>
       case IconVariant.unicons:
         final UniconsProps uniconsProps = widget.icon.uniconsProps!;
 
-        uniconsProps.color = Payment.paid == widget.payment
+        uniconsProps.color = ReferralPaymentType.paid == widget.payment
             ? ThemeSAKS.colors.utility.conservative
             : ThemeSAKS.colors.primary.sea;
         {}
@@ -151,7 +150,7 @@ class _ReferralCardState extends State<ReferralCard>
       case IconVariant.custom:
         final CustomIconsProps customIconsProps = widget.icon.customIconsProps!;
 
-        customIconsProps.color = Payment.paid == widget.payment
+        customIconsProps.color = ReferralPaymentType.paid == widget.payment
             ? ThemeSAKS.colors.utility.conservative
             : ThemeSAKS.colors.primary.sea;
         {}
@@ -168,6 +167,7 @@ class _ReferralCardState extends State<ReferralCard>
 
   Widget _buildVertical3Texts() {
     final style = Mix(crossAxis(CrossAxisAlignment.start));
+    final styleTypo = Mix(opacity(0.5));
 
     return VBox(
       mix: style,
@@ -175,7 +175,9 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           variant: TypographyVariant.h7,
           text: widget.textBonus,
+          weight: FontWeight.w600,
           color: ThemeSAKS.colors.primary.sea,
+          mix: styleTypo,
         ),
         SizedBox(
           height: AppSize(context: Get.context).getHeight(7),
@@ -192,7 +194,9 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           variant: TypographyVariant.h7,
           text: widget.textPaid,
-          color: widget.payment == Payment.paid
+          mix: widget.payment == ReferralPaymentType.paid ? null : styleTypo,
+          weight: FontWeight.w600,
+          color: widget.payment == ReferralPaymentType.paid
               ? ThemeSAKS.colors.utility.conservative
               : ThemeSAKS.colors.primary.sea,
         ),
@@ -201,13 +205,19 @@ class _ReferralCardState extends State<ReferralCard>
   }
 
   Widget _buildVertical2Texts() {
+    final style = Mix(
+      opacity(0.5),
+    );
+
+    final styleVbox = Mix(
+      crossAxis(CrossAxisAlignment.end),
+    );
+
     return VBox(
+      mix: styleVbox,
       children: [
-        SizedBox(
-          height: AppSize(context: Get.context).getHeight(21),
-        ),
         CustomTypography(
-          variant: TypographyVariant.h7,
+          variant: TypographyVariant.h6,
           weight: FontWeight.bold,
           text: widget.valueBonus,
           color: ThemeSAKS.colors.primary.sea,
@@ -218,6 +228,8 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           variant: TypographyVariant.h7,
           text: widget.dateCard,
+          weight: FontWeight.w600,
+          mix: style,
           color: ThemeSAKS.colors.primary.sea,
         ),
       ],
@@ -243,11 +255,12 @@ class _ReferralCardState extends State<ReferralCard>
             child: VBox(
               children: [
                 _textWithIcon(),
-                ...widget.dataLabel
-                    .sublist(1)
-                    .asMap()
-                    .entries
-                    .map((index) => _textWithIconList(index.key + 1))
+                ...widget.dataLabel.sublist(1).asMap().entries.map(
+                      (index) => _textWithIconList(
+                        index.value.data,
+                        index.value.label,
+                      ),
+                    )
               ],
             ),
           )
@@ -278,78 +291,55 @@ class _ReferralCardState extends State<ReferralCard>
         const SizedBox(
           width: 24,
         ),
-        _buildFirstTextExtended(),
-      ],
-    );
-  }
-
-  Widget _buildFirstTextExtended() {
-    final style = Mix(
-      crossAxis(CrossAxisAlignment.start),
-    );
-
-    return VBox(
-      mix: style,
-      children: [
-        CustomTypography(
-          variant: TypographyVariant.h7,
-          weight: FontWeight.bold,
-          text: widget.dataLabel.first.label,
-          color: ThemeSAKS.colors.primary.sea,
-        ),
-        SizedBox(
-          height: AppSize(context: Get.context).getHeight(5),
-        ),
-        CustomTypography(
-          variant: TypographyVariant.h7,
-          text: widget.dataLabel.first.data!,
-          color: ThemeSAKS.colors.primary.sea,
+        _textExtended(
+          widget.dataLabel.first.data,
+          widget.dataLabel.first.label,
         ),
       ],
     );
   }
 
-  Widget _textWithIconList(int index) {
+  Widget _buildCheckCircle() {
+    return Icon(
+      props: IconProps(
+        variant: IconVariant.heroicons,
+        heroIconsProps: HeroIconsProps(
+          style: HeroIconStyle.solid,
+          icon: HeroIcons.checkCircle,
+          color: ThemeSAKS.colors.utility.conservative,
+          size: 24,
+        ),
+      ),
+    );
+  }
+
+  Widget _textWithIconList(String? data, String label) {
     final style = Mix(
       pl(25),
     );
     return VBox(
       children: [
-        _buildVerticalCircles(index),
+        _buildVerticalCircles(data),
         HBox(
           mix: style,
           children: [
-            if (widget.dataLabel[index].data == null) ...[
-              _buildCircleIcon(),
-            ] else ...[
-              Icon(
-                props: IconProps(
-                  variant: IconVariant.heroicons,
-                  heroIconsProps: HeroIconsProps(
-                    style: HeroIconStyle.solid,
-                    icon: HeroIcons.checkCircle,
-                    color: ThemeSAKS.colors.utility.conservative,
-                    size: 24,
-                  ),
-                ),
-              ),
-            ],
+            if (data == null) _buildCircleIcon() else _buildCheckCircle(),
             const SizedBox(
               width: 24,
             ),
-            _textExtended(index),
+            _textExtended(data, label),
           ],
         ),
       ],
     );
   }
 
-  Widget _textExtended(int index) {
+  Widget _textExtended(String? data, String label) {
     final style = Mix(
       crossAxis(CrossAxisAlignment.start),
     );
     final styleText = Mix(
-      opacity(widget.dataLabel[index].data == null ? 0.5 : 1),
+      opacity(data == null ? 0.5 : 1),
     );
 
     return VBox(
@@ -358,7 +348,7 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           variant: TypographyVariant.h7,
           weight: FontWeight.bold,
-          text: widget.dataLabel[index].label,
+          text: label,
           color: ThemeSAKS.colors.primary.sea,
         ),
         SizedBox(
@@ -367,9 +357,7 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           mix: styleText,
           variant: TypographyVariant.h7,
-          text: widget.dataLabel[index].data == null
-              ? Constants.hyphen
-              : widget.dataLabel[index].data!,
+          text: data ?? Constants.hyphen,
           color: ThemeSAKS.colors.primary.sea,
         ),
       ],
@@ -398,7 +386,7 @@ class _ReferralCardState extends State<ReferralCard>
     );
   }
 
-  Widget _buildVerticalCircles(int index) {
+  Widget _buildVerticalCircles(String? data) {
     final style = Mix(
       pl(35),
       crossAxis(CrossAxisAlignment.start),
@@ -409,29 +397,29 @@ class _ReferralCardState extends State<ReferralCard>
       children: [
         VBox(
           children: [
-            _buildCircle(index),
+            _buildCircle(data),
             SizedBox(
               height: AppSize(context: Get.context).getHeight(10),
             ),
-            _buildCircle(index),
+            _buildCircle(data),
             SizedBox(
               height: AppSize(context: Get.context).getHeight(10),
             ),
-            _buildCircle(index),
+            _buildCircle(data),
           ],
         )
       ],
     );
   }
 
-  Widget _buildCircle(int index) {
+  Widget _buildCircle(String? data) {
     final style = Mix(
       crossAxis(CrossAxisAlignment.end),
-      opacity(widget.dataLabel[index].data == null ? 0.2 : 1),
+      opacity(data == null ? 0.2 : 1),
       height(4),
       width(4),
       bgColor(
-        widget.dataLabel[index].data == null
+        data == null
             ? ThemeSAKS.colors.primary.sea
             : ThemeSAKS.colors.utility.conservative,
       ),

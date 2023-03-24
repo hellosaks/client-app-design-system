@@ -34,6 +34,6 @@ enum IconVariant { heroicons, unicons, custom }
 
 enum Filter { activated, pending }
 
-enum Payment { paid, pending }
+enum ReferralPaymentType { paid, pending }
 
 enum SpecialButtonVariant { whatsapp, share }

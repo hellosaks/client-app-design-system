@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/components/referral_card.dart";
 import "package:client_app_design_system/utils/constants.dart";
 import "package:client_app_design_system/utils/data_label.dart";
 import "package:flutter/painting.dart";
@@ -14,7 +13,7 @@ void main() {
       "render component",
       (WidgetTester tester) async {
         final widget = ReferralCard(
-          payment: Payment.paid,
+          payment: ReferralPaymentType.paid,
           icon: IconProps(
             variant: IconVariant.heroicons,
             heroIconsProps: HeroIconsProps(
@@ -50,7 +49,7 @@ void main() {
       (WidgetTester tester) async {
         bool pressed = false;
         final widget = ReferralCard(
-          payment: Payment.paid,
+          payment: ReferralPaymentType.paid,
           icon: IconProps(
             variant: IconVariant.heroicons,
             heroIconsProps: HeroIconsProps(
@@ -88,7 +87,7 @@ void main() {
 
     testWidgets("expected texts and icons", (WidgetTester tester) async {
       final widget = ReferralCard(
-        payment: Payment.paid,
+        payment: ReferralPaymentType.paid,
         icon: IconProps(
           variant: IconVariant.heroicons,
           heroIconsProps: HeroIconsProps(
@@ -154,7 +153,7 @@ void main() {
               widget is CustomTypography &&
               widget.text == "R\$20,00" &&
               widget.color == ThemeSAKS.colors.primary.sea &&
-              widget.variant == TypographyVariant.h7 &&
+              widget.variant == TypographyVariant.h6 &&
               widget.weight == FontWeight.bold,
         ),
         findsOneWidget,
@@ -242,10 +241,10 @@ void main() {
       );
     });
     testWidgets(
-        "expected Payment pending colors, data and input with equal size ",
+        "expected ReferralPaymentType pending colors, data and input with equal size ",
         (WidgetTester tester) async {
       final widget = ReferralCard(
-        payment: Payment.pending,
+        payment: ReferralPaymentType.pending,
         icon: IconProps(
           variant: IconVariant.heroicons,
           heroIconsProps: HeroIconsProps(

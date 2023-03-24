@@ -1,5 +1,4 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
-import 'package:client_app_design_system/components/referral_card.dart';
 import 'package:client_app_design_system/components/referral_card.doc_widget.dart';
 import 'package:client_app_design_system/utils/data_label.dart';
 import 'package:doc_widget/doc_widget.dart';
@@ -9,7 +8,7 @@ final referralCardDoc = ElementPreview(
   previews: [
     WidgetPreview(
       widget: ReferralCard(
-        payment: Payment.pending,
+        payment: ReferralPaymentType.pending,
         icon: IconProps(
           variant: IconVariant.heroicons,
           heroIconsProps: HeroIconsProps(
@@ -37,7 +36,7 @@ final referralCardDoc = ElementPreview(
     ),
     WidgetPreview(
       widget: ReferralCard(
-        payment: Payment.paid,
+        payment: ReferralPaymentType.paid,
         icon: IconProps(
           variant: IconVariant.heroicons,
           heroIconsProps: HeroIconsProps(
