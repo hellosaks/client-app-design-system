@@ -5,6 +5,7 @@ import 'package:playground/widgets/buttons/primary_button.dart';
 import 'package:playground/widgets/buttons/secondary_button.dart';
 import 'package:playground/widgets/buttons/tertiary_button.dart';
 import 'package:playground/widgets/card_banner.dart';
+import 'package:playground/widgets/custom_tabs.dart';
 import 'package:playground/widgets/custom_typography.dart';
 import 'package:playground/widgets/icons.dart';
 import 'package:playground/widgets/indication_filters.dart';
@@ -33,6 +34,7 @@ void main() {
             referralButtonDoc,
             indicationFiltersDoc,
             cardBannerDoc,
+            customTabsDoc
           ],
         ),
       ],
