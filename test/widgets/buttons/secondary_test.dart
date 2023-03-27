@@ -18,6 +18,11 @@ void main() {
     bgColor: ThemeSAKS.colors.utility.aggressive,
     pressColor: ThemeSAKS.colors.special.rose,
   );
+  final outlinedColor = ColorAttributesButton(
+    bgColor: ThemeSAKS.colors.utility.aggressive,
+    pressColor: ThemeSAKS.colors.special.rose,
+    outsideColor: ThemeSAKS.colors.primary.saks,
+  );
 
   void onPressed() {}
   group("Secondary Button", () {
@@ -205,6 +210,24 @@ void main() {
         ThemeSAKS.colors.utility.aggressive,
       );
       expect(finded.colorAttributes?.pressColor, ThemeSAKS.colors.special.rose);
+    });
+
+    testWidgets("should render outline color", (WidgetTester tester) async {
+      final widget = SecondaryButton(
+        onPressed: () {},
+        colorAttributes: outlinedColor,
+        text: text,
+      );
+
+      await tester.pumpWidget(wrapWithMaterialApp(widget));
+
+      final SecondaryButton finded =
+          tester.widget(find.byType(SecondaryButton));
+
+      expect(
+        finded.colorAttributes?.outsideColor,
+        ThemeSAKS.colors.primary.saks,
+      );
     });
   });
 
