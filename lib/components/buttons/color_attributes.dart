@@ -4,16 +4,20 @@ class ColorAttributesButton {
   final Color bgColor;
   final Color pressColor;
   final Color insideColor;
-  final Color? outsideColor;
+  final Color? borderColor;
 
   ColorAttributesButton({
     required this.pressColor,
     this.bgColor = Colors.transparent,
     this.insideColor = Colors.white,
-    this.outsideColor,
+    this.borderColor,
   })  : assert(
           !(bgColor == insideColor),
           "background color and inside color can't not be equals",
+        ),
+        assert(
+          !(bgColor == borderColor),
+          "background color and border color can't not be equals",
         ),
         assert(
           !(pressColor == bgColor),

@@ -143,7 +143,7 @@ class _SecondaryButtonState extends State<SecondaryButton> {
         borderWidth(1),
         press(borderColor(_pressDownColor)),
         borderColor(
-          widget.colorAttributes?.outsideColor ??
+          widget.colorAttributes?.borderColor ??
               ThemeSAKS.colors.grayscale.division,
         ),
       ),

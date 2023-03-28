@@ -40,7 +40,7 @@ final outlinedColor = ColorAttributesButton(
 final outlinedColorSaks = ColorAttributesButton(
   insideColor: ThemeSAKS.colors.primary.saks,
   pressColor: ThemeSAKS.colors.secondary.anchor,
-  outsideColor: ThemeSAKS.colors.primary.saks,
+  borderColor: ThemeSAKS.colors.primary.saks,
 );
 
 const text = "Button";
