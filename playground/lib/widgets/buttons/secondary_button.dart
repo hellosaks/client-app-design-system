@@ -37,6 +37,11 @@ final outlinedColor = ColorAttributesButton(
   insideColor: ThemeSAKS.colors.primary.sea,
   pressColor: ThemeSAKS.colors.secondary.anchor,
 );
+final outlinedColorSaks = ColorAttributesButton(
+  insideColor: ThemeSAKS.colors.primary.saks,
+  pressColor: ThemeSAKS.colors.secondary.anchor,
+  borderColor: ThemeSAKS.colors.primary.saks,
+);
 
 const text = "Button";
 final outlinedButton = [
@@ -56,6 +61,24 @@ final outlinedButton = [
         ),
         SecondaryButton(
           colorAttributes: outlinedColor,
+          leftIcon: photoIconProps,
+          disabled: true,
+          onPressed: () {},
+          text: text,
+          outlined: true,
+        ),
+        const SizedBox(
+          width: 100,
+        ),
+        SecondaryButton(
+          colorAttributes: outlinedColorSaks,
+          leftIcon: photoIconProps,
+          onPressed: () {},
+          text: text,
+          outlined: true,
+        ),
+        SecondaryButton(
+          colorAttributes: outlinedColorSaks,
           leftIcon: photoIconProps,
           disabled: true,
           onPressed: () {},
