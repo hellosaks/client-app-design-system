@@ -125,6 +125,7 @@ class _ReferralCardState extends State<ReferralCard>
           color: widget.payment == ReferralPaymentType.paid
               ? ThemeSAKS.colors.utility.conservative
               : ThemeSAKS.colors.primary.sea,
+          size: 30,
         ),
       );
 
@@ -262,7 +263,14 @@ class _ReferralCardState extends State<ReferralCard>
 
   Widget _buildCheckCircle() {
     return Icon(
-      props: widget.icon,
+      props: IconProps(
+        variant: IconVariant.unicons,
+        uniconsProps: UniconsProps(
+          icon: UniconsSolid.check_circle,
+          color: ThemeSAKS.colors.utility.conservative,
+          size: 24,
+        ),
+      ),
     );
   }
 

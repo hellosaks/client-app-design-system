@@ -15,9 +15,10 @@ void main() {
         final widget = ReferralCard(
           payment: ReferralPaymentType.paid,
           icon: IconProps(
-            variant: IconVariant.heroicons,
-            heroIconsProps: HeroIconsProps(
-              icon: HeroIcons.user,
+            variant: IconVariant.unicons,
+            uniconsProps: UniconsProps(
+              icon: UniconsLine.user,
+              size: 20,
             ),
           ),
           textBonus: "Bonus",
@@ -51,9 +52,10 @@ void main() {
         final widget = ReferralCard(
           payment: ReferralPaymentType.paid,
           icon: IconProps(
-            variant: IconVariant.heroicons,
-            heroIconsProps: HeroIconsProps(
-              icon: HeroIcons.user,
+            variant: IconVariant.unicons,
+            uniconsProps: UniconsProps(
+              icon: UniconsLine.user,
+              size: 20,
             ),
           ),
           textBonus: "Bonus",
@@ -89,9 +91,9 @@ void main() {
       final widget = ReferralCard(
         payment: ReferralPaymentType.paid,
         icon: IconProps(
-          variant: IconVariant.heroicons,
-          heroIconsProps: HeroIconsProps(
-            icon: HeroIcons.star,
+          variant: IconVariant.unicons,
+          uniconsProps: UniconsProps(
+            icon: UniconsLine.user,
           ),
         ),
         textBonus: "Bonus",
@@ -207,9 +209,9 @@ void main() {
         find.byWidgetPredicate(
           (widget) =>
               widget is Icon &&
-              widget.props.heroIconsProps!.icon == HeroIcons.star &&
-              widget.props.heroIconsProps!.size == 30 &&
-              widget.props.heroIconsProps!.color ==
+              widget.props.uniconsProps!.icon == UniconsLine.user &&
+              widget.props.uniconsProps!.size == 30 &&
+              widget.props.uniconsProps!.color ==
                   ThemeSAKS.colors.utility.conservative,
         ),
         findsOneWidget,
@@ -219,9 +221,9 @@ void main() {
         find.byWidgetPredicate(
           (widget) =>
               widget is Icon &&
-              widget.props.heroIconsProps!.icon == HeroIcons.checkCircle &&
-              widget.props.heroIconsProps!.size == 24 &&
-              widget.props.heroIconsProps!.color ==
+              widget.props.uniconsProps!.icon == UniconsSolid.check_circle &&
+              widget.props.uniconsProps!.size == 24 &&
+              widget.props.uniconsProps!.color ==
                   ThemeSAKS.colors.utility.conservative,
         ),
         findsOneWidget,
@@ -246,9 +248,9 @@ void main() {
       final widget = ReferralCard(
         payment: ReferralPaymentType.pending,
         icon: IconProps(
-          variant: IconVariant.heroicons,
-          heroIconsProps: HeroIconsProps(
-            icon: HeroIcons.star,
+          variant: IconVariant.unicons,
+          uniconsProps: UniconsProps(
+            icon: UniconsLine.star,
           ),
         ),
         textBonus: "Bonus",
@@ -278,10 +280,9 @@ void main() {
         find.byWidgetPredicate(
           (widget) =>
               widget is Icon &&
-              widget.props.heroIconsProps!.icon == HeroIcons.star &&
-              widget.props.heroIconsProps!.size == 30 &&
-              widget.props.heroIconsProps!.color ==
-                  ThemeSAKS.colors.primary.sea,
+              widget.props.uniconsProps!.icon == UniconsLine.star &&
+              widget.props.uniconsProps!.size == 30 &&
+              widget.props.uniconsProps!.color == ThemeSAKS.colors.primary.sea,
         ),
         findsOneWidget,
       );
