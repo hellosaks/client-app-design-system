@@ -133,6 +133,8 @@ class _SecondaryButtonState extends State<SecondaryButton> {
     final stylesFilled = Mix.combine(
       styles,
       Mix(
+        borderWidth(1),
+        borderColor(currentColor!),
         bgColor(currentColor!),
       ),
     );
