@@ -10,9 +10,10 @@ final referralCardDoc = ElementPreview(
       widget: ReferralCard(
         payment: ReferralPaymentType.pending,
         icon: IconProps(
-          variant: IconVariant.heroicons,
-          heroIconsProps: HeroIconsProps(
-            icon: HeroIcons.star,
+          variant: IconVariant.unicons,
+          uniconsProps: UniconsProps(
+            icon: UniconsLine.user,
+            size: 20,
           ),
         ),
         textBonus: "Bônus Campanha",
@@ -38,9 +39,10 @@ final referralCardDoc = ElementPreview(
       widget: ReferralCard(
         payment: ReferralPaymentType.paid,
         icon: IconProps(
-          variant: IconVariant.heroicons,
-          heroIconsProps: HeroIconsProps(
-            icon: HeroIcons.user,
+          variant: IconVariant.unicons,
+          uniconsProps: UniconsProps(
+            icon: UniconsLine.star,
+            size: 20,
           ),
         ),
         textBonus: "Bonus",

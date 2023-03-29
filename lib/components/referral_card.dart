@@ -1,15 +1,12 @@
+import "package:client_app_design_system/client_app_design_system.dart";
 import "package:client_app_design_system/components/cards/lib/components/custom_divider.dart";
-import "package:client_app_design_system/components/custom_typography.dart";
-import "package:client_app_design_system/components/icon.dart";
-import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:client_app_design_system/utils/app_size.dart";
 import "package:client_app_design_system/utils/constants.dart";
 import "package:client_app_design_system/utils/data_label.dart";
-import "package:client_app_design_system/utils/enums.dart";
+import "package:client_app_design_system/utils/util_functions.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:get/get.dart";
-import "package:heroicons/heroicons.dart";
 import "package:mix/mix.dart";
 
 @docWidget
@@ -33,8 +30,8 @@ class ReferralCard extends StatefulWidget {
     required this.valueBonus,
     required this.dataLabel,
     required this.icon,
-    this.onPressed,
     required this.textPaid,
+    this.onPressed,
   });
 
   static const Key circleKey = Key("circleKey");
@@ -103,69 +100,35 @@ class _ReferralCardState extends State<ReferralCard>
     return HBox(
       mix: style,
       children: [
-        _buildIconWith3Texts(),
+        _buildIconWithTexts(),
         _buildVertical2Texts(),
       ],
     );
   }
 
-  Widget _buildIconWith3Texts() {
+  Widget _buildIconWithTexts() {
     return HBox(
       children: [
         _buildIcon(),
         const SizedBox(
           width: 24,
         ),
-        _buildVertical3Texts(),
+        _buildTexts(),
       ],
     );
   }
 
-  IconProps get iconProps {
-    final IconVariant iconVariant = widget.icon.variant;
+  Widget _buildIcon() => Icon(
+        props: iconProps(
+          props: widget.icon,
+          variant: IconVariant.unicons,
+          color: widget.payment == ReferralPaymentType.paid
+              ? ThemeSAKS.colors.utility.conservative
+              : ThemeSAKS.colors.primary.sea,
+        ),
+      );
 
-    final double size = AppSize(context: Get.context).getHeight(30);
-
-    switch (iconVariant) {
-      case IconVariant.heroicons:
-        final HeroIconsProps heroIconProps = widget.icon.heroIconsProps!;
-
-        heroIconProps.color = ReferralPaymentType.paid == widget.payment
-            ? ThemeSAKS.colors.utility.conservative
-            : ThemeSAKS.colors.primary.sea;
-        {}
-        heroIconProps.size = size;
-        return IconProps(variant: iconVariant, heroIconsProps: heroIconProps);
-
-      case IconVariant.unicons:
-        final UniconsProps uniconsProps = widget.icon.uniconsProps!;
-
-        uniconsProps.color = ReferralPaymentType.paid == widget.payment
-            ? ThemeSAKS.colors.utility.conservative
-            : ThemeSAKS.colors.primary.sea;
-        {}
-        uniconsProps.size = size;
-
-        return IconProps(variant: iconVariant, uniconsProps: uniconsProps);
-      case IconVariant.custom:
-        final CustomIconsProps customIconsProps = widget.icon.customIconsProps!;
-
-        customIconsProps.color = ReferralPaymentType.paid == widget.payment
-            ? ThemeSAKS.colors.utility.conservative
-            : ThemeSAKS.colors.primary.sea;
-        {}
-        customIconsProps.size = size;
-
-        return IconProps(
-          variant: iconVariant,
-          customIconsProps: customIconsProps,
-        );
-    }
-  }
-
-  Widget _buildIcon() => Icon(props: iconProps);
-
-  Widget _buildVertical3Texts() {
+  Widget _buildTexts() {
     final style = Mix(crossAxis(CrossAxisAlignment.start));
     final styleTypo = Mix(opacity(0.5));
 
@@ -255,10 +218,10 @@ class _ReferralCardState extends State<ReferralCard>
             child: VBox(
               children: [
                 _textWithIcon(),
-                ...widget.dataLabel.sublist(1).asMap().entries.map(
+                ...widget.dataLabel.sublist(1).map(
                       (index) => _textWithIconList(
-                        index.value.data,
-                        index.value.label,
+                        index.data,
+                        index.label,
                       ),
                     )
               ],
@@ -270,19 +233,17 @@ class _ReferralCardState extends State<ReferralCard>
   }
 
   Widget _textWithIcon() {
-    final style = Mix(
-      pl(25),
-    );
-
     return HBox(
-      mix: style,
+      // mix: style,
       children: [
+        const SizedBox(
+          width: 25,
+        ),
         Icon(
           props: IconProps(
-            variant: IconVariant.heroicons,
-            heroIconsProps: HeroIconsProps(
-              style: HeroIconStyle.solid,
-              icon: HeroIcons.checkCircle,
+            variant: IconVariant.unicons,
+            uniconsProps: UniconsProps(
+              icon: UniconsSolid.check_circle,
               color: ThemeSAKS.colors.utility.conservative,
               size: 24,
             ),
@@ -301,15 +262,7 @@ class _ReferralCardState extends State<ReferralCard>
 
   Widget _buildCheckCircle() {
     return Icon(
-      props: IconProps(
-        variant: IconVariant.heroicons,
-        heroIconsProps: HeroIconsProps(
-          style: HeroIconStyle.solid,
-          icon: HeroIcons.checkCircle,
-          color: ThemeSAKS.colors.utility.conservative,
-          size: 24,
-        ),
-      ),
+      props: widget.icon,
     );
   }
 
