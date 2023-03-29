@@ -38,7 +38,22 @@ class _CenterButtonState extends State<CenterButton> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      highlightColor: widget.disabled
+          ? Colors.transparent
+          : OldThemeSAKS.colors.grayTone.colorGray13,
+      focusColor: widget.disabled
+          ? Colors.transparent
+          : OldThemeSAKS.colors.grayTone.colorGray13,
+      splashColor: widget.disabled
+          ? Colors.transparent
+          : OldThemeSAKS.colors.grayTone.colorGray13,
+      hoverColor: widget.disabled
+          ? Colors.transparent
+          : OldThemeSAKS.colors.grayTone.colorGray13,
+      canRequestFocus: widget.disabled == false,
+      enableFeedback: widget.disabled == false,
+      borderRadius: BorderRadius.circular(30),
       onTapUp: (_) {
         if (widget.disabled == false) {
           setState(() {

@@ -25,7 +25,7 @@ void main() {
   );
 
   group("Center Button", () {
-    testWidgets("", (tester) async {
+    testWidgets("should render correctly", (tester) async {
       final widget = CenterButton(
         onPressed: () {},
         colorAttributes: withSeaColorPropsNotBG,
@@ -35,6 +35,46 @@ void main() {
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
       expect(find.byType(CenterButton), findsOneWidget);
+    });
+
+    testWidgets("should render correctly gesture detector", (tester) async {
+      final widget = CenterButton(
+        onPressed: () {},
+        colorAttributes: withSeaColorPropsNotBG,
+        icon: UniconsLine.arrow_left,
+      );
+
+      await tester.pumpWidget(wrapWithMaterialApp(widget));
+
+      expect(find.byType(InkWell), findsOneWidget);
+
+      final InkWell finded = tester.widget<InkWell>(find.byType(InkWell));
+      expect(finded.borderRadius, BorderRadius.circular(30.0));
+      expect(finded.focusColor, OldThemeSAKS.colors.grayTone.colorGray13);
+      expect(finded.hoverColor, OldThemeSAKS.colors.grayTone.colorGray13);
+      expect(finded.splashColor, OldThemeSAKS.colors.grayTone.colorGray13);
+      expect(finded.highlightColor, OldThemeSAKS.colors.grayTone.colorGray13);
+    });
+
+    testWidgets("should render correctly gesture detector disabled",
+        (tester) async {
+      final widget = CenterButton(
+        onPressed: () {},
+        disabled: true,
+        colorAttributes: withSeaColorPropsNotBG,
+        icon: UniconsLine.arrow_left,
+      );
+
+      await tester.pumpWidget(wrapWithMaterialApp(widget));
+
+      expect(find.byType(InkWell), findsOneWidget);
+
+      final InkWell finded = tester.widget<InkWell>(find.byType(InkWell));
+      expect(finded.borderRadius, BorderRadius.circular(30.0));
+      expect(finded.focusColor, Colors.transparent);
+      expect(finded.hoverColor, Colors.transparent);
+      expect(finded.splashColor, Colors.transparent);
+      expect(finded.highlightColor, Colors.transparent);
     });
 
     testWidgets("should call correctly onPress", (tester) async {
