@@ -12,6 +12,7 @@ export "components/buttons/secondary_button.dart";
 export "components/buttons/tertiary_button.dart";
 export "components/card_banner.dart";
 export "components/custom_icons.dart";
+export "components/custom_tabs.dart";
 export "components/custom_typography.dart";
 export "components/icon.dart";
 export "components/referral_button.dart";
