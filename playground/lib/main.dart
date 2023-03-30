@@ -1,10 +1,12 @@
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:playground/widgets/buttons/auxiliar_button.dart';
+import 'package:playground/widgets/buttons/center_button.dart';
 import 'package:playground/widgets/buttons/primary_button.dart';
 import 'package:playground/widgets/buttons/secondary_button.dart';
 import 'package:playground/widgets/buttons/tertiary_button.dart';
 import 'package:playground/widgets/card_banner.dart';
+import 'package:playground/widgets/custom_tabs.dart';
 import 'package:playground/widgets/custom_typography.dart';
 import 'package:playground/widgets/icons.dart';
 import 'package:playground/widgets/indication_filters.dart';
@@ -18,6 +20,7 @@ void main() {
         ElementsSection(
           title: 'Buttons',
           elements: [
+            centerButtonDoc,
             primaryButtonDoc,
             secondaryButtonDoc,
             tertiaryButtonDoc,
@@ -33,6 +36,7 @@ void main() {
             referralButtonDoc,
             indicationFiltersDoc,
             cardBannerDoc,
+            customTabsDoc
           ],
         ),
       ],

@@ -40,7 +40,7 @@ class SecondaryButton extends StatefulWidget {
         ),
         assert(
           !(outlined == true && colorAttributes == null),
-          "you nedd pass color attributes",
+          "you need pass color attributes",
         );
 
   @override
@@ -133,6 +133,8 @@ class _SecondaryButtonState extends State<SecondaryButton> {
     final stylesFilled = Mix.combine(
       styles,
       Mix(
+        borderWidth(1),
+        borderColor(currentColor!),
         bgColor(currentColor!),
       ),
     );
@@ -142,7 +144,10 @@ class _SecondaryButtonState extends State<SecondaryButton> {
       Mix(
         borderWidth(1),
         press(borderColor(_pressDownColor)),
-        borderColor(ThemeSAKS.colors.grayscale.division),
+        borderColor(
+          widget.colorAttributes?.borderColor ??
+              ThemeSAKS.colors.grayscale.division,
+        ),
       ),
     );
 
