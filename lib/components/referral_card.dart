@@ -72,8 +72,10 @@ class _ReferralCardState extends State<ReferralCard>
           _expanded = !_expanded;
           _expanded ? _controller.forward() : _controller.reverse();
         });
-        final pressed = widget.onPressed;
-        pressed!();
+
+        if (widget.onPressed != null) {
+          widget.onPressed!.call();
+        }
       },
       child: Box(
         mix: box,
