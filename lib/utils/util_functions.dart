@@ -16,7 +16,7 @@ IconProps iconProps({
   required IconVariant variant,
   required IconProps props,
   Color? color,
-  double? size = 24,
+  double? size,
 }) {
   switch (variant) {
     case IconVariant.heroicons:

@@ -63,17 +63,17 @@ class _ReferralCardState extends State<ReferralCard>
             : ThemeSAKS.colors.primary.sky,
       ),
       rounded(ThemeSAKS.shape.borderRadiusCard),
-      width(315),
+      width(double.infinity),
     );
 
     return GestureDetector(
       onTap: () {
         setState(() {
           _expanded = !_expanded;
+          _expanded ? _controller.forward() : _controller.reverse();
         });
-        widget.onPressed!();
-
-        _expanded ? _controller.forward() : _controller.reverse();
+        final pressed = widget.onPressed;
+        pressed!();
       },
       child: Box(
         mix: box,
@@ -140,7 +140,7 @@ class _ReferralCardState extends State<ReferralCard>
           variant: TypographyVariant.h7,
           text: widget.textBonus,
           weight: FontWeight.w600,
-          color: ThemeSAKS.colors.primary.sea,
+          color: ThemeSAKS.colors.primary.sea.withOpacity(0.5),
           mix: styleTypo,
         ),
         SizedBox(
@@ -162,7 +162,7 @@ class _ReferralCardState extends State<ReferralCard>
           weight: FontWeight.w600,
           color: widget.payment == ReferralPaymentType.paid
               ? ThemeSAKS.colors.utility.conservative
-              : ThemeSAKS.colors.primary.sea,
+              : ThemeSAKS.colors.primary.sea.withOpacity(0.5),
         ),
       ],
     );
@@ -170,7 +170,7 @@ class _ReferralCardState extends State<ReferralCard>
 
   Widget _buildVertical2Texts() {
     final style = Mix(
-      opacity(0.5),
+      opacity(1),
     );
 
     final styleVbox = Mix(
@@ -194,7 +194,7 @@ class _ReferralCardState extends State<ReferralCard>
           text: widget.dateCard,
           weight: FontWeight.w600,
           mix: style,
-          color: ThemeSAKS.colors.primary.sea,
+          color: ThemeSAKS.colors.primary.sea.withOpacity(0.5),
         ),
       ],
     );
@@ -299,9 +299,6 @@ class _ReferralCardState extends State<ReferralCard>
     final style = Mix(
       crossAxis(CrossAxisAlignment.start),
     );
-    final styleText = Mix(
-      opacity(data == null ? 0.5 : 1),
-    );
 
     return VBox(
       mix: style,
@@ -316,10 +313,9 @@ class _ReferralCardState extends State<ReferralCard>
           height: AppSize(context: Get.context).getHeight(5),
         ),
         CustomTypography(
-          mix: styleText,
           variant: TypographyVariant.h7,
           text: data ?? Constants.hyphen,
-          color: ThemeSAKS.colors.primary.sea,
+          color: ThemeSAKS.colors.primary.sea.withOpacity(0.5),
         ),
       ],
     );
@@ -348,6 +344,7 @@ class _ReferralCardState extends State<ReferralCard>
   }
 
   Widget _buildVerticalCircles(String? data) {
+    final circle = _buildCircle(data);
     final style = Mix(
       pl(35),
       crossAxis(CrossAxisAlignment.start),
@@ -358,15 +355,15 @@ class _ReferralCardState extends State<ReferralCard>
       children: [
         VBox(
           children: [
-            _buildCircle(data),
+            circle,
             SizedBox(
               height: AppSize(context: Get.context).getHeight(10),
             ),
-            _buildCircle(data),
+            circle,
             SizedBox(
               height: AppSize(context: Get.context).getHeight(10),
             ),
-            _buildCircle(data),
+            circle,
           ],
         )
       ],

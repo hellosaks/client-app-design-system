@@ -121,7 +121,7 @@ void main() {
           (widget) =>
               widget is CustomTypography &&
               widget.text == "Bonus" &&
-              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.color == ThemeSAKS.colors.primary.sea.withOpacity(0.5) &&
               widget.variant == TypographyVariant.h7,
         ),
         findsOneWidget,
@@ -166,7 +166,7 @@ void main() {
           (widget) =>
               widget is CustomTypography &&
               widget.text == "02/02/2022" &&
-              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.color == ThemeSAKS.colors.primary.sea.withOpacity(0.5) &&
               widget.variant == TypographyVariant.h7,
         ),
         findsOneWidget,
@@ -189,7 +189,7 @@ void main() {
           (widget) =>
               widget is CustomTypography &&
               widget.text == "15/02/2023" &&
-              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.color == ThemeSAKS.colors.primary.sea.withOpacity(0.5) &&
               widget.variant == TypographyVariant.h7,
         ),
         findsOneWidget,
@@ -199,7 +199,7 @@ void main() {
           (widget) =>
               widget is CustomTypography &&
               widget.text == Constants.hyphen &&
-              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.color == ThemeSAKS.colors.primary.sea.withOpacity(0.5) &&
               widget.variant == TypographyVariant.h7,
         ),
         findsOneWidget,
@@ -239,7 +239,7 @@ void main() {
       );
       expect(
         (boxAttributes[2] as BoxAttributes).width,
-        315,
+        double.infinity,
       );
     });
     testWidgets(
@@ -292,7 +292,7 @@ void main() {
           (widget) =>
               widget is CustomTypography &&
               widget.text == "Pago" &&
-              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.color == ThemeSAKS.colors.primary.sea.withOpacity(0.5) &&
               widget.variant == TypographyVariant.h7,
         ),
         findsOneWidget,
@@ -303,7 +303,7 @@ void main() {
           (widget) =>
               widget is CustomTypography &&
               widget.text == "16/02/2023" &&
-              widget.color == ThemeSAKS.colors.primary.sea &&
+              widget.color == ThemeSAKS.colors.primary.sea.withOpacity(0.5) &&
               widget.variant == TypographyVariant.h7,
         ),
         findsOneWidget,
