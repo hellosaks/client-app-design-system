@@ -27,6 +27,7 @@ void main() {
           variant: IconVariant.heroicons,
           heroIconsProps: HeroIconsProps(
             icon: HeroIcons.archiveBox,
+            size: 24,
           ),
         ),
         color: Colors.black,
@@ -50,6 +51,7 @@ void main() {
           variant: IconVariant.unicons,
           uniconsProps: UniconsProps(
             icon: UniconsLine.adjust,
+            size: 24,
           ),
         ),
         color: Colors.black,
@@ -73,6 +75,7 @@ void main() {
           variant: IconVariant.custom,
           customIconsProps: CustomIconsProps(
             icon: CustomIcons.icShare,
+            size: 24,
           ),
         ),
         color: Colors.black,

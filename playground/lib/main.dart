@@ -11,6 +11,7 @@ import 'package:playground/widgets/custom_typography.dart';
 import 'package:playground/widgets/icons.dart';
 import 'package:playground/widgets/indication_filters.dart';
 import 'package:playground/widgets/referral_button.dart';
+import 'package:playground/widgets/referral_card.dart';
 import 'package:playground/widgets/special_button.dart';
 
 void main() {
@@ -27,6 +28,10 @@ void main() {
             specialButtonDoc,
             auxButtonDoc
           ],
+        ),
+        ElementsSection(
+          title: 'Cards',
+          elements: [referralCardDoc],
         ),
         ElementsSection(
           title: 'Widgets',
