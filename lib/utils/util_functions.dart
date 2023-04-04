@@ -16,28 +16,28 @@ IconProps iconProps({
   required IconVariant variant,
   required IconProps props,
   Color? color,
-  double? size,
+  double size = 24,
 }) {
   switch (variant) {
     case IconVariant.heroicons:
       final HeroIconsProps heroIconProps = props.heroIconsProps!;
 
-      heroIconProps.color = color ?? props.heroIconsProps?.color;
-      heroIconProps.size = size ?? props.heroIconsProps?.size;
+      heroIconProps.color = color;
+      heroIconProps.size = size;
       return IconProps(variant: variant, heroIconsProps: heroIconProps);
 
     case IconVariant.unicons:
       final UniconsProps uniconsProps = props.uniconsProps!;
 
-      uniconsProps.color = color ?? props.uniconsProps?.color;
-      uniconsProps.size = size ?? props.uniconsProps?.size;
+      uniconsProps.color = color;
+      uniconsProps.size = size;
 
       return IconProps(variant: variant, uniconsProps: uniconsProps);
     case IconVariant.custom:
       final CustomIconsProps customIconsProps = props.customIconsProps!;
 
-      customIconsProps.color = color ?? props.customIconsProps?.color;
-      customIconsProps.size = size ?? props.customIconsProps?.size;
+      customIconsProps.color = color;
+      customIconsProps.size = size;
 
       return IconProps(
         variant: variant,
