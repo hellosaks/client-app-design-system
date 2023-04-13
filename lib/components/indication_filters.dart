@@ -4,10 +4,11 @@ import "package:flutter/material.dart" hide Icon;
 import "package:mix/mix.dart";
 
 @docWidget
-class IndicationFilters extends StatefulWidget {
+class IndicationFilters extends StatelessWidget {
   final String text;
   final int number;
   final Filter filter;
+  final bool isSelected;
 
   final void Function() onPressed;
 
@@ -17,19 +18,13 @@ class IndicationFilters extends StatefulWidget {
     required this.filter,
     required this.number,
     required this.onPressed,
+    required this.isSelected,
   });
 
   static const ValueKey circleKey = ValueKey("circleKey");
   static const ValueKey boxKey = ValueKey("boxKey");
   static const ValueKey vboxKey = ValueKey("vboxKey");
   static const ValueKey pressableKey = ValueKey("pressableKey");
-
-  @override
-  State<IndicationFilters> createState() => _IndicationFiltersState();
-}
-
-class _IndicationFiltersState extends State<IndicationFilters> {
-  bool isOpacity = false;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +36,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
       mainAxis(MainAxisAlignment.start),
       crossAxis(CrossAxisAlignment.start),
       bgColor(
-        widget.filter == Filter.activated
+        filter == Filter.activated
             ? ThemeSAKS.colors.special.leaf
             : ThemeSAKS.colors.primary.sky,
       ),
@@ -49,7 +44,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
     );
     final Mix pressableStyles = Mix(
       w(155),
-      opacity(isOpacity ? 0.85 : 1),
+      opacity(isSelected ? 0.85 : 1),
       animated(),
     );
     final Mix boxStyle = Mix(
@@ -67,10 +62,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
           key: IndicationFilters.pressableKey,
           mix: pressableStyles,
           onPressed: () {
-            widget.onPressed();
-            setState(() {
-              isOpacity = !isOpacity;
-            });
+            onPressed();
           },
           child: VBox(
             key: IndicationFilters.vboxKey,
@@ -94,7 +86,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
 
   Widget _buildTitle() {
     return CustomTypography(
-      text: widget.text,
+      text: text,
       variant: TypographyVariant.h4,
       weight: FontWeight.bold,
       color: ThemeSAKS.colors.primary.sea,
@@ -106,7 +98,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
       height(40),
       width(40),
       bgColor(
-        widget.filter == Filter.activated
+        filter == Filter.activated
             ? ThemeSAKS.colors.utility.conservative
             : ThemeSAKS.colors.primary.sea,
       ),
@@ -118,7 +110,7 @@ class _IndicationFiltersState extends State<IndicationFilters> {
       mix: circleStyle,
       child: Center(
         child: CustomTypography(
-          text: widget.number.toString(),
+          text: number.toString(),
           variant: TypographyVariant.h4,
           weight: FontWeight.bold,
           color: ThemeSAKS.colors.special.leaf,
