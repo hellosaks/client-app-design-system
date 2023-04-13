@@ -8,6 +8,7 @@ final indicationFiltersDoc = ElementPreview(
   previews: [
     WidgetPreview(
       widget: IndicationFilters(
+        isSelected: true,
         text: "Ativados",
         filter: Filter.activated,
         number: 1,
@@ -17,6 +18,7 @@ final indicationFiltersDoc = ElementPreview(
     ),
     WidgetPreview(
       widget: IndicationFilters(
+        isSelected: false,
         text: "Pendentes",
         filter: Filter.pending,
         number: 2,
