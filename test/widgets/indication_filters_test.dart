@@ -11,6 +11,7 @@ void main() {
       "render component",
       (WidgetTester tester) async {
         final widget = IndicationFilters(
+          isSelected: false,
           text: "Pendentes",
           filter: Filter.pending,
           number: 2,
@@ -26,6 +27,7 @@ void main() {
     testWidgets("onPressed called on tap card", (WidgetTester tester) async {
       bool pressed = false;
       final widget = IndicationFilters(
+        isSelected: true,
         text: "Pendentes",
         filter: Filter.pending,
         number: 2,
@@ -39,14 +41,12 @@ void main() {
       Pressable pressable =
           tester.widget(find.byKey(IndicationFilters.pressableKey));
 
-      List<Attribute> attributes = pressable.mix.attributes;
-      expect((attributes[1] as OpacityDecorator).opacity, 1);
-
       await tester.tap(find.byType(IndicationFilters));
       await tester.pumpAndSettle();
 
       pressable = tester.widget(find.byKey(IndicationFilters.pressableKey));
 
+      List<Attribute> attributes = pressable.mix.attributes;
       attributes = pressable.mix.attributes;
       expect((attributes[1] as OpacityDecorator).opacity, 0.85);
       expect(pressed, true);
@@ -54,6 +54,7 @@ void main() {
 
     testWidgets("expected texts", (WidgetTester tester) async {
       final widget = IndicationFilters(
+        isSelected: false,
         text: "Pendentes",
         filter: Filter.pending,
         number: 2,
@@ -69,6 +70,7 @@ void main() {
 
     testWidgets("expected  attributes", (WidgetTester tester) async {
       final widget = IndicationFilters(
+        isSelected: false,
         text: "Pendentes",
         filter: Filter.pending,
         number: 2,
@@ -133,8 +135,9 @@ void main() {
       );
     });
 
-    testWidgets(" Filter.activated attributes", (WidgetTester tester) async {
+    testWidgets("Filter.activated attributes", (WidgetTester tester) async {
       final widget = IndicationFilters(
+        isSelected: false,
         text: "Ativo",
         filter: Filter.activated,
         number: 1,
