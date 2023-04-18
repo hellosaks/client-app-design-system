@@ -1,3 +1,4 @@
+import "package:client_app_design_system/components/custom_divider.dart";
 import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
@@ -94,10 +95,7 @@ class _CustomTabsState extends State<CustomTabs> {
                   ]
                 ],
               ),
-              const Divider(
-                thickness: 1,
-                height: 10,
-              ),
+              const CustomDivider(),
               Expanded(
                 child: Box(
                   child: TabBarView(

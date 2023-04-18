@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/components/cards/lib/components/custom_divider.dart";
 import "package:client_app_design_system/utils/app_size.dart";
 import "package:client_app_design_system/utils/constants.dart";
 import "package:client_app_design_system/utils/data_label.dart";
@@ -93,9 +92,9 @@ class _ReferralCardState extends State<ReferralCard>
   Widget _buildClosedCardInfo() {
     final style = Mix(
       pt(10),
+      pb(14),
       pl(26),
       pr(20),
-      pb(14),
       crossAxis(CrossAxisAlignment.end),
       mainAxis(MainAxisAlignment.spaceBetween),
     );
@@ -133,7 +132,11 @@ class _ReferralCardState extends State<ReferralCard>
 
   Widget _buildTexts() {
     final style = Mix(crossAxis(CrossAxisAlignment.start));
-    final styleTypo = Mix(opacity(0.5));
+    final styleTypo = Mix(
+      textOverflow(TextOverflow.ellipsis),
+    );
+
+    final stylesBox = Mix(width(130));
 
     return VBox(
       mix: style,
@@ -143,16 +146,19 @@ class _ReferralCardState extends State<ReferralCard>
           text: widget.textBonus,
           weight: FontWeight.w600,
           color: ThemeSAKS.colors.primary.sea.withOpacity(0.5),
-          mix: styleTypo,
         ),
         SizedBox(
           height: AppSize(context: Get.context).getHeight(7),
         ),
-        CustomTypography(
-          variant: TypographyVariant.h6,
-          weight: FontWeight.bold,
-          text: widget.name,
-          color: ThemeSAKS.colors.primary.sea,
+        Box(
+          mix: stylesBox,
+          child: CustomTypography(
+            variant: TypographyVariant.h6,
+            weight: FontWeight.bold,
+            text: widget.name,
+            color: ThemeSAKS.colors.primary.sea,
+            mix: styleTypo,
+          ),
         ),
         SizedBox(
           height: AppSize(context: Get.context).getHeight(7),
