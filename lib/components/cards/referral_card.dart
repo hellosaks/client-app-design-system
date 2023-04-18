@@ -92,9 +92,9 @@ class _ReferralCardState extends State<ReferralCard>
   Widget _buildClosedCardInfo() {
     final style = Mix(
       pt(10),
+      pb(14),
       pl(26),
       pr(20),
-      pb(14),
       crossAxis(CrossAxisAlignment.end),
       mainAxis(MainAxisAlignment.spaceBetween),
     );
