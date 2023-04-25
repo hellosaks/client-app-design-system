@@ -41,18 +41,14 @@ class IndicationFilters extends StatelessWidget {
       ),
     );
 
-    final vboxStyles = Mix(
-      mainAxis(MainAxisAlignment.start),
-      crossAxis(CrossAxisAlignment.start),
+    final pressableStyles = Mix(
       rounded(10),
       w(155),
     );
-    final styles = Mix.combine(
-      vboxStyles,
-      isNotSelectedStyles,
-    );
-    final Mix pressableStyles = Mix(
+    final Mix vboxStyles = Mix(
       rounded(10),
+      mainAxis(MainAxisAlignment.start),
+      crossAxis(CrossAxisAlignment.start),
       padding(20),
       bgColor(
         isSelected
@@ -60,6 +56,11 @@ class IndicationFilters extends StatelessWidget {
             : Colors.transparent,
       ),
       animated(),
+    );
+
+    final styles = Mix.combine(
+      pressableStyles,
+      isNotSelectedStyles,
     );
 
     return Pressable(
@@ -70,7 +71,7 @@ class IndicationFilters extends StatelessWidget {
       },
       child: VBox(
         key: IndicationFilters.vboxKey,
-        mix: pressableStyles,
+        mix: vboxStyles,
         children: [
           _buildTitle(),
           const SizedBox(height: 16),
