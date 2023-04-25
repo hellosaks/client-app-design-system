@@ -1,6 +1,7 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
+import "package:get/get.dart";
 import "package:mix/mix.dart";
 
 import "../utils/test_wrappers.dart";
@@ -11,7 +12,6 @@ void main() {
       "render component",
       (WidgetTester tester) async {
         final widget = IndicationFilters(
-          isSelected: false,
           text: "Pendentes",
           filter: Filter.pending,
           number: 2,
@@ -38,23 +38,29 @@ void main() {
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      Pressable pressable =
-          tester.widget(find.byKey(IndicationFilters.pressableKey));
-
       await tester.tap(find.byType(IndicationFilters));
       await tester.pumpAndSettle();
-
-      pressable = tester.widget(find.byKey(IndicationFilters.pressableKey));
-
-      List<Attribute> attributes = pressable.mix.attributes;
-      attributes = pressable.mix.attributes;
-      expect((attributes[1] as OpacityDecorator).opacity, 0.85);
       expect(pressed, true);
+
+      final finded = tester.widget<VBox>(find.byKey(IndicationFilters.vboxKey));
+
+      final Attribute? boxAttributes =
+          finded.mix.attributes.firstWhereOrNull((element) {
+        try {
+          return (element as BoxAttributes).color != null;
+        } catch (e) {
+          return false;
+        }
+      });
+
+      expect(
+        (boxAttributes as BoxAttributes?)?.color,
+        ThemeSAKS.colors.primary.sea.withOpacity(0.15),
+      );
     });
 
     testWidgets("expected texts", (WidgetTester tester) async {
       final widget = IndicationFilters(
-        isSelected: false,
         text: "Pendentes",
         filter: Filter.pending,
         number: 2,
@@ -70,7 +76,6 @@ void main() {
 
     testWidgets("expected  attributes", (WidgetTester tester) async {
       final widget = IndicationFilters(
-        isSelected: false,
         text: "Pendentes",
         filter: Filter.pending,
         number: 2,
@@ -121,23 +126,25 @@ void main() {
         ThemeSAKS.colors.primary.sea,
       );
 
-      final box = tester.widget<Box>(find.byKey(IndicationFilters.boxKey));
-      final List<Attribute> attributes2 = box.mix.attributes;
-      expect(
-        (attributes2[0] as BoxAttributes).color,
-        ThemeSAKS.colors.primary.sea,
-      );
+      final Pressable vbox =
+          tester.widget(find.byKey(IndicationFilters.pressableKey));
 
-      final VBox vbox = tester.widget(find.byKey(IndicationFilters.vboxKey));
+      final Attribute? boxAttributes =
+          vbox.mix.attributes.firstWhereOrNull((element) {
+        try {
+          return (element as BoxAttributes).color != null;
+        } catch (e) {
+          return false;
+        }
+      });
       expect(
-        (vbox.mix.attributes.elementAt(2) as BoxAttributes).color,
+        (boxAttributes as BoxAttributes?)?.color,
         ThemeSAKS.colors.primary.sky,
       );
     });
 
     testWidgets("Filter.activated attributes", (WidgetTester tester) async {
       final widget = IndicationFilters(
-        isSelected: false,
         text: "Ativo",
         filter: Filter.activated,
         number: 1,
@@ -153,9 +160,19 @@ void main() {
         ThemeSAKS.colors.utility.conservative,
       );
 
-      final VBox vbox = tester.widget(find.byKey(IndicationFilters.vboxKey));
+      final Pressable vbox =
+          tester.widget(find.byKey(IndicationFilters.pressableKey));
+      final Attribute? boxAttributes =
+          vbox.mix.attributes.firstWhereOrNull((element) {
+        try {
+          return (element as BoxAttributes).color != null;
+        } catch (e) {
+          return false;
+        }
+      });
+
       expect(
-        (vbox.mix.attributes.elementAt(2) as BoxAttributes).color,
+        (boxAttributes as BoxAttributes?)?.color,
         ThemeSAKS.colors.special.leaf,
       );
     });

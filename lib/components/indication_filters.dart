@@ -18,11 +18,11 @@ class IndicationFilters extends StatelessWidget {
     required this.filter,
     required this.number,
     required this.onPressed,
-    required this.isSelected,
+    this.isSelected = false,
   });
 
   static const ValueKey circleKey = ValueKey("circleKey");
-  static const ValueKey boxKey = ValueKey("boxKey");
+
   static const ValueKey vboxKey = ValueKey("vboxKey");
   static const ValueKey pressableKey = ValueKey("pressableKey");
 
@@ -32,54 +32,57 @@ class IndicationFilters extends StatelessWidget {
       mainAxis(MainAxisAlignment.spaceBetween),
       crossAxis(CrossAxisAlignment.end),
     );
-    final vboxStyles = Mix(
-      mainAxis(MainAxisAlignment.start),
-      crossAxis(CrossAxisAlignment.start),
+
+    final isNotSelectedStyles = Mix(
       bgColor(
         filter == Filter.activated
             ? ThemeSAKS.colors.special.leaf
             : ThemeSAKS.colors.primary.sky,
       ),
-      padding(20),
-    );
-    final Mix pressableStyles = Mix(
-      w(155),
-      opacity(isSelected ? 0.85 : 1),
-      animated(),
-    );
-    final Mix boxStyle = Mix(
-      bgColor(ThemeSAKS.colors.primary.sea),
     );
 
-    return ClipRRect(
-      borderRadius: BorderRadius.all(
-        Radius.circular(ThemeSAKS.shape.borderRadiusCard),
+    final pressableStyles = Mix(
+      rounded(10),
+      w(155),
+    );
+    final Mix vboxStyles = Mix(
+      rounded(10),
+      mainAxis(MainAxisAlignment.start),
+      crossAxis(CrossAxisAlignment.start),
+      padding(20),
+      bgColor(
+        isSelected
+            ? ThemeSAKS.colors.primary.sea.withOpacity(0.15)
+            : Colors.transparent,
       ),
-      child: Box(
-        key: IndicationFilters.boxKey,
-        mix: boxStyle,
-        child: Pressable(
-          key: IndicationFilters.pressableKey,
-          mix: pressableStyles,
-          onPressed: () {
-            onPressed();
-          },
-          child: VBox(
-            key: IndicationFilters.vboxKey,
-            mix: vboxStyles,
+      animated(),
+    );
+
+    final styles = Mix.combine(
+      pressableStyles,
+      isNotSelectedStyles,
+    );
+
+    return Pressable(
+      key: IndicationFilters.pressableKey,
+      mix: styles,
+      onPressed: () {
+        onPressed();
+      },
+      child: VBox(
+        key: IndicationFilters.vboxKey,
+        mix: vboxStyles,
+        children: [
+          _buildTitle(),
+          const SizedBox(height: 16),
+          HBox(
+            mix: hboxStyles,
             children: [
-              _buildTitle(),
-              const SizedBox(height: 16),
-              HBox(
-                mix: hboxStyles,
-                children: [
-                  _buildCircle(),
-                  _buildArrow(),
-                ],
-              ),
+              _buildCircle(),
+              _buildArrow(),
             ],
           ),
-        ),
+        ],
       ),
     );
   }
