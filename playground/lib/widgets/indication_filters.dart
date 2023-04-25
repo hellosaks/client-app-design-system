@@ -18,7 +18,25 @@ final indicationFiltersDoc = ElementPreview(
     ),
     WidgetPreview(
       widget: IndicationFilters(
-        isSelected: false,
+        isSelected: true,
+        text: "Pendentes",
+        filter: Filter.pending,
+        number: 2,
+        onPressed: () {},
+      ),
+      description: 'IndicationFilters variant Filter.pending ',
+    ),
+    WidgetPreview(
+      widget: IndicationFilters(
+        text: "Ativados",
+        filter: Filter.activated,
+        number: 1,
+        onPressed: () {},
+      ),
+      description: 'IndicationFilters variant Filter.activated',
+    ),
+    WidgetPreview(
+      widget: IndicationFilters(
         text: "Pendentes",
         filter: Filter.pending,
         number: 2,
