@@ -104,7 +104,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
       opacity(widget.disabled == true ? 0.5 : 1),
       paddingHorizontal(15),
       paddingVertical(
-        (widget.leftIcon != null || widget.rightIcon != null) ? 6 : 9,
+        (widget.leftIcon != null || widget.rightIcon != null) ? 9 : 12.5,
       ),
     );
 
