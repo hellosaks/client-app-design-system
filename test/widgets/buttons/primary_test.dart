@@ -93,11 +93,11 @@ void main() {
 
       expect(
         (listBoxAttributes.last as BoxAttributes).padding?.top,
-        9,
+        12.5,
       );
       expect(
         (listBoxAttributes.last as BoxAttributes).padding?.bottom,
-        9,
+        12.5,
       );
     });
 
