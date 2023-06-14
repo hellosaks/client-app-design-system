@@ -37,7 +37,7 @@ dependencies:
   doc_widget: any
   flutter:
     sdk: flutter
-
+  json_dynamic_widget: ^6.0.4+6
 dev_dependencies:
   dashbook: ^0.1.12
   flutter_test:

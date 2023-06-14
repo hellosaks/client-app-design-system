@@ -4,6 +4,7 @@ export "package:heroicons/heroicons.dart" show HeroIcons;
 export "package:unicons/unicons.dart"
     show UniconsLine, UniconsSolid, UniconsThinline;
 
+export "components/avatar/avatar.dart";
 export "components/buttons/auxiliar_button.dart";
 export "components/buttons/button_special.dart";
 export "components/buttons/core_button.dart";
