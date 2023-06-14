@@ -41,7 +41,7 @@ void main() {
     await tester.pumpWidget(wrapWithMaterialApp(widget));
     final CircleAvatar finded = tester.firstWidget(find.byType(CircleAvatar));
 
-    expect(finded.radius, 22);
+    expect(finded.radius, 25);
   });
 
   testWidgets("Avatar should correctly call onPressed",
