@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/components/buttons/color_attributes.dart";
 import "package:flutter/material.dart" as material;
 import "package:flutter_test/flutter_test.dart";
 

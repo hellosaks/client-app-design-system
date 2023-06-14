@@ -1,6 +1,5 @@
 import "package:child_builder/child_builder.dart";
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/components/icon/dto/icon_dto.dart";
 import "package:deep_pick/deep_pick.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:json_dynamic_widget/json_dynamic_widget.dart";

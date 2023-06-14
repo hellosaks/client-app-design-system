@@ -1,5 +1,5 @@
+// coverage:ignore-file
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/enums/enum_dto.dart";
 import "package:flutter/widgets.dart" show IconData;
 
 /// This class has the line version of the icons

@@ -1,9 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/enums/enum_dto.dart";
-import "package:client_app_design_system/utils/enums/enum_parse.dart";
-import "package:client_app_design_system/utils/enums/icons/custom_icon_enum.dart";
-import "package:client_app_design_system/utils/enums/icons/unicons_enum.dart";
-import "package:client_app_design_system/utils/util_functions.dart";
 import "package:deep_pick/deep_pick.dart";
 
 class UniconsPropsDto implements SerializableJson<UniconsProps> {

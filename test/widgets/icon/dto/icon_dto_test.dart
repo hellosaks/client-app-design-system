@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/components/icon/dto/icon_dto.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 

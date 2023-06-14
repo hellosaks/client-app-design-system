@@ -1,7 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/app_size.dart";
-import "package:client_app_design_system/utils/constants.dart";
-import "package:client_app_design_system/utils/data_label.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:get/get.dart";
