@@ -1,10 +1,39 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
 import 'package:client_app_design_system/components/custom_typography.doc_widget.dart';
+import 'package:client_app_design_system/components/custom_typography/custom_typography.dart';
 import 'package:doc_widget/doc_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:playground/render_service.dart';
+
+class CustomTypographyView extends StatelessWidget {
+  const CustomTypographyView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        RenderService().buildJson(
+          json:
+              """{"type":"custom_typography_builder","args":{"text":"[Dynamic ]Hello, world!","variant":"cta","weight":"bold"}}""",
+          context: context,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+      ],
+    );
+  }
+}
 
 final customTypographyDoc = ElementPreview(
   document: CustomTypographyDocWidget(), // From generated file
   previews: [
+    WidgetPreview(
+      widget: const CustomTypographyView(),
+      description: 'Example dynamic CustomTypography',
+    ),
     WidgetPreview(
       widget: const CustomTypography(
         text: "Hello, world!",

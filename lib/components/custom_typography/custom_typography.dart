@@ -7,6 +7,13 @@ import "package:mix/mix.dart";
 
 @docWidget
 class CustomTypography extends StatelessWidget {
+  final FontWeight weight;
+  final TypographyVariant variant;
+  final String text;
+  final Color color;
+  final TextAlign align;
+  final Mix<Attribute>? mix;
+
   const CustomTypography({
     super.key,
     required this.variant,
@@ -16,13 +23,6 @@ class CustomTypography extends StatelessWidget {
     this.align = TextAlign.left,
     this.mix,
   });
-
-  final FontWeight weight;
-  final TypographyVariant variant;
-  final String text;
-  final Color color;
-  final TextAlign align;
-  final Mix<Attribute>? mix;
 
   @override
   Widget build(BuildContext context) {

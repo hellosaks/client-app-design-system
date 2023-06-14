@@ -1,4 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:client_app_design_system/components/custom_typography/custom_typography.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
 import "package:mix/mix.dart";
