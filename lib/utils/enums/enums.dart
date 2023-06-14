@@ -30,7 +30,7 @@ enum TypographyVariant {
   strikethrough,
 }
 
-enum IconVariant { heroicons, unicons, custom }
+enum IconVariant { unicons, custom }
 
 enum Filter { activated, pending }
 

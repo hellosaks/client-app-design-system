@@ -1,5 +1,5 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
-import 'package:client_app_design_system/components/icon.doc_widget.dart';
+import 'package:client_app_design_system/components/icon/icon.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
 
 final iconDoc = ElementPreview(
@@ -22,9 +22,9 @@ final iconDoc = ElementPreview(
     WidgetPreview(
       widget: Icon(
         props: IconProps(
-          variant: IconVariant.heroicons,
-          heroIconsProps: HeroIconsProps(
-            icon: HeroIcons.academicCap,
+          variant: IconVariant.unicons,
+          uniconsProps: UniconsProps(
+            icon: UniconsLine.abacus,
             color: ThemeSAKS.colors.primary.sea,
             size: 40,
           ),

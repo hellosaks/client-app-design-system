@@ -10,16 +10,16 @@ final withSeaColorProps = ColorAttributesButton(
 );
 
 final leftIconProps = IconProps(
-  variant: IconVariant.heroicons,
-  heroIconsProps: HeroIconsProps(
-    icon: HeroIcons.arrowLeft,
+  variant: IconVariant.unicons,
+  uniconsProps: UniconsProps(
+    icon: UniconsLine.arrow_circle_left,
   ),
 );
 
 final rightIconProps = IconProps(
-  variant: IconVariant.heroicons,
-  heroIconsProps: HeroIconsProps(
-    icon: HeroIcons.arrowRight,
+  variant: IconVariant.unicons,
+  uniconsProps: UniconsProps(
+    icon: UniconsLine.arrow_circle_right,
   ),
 );
 
@@ -55,8 +55,8 @@ final primaryButtonDoc = ElementPreview(
           PrimaryButton(
             onPressed: () {},
             leftIcon: IconProps(
-              variant: IconVariant.heroicons,
-              heroIconsProps: HeroIconsProps(icon: HeroIcons.photo),
+              variant: IconVariant.unicons,
+              uniconsProps: UniconsProps(icon: UniconsLine.image),
             ),
             disabled: true,
             text: text,

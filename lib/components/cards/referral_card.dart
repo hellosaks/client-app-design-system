@@ -2,7 +2,6 @@ import "package:client_app_design_system/client_app_design_system.dart";
 import "package:client_app_design_system/utils/app_size.dart";
 import "package:client_app_design_system/utils/constants.dart";
 import "package:client_app_design_system/utils/data_label.dart";
-import "package:client_app_design_system/utils/util_functions.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:get/get.dart";
@@ -120,9 +119,7 @@ class _ReferralCardState extends State<ReferralCard>
   }
 
   Widget _buildIcon() => Icon(
-        props: iconProps(
-          props: widget.icon,
-          variant: IconVariant.unicons,
+        props: widget.icon.copyWith(
           color: widget.payment == ReferralPaymentType.paid
               ? ThemeSAKS.colors.utility.conservative
               : ThemeSAKS.colors.primary.sea,

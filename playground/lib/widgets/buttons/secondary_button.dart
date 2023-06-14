@@ -5,8 +5,8 @@ import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
 
 final photoIconProps = IconProps(
-  variant: IconVariant.heroicons,
-  heroIconsProps: HeroIconsProps(icon: HeroIcons.photo),
+  variant: IconVariant.unicons,
+  uniconsProps: UniconsProps(icon: UniconsLine.image),
 );
 
 final withSeaColorProps = ColorAttributesButton(
@@ -20,16 +20,16 @@ final withDangerColorProps = ColorAttributesButton(
 );
 
 final leftIconProps = IconProps(
-  variant: IconVariant.heroicons,
-  heroIconsProps: HeroIconsProps(
-    icon: HeroIcons.arrowLeft,
+  variant: IconVariant.unicons,
+  uniconsProps: UniconsProps(
+    icon: UniconsLine.arrow_circle_left,
   ),
 );
 
 final rightIconProps = IconProps(
-  variant: IconVariant.heroicons,
-  heroIconsProps: HeroIconsProps(
-    icon: HeroIcons.arrowRight,
+  variant: IconVariant.unicons,
+  uniconsProps: UniconsProps(
+    icon: UniconsLine.arrow_circle_right,
   ),
 );
 

@@ -3,17 +3,7 @@ import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" as material_icon show Icon;
 import "package:flutter/material.dart" hide Icon;
 import "package:flutter_svg/flutter_svg.dart";
-import "package:heroicons/heroicons.dart";
 import "package:path/path.dart" as p;
-
-class HeroIconsProps {
-  HeroIcons icon;
-  Color? color;
-  double? size;
-  HeroIconStyle? style;
-
-  HeroIconsProps({required this.icon, this.color, this.size, this.style});
-}
 
 class UniconsProps {
   /// use [UniconsLine] or [UniconsSolid] to display icon using unicons library.
@@ -34,20 +24,14 @@ class CustomIconsProps {
 
 class IconProps {
   final IconVariant variant;
-  final HeroIconsProps? heroIconsProps;
   final UniconsProps? uniconsProps;
   final CustomIconsProps? customIconsProps;
 
   IconProps({
     required this.variant,
-    this.heroIconsProps,
     this.uniconsProps,
     this.customIconsProps,
   })  : assert(
-          !(variant == IconVariant.heroicons && heroIconsProps == null),
-          "heroicons needs to have heroIconsProps",
-        ),
-        assert(
           !(variant == IconVariant.unicons && uniconsProps == null),
           "unicons needs to have uniconsProps",
         ),
@@ -55,6 +39,27 @@ class IconProps {
           !(variant == IconVariant.custom && customIconsProps == null),
           "custom variant needs to have customIconsProps",
         );
+
+  IconProps copyWith({
+    Color? color,
+    double? size,
+  }) {
+    switch (variant) {
+      case IconVariant.unicons:
+        uniconsProps!.color = color ?? uniconsProps?.color;
+        uniconsProps!.size = size ?? uniconsProps?.size;
+
+        return IconProps(variant: variant, uniconsProps: uniconsProps);
+      case IconVariant.custom:
+        customIconsProps!.color = color ?? customIconsProps?.color;
+        customIconsProps!.size = size ?? customIconsProps?.size;
+
+        return IconProps(
+          variant: variant,
+          customIconsProps: customIconsProps,
+        );
+    }
+  }
 }
 
 /// ```dart
@@ -78,13 +83,6 @@ class Icon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (props.variant) {
-      case IconVariant.heroicons:
-        return HeroIcon(
-          props.heroIconsProps!.icon,
-          style: props.heroIconsProps!.style,
-          color: props.heroIconsProps!.color,
-          size: props.heroIconsProps!.size,
-        );
       case IconVariant.unicons:
         return material_icon.Icon(
           props.uniconsProps!.icon,

@@ -74,9 +74,9 @@ class _ReferralButtonState extends State<ReferralButton> {
                 ),
                 Icon(
                   props: IconProps(
-                    variant: IconVariant.heroicons,
-                    heroIconsProps: HeroIconsProps(
-                      icon: HeroIcons.clipboardDocument,
+                    variant: IconVariant.unicons,
+                    uniconsProps: UniconsProps(
+                      icon: UniconsLine.copy,
                       color: ThemeSAKS.colors.primary.sky,
                       size: 30,
                     ),

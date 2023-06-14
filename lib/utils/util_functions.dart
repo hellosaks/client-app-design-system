@@ -1,5 +1,4 @@
-import "package:client_app_design_system/client_app_design_system.dart";
-import "package:flutter/material.dart" hide Icon;
+import "package:flutter/material.dart";
 
 String shortLink(String linkToShort) {
   final link = linkToShort.replaceAll("https://", "");
@@ -12,36 +11,9 @@ String shortLink(String linkToShort) {
   return "$firstShorLink...$secondShorLink";
 }
 
-IconProps iconProps({
-  required IconVariant variant,
-  required IconProps props,
-  Color? color,
-  double? size,
-}) {
-  switch (variant) {
-    case IconVariant.heroicons:
-      final HeroIconsProps heroIconProps = props.heroIconsProps!;
-
-      heroIconProps.color = color ?? props.heroIconsProps?.color;
-      heroIconProps.size = size ?? props.heroIconsProps?.size;
-      return IconProps(variant: variant, heroIconsProps: heroIconProps);
-
-    case IconVariant.unicons:
-      final UniconsProps uniconsProps = props.uniconsProps!;
-
-      uniconsProps.color = color ?? props.uniconsProps?.color;
-      uniconsProps.size = size ?? props.uniconsProps?.size;
-
-      return IconProps(variant: variant, uniconsProps: uniconsProps);
-    case IconVariant.custom:
-      final CustomIconsProps customIconsProps = props.customIconsProps!;
-
-      customIconsProps.color = color ?? props.customIconsProps?.color;
-      customIconsProps.size = size ?? props.customIconsProps?.size;
-
-      return IconProps(
-        variant: variant,
-        customIconsProps: customIconsProps,
-      );
-  }
+Color colorDecoder(String hexString) {
+  final buffer = StringBuffer();
+  if (hexString.length == 6 || hexString.length == 7) buffer.write("ff");
+  buffer.write(hexString.replaceFirst("#", ""));
+  return Color(int.parse(buffer.toString(), radix: 16));
 }
