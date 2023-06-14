@@ -1,4 +1,4 @@
-import "package:child_builder/src/child_widget_builder.dart";
+import "package:child_builder/child_builder.dart";
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:deep_pick/deep_pick.dart";
 import "package:flutter/material.dart";
