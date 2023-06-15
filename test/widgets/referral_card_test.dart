@@ -1,6 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/constants.dart";
-import "package:client_app_design_system/utils/data_label.dart";
 import "package:flutter/painting.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:mix/mix.dart";

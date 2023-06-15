@@ -1,6 +1,5 @@
-import "package:client_app_design_system/theme/theme_saks.dart";
-import "package:client_app_design_system/utils/app_size.dart";
-import "package:client_app_design_system/utils/enums.dart";
+
+import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";

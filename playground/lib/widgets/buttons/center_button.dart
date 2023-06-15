@@ -1,7 +1,5 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
-import 'package:client_app_design_system/components/buttons/center_button.dart';
 import 'package:client_app_design_system/components/buttons/center_button.doc_widget.dart';
-import 'package:client_app_design_system/components/buttons/color_attributes.dart';
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
 

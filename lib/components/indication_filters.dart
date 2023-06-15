@@ -125,9 +125,9 @@ class IndicationFilters extends StatelessWidget {
   Widget _buildArrow() {
     return Icon(
       props: IconProps(
-        variant: IconVariant.heroicons,
-        heroIconsProps: HeroIconsProps(
-          icon: HeroIcons.arrowRightCircle,
+        variant: IconVariant.unicons,
+        uniconsProps: UniconsProps(
+          icon: UniconsLine.arrow_circle_right,
           color: ThemeSAKS.colors.primary.sea,
           size: 24,
         ),
