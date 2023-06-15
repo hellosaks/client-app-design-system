@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/enums/enums_dto.dart";
 
 class TypographyVariantEnum implements EnumDto<TypographyVariant> {
   @override

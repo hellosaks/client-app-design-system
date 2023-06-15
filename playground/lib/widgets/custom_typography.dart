@@ -1,6 +1,5 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
-import 'package:client_app_design_system/components/custom_typography.doc_widget.dart';
-import 'package:client_app_design_system/components/custom_typography/custom_typography.dart';
+import 'package:client_app_design_system/components/custom_typography/custom_typography.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:playground/render_service.dart';
@@ -16,7 +15,7 @@ class CustomTypographyView extends StatelessWidget {
       children: [
         RenderService().buildJson(
           json:
-              """{"type":"custom_typography_builder","args":{"text":"[Dynamic ]Hello, world!","variant":"cta","weight":"bold"}}""",
+              """{"type":"custom_typography","args":{"text": "[Dynamic] Hello, world!","variant":"cta","weight":"bold"}}""",
           context: context,
         ),
         const SizedBox(

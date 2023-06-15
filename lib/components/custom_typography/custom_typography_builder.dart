@@ -1,6 +1,5 @@
 import "package:child_builder/child_builder.dart";
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/enums/colors_dto.dart";
 import "package:client_app_design_system/utils/enums/font_weight_dto.dart";
 import "package:client_app_design_system/utils/enums/text_align_dto.dart";
 import "package:client_app_design_system/utils/enums/typography_variant_dto.dart";
@@ -52,11 +51,8 @@ class CustomTypographyBuilder extends JsonWidgetBuilder {
           p0.asStringOrThrow(),
         ),
       ),
-      color: pick(json, "color").letOrNull(
-        (p0) => ColorEnum().parse(
-          p0.asStringOrThrow(),
-        ),
-      ),
+      color: pick(json, "color")
+          .letOrNull((pick) => colorDecoder(pick.asString())),
     );
   }
 
