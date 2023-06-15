@@ -25,9 +25,9 @@ class TypographyVariantEnum implements EnumDto<TypographyVariant> {
         return TypographyVariant.underline;
       case "strikethrough":
         return TypographyVariant.strikethrough;
+      default:
+        return TypographyVariant.cta;
     }
-
-    return TypographyVariant.cta;
   }
 
   @override

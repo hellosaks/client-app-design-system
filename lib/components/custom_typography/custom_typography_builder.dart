@@ -1,4 +1,4 @@
-import "package:child_builder/src/child_widget_builder.dart";
+import "package:child_builder/child_builder.dart";
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:client_app_design_system/utils/enums/colors_dto.dart";
 import "package:client_app_design_system/utils/enums/font_weight_dto.dart";
@@ -17,7 +17,7 @@ class CustomTypographyBuilder extends JsonWidgetBuilder {
   final TextAlign? align;
   final Mix<Attribute>? mix;
 
-  static const type = "custom_typography_builder";
+  static const type = "custom_typography";
 
   const CustomTypographyBuilder({
     this.weight,
@@ -70,10 +70,10 @@ class CustomTypographyBuilder extends JsonWidgetBuilder {
     return CustomTypography(
       variant: variant,
       text: text,
-      weight: weight ?? FontWeight.w400,
-      align: align ?? TextAlign.left,
+      weight: weight,
+      align: align,
       mix: mix,
-      color: color ?? Colors.black,
+      color: color,
     );
   }
 }
