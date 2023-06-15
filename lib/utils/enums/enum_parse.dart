@@ -1,5 +1,4 @@
-import "package:client_app_design_system/utils/enums/enum_dto.dart";
-import "package:client_app_design_system/utils/enums/enums.dart";
+import "package:client_app_design_system/client_app_design_system.dart";
 
 class IconVariantEnum implements EnumDto<IconVariant> {
   @override

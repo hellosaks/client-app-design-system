@@ -10,6 +10,8 @@ class CustomIconEnum implements EnumDto<CustomIcons> {
         return CustomIcons.icShare;
       case "icMultimedia":
         return CustomIcons.icMultimedia;
+      case "icProfileIcon":
+        return CustomIcons.icProfileIcon;
       default:
         return CustomIcons.icMultimedia;
     }
@@ -24,6 +26,8 @@ class CustomIconEnum implements EnumDto<CustomIcons> {
         return "icShare";
       case CustomIcons.icMultimedia:
         return "icMultimedia";
+      case CustomIcons.icProfileIcon:
+        return "icProfileIcon";
     }
   }
 }

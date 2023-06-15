@@ -7,7 +7,8 @@ void main() {
       final map = {
         "icWhatsapp": CustomIcons.icWhatsapp,
         "icShare": CustomIcons.icShare,
-        "icMultimedia": CustomIcons.icMultimedia
+        "icMultimedia": CustomIcons.icMultimedia,
+        "icProfileIcon": CustomIcons.icProfileIcon
       };
 
       for (final key in map.keys) {
@@ -20,6 +21,7 @@ void main() {
         CustomIcons.icWhatsapp: "icWhatsapp",
         CustomIcons.icShare: "icShare",
         CustomIcons.icMultimedia: "icMultimedia",
+        CustomIcons.icProfileIcon: "icProfileIcon",
       };
 
       for (final key in map.keys) {

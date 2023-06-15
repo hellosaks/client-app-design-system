@@ -12,7 +12,7 @@ class UniconsPropsDto implements SerializableJson<UniconsProps> {
     return UniconsProps(
       color: pick(json, "color")
           .letOrNull((pick) => colorDecoder(pick.asString())),
-      size: pick(json, "size").asDoubleOrThrow(),
+      size: pick(json, "size").asDoubleOrNull(),
       icon: pick(json, "icon")
           .letOrThrow((pick) => UniconsLineEnum().parse(pick.asString())),
     );
@@ -25,7 +25,7 @@ class CustomIconsPropsDto implements SerializableJson<CustomIconsProps> {
     return CustomIconsProps(
       color: pick(json, "color")
           .letOrNull((pick) => colorDecoder(pick.asString())),
-      size: pick(json, "size").asDoubleOrThrow(),
+      size: pick(json, "size").asDoubleOrNull(),
       icon: pick(json, "icon")
           .letOrThrow((pick) => CustomIconEnum().parse(pick.asString())),
     );
@@ -46,8 +46,9 @@ class IconPropsDto implements SerializableJson<IconProps> {
       customIconsProps: pick(json, "customIconsProps").letOrNull(
         (pick) => CustomIconsPropsDto().fromJson(pick.asMapOrEmpty()),
       ),
-      uniconsProps: pick(json, "uniconsProps")
-          .letOrNull((pick) => UniconsPropsDto().fromJson(pick.asMapOrEmpty()),),
+      uniconsProps: pick(json, "uniconsProps").letOrNull(
+        (pick) => UniconsPropsDto().fromJson(pick.asMapOrEmpty()),
+      ),
     );
   }
 
