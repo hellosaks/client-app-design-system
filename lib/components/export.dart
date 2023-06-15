@@ -12,7 +12,7 @@ export "cards/card_banner.dart";
 export "cards/referral_card.dart";
 export "custom_divider.dart";
 export "custom_tabs.dart";
-export "custom_typography.dart";
+export "custom_typography/custom_typography.dart";
 export "icon/custom_icons.dart";
 export "icon/dto/icon_builder.dart";
 export "icon/dto/icon_dto.dart";

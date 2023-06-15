@@ -1,4 +1,5 @@
 import 'package:client_app_design_system/components/avatar/avatar_builder.dart';
+import 'package:client_app_design_system/components/custom_typography/custom_typography_builder.dart';
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
@@ -27,6 +28,11 @@ void main() {
   RenderService().bindComponents(
     AvatarBuilder.type,
     AvatarBuilder.fromDynamic,
+  );
+
+  RenderService().bindComponents(
+    CustomTypographyBuilder.type,
+    CustomTypographyBuilder.fromDynamic,
   );
   runApp(
     DocPreview(

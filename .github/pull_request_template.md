@@ -2,9 +2,9 @@
 
 O que esta PR faz?
 
-## Jira
+## Issue
 
-[Card do jira](https://jira.com)
+[Issue](https://github.com/hellosaks/squad-severino/issues)
 
 ## Validação
 
