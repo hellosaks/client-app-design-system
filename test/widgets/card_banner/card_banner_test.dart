@@ -4,7 +4,7 @@ import "package:flutter_blurhash/flutter_blurhash.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:skeletons/skeletons.dart";
 
-import "../utils/test_wrappers.dart";
+import '../../utils/test_wrappers.dart';
 
 void main() {
   group("CardBanner", () {

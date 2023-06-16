@@ -51,6 +51,7 @@ class CardBanner extends StatelessWidget {
   }
 
   Widget _buildBackgroundImage(BuildContext context) {
+    // return _loadingImage(context);
     return ClipRRect(
       borderRadius:
           BorderRadius.all(Radius.circular(ThemeSAKS.shape.borderRadiusCard)),
