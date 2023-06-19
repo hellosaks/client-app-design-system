@@ -21,3 +21,5 @@ export "icon/dto/icon_dto.dart";
 export "icon/icon.dart";
 export "indication_filters.dart";
 export "referral_button.dart";
+export "skeleton/dto/skeleton_builder.dart";
+export "skeleton/skeleton.dart";
