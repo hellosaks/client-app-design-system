@@ -1,5 +1,5 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
-import 'package:client_app_design_system/components/buttons/secondary_button.doc_widget.dart';
+import 'package:client_app_design_system/components/buttons/secondary_button/secondary_button.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -115,7 +115,7 @@ final outlinedButton = [
           colorAttributes: outlinedColor,
           onPressed: () {},
           outlined: true,
-          leftIcon: rightIconProps,
+          rightIcon: rightIconProps,
           disabled: true,
           text: text,
         ),
