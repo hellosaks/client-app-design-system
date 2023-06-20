@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/components/buttons/color_attributes.dart";
 import "package:flutter/material.dart" as material;
 import "package:flutter_test/flutter_test.dart";
 
@@ -19,16 +18,16 @@ void main() {
   );
 
   final leftIconProps = IconProps(
-    variant: IconVariant.heroicons,
-    heroIconsProps: HeroIconsProps(
-      icon: HeroIcons.arrowLeft,
+    variant: IconVariant.unicons,
+    uniconsProps: UniconsProps(
+      icon: UniconsLine.arrow_left,
     ),
   );
 
   final rightIconProps = IconProps(
-    variant: IconVariant.heroicons,
-    heroIconsProps: HeroIconsProps(
-      icon: HeroIcons.arrowRight,
+    variant: IconVariant.unicons,
+    uniconsProps: UniconsProps(
+      icon: UniconsLine.arrow_right,
     ),
   );
 
@@ -88,7 +87,7 @@ void main() {
 
         final Icon finded = tester.widget(find.byType(Icon));
         expect(
-          finded.props.heroIconsProps?.color,
+          finded.props.uniconsProps?.color,
           ThemeSAKS.colors.primary.saks,
         );
       });
@@ -109,9 +108,9 @@ void main() {
           (WidgetTester tester) async {
         final widget = TertiaryButton(
           rightIcon: IconProps(
-            variant: IconVariant.heroicons,
-            heroIconsProps: HeroIconsProps(
-              icon: HeroIcons.checkCircle,
+            variant: IconVariant.unicons,
+            uniconsProps: UniconsProps(
+              icon: UniconsLine.check_circle,
             ),
           ),
           onPressed: () {},
@@ -122,7 +121,7 @@ void main() {
 
         final Icon finded = tester.widget(find.byType(Icon));
         expect(
-          finded.props.heroIconsProps?.color,
+          finded.props.uniconsProps?.color,
           ThemeSAKS.colors.primary.saks,
         );
       });

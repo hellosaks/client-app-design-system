@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/util_functions.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:mix/mix.dart";
 
@@ -121,23 +120,9 @@ class CoreButton extends StatelessWidget {
     );
   }
 
-  Widget _buildLeftIcon() => _buildBoxIcon(
-        child: Icon(
-          props: iconProps(
-            variant: leftIcon!.variant,
-            props: leftIcon!,
-            color: color,
-          ),
-        ),
-      );
+  Widget _buildLeftIcon() =>
+      _buildBoxIcon(child: Icon(props: leftIcon!.copyWith(color: color)));
 
-  Widget _buildRightIcon() => _buildBoxIcon(
-        child: Icon(
-          props: iconProps(
-            variant: rightIcon!.variant,
-            props: rightIcon!,
-            color: color,
-          ),
-        ),
-      );
+  Widget _buildRightIcon() =>
+      _buildBoxIcon(child: Icon(props: rightIcon!.copyWith(color: color)));
 }

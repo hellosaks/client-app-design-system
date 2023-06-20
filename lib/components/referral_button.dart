@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/util_functions.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:mix/mix.dart";
@@ -74,9 +73,9 @@ class _ReferralButtonState extends State<ReferralButton> {
                 ),
                 Icon(
                   props: IconProps(
-                    variant: IconVariant.heroicons,
-                    heroIconsProps: HeroIconsProps(
-                      icon: HeroIcons.clipboardDocument,
+                    variant: IconVariant.unicons,
+                    uniconsProps: UniconsProps(
+                      icon: UniconsLine.copy,
                       color: ThemeSAKS.colors.primary.sky,
                       size: 30,
                     ),

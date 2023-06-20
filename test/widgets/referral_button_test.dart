@@ -23,38 +23,39 @@ void main() {
 
       // verify title
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "Link de Indicação" &&
-                widget.color == ThemeSAKS.colors.primary.sky &&
-                widget.variant == TypographyVariant.h4,
-          ),
-          findsOneWidget,);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "Link de Indicação" &&
+              widget.color == ThemeSAKS.colors.primary.sky &&
+              widget.variant == TypographyVariant.h4,
+        ),
+        findsOneWidget,
+      );
 
       // verify linkToCopy
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is CustomTypography &&
-                widget.text == "linked.hel...rrals/XmCo" &&
-                widget.color == ThemeSAKS.colors.primary.sky &&
-                widget.variant == TypographyVariant.h6,
-          ),
-          findsOneWidget,);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is CustomTypography &&
+              widget.text == "linked.hel...rrals/XmCo" &&
+              widget.color == ThemeSAKS.colors.primary.sky &&
+              widget.variant == TypographyVariant.h6,
+        ),
+        findsOneWidget,
+      );
 
       // verify icon
       expect(
-          find.byWidgetPredicate(
-            (widget) =>
-                widget is Icon &&
-                widget.props.heroIconsProps!.icon ==
-                    HeroIcons.clipboardDocument &&
-                widget.props.heroIconsProps!.size == 30 &&
-                widget.props.heroIconsProps!.color ==
-                    ThemeSAKS.colors.primary.sky,
-          ),
-          findsOneWidget,);
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Icon &&
+              widget.props.uniconsProps!.icon == UniconsLine.copy &&
+              widget.props.uniconsProps!.size == 30 &&
+              widget.props.uniconsProps!.color == ThemeSAKS.colors.primary.sky,
+        ),
+        findsOneWidget,
+      );
 
       // verify styles for container box
       final Box containerWidget =

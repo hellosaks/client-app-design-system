@@ -1,5 +1,4 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
-import 'package:client_app_design_system/components/buttons/color_attributes.dart';
 import 'package:client_app_design_system/components/buttons/tertiary_button.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
@@ -15,16 +14,16 @@ final withDangerColorProps = ColorAttributesButton(
 );
 
 final leftIconProps = IconProps(
-  variant: IconVariant.heroicons,
-  heroIconsProps: HeroIconsProps(
-    icon: HeroIcons.arrowLeft,
+  variant: IconVariant.unicons,
+  uniconsProps: UniconsProps(
+    icon: UniconsLine.arrow_circle_left,
   ),
 );
 
 final rightIconProps = IconProps(
-  variant: IconVariant.heroicons,
-  heroIconsProps: HeroIconsProps(
-    icon: HeroIcons.arrowRight,
+  variant: IconVariant.unicons,
+  uniconsProps: UniconsProps(
+    icon: UniconsLine.arrow_circle_right,
   ),
 );
 

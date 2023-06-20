@@ -1,6 +1,5 @@
-import "package:client_app_design_system/theme/theme_saks.dart";
-import "package:client_app_design_system/utils/app_size.dart";
-import "package:client_app_design_system/utils/enums.dart";
+
+import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
@@ -8,6 +7,14 @@ import "package:mix/mix.dart";
 
 @docWidget
 class CustomTypography extends StatelessWidget {
+  final TypographyVariant variant;
+  final String text;
+
+  final FontWeight? weight;
+  final Color? color;
+  final TextAlign? align;
+  final Mix<Attribute>? mix;
+
   const CustomTypography({
     super.key,
     required this.variant,
@@ -17,13 +24,6 @@ class CustomTypography extends StatelessWidget {
     this.align = TextAlign.left,
     this.mix,
   });
-
-  final FontWeight weight;
-  final TypographyVariant variant;
-  final String text;
-  final Color color;
-  final TextAlign align;
-  final Mix<Attribute>? mix;
 
   @override
   Widget build(BuildContext context) {

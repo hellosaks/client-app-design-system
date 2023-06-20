@@ -10,16 +10,16 @@ void main() {
   final seaColor = ThemeSAKS.colors.primary.sea;
 
   final leftIconProps = IconProps(
-    variant: IconVariant.heroicons,
-    heroIconsProps: HeroIconsProps(
-      icon: HeroIcons.arrowLeft,
+    variant: IconVariant.unicons,
+    uniconsProps: UniconsProps(
+      icon: UniconsLine.arrow_left,
     ),
   );
 
   final rightIconProps = IconProps(
-    variant: IconVariant.heroicons,
-    heroIconsProps: HeroIconsProps(
-      icon: HeroIcons.arrowRight,
+    variant: IconVariant.unicons,
+    uniconsProps: UniconsProps(
+      icon: UniconsLine.arrow_right,
     ),
   );
 
@@ -92,8 +92,8 @@ void main() {
 
       final Icon findedIcon = tester.widget(find.byType(Icon));
       expect(
-        findedIcon.props.heroIconsProps?.icon,
-        rightIconProps.heroIconsProps?.icon,
+        findedIcon.props.uniconsProps?.icon,
+        rightIconProps.uniconsProps?.icon,
       );
 
       // box icon test

@@ -1,5 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/components/buttons/color_attributes.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:mix/mix.dart";
@@ -95,7 +94,7 @@ class _CenterButtonState extends State<CenterButton> {
       height(60),
     );
     return Box(
-      key: SecondaryButton.boxContainerKey,
+      key: CenterButton.boxContainerKey,
       mix: styles,
       child: Icon(
         props: IconProps(

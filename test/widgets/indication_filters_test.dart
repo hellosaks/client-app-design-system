@@ -110,10 +110,10 @@ void main() {
         find.byWidgetPredicate(
           (widget) =>
               widget is Icon &&
-              widget.props.heroIconsProps!.icon == HeroIcons.arrowRightCircle &&
-              widget.props.heroIconsProps!.size == 24 &&
-              widget.props.heroIconsProps!.color ==
-                  ThemeSAKS.colors.primary.sea,
+              widget.props.uniconsProps!.icon ==
+                  UniconsLine.arrow_circle_right &&
+              widget.props.uniconsProps!.size == 24 &&
+              widget.props.uniconsProps!.color == ThemeSAKS.colors.primary.sea,
         ),
         findsOneWidget,
       );
