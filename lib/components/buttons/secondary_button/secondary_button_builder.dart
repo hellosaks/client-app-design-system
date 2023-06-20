@@ -13,9 +13,9 @@ class SecondaryButtonBuilder extends JsonWidgetBuilder {
   final IconProps? leftIcon;
   final IconProps? rightIcon;
 
-  final bool? disabled;
-  final bool? selected;
-  final bool? outlined;
+  final bool disabled;
+  final bool selected;
+  final bool outlined;
   final void Function() onPressed;
 
   final ColorAttributesButton? colorAttributes;
@@ -28,9 +28,9 @@ class SecondaryButtonBuilder extends JsonWidgetBuilder {
     this.colorAttributes,
     this.leftIcon,
     this.rightIcon,
-    this.disabled,
-    this.selected,
-    this.outlined,
+    this.disabled = false,
+    this.selected = false,
+    this.outlined = false,
     required super.numSupportedChildren,
   });
 
@@ -80,9 +80,9 @@ class SecondaryButtonBuilder extends JsonWidgetBuilder {
       colorAttributes: colorAttributes,
       leftIcon: leftIcon,
       onPressed: onPressed,
-      outlined: outlined!,
-      selected: selected!,
-      disabled: disabled!,
+      outlined: outlined,
+      selected: selected,
+      disabled: disabled,
       text: text,
       rightIcon: rightIcon,
     );

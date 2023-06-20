@@ -31,11 +31,13 @@ class ColorAttributesButton {
       pressColor: pick(json, "press_color")
           .letOrThrow((pick) => colorDecoder(pick.asString())),
       insideColor: pick(json, "inside_color")
-          .letOrThrow((pick) => colorDecoder(pick.asString())),
+              .letOrNull((pick) => colorDecoder(pick.asString())) ??
+          Colors.white,
       borderColor: pick(json, "border_color")
           .letOrNull((pick) => colorDecoder(pick.asString())),
       bgColor: pick(json, "bg_color")
-          .letOrThrow((pick) => colorDecoder(pick.asString())),
+              .letOrNull((pick) => colorDecoder(pick.asString())) ??
+          Colors.transparent,
     );
   }
 }
