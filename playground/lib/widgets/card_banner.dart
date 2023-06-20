@@ -1,5 +1,5 @@
 import 'package:client_app_design_system/client_app_design_system.dart';
-import 'package:client_app_design_system/components/cards/card_banner/card_banner.doc_widget.dart';
+import 'package:client_app_design_system/components/cards/card_banner.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
 
 final cardBannerDoc = ElementPreview(

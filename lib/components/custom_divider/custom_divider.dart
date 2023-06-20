@@ -9,7 +9,6 @@ class CustomDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print({"color coimponent", color});
     return Divider(
       color: color ?? ThemeSAKS.colors.grayscale.division,
       thickness: 1,
