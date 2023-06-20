@@ -1,4 +1,4 @@
-import "package:client_app_design_system/components/custom_divider.dart";
+import "package:client_app_design_system/components/custom_divider/custom_divider.dart";
 import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";

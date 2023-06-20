@@ -45,6 +45,16 @@ void main() {
     SecondaryButtonBuilder.type,
     SecondaryButtonBuilder.fromDynamic,
   );
+
+  RenderService().bindComponents(
+    SvgBuilder.type,
+    SvgBuilder.fromDynamic,
+  );
+
+  RenderService().bindComponents(
+    CustomDividerBuilder.type,
+    CustomDividerBuilder.fromDynamic,
+  );
   runApp(
     DocPreview(
       sections: [
