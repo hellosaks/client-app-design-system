@@ -7,7 +7,7 @@ import "package:json_dynamic_widget/json_dynamic_widget.dart";
 class IconBuilder extends JsonWidgetBuilder {
   final IconProps props;
 
-  static const type = "icon";
+  static const type = "custom_icon";
 
   const IconBuilder({
     required this.props,

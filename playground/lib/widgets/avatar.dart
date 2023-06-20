@@ -1,6 +1,6 @@
 import 'package:client_app_design_system/components/avatar/avatar.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart' hide Icon;
 import 'package:playground/render_service.dart';
 
 class AvatarDynamicView extends StatelessWidget {
@@ -30,7 +30,7 @@ class AvatarDynamicView extends StatelessWidget {
 }
 
 final avatar = ElementPreview(
-  document: AvatarDocWidget(), // From generated file
+  document: AvatarDocWidget(),
   previews: [
     WidgetPreview(
       widget: const AvatarDynamicView(),

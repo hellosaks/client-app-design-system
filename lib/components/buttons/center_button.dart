@@ -94,7 +94,7 @@ class _CenterButtonState extends State<CenterButton> {
       height(60),
     );
     return Box(
-      key: SecondaryButton.boxContainerKey,
+      key: CenterButton.boxContainerKey,
       mix: styles,
       child: Icon(
         props: IconProps(

@@ -1,4 +1,4 @@
-import 'package:client_app_design_system/components/avatar/avatar_builder.dart';
+import 'package:client_app_design_system/client_app_design_system.dart';
 import 'package:client_app_design_system/components/custom_typography/custom_typography_builder.dart';
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +33,16 @@ void main() {
   RenderService().bindComponents(
     CustomTypographyBuilder.type,
     CustomTypographyBuilder.fromDynamic,
+  );
+
+  RenderService().bindComponents(
+    IconBuilder.type,
+    IconBuilder.fromDynamic,
+  );
+
+  RenderService().bindComponents(
+    SecondaryButtonBuilder.type,
+    SecondaryButtonBuilder.fromDynamic,
   );
   runApp(
     DocPreview(

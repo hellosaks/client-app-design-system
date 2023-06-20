@@ -1,3 +1,5 @@
+import "package:client_app_design_system/utils/util_functions.dart";
+import "package:deep_pick/deep_pick.dart";
 import "package:flutter/material.dart";
 
 class ColorAttributesButton {
@@ -23,4 +25,19 @@ class ColorAttributesButton {
           !(pressColor == bgColor),
           "background color and press color can't not be equals",
         );
+
+  factory ColorAttributesButton.fromJson(Map<String, dynamic> json) {
+    return ColorAttributesButton(
+      pressColor: pick(json, "press_color")
+          .letOrThrow((pick) => colorDecoder(pick.asString())),
+      insideColor: pick(json, "inside_color")
+              .letOrNull((pick) => colorDecoder(pick.asString())) ??
+          Colors.white,
+      borderColor: pick(json, "border_color")
+          .letOrNull((pick) => colorDecoder(pick.asString())),
+      bgColor: pick(json, "bg_color")
+              .letOrNull((pick) => colorDecoder(pick.asString())) ??
+          Colors.transparent,
+    );
+  }
 }
