@@ -5,7 +5,7 @@ void main() {
   group("NotificationBellBuilder", () {
     test("should parse correctly infos", () {
       final json = {
-        "number_notification": 1,
+        "number_notifications": 1,
         "icon_props": {
           "variant": "unicons",
           "uniconsProps": {
