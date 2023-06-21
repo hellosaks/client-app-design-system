@@ -189,11 +189,11 @@ DA:6,4
 DA:8,2
 DA:9,8
 DA:11,2
-DA:14,3
-DA:15,3
-DA:16,14
-DA:17,6
-DA:18,9
+DA:14,4
+DA:15,4
+DA:16,19
+DA:17,8
+DA:18,12
 LF:11
 LH:11
 end_of_record
@@ -769,7 +769,7 @@ LF:179
 LH:179
 end_of_record
 SF:lib/components/custom_divider/custom_divider.dart
-DA:8,54
+DA:8,58
 DA:10,2
 DA:12,2
 DA:13,8

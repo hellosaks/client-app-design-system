@@ -28,7 +28,7 @@ class NotificationBellBuilder extends JsonWidgetBuilder {
     return NotificationBellBuilder(
       iconProps: pick(json, "icon_props")
           .letOrThrow((p0) => IconPropsDto().fromJson(p0.asMapOrThrow())),
-      numberNotifications: pick(json, "number_notification").asIntOrThrow(),
+      numberNotifications: pick(json, "number_notifications").asIntOrThrow(),
       onPressed: onPressed,
       numSupportedChildren: 1,
     );
