@@ -24,6 +24,9 @@ class AvatarDynamicView extends StatelessWidget {
           json: """{"type": "avatar","args": {"radius": 22,"size": 25}}""",
           context: context,
         ),
+        const SizedBox(
+          height: 20,
+        ),
       ],
     );
   }
