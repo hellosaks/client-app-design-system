@@ -17,5 +17,6 @@ export "icon/custom_icons.dart";
 export "icon/dto/icon_dto.dart";
 export "icon/icon.dart";
 export "indication_filters.dart";
+export "notification_bell/notification_bell.dart";
 export "referral_button.dart";
 export "skeleton/skeleton.dart";

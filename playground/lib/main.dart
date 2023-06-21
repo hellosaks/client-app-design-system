@@ -55,6 +55,12 @@ void main() {
     CustomDividerBuilder.type,
     CustomDividerBuilder.fromDynamic,
   );
+
+  RenderService().bindComponents(
+    NotificationBellBuilder.type,
+    NotificationBellBuilder.fromDynamic,
+  );
+
   runApp(
     DocPreview(
       sections: [
