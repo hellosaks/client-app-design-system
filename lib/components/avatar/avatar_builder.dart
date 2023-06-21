@@ -9,14 +9,14 @@ class AvatarBuilder extends JsonWidgetBuilder {
   final double? radius;
   final String? imageUrl;
 
-  static const type = "avatar";
-
   const AvatarBuilder({
     required this.onPressed,
     this.radius,
     this.imageUrl,
     required super.numSupportedChildren,
   });
+
+  static const type = "avatar";
 
   factory AvatarBuilder.fromDynamic(
     Map<dynamic, dynamic> json, {
