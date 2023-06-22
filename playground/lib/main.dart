@@ -11,6 +11,8 @@ import 'package:playground/widgets/buttons/primary_button.dart';
 import 'package:playground/widgets/buttons/secondary_button.dart';
 import 'package:playground/widgets/buttons/tertiary_button.dart';
 import 'package:playground/widgets/card_banner.dart';
+import 'package:playground/widgets/circular_loading.dart';
+import 'package:playground/widgets/common_modal.dart';
 import 'package:playground/widgets/custom_tabs.dart';
 import 'package:playground/widgets/custom_typography.dart';
 import 'package:playground/widgets/icons.dart';
@@ -94,7 +96,9 @@ void main() {
             referralButtonDoc,
             indicationFiltersDoc,
             customTabsDoc,
-            skeletonDoc
+            skeletonDoc,
+            commonModalDoc,
+            circularLoadingDoc,
           ],
         ),
       ],
