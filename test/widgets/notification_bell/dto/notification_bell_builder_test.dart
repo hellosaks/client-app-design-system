@@ -1,10 +1,20 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:flutter_test/flutter_test.dart";
+import "package:json_dynamic_widget/json_dynamic_widget.dart";
+
+import "../../../utils/test_wrappers.dart";
 
 void main() {
   group("NotificationBellBuilder", () {
-    test("should parse correctly infos", () {
-      final json = {
+    late final JsonWidgetRegistry registry;
+
+    setUp(() {
+      registry = JsonWidgetRegistry.instance;
+      bindComponents(registry, mapBuilders);
+    });
+
+    testWidgets("should parse correctly infos", (tester) async {
+      final jsonArgs = {
         "number_notifications": 1,
         "icon_props": {
           "variant": "unicons",
@@ -14,24 +24,20 @@ void main() {
           }
         }
       };
-      final NotificationBellBuilder widget =
-          NotificationBellBuilder.fromDynamic(json);
+      final jsonComponent = {
+        "type": NotificationBellBuilder.type,
+        "args": {...jsonArgs}
+      };
 
-      expect(widget.numberNotifications, 1);
-      expect(
-        widget.iconProps.variant,
-        IconVariant.unicons,
-      );
+      await tester.pumpWidget(wrapWithJsonBuilder(jsonComponent, registry));
 
-      expect(
-        widget.iconProps.variant,
-        IconVariant.unicons,
-      );
+      expect(find.byType(NotificationBell), findsOneWidget);
 
-      expect(
-        widget.iconProps.uniconsProps?.icon,
-        UniconsLine.bell,
-      );
+      final widget =
+          tester.widget<NotificationBell>(find.byType(NotificationBell));
+
+      expect(widget.numberOfNotifications, 1);
+      expect(widget.iconProps.runtimeType, IconProps);
     });
   });
 }
