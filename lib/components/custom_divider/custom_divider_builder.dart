@@ -4,31 +4,28 @@ import "package:deep_pick/deep_pick.dart";
 import "package:flutter/material.dart";
 import "package:json_dynamic_widget/json_dynamic_widget.dart";
 
-class AvatarBuilder extends JsonWidgetBuilder {
-  final void Function() onPressed;
-  final double? radius;
-  final String? imageUrl;
+class CustomDividerBuilder extends JsonWidgetBuilder {
+  final Color? color;
 
-  const AvatarBuilder({
-    required this.onPressed,
-    this.radius,
-    this.imageUrl,
+  static const type = "custom_divider";
+
+  const CustomDividerBuilder({
+    this.color,
     required super.numSupportedChildren,
   });
 
-  static const type = "avatar";
-
-  factory AvatarBuilder.fromDynamic(
+  factory CustomDividerBuilder.fromDynamic(
     Map<dynamic, dynamic> json, {
     // ignore: avoid_unused_constructor_parameters
     JsonWidgetRegistry? registry,
   }) {
-    final void Function()? onPressed = json["onPressed"] as void Function()?;
-    return AvatarBuilder(
+    return CustomDividerBuilder(
+      color: pick(json, "color").letOrNull(
+        (p0) => colorDecoder(
+          p0.asStringOrThrow(),
+        ),
+      ),
       numSupportedChildren: 1,
-      onPressed: onPressed ?? () {},
-      radius: pick(json, "radius").asDoubleOrNull() ?? 25,
-      imageUrl: pick(json, "image_url").asStringOrNull(),
     );
   }
 
@@ -39,10 +36,8 @@ class AvatarBuilder extends JsonWidgetBuilder {
     required JsonWidgetData data,
     Key? key,
   }) {
-    return Avatar(
-      onPressed: onPressed,
-      imageUrl: imageUrl,
-      radius: radius,
+    return CustomDivider(
+      color: color,
     );
   }
 }

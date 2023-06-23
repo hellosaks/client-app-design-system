@@ -11,6 +11,8 @@ import 'package:playground/widgets/buttons/primary_button.dart';
 import 'package:playground/widgets/buttons/secondary_button.dart';
 import 'package:playground/widgets/buttons/tertiary_button.dart';
 import 'package:playground/widgets/card_banner.dart';
+import 'package:playground/widgets/circular_loading.dart';
+import 'package:playground/widgets/common_modal.dart';
 import 'package:playground/widgets/custom_tabs.dart';
 import 'package:playground/widgets/custom_typography.dart';
 import 'package:playground/widgets/icons.dart';
@@ -45,6 +47,22 @@ void main() {
     SecondaryButtonBuilder.type,
     SecondaryButtonBuilder.fromDynamic,
   );
+
+  RenderService().bindComponents(
+    SvgBuilder.type,
+    SvgBuilder.fromDynamic,
+  );
+
+  RenderService().bindComponents(
+    CustomDividerBuilder.type,
+    CustomDividerBuilder.fromDynamic,
+  );
+
+  RenderService().bindComponents(
+    NotificationBellBuilder.type,
+    NotificationBellBuilder.fromDynamic,
+  );
+
   runApp(
     DocPreview(
       sections: [
@@ -78,7 +96,9 @@ void main() {
             referralButtonDoc,
             indicationFiltersDoc,
             customTabsDoc,
-            skeletonDoc
+            skeletonDoc,
+            commonModalDoc,
+            circularLoadingDoc,
           ],
         ),
       ],
