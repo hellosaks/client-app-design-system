@@ -128,7 +128,7 @@ void main() {
           ),
         );
         await tester.pumpAndSettle();
-        expect(onPressButtonPressed, true);
+        expect(onTertiaryButtonPressed, true);
       },
     );
   });
