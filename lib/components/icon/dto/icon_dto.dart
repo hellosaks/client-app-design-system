@@ -1,5 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:deep_pick/deep_pick.dart";
+import "package:json_theme/json_theme.dart";
 
 class UniconsPropsDto implements SerializableJson<UniconsProps> {
   @override
@@ -11,7 +12,7 @@ class UniconsPropsDto implements SerializableJson<UniconsProps> {
   UniconsProps fromJson(Map<String, dynamic> json) {
     return UniconsProps(
       color: pick(json, "color")
-          .letOrNull((pick) => colorDecoder(pick.asString())),
+          .letOrNull((p0) => ThemeDecoder.decodeColor(p0.asStringOrThrow())!),
       size: pick(json, "size").asDoubleOrNull(),
       icon: pick(json, "icon")
           .letOrThrow((pick) => UniconsLineEnum().parse(pick.asString())),
@@ -24,7 +25,7 @@ class CustomIconsPropsDto implements SerializableJson<CustomIconsProps> {
   CustomIconsProps fromJson(Map<String, dynamic> json) {
     return CustomIconsProps(
       color: pick(json, "color")
-          .letOrNull((pick) => colorDecoder(pick.asString())),
+          .letOrNull((p0) => ThemeDecoder.decodeColor(p0.asStringOrThrow())!),
       size: pick(json, "size").asDoubleOrNull(),
       icon: pick(json, "icon")
           .letOrThrow((pick) => CustomIconEnum().parse(pick.asString())),

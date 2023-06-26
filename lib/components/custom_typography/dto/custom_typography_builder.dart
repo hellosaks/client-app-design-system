@@ -1,11 +1,10 @@
 import "package:child_builder/child_builder.dart";
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/enums/font_weight_dto.dart";
-import "package:client_app_design_system/utils/enums/text_align_dto.dart";
 import "package:client_app_design_system/utils/enums/typography_variant_dto.dart";
 import "package:deep_pick/deep_pick.dart";
 import "package:flutter/material.dart";
 import "package:json_dynamic_widget/json_dynamic_widget.dart";
+import "package:json_theme/json_theme.dart";
 import "package:mix/mix.dart";
 
 class CustomTypographyBuilder extends JsonWidgetBuilder {
@@ -37,22 +36,17 @@ class CustomTypographyBuilder extends JsonWidgetBuilder {
       numSupportedChildren: 1,
       text: pick(json, "text").asStringOrThrow(),
       variant: pick(json, "variant").letOrThrow(
-        (p0) => TypographyVariantEnum().parse(
-          p0.asStringOrThrow(),
-        ),
+        (p0) => TypographyVariantEnum().parse(p0.asStringOrThrow()),
       ),
       weight: pick(json, "weight").letOrNull(
-        (p0) => FontWeightEnum().parse(
-          p0.asStringOrThrow(),
-        ),
+        (p0) => ThemeDecoder.decodeFontWeight(p0.asStringOrThrow())!,
       ),
       align: pick(json, "align").letOrNull(
-        (p0) => TextAlignEnum().parse(
-          p0.asStringOrThrow(),
-        ),
+        (p0) => ThemeDecoder.decodeTextAlign(p0.asStringOrThrow())!,
       ),
-      color: pick(json, "color")
-          .letOrNull((pick) => colorDecoder(pick.asString())),
+      color: pick(json, "color").letOrNull(
+        (p0) => ThemeDecoder.decodeColor(p0.asStringOrThrow())!,
+      ),
     );
   }
 

@@ -1,9 +1,9 @@
 import "package:child_builder/child_builder.dart";
-import "package:client_app_design_system/utils/util_functions.dart";
 import "package:deep_pick/deep_pick.dart";
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:json_dynamic_widget/json_dynamic_widget.dart";
+import "package:json_theme/json_theme.dart";
 
 class SvgBuilder extends JsonWidgetBuilder {
   final String? asset;
@@ -41,7 +41,7 @@ class SvgBuilder extends JsonWidgetBuilder {
       asset: pick(json, "asset").asStringOrNull(),
       url: pick(json, "url").asStringOrNull(),
       color: pick(json, "color")
-          .letOrNull((pick) => colorDecoder(pick.asString())),
+          .letOrNull((p0) => ThemeDecoder.decodeColor(p0.asStringOrThrow())!),
       height: pick(json, "height").asDoubleOrNull(),
       width: pick(json, "width").asDoubleOrNull(),
     );
