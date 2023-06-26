@@ -3,6 +3,7 @@ import "package:client_app_design_system/client_app_design_system.dart";
 import "package:deep_pick/deep_pick.dart";
 import "package:flutter/material.dart";
 import "package:json_dynamic_widget/json_dynamic_widget.dart";
+import "package:json_theme/json_theme.dart";
 
 class CustomDividerBuilder extends JsonWidgetBuilder {
   final Color? color;
@@ -21,9 +22,7 @@ class CustomDividerBuilder extends JsonWidgetBuilder {
   }) {
     return CustomDividerBuilder(
       color: pick(json, "color").letOrNull(
-        (p0) => colorDecoder(
-          p0.asStringOrThrow(),
-        ),
+        (p0) => ThemeDecoder.decodeColor(p0.asStringOrThrow())!,
       ),
       numSupportedChildren: 1,
     );

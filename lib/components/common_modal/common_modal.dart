@@ -39,7 +39,9 @@ class CommonModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: modalHeight,
+      height: modalHeight <= 1
+          ? MediaQuery.of(context).size.height * modalHeight
+          : modalHeight,
       child: _buildBody(),
     );
   }
@@ -51,11 +53,11 @@ class CommonModal extends StatelessWidget {
         child: Column(
           children: [
             ..._buildHeader(),
-            SizedBox(height: AppSize().getHeight(24)),
+            const SizedBox(height: 30),
             ..._buildContent(),
             const Spacer(),
             if (listActions.isNotEmpty) ...[
-              SizedBox(height: AppSize().getHeight(40)),
+              const SizedBox(height: 40),
               _buildFooter()
             ],
             const Spacer()
@@ -68,17 +70,17 @@ class CommonModal extends StatelessWidget {
   List<Widget> _buildContent() {
     return [
       CustomTypography(
-        variant: TypographyVariant.h4,
+        variant: TypographyVariant.h3,
         text: title,
-        color: ThemeSAKS.colors.primary.saks,
+        color: ThemeSAKS.colors.primary.sea,
         align: TextAlign.center,
         weight: FontWeight.w600,
       ),
-      SizedBox(height: AppSize().getHeight(10)),
+      const SizedBox(height: 30),
       CustomTypography(
-        variant: TypographyVariant.h4,
+        variant: TypographyVariant.h6,
         text: description,
-        color: ThemeSAKS.colors.secondary.anchor,
+        color: ThemeSAKS.colors.grayscale.strongGrey,
         align: TextAlign.center,
       ),
     ];
@@ -86,8 +88,7 @@ class CommonModal extends StatelessWidget {
 
   List<Widget> _buildHeader() {
     final icon = currentIconProps.copyWith(
-      color: ThemeSAKS.colors.primary.saks,
-      size: 50,
+      size: 56,
     );
     final styles = Mix(
       height(8),
@@ -96,12 +97,9 @@ class CommonModal extends StatelessWidget {
       rounded(5),
     );
     return [
-      SizedBox(height: AppSize().getHeight(10)),
-      Box(
-        key: const Key("line-header"),
-        mix: styles,
-      ),
-      SizedBox(height: AppSize().getHeight(33)),
+      const SizedBox(height: 10),
+      Box(key: const Key("line-header"), mix: styles),
+      const SizedBox(height: 40),
       Icon(props: icon)
     ];
   }
@@ -146,9 +144,7 @@ class CommonModal extends StatelessWidget {
   Widget _buildFooter() {
     return Column(
       children: listActions
-          .expand(
-            (element) => [element, SizedBox(height: AppSize().getHeight(20))],
-          )
+          .expand((element) => [element, const SizedBox(height: 20)])
           .toList(),
     );
   }
