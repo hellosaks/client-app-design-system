@@ -100,5 +100,29 @@ final commonModalDoc = ElementPreview(
       ),
       description: 'Example common modal with loading',
     ),
+    WidgetPreview(
+      widget: Container(
+        color: Colors.grey[50],
+        width: double.infinity,
+        child: CommonModal(
+          modalHeight: 0.65,
+          currentIconProps: IconProps(
+            variant: IconVariant.custom,
+            customIconsProps: CustomIconsProps(
+              icon: CustomIcons.icPiggyBank,
+              color: ThemeSAKS.colors.primary.sea,
+            ),
+          ),
+          description:
+              "Em nossa tela de destaque, você encontrará uma seleção cuidadosamente elaborada dos melhores fundos de investimentos em previdência disponíveis.\n\nEsses fundos são escolhidos com base em sua performance consistente, gestão especializada e potencial para impulsionar seus investimentos no longo prazo.",
+          title: "Investimentos em\nPrevidência Privada",
+          onPressButton: ButtonProperties(
+            onPressed: () {},
+            title: "Ver planos de Previdência",
+          ),
+        ),
+      ),
+      description: 'Example common modal with loading',
+    ),
   ],
 );

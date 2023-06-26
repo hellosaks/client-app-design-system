@@ -8,7 +8,9 @@ void main() {
         "icWhatsapp": CustomIcons.icWhatsapp,
         "icShare": CustomIcons.icShare,
         "icMultimedia": CustomIcons.icMultimedia,
-        "icProfileIcon": CustomIcons.icProfileIcon
+        "icProfileIcon": CustomIcons.icProfileIcon,
+        "icPiggyBank": CustomIcons.icPiggyBank,
+        "icWorld": CustomIcons.icWorld,
       };
 
       for (final key in map.keys) {
@@ -22,6 +24,8 @@ void main() {
         CustomIcons.icShare: "icShare",
         CustomIcons.icMultimedia: "icMultimedia",
         CustomIcons.icProfileIcon: "icProfileIcon",
+        CustomIcons.icPiggyBank: "icPiggyBank",
+        CustomIcons.icWorld: "icWorld",
       };
 
       for (final key in map.keys) {

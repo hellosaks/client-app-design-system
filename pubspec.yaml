@@ -20,6 +20,7 @@ dependencies:
   google_fonts: 4.0.3
   heroicons: 0.8.0
   json_dynamic_widget: 6.0.5+2
+  json_theme: 5.0.2+6
   mix: 0.0.6
   path: ^1.8.2
   shimmer: 3.0.0
