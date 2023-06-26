@@ -3,6 +3,7 @@ export "buttons/secondary_button/dto/secondary_button_builder.dart";
 export "cards/card_banner/dto/card_banner_builder.dart";
 export "common_modal/dto/common_modal_builder.dart";
 export "custom_divider/custom_divider_builder.dart";
+export "custom_typography/dto/custom_typography_builder.dart";
 export "icon/dto/icon_builder.dart";
 export "map_builders.dart";
 export "notification_bell/dto/notification_bell_builder.dart";

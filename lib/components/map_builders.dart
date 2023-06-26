@@ -16,4 +16,6 @@ final Map<String, BuilderConstructorWidget> mapBuilders = {
   CustomDividerBuilder.type: CustomDividerBuilder.fromDynamic,
   NotificationBellBuilder.type: NotificationBellBuilder.fromDynamic,
   CommonModalBuilder.type: CommonModalBuilder.fromDynamic,
+  CustomTypographyBuilder.type: CustomTypographyBuilder.fromDynamic,
+  SecondaryButtonBuilder.type: SecondaryButtonBuilder.fromDynamic,
 };
