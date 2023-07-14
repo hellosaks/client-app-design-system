@@ -2,7 +2,6 @@ import 'package:client_app_design_system/client_app_design_system.dart';
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
-import 'package:playground/render_service.dart';
 import 'package:playground/widgets/avatar.dart';
 import 'package:playground/widgets/buttons/auxiliar_button.dart';
 import 'package:playground/widgets/buttons/center_button.dart';
@@ -16,6 +15,7 @@ import 'package:playground/widgets/custom_tabs.dart';
 import 'package:playground/widgets/custom_typography.dart';
 import 'package:playground/widgets/icons.dart';
 import 'package:playground/widgets/indication_filters.dart';
+import 'package:playground/widgets/notification_bell.dart';
 import 'package:playground/widgets/referral_button.dart';
 import 'package:playground/widgets/referral_card.dart';
 import 'package:playground/widgets/skeleton.dart';
@@ -26,41 +26,15 @@ void main() {
 
   final registry = JsonWidgetRegistry.instance;
   registry.navigatorKey = navigatorKey;
-
-  RenderService().bindComponents(
-    AvatarBuilder.type,
-    AvatarBuilder.fromDynamic,
-  );
-
-  RenderService().bindComponents(
-    CustomTypographyBuilder.type,
-    CustomTypographyBuilder.fromDynamic,
-  );
-
-  RenderService().bindComponents(
-    IconBuilder.type,
-    IconBuilder.fromDynamic,
-  );
-
-  RenderService().bindComponents(
-    SecondaryButtonBuilder.type,
-    SecondaryButtonBuilder.fromDynamic,
-  );
-
-  RenderService().bindComponents(
-    SvgBuilder.type,
-    SvgBuilder.fromDynamic,
-  );
-
-  RenderService().bindComponents(
-    CustomDividerBuilder.type,
-    CustomDividerBuilder.fromDynamic,
-  );
-
-  RenderService().bindComponents(
-    NotificationBellBuilder.type,
-    NotificationBellBuilder.fromDynamic,
-  );
+  for (final builder in mapBuilders.entries) {
+    registry.registerCustomBuilder(
+      builder.key,
+      JsonWidgetBuilderContainer(
+        builder: (map, {registry}) =>
+            builder.value(map as Map<dynamic, dynamic>, registry: registry),
+      ),
+    );
+  }
 
   runApp(
     DocPreview(
@@ -84,13 +58,14 @@ void main() {
           ],
         ),
         ElementsSection(
-          title: 'Avatar',
-          elements: [avatar],
+          title: 'CustomTypography',
+          elements: [
+            customTypographyDoc,
+          ],
         ),
         ElementsSection(
           title: 'Widgets',
           elements: [
-            customTypographyDoc,
             iconDoc,
             referralButtonDoc,
             indicationFiltersDoc,
@@ -98,6 +73,8 @@ void main() {
             skeletonDoc,
             commonModalDoc,
             circularLoadingDoc,
+            notificationBell,
+            avatar
           ],
         ),
       ],

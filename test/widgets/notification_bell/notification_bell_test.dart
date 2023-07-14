@@ -58,6 +58,38 @@ void main() {
       expect(find.text(notifications.toString()), findsOneWidget);
     });
 
+    testWidgets("should render the number of clipped notifications",
+        (WidgetTester tester) async {
+      // GIVEN
+      const notifications = 200;
+      final widget = NotificationBell(
+        numberOfNotifications: notifications,
+        onPressed: () {},
+        iconProps: IconProps(
+          variant: IconVariant.unicons,
+          uniconsProps: UniconsProps(
+            icon: UniconsLine.bell,
+          ),
+        ),
+      );
+
+      // WHEN
+      await tester.pumpWidget(wrapWithMaterialApp(widget));
+
+      // THEN
+      expect(find.byKey(Key(NotificationBell.badgeKey)), findsOneWidget);
+
+      expect(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Icon &&
+              widget.props.uniconsProps?.icon == UniconsLine.bell,
+        ),
+        findsOneWidget,
+      );
+      expect(find.text("9+"), findsOneWidget);
+    });
+
     testWidgets("should not render badge with zero notifications",
         (WidgetTester tester) async {
       // GIVEN
