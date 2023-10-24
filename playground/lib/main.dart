@@ -9,6 +9,7 @@ import 'package:playground/widgets/buttons/primary_button.dart';
 import 'package:playground/widgets/buttons/secondary_button.dart';
 import 'package:playground/widgets/buttons/tertiary_button.dart';
 import 'package:playground/widgets/card_banner.dart';
+import 'package:playground/widgets/chart_distribution.dart';
 import 'package:playground/widgets/circular_loading.dart';
 import 'package:playground/widgets/common_modal.dart';
 import 'package:playground/widgets/custom_tabs.dart';
@@ -57,6 +58,7 @@ void main() {
             cardBannerDoc,
           ],
         ),
+        ElementsSection(elements: [chart], title: "chart"),
         ElementsSection(
           title: 'CustomTypography',
           elements: [

@@ -10,6 +10,7 @@ environment:
 dependencies:
   cached_network_image: 3.2.3
   child_builder: 2.0.1
+  circular_chart_flutter: ^0.0.2
   deep_pick: 1.0.0
   doc_widget: 0.4.0
   flutter:
@@ -19,6 +20,7 @@ dependencies:
   get: 4.6.5
   google_fonts: 4.0.3
   heroicons: 0.8.0
+  intl: ^0.18.1
   json_dynamic_widget: 6.0.5+2
   json_theme: 5.0.2+6
   mix: 0.0.6
