@@ -5,6 +5,7 @@ import 'package:client_app_design_system/components/chart_distribution/chart_dis
 import 'package:client_app_design_system/components/chart_distribution/info_circular_graph_model.dart';
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:playground/render_service.dart';
 
 class CircularChartDistributionView extends StatelessWidget {
@@ -17,17 +18,13 @@ class CircularChartDistributionView extends StatelessWidget {
     final data = [
       {
         "color": "#5274D8",
-        "fund_name": "Saks Super...",
-        "percentage": 1,
+        "value": 100,
       }
     ];
     final json = {
       "type": "circular_chart_distribution",
       "args": {
-        "bg_color": "#F4F7FA",
-        "data": data,
-        "title": "Distribuição",
-        "type_distribution": "%"
+        "values": data,
       }
     };
 
@@ -45,18 +42,17 @@ class CircularChartDistributionView extends StatelessWidget {
 final List<InfoCircularGraph> data = [
   InfoCircularGraph(
     color: Colors.red,
-    fundName: "Saks super prev",
-    percentage: 0.5630,
+    value: 20,
   ),
   InfoCircularGraph(
     color: Colors.black,
-    fundName: "Saks super prev",
-    percentage: 0.2270,
+    value: 20,
   ),
   InfoCircularGraph(
     color: Colors.blue,
-    fundName: "Saks super prev",
-    percentage: 0.22,
+    // label: "Saks super prev",
+    value: 60,
+    // convertedValue: '20%',
   )
 ];
 final chart = ElementPreview(
@@ -64,10 +60,10 @@ final chart = ElementPreview(
   previews: [
     WidgetPreview(
       widget: CircularChartDistribution(
-        bgColor: colorDecoder("#F4F7FA"),
-        data: data,
-        typeDistribution: '%',
-        title: 'Distribuição',
+        // bgColor: ThemeDecoder.decodeColor("#F4F7FA")!,
+        listValues: data,
+        // typeDistribution: '%',
+        // title: 'Distribuição',
       ),
       description: 'chart distribution',
     ),
