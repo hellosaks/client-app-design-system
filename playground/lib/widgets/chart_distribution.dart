@@ -24,6 +24,8 @@ class CircularChartDistributionView extends StatelessWidget {
     final json = {
       "type": "circular_chart_distribution",
       "args": {
+        "height": 120,
+        "width": 120,
         "values": data,
       }
     };
@@ -50,7 +52,6 @@ final List<InfoCircularGraph> data = [
   ),
   InfoCircularGraph(
     color: Colors.blue,
-    // label: "Saks super prev",
     value: 60,
     // convertedValue: '20%',
   )
@@ -60,10 +61,9 @@ final chart = ElementPreview(
   previews: [
     WidgetPreview(
       widget: CircularChartDistribution(
-        // bgColor: ThemeDecoder.decodeColor("#F4F7FA")!,
         listValues: data,
-        // typeDistribution: '%',
-        // title: 'Distribuição',
+        height: 120,
+        width: 120,
       ),
       description: 'chart distribution',
     ),

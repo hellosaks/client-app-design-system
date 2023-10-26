@@ -25,6 +25,8 @@ void main() {
     testWidgets("should render correctly ", (WidgetTester tester) async {
       final widget = CircularChartDistribution(
         listValues: data,
+        height: 120,
+        width: 120,
       );
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
@@ -35,6 +37,8 @@ void main() {
         (WidgetTester tester) async {
       final widget = CircularChartDistribution(
         listValues: data,
+        height: 120,
+        width: 120,
       );
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 

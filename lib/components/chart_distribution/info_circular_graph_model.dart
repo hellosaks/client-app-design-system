@@ -11,7 +11,7 @@ class InfoCircularGraph {
     required this.value,
   }) : assert(
           !(value > 100 || value <= 0),
-          "percentage value must be a value between 0 and 1",
+          "value value must be a value between 0 and 100",
         );
 
   factory InfoCircularGraph.fromJson(Map<String, dynamic> json) {

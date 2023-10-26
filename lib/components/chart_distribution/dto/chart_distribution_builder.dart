@@ -7,18 +7,15 @@ import "package:json_dynamic_widget/json_dynamic_widget.dart";
 
 class CircularChartDistributionBuilder extends JsonWidgetBuilder {
   static const type = "circular_chart_distribution";
-  // final Color bgColor;
+
   final List<InfoCircularGraph> values;
-  // final List<InfoCircularGraph> listLabel;
-  // final String title;
-  // final String typeDistribution;
+  final double width;
+  final double height;
   const CircularChartDistributionBuilder({
-    // required this.bgColor,
-    // required this.listLabel,
     required this.values,
     required super.numSupportedChildren,
-    // required this.title,
-    // required this.typeDistribution,
+    required this.width,
+    required this.height,
   });
 
   factory CircularChartDistributionBuilder.fromDynamic(
@@ -29,15 +26,9 @@ class CircularChartDistributionBuilder extends JsonWidgetBuilder {
     return CircularChartDistributionBuilder(
       values: pick(json, "values")
           .asListOrThrow((p0) => InfoCircularGraph.fromJson(p0.asMapOrThrow())),
-      // listLabel: pick(json, "data").asListOrThrow(
-      //   (pick) => InfoCircularGraph.fromJson(pick.asMapOrThrow()),
-      // ),
-      // bgColor: pick(json, "bg_color").letOrThrow(
-      //   (pick) => ThemeDecoder.decodeColor(pick.asStringOrThrow())!,
-      // ),
       numSupportedChildren: 1,
-      // title: pick(json, "title").asStringOrThrow(),
-      // typeDistribution: pick(json, "type_distribution").asStringOrThrow(),
+      height: pick(json, "height").asDoubleOrThrow(),
+      width: pick(json, "width").asDoubleOrThrow(),
     );
   }
 
@@ -55,10 +46,8 @@ class CircularChartDistributionBuilder extends JsonWidgetBuilder {
 
     return CircularChartDistribution(
       listValues: values,
-      // bgColor: bgColor,
-      // data: listLabel,
-      // title: titleLarge,
-      // typeDistribution: typeDistribution,
+      height: 120,
+      width: 120,
     );
   }
 }
