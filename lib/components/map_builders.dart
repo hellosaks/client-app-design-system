@@ -1,4 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:client_app_design_system/components/chart_distribution/dto/chart_distribution_builder.dart";
 import "package:json_dynamic_widget/json_dynamic_widget.dart";
 
 typedef BuilderConstructorWidget<T extends JsonWidgetBuilder> = T Function(
@@ -18,4 +19,6 @@ final Map<String, BuilderConstructorWidget> mapBuilders = {
   CommonModalBuilder.type: CommonModalBuilder.fromDynamic,
   CustomTypographyBuilder.type: CustomTypographyBuilder.fromDynamic,
   SecondaryButtonBuilder.type: SecondaryButtonBuilder.fromDynamic,
+  CircularChartDistributionBuilder.type:
+      CircularChartDistributionBuilder.fromDynamic,
 };
