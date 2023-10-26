@@ -7,9 +7,14 @@ import "package:flutter/material.dart";
 class CircularChartDistribution extends StatelessWidget {
   final List<InfoCircularGraph> listValues;
 
+  final double width;
+  final double height;
+
   const CircularChartDistribution({
     super.key,
     required this.listValues,
+    required this.width,
+    required this.height,
   });
 
   @override
@@ -19,13 +24,12 @@ class CircularChartDistribution extends StatelessWidget {
 
   Widget _buildChart() {
     return AnimatedCircularChart(
-      size: const Size(120, 120),
+      size: Size(height, width),
       initialChartData: <CircularStackEntry>[
         CircularStackEntry(
           <CircularSegmentEntry>[
             ...listValues.map((e) => _buildElement(element: e)),
           ],
-          rankKey: "progress",
         ),
       ],
       percentageValues: true,
