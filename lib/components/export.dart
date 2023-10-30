@@ -1,3 +1,4 @@
+export "accordion/custom_according.dart";
 export "avatar/avatar.dart";
 export "buttons/auxiliar_button.dart";
 export "buttons/button_special.dart";
@@ -20,6 +21,7 @@ export "icon/custom_icons.dart";
 export "icon/dto/icon_dto.dart";
 export "icon/icon.dart";
 export "indication_filters.dart";
+export "line_chart/line_chart.dart";
 export "notification_bell/notification_bell.dart";
 export "referral_button.dart";
 export "skeleton/skeleton.dart";

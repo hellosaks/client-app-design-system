@@ -12,6 +12,8 @@ import 'package:playground/widgets/card_banner.dart';
 import 'package:playground/widgets/chart_distribution.dart';
 import 'package:playground/widgets/circular_loading.dart';
 import 'package:playground/widgets/common_modal.dart';
+import 'package:playground/widgets/custom_according.dart';
+import 'package:playground/widgets/custom_line_chart.dart';
 import 'package:playground/widgets/custom_tabs.dart';
 import 'package:playground/widgets/custom_typography.dart';
 import 'package:playground/widgets/icons.dart';
@@ -51,6 +53,8 @@ void main() {
             auxButtonDoc
           ],
         ),
+        ElementsSection(elements: [customLineChart], title: "customLineChart"),
+        ElementsSection(elements: [customAccordion], title: "customAccordion"),
         ElementsSection(
           title: 'Cards',
           elements: [

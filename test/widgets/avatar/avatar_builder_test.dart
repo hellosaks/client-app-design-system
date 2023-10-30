@@ -1,4 +1,4 @@
-import "package:client_app_design_system/components/avatar/avatar_builder.dart";
+import "package:client_app_design_system/components/avatar/dto/avatar_builder.dart";
 import "package:flutter_test/flutter_test.dart";
 
 void main() {
