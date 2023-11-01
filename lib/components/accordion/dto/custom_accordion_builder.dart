@@ -7,22 +7,21 @@ import "package:json_theme/json_theme.dart";
 
 class CustomAccordionBuilder extends JsonWidgetBuilder {
   final Widget title;
-  // final List<Widget> children;
 
   final Color backgroundColor;
   final Color collapsedBackgroundColor;
 
   final bool initiallyExpanded;
 
-  final double? horizontalPadding;
   final Color? iconColor;
+  final double? borderRadius;
 
   const CustomAccordionBuilder({
     required this.title,
     required this.backgroundColor,
     required this.collapsedBackgroundColor,
     this.iconColor,
-    this.horizontalPadding,
+    this.borderRadius,
     this.initiallyExpanded = false,
     required super.numSupportedChildren,
   });
@@ -42,10 +41,10 @@ class CustomAccordionBuilder extends JsonWidgetBuilder {
       collapsedBackgroundColor: pick(json, "collapsed_bg_color").letOrThrow(
         (pick) => ThemeDecoder.decodeColor(pick.asStringOrThrow())!,
       ),
-      iconColor: pick(json, "icon_color").letOrThrow(
+      iconColor: pick(json, "icon_color").letOrNull(
         (pick) => ThemeDecoder.decodeColor(pick.asStringOrThrow())!,
       ),
-      horizontalPadding: pick(json, "horizontal_padding").asDoubleOrNull(),
+      borderRadius: pick(json, "border_radius").asDoubleOrNull(),
       initiallyExpanded: pick(json, "initially_expanded").asBoolOrFalse(),
       title: Container(),
     );
@@ -68,12 +67,15 @@ class CustomAccordionBuilder extends JsonWidgetBuilder {
     final title = getTitle(json: data.args as Map<String, dynamic>);
 
     return CustomAccordion(
+      borderRadius: borderRadius,
       iconColor: iconColor,
       backgroundColor: backgroundColor,
       collapsedBackgroundColor: collapsedBackgroundColor,
       title: JsonWidgetData.fromDynamic(title)?.build(context: context) ??
           Container(),
       children: [
+        // builds a list of widgets from a json list present
+        // in the component's children property
         for (var child in data.children ?? <JsonWidgetData>[])
           child.build(
             context: context,

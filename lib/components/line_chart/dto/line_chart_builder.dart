@@ -9,19 +9,20 @@ class CustomLineChartBuilder extends JsonWidgetBuilder {
   final List<DataSerie> dataSerie;
   final bool showXAxisAsNumbers;
   final bool defaultStyle;
-  final double interval;
   final bool interactive;
   final double height;
 
   final String title;
   final String subtitle;
 
+  final double? interval;
+
   const CustomLineChartBuilder({
     required this.title,
     required this.subtitle,
     required this.dataSerie,
     required this.height,
-    required this.interval,
+    this.interval,
     this.showXAxisAsNumbers = false,
     this.defaultStyle = true,
     this.interactive = false,
@@ -38,7 +39,7 @@ class CustomLineChartBuilder extends JsonWidgetBuilder {
     return CustomLineChartBuilder(
       interactive: pick(json, "interactive").asBoolOrFalse(),
       numSupportedChildren: 1,
-      interval: pick(json, "interval").asDoubleOrThrow(),
+      interval: pick(json, "interval").asDoubleOrNull(),
       height: pick(json, "height").asDoubleOrThrow(),
       dataSerie: pick(json, "data").letOrThrow(
         (p0) => p0.asListOrThrow(

@@ -10,6 +10,7 @@ class CustomAccordion extends StatelessWidget {
   final Color? iconColor;
   final Color backgroundColor;
   final Color collapsedBackgroundColor;
+  final double? borderRadius;
 
   final bool initiallyExpanded;
 
@@ -20,6 +21,7 @@ class CustomAccordion extends StatelessWidget {
     required this.backgroundColor,
     required this.collapsedBackgroundColor,
     this.iconColor,
+    this.borderRadius,
     this.initiallyExpanded = false,
   });
 
@@ -27,19 +29,21 @@ class CustomAccordion extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData(dividerColor: Colors.white),
-      child: ListTileTheme(
-        dense: false,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(
+            borderRadius ?? ThemeSAKS.shape.borderRadius, ),
         child: ExpansionTile(
           controlAffinity: ListTileControlAffinity.leading,
           initiallyExpanded: initiallyExpanded,
           expandedCrossAxisAlignment: CrossAxisAlignment.end,
           backgroundColor: backgroundColor,
-          collapsedBackgroundColor: Colors.white,
+          collapsedBackgroundColor: collapsedBackgroundColor,
           collapsedIconColor: iconColor ?? ThemeSAKS.colors.primary.saks,
           iconColor: iconColor ?? ThemeSAKS.colors.primary.saks,
           expandedAlignment: Alignment.topRight,
           title: title,
-          childrenPadding: const EdgeInsets.symmetric(horizontal: 20),
+          childrenPadding:
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           children: children,
         ),
       ),

@@ -1,4 +1,4 @@
-export "accordion/custom_according.dart";
+export "accordion/custom_accordion.dart";
 export "avatar/avatar.dart";
 export "buttons/auxiliar_button.dart";
 export "buttons/button_special.dart";

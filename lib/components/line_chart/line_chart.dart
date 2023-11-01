@@ -11,18 +11,22 @@ class CustomLineChart extends StatefulWidget {
   final List<DataSerie> series;
   final bool showXAxisAsNumbers;
   final bool defaultStyle;
-  final double interval;
   final double height;
   final bool interactive;
 
   final String title;
   final String subtitle;
+
+  final double? interval;
+  // final FormartType formatType;
+
   const CustomLineChart({
+    // required this.formatType,
     this.interval = 2.0,
-    required this.series,
     this.showXAxisAsNumbers = false,
     this.defaultStyle = true,
     this.interactive = false,
+    required this.series,
     required this.height,
     required this.title,
     required this.subtitle,
@@ -35,7 +39,7 @@ class CustomLineChart extends StatefulWidget {
 class _ChartState extends State<CustomLineChart> {
   bool isClicked = false;
   Map<String, bool> serieEnabled = {};
-
+  FLHorizontalAlignment positionLabel = FLHorizontalAlignment.center;
   void updateSeriesEnabled() {
     for (final serie in widget.series) {
       setState(() {
@@ -67,7 +71,7 @@ class _ChartState extends State<CustomLineChart> {
     );
   }
 
-  Widget _buildCaptions() {
+  Widget _buildChartTitle() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -117,39 +121,18 @@ class _ChartState extends State<CustomLineChart> {
                 touchSpotThreshold: 30,
                 touchTooltipData: LineTouchTooltipData(
                   maxContentWidth: 300,
+                  tooltipHorizontalAlignment: positionLabel,
                   tooltipBgColor: ThemeSAKS.colors.primary.sky,
                   getTooltipItems: (touchedSpots) {
                     //TODO change label position when at the end of the chart
                     touchedSpots
                         .sort((a, b) => a.barIndex.compareTo(b.barIndex));
-                    return touchedSpots.map((LineBarSpot touchedSpot) {
-                      final labelPercent =
-                          touchedSpot.y - 1; //.formatAsPercent();
-
-                      final textStyle = TextStyle(
-                        color: widget.series[touchedSpot.barIndex].color,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12,
-                      );
-                      final date = DateFormat("MM/yyyy").format(
-                        widget.series[touchedSpot.barIndex]
-                            .serie[touchedSpot.spotIndex].date!,
-                      );
-                      final name = widget.series[touchedSpot.barIndex].name;
-                      if (touchedSpots.indexOf(touchedSpot) == 0) {
-                        return LineTooltipItem(
-                          "$date\n"
-                          "$name: $labelPercent",
-                          textStyle,
-                        );
-                      } else {
-                        return LineTooltipItem(
-                          "$name: $labelPercent",
-                          textStyle,
-                          textAlign: TextAlign.left,
-                        );
-                      }
-                    }).toList();
+                    return touchedSpots
+                        .map(
+                          (LineBarSpot touchedSpot) =>
+                              _buildTootipInfo(touchedSpot: touchedSpot),
+                        )
+                        .toList();
                   },
                 ),
                 touchCallback: (event, lineTouch) {
@@ -159,7 +142,34 @@ class _ChartState extends State<CustomLineChart> {
                         event is FlLongPressStart ||
                         event is FlPanDownEvent ||
                         event is FlPanUpdateEvent) {
-                      isClicked = true;
+                      if (lineTouch != null &&
+                          lineTouch.lineBarSpots != null &&
+                          lineTouch.lineBarSpots?.isNotEmpty == true) {
+                        final TouchLineBarSpot? item =
+                            lineTouch.lineBarSpots?.first;
+                        if (item != null) {
+                          if (item.spotIndex == 0) {
+                            setState(() {
+                              positionLabel = FLHorizontalAlignment.right;
+                            });
+                            return;
+                          }
+
+                          if (item.spotIndex ==
+                              widget.series.first.serie.length - 1) {
+                            setState(() {
+                              positionLabel = FLHorizontalAlignment.left;
+                            });
+                            return;
+                          }
+
+                          setState(() {
+                            positionLabel = FLHorizontalAlignment.center;
+                          });
+                        }
+
+                        isClicked = true;
+                      }
                     } else {
                       isClicked = false;
                     }
@@ -238,7 +248,7 @@ class _ChartState extends State<CustomLineChart> {
       topTitles: AxisTitles(
         axisNameWidget: Row(
           children: [
-            _buildCaptions(),
+            _buildChartTitle(),
           ],
         ),
         axisNameSize: 40,
@@ -256,6 +266,33 @@ class _ChartState extends State<CustomLineChart> {
       drawVerticalLine: false,
       getDrawingHorizontalLine: _buildHorizontalGridLine,
     );
+  }
+
+  LineTooltipItem _buildTootipInfo({required LineBarSpot touchedSpot}) {
+    final textStyle = TextStyle(
+      color: widget.series[touchedSpot.barIndex].color,
+      fontWeight: FontWeight.w600,
+      fontSize: 12,
+    );
+    return LineTooltipItem(
+      _buildLabel(touchedSpot: touchedSpot),
+      textStyle,
+    );
+  }
+
+  String _buildLabel({required LineBarSpot touchedSpot}) {
+    final date = DateFormat("MM/yyyy").format(
+      widget.series[touchedSpot.barIndex].serie[touchedSpot.spotIndex].date!,
+    );
+    final name = widget.series[touchedSpot.barIndex].name;
+    switch (widget.series.first.formatType) {
+      case FormartType.currency:
+        return "$date\n$name: ${touchedSpot.y.toStringAsFixed(3)}";
+      case FormartType.percentage:
+        return "$date\n$name: ${touchedSpot.y - 1}";
+      default:
+        return "";
+    }
   }
 
   List<FlSpot> _chartData(List<DataPoint> serie) {

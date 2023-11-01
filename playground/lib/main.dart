@@ -53,8 +53,6 @@ void main() {
             auxButtonDoc
           ],
         ),
-        ElementsSection(elements: [customLineChart], title: "customLineChart"),
-        ElementsSection(elements: [customAccordion], title: "customAccordion"),
         ElementsSection(
           title: 'Cards',
           elements: [
@@ -72,6 +70,8 @@ void main() {
         ElementsSection(
           title: 'Widgets',
           elements: [
+            customAccordion,
+            customLineChart,
             iconDoc,
             referralButtonDoc,
             indicationFiltersDoc,
