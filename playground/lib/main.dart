@@ -12,7 +12,7 @@ import 'package:playground/widgets/card_banner.dart';
 import 'package:playground/widgets/chart_distribution.dart';
 import 'package:playground/widgets/circular_loading.dart';
 import 'package:playground/widgets/common_modal.dart';
-import 'package:playground/widgets/custom_according.dart';
+import 'package:playground/widgets/custom_accordion.dart';
 import 'package:playground/widgets/custom_line_chart.dart';
 import 'package:playground/widgets/custom_tabs.dart';
 import 'package:playground/widgets/custom_typography.dart';
@@ -60,7 +60,13 @@ void main() {
             cardBannerDoc,
           ],
         ),
-        ElementsSection(elements: [chart], title: "chart"),
+        ElementsSection(
+          elements: [
+            circularChart,
+            customLineChart,
+          ],
+          title: "chart",
+        ),
         ElementsSection(
           title: 'CustomTypography',
           elements: [
@@ -71,7 +77,6 @@ void main() {
           title: 'Widgets',
           elements: [
             customAccordion,
-            customLineChart,
             iconDoc,
             referralButtonDoc,
             indicationFiltersDoc,

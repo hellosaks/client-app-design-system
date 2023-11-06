@@ -13,39 +13,69 @@ class CustomAccordionView extends StatefulWidget {
 }
 
 class _CustomAccordionViewState extends State<CustomAccordionView> {
-  final List<DataSerie> dataSerie = [
+  final List<DataSerie> dataSerieCurrency = [
     DataSerie(
-      formatType: FormartType.currency,
       serie: [
         DataPoint(
           value: 4.8,
-          index: 0,
-          date: DateTime.now(),
+          tooltipX: "\$ 4.8",
+          tooltipY: "01/01/2023",
         ),
         DataPoint(
           value: 4.8,
-          index: 1,
-          date: DateTime.now(),
+          tooltipX: "\$ 4.8",
+          tooltipY: "02/01/2023",
         ),
         DataPoint(
           value: 4.93,
-          index: 2,
-          date: DateTime.now(),
+          tooltipX: "\$ 4.93",
+          tooltipY: "03/01/2023",
         ),
         DataPoint(
           value: 4.98,
-          index: 3,
-          date: DateTime.now(),
+          tooltipX: "\$ 4.98",
+          tooltipY: "04/01/2023",
         ),
         DataPoint(
           value: 5.02,
-          index: 4,
-          date: DateTime.now(),
+          tooltipX: "\$ 5.02",
+          tooltipY: "05/01/2023",
         )
       ],
       color: Colors.red,
       name: "Dólar",
-    )
+    ),
+    DataSerie(
+      serie: [
+        DataPoint(
+          value: 5.8,
+          tooltipX: "€ 5.8",
+          tooltipY: "01/01/2023",
+        ),
+        DataPoint(
+          value: 5.8,
+          tooltipX: "€ 5.8",
+          tooltipY: "02/01/2023",
+        ),
+        DataPoint(
+          value: 5.93,
+          tooltipX: "€ 5.93",
+          tooltipY: "03/01/2023",
+        ),
+        DataPoint(
+          value: 5.98,
+          tooltipX: "€ 5.98",
+          tooltipY: "04/01/2023",
+        ),
+        DataPoint(
+          value: 6.02,
+          tooltipX: "€ 6.02",
+          tooltipY: "05/01/2023",
+        )
+      ],
+      color: Colors.green,
+      name: "Euro",
+    ),
   ];
 
   double initialValue = 10;
@@ -86,7 +116,7 @@ class _CustomAccordionViewState extends State<CustomAccordionView> {
         CustomLineChart(
           // formatType: dataSerie,
           interactive: true,
-          series: dataSerie,
+          series: dataSerieCurrency,
           height: 250,
           title: "titleLarge",
           subtitle: "subtitle",

@@ -4,7 +4,6 @@ import "package:client_app_design_system/components/line_chart/data_serie.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
-import "package:intl/intl.dart";
 
 @docWidget
 class CustomLineChart extends StatefulWidget {
@@ -18,10 +17,8 @@ class CustomLineChart extends StatefulWidget {
   final String subtitle;
 
   final double? interval;
-  // final FormartType formatType;
 
   const CustomLineChart({
-    // required this.formatType,
     this.interval = 2.0,
     this.showXAxisAsNumbers = false,
     this.defaultStyle = true,
@@ -121,60 +118,24 @@ class _ChartState extends State<CustomLineChart> {
                 touchSpotThreshold: 30,
                 touchTooltipData: LineTouchTooltipData(
                   maxContentWidth: 300,
-                  tooltipHorizontalAlignment: positionLabel,
+                  fitInsideVertically: true,
+                  fitInsideHorizontally: true,
+                  tooltipHorizontalOffset: _offsetTooltipPosition(),
                   tooltipBgColor: ThemeSAKS.colors.primary.sky,
                   getTooltipItems: (touchedSpots) {
-                    //TODO change label position when at the end of the chart
                     touchedSpots
                         .sort((a, b) => a.barIndex.compareTo(b.barIndex));
                     return touchedSpots
                         .map(
-                          (LineBarSpot touchedSpot) =>
-                              _buildTootipInfo(touchedSpot: touchedSpot),
+                          (LineBarSpot touchedSpot) => _buildTootipInfo(
+                            touchedSpot: touchedSpot,
+                            touchedSpots: touchedSpots,
+                          ),
                         )
                         .toList();
                   },
                 ),
-                touchCallback: (event, lineTouch) {
-                  setState(() {
-                    if (event is FlTapDownEvent ||
-                        event is FlLongPressMoveUpdate ||
-                        event is FlLongPressStart ||
-                        event is FlPanDownEvent ||
-                        event is FlPanUpdateEvent) {
-                      if (lineTouch != null &&
-                          lineTouch.lineBarSpots != null &&
-                          lineTouch.lineBarSpots?.isNotEmpty == true) {
-                        final TouchLineBarSpot? item =
-                            lineTouch.lineBarSpots?.first;
-                        if (item != null) {
-                          if (item.spotIndex == 0) {
-                            setState(() {
-                              positionLabel = FLHorizontalAlignment.right;
-                            });
-                            return;
-                          }
-
-                          if (item.spotIndex ==
-                              widget.series.first.serie.length - 1) {
-                            setState(() {
-                              positionLabel = FLHorizontalAlignment.left;
-                            });
-                            return;
-                          }
-
-                          setState(() {
-                            positionLabel = FLHorizontalAlignment.center;
-                          });
-                        }
-
-                        isClicked = true;
-                      }
-                    } else {
-                      isClicked = false;
-                    }
-                  });
-                },
+                touchCallback: _touchCallbak,
               )
             : LineTouchData(
                 enabled: false,
@@ -247,9 +208,7 @@ class _ChartState extends State<CustomLineChart> {
       // hide axis top values
       topTitles: AxisTitles(
         axisNameWidget: Row(
-          children: [
-            _buildChartTitle(),
-          ],
+          children: [_buildChartTitle()],
         ),
         axisNameSize: 40,
       ),
@@ -268,31 +227,37 @@ class _ChartState extends State<CustomLineChart> {
     );
   }
 
-  LineTooltipItem _buildTootipInfo({required LineBarSpot touchedSpot}) {
+  LineTooltipItem _buildTootipInfo({
+    required LineBarSpot touchedSpot,
+    required List<LineBarSpot> touchedSpots,
+  }) {
     final textStyle = TextStyle(
       color: widget.series[touchedSpot.barIndex].color,
       fontWeight: FontWeight.w600,
       fontSize: 12,
     );
+
     return LineTooltipItem(
-      _buildLabel(touchedSpot: touchedSpot),
+      _buildLabel(touchedSpot: touchedSpot, touchedSpots: touchedSpots),
       textStyle,
     );
   }
 
-  String _buildLabel({required LineBarSpot touchedSpot}) {
-    final date = DateFormat("MM/yyyy").format(
-      widget.series[touchedSpot.barIndex].serie[touchedSpot.spotIndex].date!,
-    );
+  String _buildLabel({
+    required LineBarSpot touchedSpot,
+    required List<LineBarSpot> touchedSpots,
+  }) {
     final name = widget.series[touchedSpot.barIndex].name;
-    switch (widget.series.first.formatType) {
-      case FormartType.currency:
-        return "$date\n$name: ${touchedSpot.y.toStringAsFixed(3)}";
-      case FormartType.percentage:
-        return "$date\n$name: ${touchedSpot.y - 1}";
-      default:
-        return "";
+    final tooltipY = widget
+        .series[touchedSpot.barIndex].serie[touchedSpot.spotIndex].tooltipY;
+    final tooltipX = widget
+        .series[touchedSpot.barIndex].serie[touchedSpot.spotIndex].tooltipX;
+
+    if (touchedSpots.indexOf(touchedSpot) == 0 && tooltipY != null) {
+      return "$tooltipY\n$name: $tooltipX";
     }
+
+    return "$name: $tooltipX";
   }
 
   List<FlSpot> _chartData(List<DataPoint> serie) {
@@ -308,5 +273,60 @@ class _ChartState extends State<CustomLineChart> {
       strokeWidth: 0.0,
       color: OldThemeSAKS.colors.grayTone.colorGray11.withOpacity(0.6),
     );
+  }
+
+  void _touchCallbak(FlTouchEvent event, LineTouchResponse? lineTouch) {
+    if (event is FlTapDownEvent ||
+        event is FlLongPressMoveUpdate ||
+        event is FlLongPressStart ||
+        event is FlPanDownEvent ||
+        event is FlPanUpdateEvent) {
+      return setState(() {
+        if (lineTouch != null &&
+            lineTouch.lineBarSpots != null &&
+            lineTouch.lineBarSpots?.isNotEmpty == true) {
+          final TouchLineBarSpot? item = lineTouch.lineBarSpots?.first;
+
+          if (item != null) {
+            return touchTooltipCallbackPosition(item);
+          }
+          isClicked = true;
+        }
+      });
+    }
+
+    return setState(() {
+      isClicked = false;
+    });
+  }
+
+  void touchTooltipCallbackPosition(TouchLineBarSpot item) {
+    if (item.spotIndex == 0) {
+      setState(() {
+        positionLabel = FLHorizontalAlignment.right;
+      });
+      return;
+    }
+
+    if (item.spotIndex == widget.series.first.serie.length - 1) {
+      setState(() {
+        positionLabel = FLHorizontalAlignment.left;
+      });
+      return;
+    }
+
+    setState(() {
+      positionLabel = FLHorizontalAlignment.center;
+    });
+  }
+
+  double _offsetTooltipPosition() {
+    switch (positionLabel) {
+      case FLHorizontalAlignment.center:
+      case FLHorizontalAlignment.right:
+        return 80;
+      case FLHorizontalAlignment.left:
+        return -80;
+    }
   }
 }
