@@ -56,7 +56,7 @@ final List<InfoCircularGraph> data = [
     // convertedValue: '20%',
   )
 ];
-final chart = ElementPreview(
+final circularChart = ElementPreview(
   document: CircularChartDistributionDocWidget(),
   previews: [
     WidgetPreview(

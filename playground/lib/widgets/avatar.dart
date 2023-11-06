@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:client_app_design_system/components/avatar/avatar.doc_widget.dart';
 import 'package:doc_widget/doc_widget.dart';
 import 'package:flutter/material.dart' hide Icon;
@@ -13,15 +15,27 @@ class AvatarDynamicView extends StatelessWidget {
     return Column(
       children: [
         RenderService().buildJson(
-          json:
-              """{"type":"avatar","args":{"radius":22,"size":25,"image_url":"https://picsum.photos/250?image=9"}}""",
+          json: jsonEncode({
+            "type": "avatar",
+            "args": {
+              "radius": 22,
+              "size": 25,
+              "image_url": "https://picsum.photos/250?image=9"
+            }
+          }),
           context: context,
         ),
         const SizedBox(
           height: 20,
         ),
         RenderService().buildJson(
-          json: """{"type": "avatar","args": {"radius": 22,"size": 25}}""",
+          json: jsonEncode({
+            "type": "avatar",
+            "args": {
+              "radius": 22,
+              "size": 25,
+            }
+          }),
           context: context,
         ),
         const SizedBox(

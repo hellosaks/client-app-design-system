@@ -21,4 +21,6 @@ final Map<String, BuilderConstructorWidget> mapBuilders = {
   SecondaryButtonBuilder.type: SecondaryButtonBuilder.fromDynamic,
   CircularChartDistributionBuilder.type:
       CircularChartDistributionBuilder.fromDynamic,
+  CustomAccordionBuilder.type: CustomAccordionBuilder.fromDynamic,
+  CustomLineChartBuilder.type: CustomLineChartBuilder.fromDynamic,
 };
