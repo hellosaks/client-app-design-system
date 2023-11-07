@@ -69,18 +69,20 @@ class CardInvestmentBuilder extends JsonWidgetBuilder {
     required JsonWidgetData data,
     Key? key,
   }) {
-    return CardInvesment(
+    return CardInvestment(
       key: key,
-      name: name,
-      profitabilityIndicator: profitabilityIndicator,
-      profitabilityName: profitabilityName,
-      profitabilityValue: profitabilityValue,
-      riskType: riskType,
-      riskTypeName: riskTypeName,
-      typeName: typeName,
-      onPressed: onPressed,
-      showArrow: showArrow,
-      urlImage: urlImage,
+      props: CardInvestmentProps(
+        name: name,
+        profitabilityIndicator: profitabilityIndicator,
+        profitabilityName: profitabilityName,
+        profitabilityValue: profitabilityValue,
+        riskType: riskType,
+        riskTypeName: riskTypeName,
+        typeName: typeName,
+        onPressed: onPressed,
+        showArrow: showArrow,
+        urlImage: urlImage,
+      ),
     );
   }
 }
