@@ -37,3 +37,7 @@ enum Filter { activated, pending }
 enum ReferralPaymentType { paid, pending }
 
 enum SpecialButtonVariant { whatsapp, share }
+
+enum RiskType { conservative, moderate, aggressive }
+
+enum ProfitabilityIndicator { low, zero, high }
