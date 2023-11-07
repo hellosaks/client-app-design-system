@@ -90,7 +90,20 @@ class CardInvestment extends StatelessWidget {
         ),
         if (props.urlImage != null) ...[
           const Spacer(),
-          Image.network(props.urlImage!, width: 74, height: 30)
+          Image.network(
+            props.urlImage!,
+            width: 74,
+            height: 30,
+            frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+              return child;
+            },
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) {
+                return child;
+              }
+              return const Skeleton(width: 74, height: 30, radius: 40);
+            },
+          )
         ] else
           const SizedBox()
       ],
