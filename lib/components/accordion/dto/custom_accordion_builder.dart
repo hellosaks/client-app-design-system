@@ -67,10 +67,12 @@ class CustomAccordionBuilder extends JsonWidgetBuilder {
     final title = getTitle(json: data.args as Map<String, dynamic>);
 
     return CustomAccordion(
+      key: key,
       borderRadius: borderRadius,
       iconColor: iconColor,
       backgroundColor: backgroundColor,
       collapsedBackgroundColor: collapsedBackgroundColor,
+      initiallyExpanded: initiallyExpanded,
       title: JsonWidgetData.fromDynamic(title)?.build(context: context) ??
           Container(),
       children: [
