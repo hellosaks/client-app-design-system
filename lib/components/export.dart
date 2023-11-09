@@ -9,6 +9,7 @@ export "buttons/primary_button.dart";
 export "buttons/secondary_button/secondary_button.dart";
 export "buttons/tertiary_button.dart";
 export "cards/card_banner/card_banner.dart";
+export "cards/card_investment/card_investment.dart";
 export "cards/referral_card.dart";
 export "chart_distribution/chart_distribution.dart";
 export "circular_loading/circular_loading.dart";

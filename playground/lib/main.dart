@@ -9,6 +9,7 @@ import 'package:playground/widgets/buttons/primary_button.dart';
 import 'package:playground/widgets/buttons/secondary_button.dart';
 import 'package:playground/widgets/buttons/tertiary_button.dart';
 import 'package:playground/widgets/card_banner.dart';
+import 'package:playground/widgets/card_investment.dart';
 import 'package:playground/widgets/chart_distribution.dart';
 import 'package:playground/widgets/circular_loading.dart';
 import 'package:playground/widgets/common_modal.dart';
@@ -55,10 +56,7 @@ void main() {
         ),
         ElementsSection(
           title: 'Cards',
-          elements: [
-            referralCardDoc,
-            cardBannerDoc,
-          ],
+          elements: [referralCardDoc, cardBannerDoc, cardInvestmentDoc],
         ),
         ElementsSection(
           elements: [

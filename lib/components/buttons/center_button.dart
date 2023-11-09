@@ -84,7 +84,7 @@ class _CenterButtonState extends State<CenterButton> {
   Widget _buildContent() {
     final styles = Mix(
       rounded(30),
-      (widget.disabled)(opacity(0.5)),
+      widget.disabled(opacity(0.5)),
       (widget.colorAttributes?.bgColor != Colors.transparent)(
         bgColor(
           tapped == false ? widget.colorAttributes!.bgColor : _pressDownColor!,

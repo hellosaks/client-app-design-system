@@ -23,6 +23,9 @@ class SecondaryColor {
 
   /// #EDF1F5 ![](https://dummyimage.com/24/EDF1F5.png&text=+)
   final background = const Color(0xFFEDF1F5);
+
+  /// #F4F7FA ![](https://dummyimage.com/24/F4F7FA.png&text=+)
+  final cards = const Color(0xFFF4F7FA);
 }
 
 class UtilityColor {
