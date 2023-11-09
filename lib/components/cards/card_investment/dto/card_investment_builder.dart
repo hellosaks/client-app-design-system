@@ -1,7 +1,5 @@
 import "package:child_builder/child_builder.dart";
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/enums/profitability_type_enum.dart";
-import "package:client_app_design_system/utils/enums/risk_type_enum.dart";
 import "package:deep_pick/deep_pick.dart";
 import "package:flutter/material.dart";
 import "package:json_dynamic_widget/json_dynamic_widget.dart";

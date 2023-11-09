@@ -1,6 +1,4 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/enums/profitability_type_enum.dart";
-import "package:client_app_design_system/utils/enums/risk_type_enum.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:json_dynamic_widget/json_dynamic_widget.dart";
 
