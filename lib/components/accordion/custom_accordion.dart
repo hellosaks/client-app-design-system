@@ -45,9 +45,9 @@ class CustomAccordion extends StatelessWidget {
           iconColor: iconColor ?? ThemeSAKS.colors.primary.saks,
           expandedAlignment: Alignment.topRight,
           title: title,
-          tilePadding: controlAffinity == ListTileControlAffinity.trailing
-              ? const EdgeInsets.only(right: 30)
-              : const EdgeInsets.only(left: 30),
+          childrenPadding:
+              const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+          tilePadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
           children: children,
         ),
       ),
