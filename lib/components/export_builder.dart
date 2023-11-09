@@ -2,6 +2,7 @@ export "accordion/dto/custom_accordion_builder.dart";
 export "avatar/dto/avatar_builder.dart";
 export "buttons/secondary_button/dto/secondary_button_builder.dart";
 export "cards/card_banner/dto/card_banner_builder.dart";
+export "cards/card_investment/dto/card_investment_builder.dart";
 export "common_modal/dto/common_modal_builder.dart";
 export "custom_divider/custom_divider_builder.dart";
 export "custom_typography/dto/custom_typography_builder.dart";
