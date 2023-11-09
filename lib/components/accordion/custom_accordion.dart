@@ -13,6 +13,7 @@ class CustomAccordion extends StatelessWidget {
   final double? borderRadius;
 
   final bool initiallyExpanded;
+  final ListTileControlAffinity controlAffinity;
 
   const CustomAccordion({
     super.key,
@@ -20,6 +21,7 @@ class CustomAccordion extends StatelessWidget {
     required this.title,
     required this.backgroundColor,
     required this.collapsedBackgroundColor,
+    this.controlAffinity = ListTileControlAffinity.trailing,
     this.iconColor,
     this.borderRadius,
     this.initiallyExpanded = false,
@@ -34,7 +36,7 @@ class CustomAccordion extends StatelessWidget {
           borderRadius ?? ThemeSAKS.shape.borderRadius,
         ),
         child: ExpansionTile(
-          controlAffinity: ListTileControlAffinity.leading,
+          controlAffinity: controlAffinity,
           initiallyExpanded: initiallyExpanded,
           expandedCrossAxisAlignment: CrossAxisAlignment.end,
           backgroundColor: backgroundColor,
@@ -43,6 +45,9 @@ class CustomAccordion extends StatelessWidget {
           iconColor: iconColor ?? ThemeSAKS.colors.primary.saks,
           expandedAlignment: Alignment.topRight,
           title: title,
+          tilePadding: controlAffinity == ListTileControlAffinity.trailing
+              ? const EdgeInsets.only(right: 30)
+              : const EdgeInsets.only(left: 30),
           children: children,
         ),
       ),
