@@ -30,8 +30,9 @@ class CustomAccordion extends StatelessWidget {
     return Theme(
       data: ThemeData(dividerColor: Colors.white),
       child: ClipRRect(
-        borderRadius:
-            BorderRadius.circular(borderRadius ?? ThemeSAKS.shape.borderRadius),
+        borderRadius: BorderRadius.circular(
+          borderRadius ?? ThemeSAKS.shape.borderRadius,
+        ),
         child: ExpansionTile(
           controlAffinity: ListTileControlAffinity.leading,
           initiallyExpanded: initiallyExpanded,
@@ -42,8 +43,6 @@ class CustomAccordion extends StatelessWidget {
           iconColor: iconColor ?? ThemeSAKS.colors.primary.saks,
           expandedAlignment: Alignment.topRight,
           title: title,
-          childrenPadding:
-              const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           children: children,
         ),
       ),
