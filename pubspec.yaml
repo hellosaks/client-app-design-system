@@ -13,7 +13,6 @@ dependencies:
   circular_chart_flutter: ^0.0.2
   deep_pick: 1.0.0
   doc_widget: 0.4.0
-  equatable: ^2.0.5
   fl_chart: ^0.62.0
   flutter:
     sdk: flutter

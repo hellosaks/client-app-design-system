@@ -37,4 +37,3 @@ enum Filter { activated, pending }
 enum ReferralPaymentType { paid, pending }
 
 enum SpecialButtonVariant { whatsapp, share }
-
