@@ -1,7 +1,7 @@
 import "package:child_builder/child_builder.dart";
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:client_app_design_system/utils/enums/profitability_type_parse_dto.dart";
-import "package:client_app_design_system/utils/enums/risk_type_parse_dto.dart";
+import "package:client_app_design_system/utils/enums/profitability_type_enum.dart";
+import "package:client_app_design_system/utils/enums/risk_type_enum.dart";
 import "package:deep_pick/deep_pick.dart";
 import "package:flutter/material.dart";
 import "package:json_dynamic_widget/json_dynamic_widget.dart";
@@ -41,21 +41,21 @@ class CardInvestmentBuilder extends JsonWidgetBuilder {
     // ignore: avoid_unused_constructor_parameters
     JsonWidgetRegistry? registry,
   }) {
-    final void Function()? onPressed = json["onPressed"] as void Function()?;
+    final void Function()? onPressed = json["on_pressed"] as void Function()?;
 
     return CardInvestmentBuilder(
       numSupportedChildren: 0,
       name: pick(json, "name").asStringOrThrow(),
-      typeName: pick(json, "typeName").asStringOrThrow(),
-      profitabilityName: pick(json, "profitabilityName").asStringOrThrow(),
-      profitabilityValue: pick(json, "profitabilityValue").asStringOrThrow(),
-      riskTypeName: pick(json, "riskTypeName").asStringOrThrow(),
-      showArrow: pick(json, "showArrow").asBoolOrFalse(),
-      urlImage: pick(json, "urlImage").asStringOrNull(),
-      profitabilityIndicator: pick(json, "profitabilityIndicator").letOrThrow(
+      typeName: pick(json, "type_name").asStringOrThrow(),
+      profitabilityName: pick(json, "profitability_name").asStringOrThrow(),
+      profitabilityValue: pick(json, "profitability_value").asStringOrThrow(),
+      riskTypeName: pick(json, "risk_type_name").asStringOrThrow(),
+      showArrow: pick(json, "show_arrow").asBoolOrFalse(),
+      urlImage: pick(json, "url_image").asStringOrNull(),
+      profitabilityIndicator: pick(json, "profitability_indicator").letOrThrow(
         (p0) => ProfitabilityIndicatorEnum().parse(p0.asString()),
       ),
-      riskType: pick(json, "riskType").letOrThrow(
+      riskType: pick(json, "risk_type").letOrThrow(
         (p0) => RiskTypeEnum().parse(p0.asString()),
       ),
       onPressed: onPressed,
@@ -71,18 +71,16 @@ class CardInvestmentBuilder extends JsonWidgetBuilder {
   }) {
     return CardInvestment(
       key: key,
-      props: CardInvestmentProps(
-        name: name,
-        profitabilityIndicator: profitabilityIndicator,
-        profitabilityName: profitabilityName,
-        profitabilityValue: profitabilityValue,
-        riskType: riskType,
-        riskTypeName: riskTypeName,
-        typeName: typeName,
-        onPressed: onPressed,
-        showArrow: showArrow,
-        urlImage: urlImage,
-      ),
+      name: name,
+      profitabilityIndicator: profitabilityIndicator,
+      profitabilityName: profitabilityName,
+      profitabilityValue: profitabilityValue,
+      riskType: riskType,
+      riskTypeName: riskTypeName,
+      typeName: typeName,
+      onPressed: onPressed,
+      showArrow: showArrow,
+      urlImage: urlImage,
     );
   }
 }

@@ -1,5 +1,6 @@
-import "package:client_app_design_system/utils/enums/enums.dart";
 import "package:client_app_design_system/utils/enums/enums_dto.dart";
+
+enum RiskType { conservative, moderate, aggressive }
 
 class RiskTypeEnum extends EnumDto<RiskType> {
   @override

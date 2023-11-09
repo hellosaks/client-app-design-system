@@ -1,5 +1,6 @@
-import "package:client_app_design_system/utils/enums/enums.dart";
 import "package:client_app_design_system/utils/enums/enums_dto.dart";
+
+enum ProfitabilityIndicator { low, zero, high }
 
 class ProfitabilityIndicatorEnum implements EnumDto<ProfitabilityIndicator> {
   @override

@@ -1,4 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:client_app_design_system/utils/enums/profitability_type_enum.dart";
+import "package:client_app_design_system/utils/enums/risk_type_enum.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:json_dynamic_widget/json_dynamic_widget.dart";
 
@@ -16,14 +18,14 @@ void main() {
     testWidgets("should parse correctly", (tester) async {
       final jsonArgs = {
         "name": "test",
-        "typeName": "Fundo",
-        "riskType": "conservative",
-        "riskTypeName": "Moderado",
-        "profitabilityName": "Rentabilidade (6m)",
-        "profitabilityValue": "6%",
-        "profitabilityIndicator": "high",
-        "showArrow": true,
-        "onPressed": "\${noop()}"
+        "type_name": "Fundo",
+        "risk_type": "conservative",
+        "risk_type_name": "Moderado",
+        "profitability_name": "Rentabilidade (6m)",
+        "profitability_value": "6%",
+        "profitability_indicator": "high",
+        "show_arrow": true,
+        "on_pressed": "\${noop()}",
       };
       final jsonComponent = {
         "type": "card_investment",
@@ -36,19 +38,14 @@ void main() {
 
       final widget = tester.widget<CardInvestment>(find.byType(CardInvestment));
 
-      expect(
-        widget.props,
-        const CardInvestmentProps(
-          name: "test",
-          typeName: "Fundo",
-          riskType: RiskType.conservative,
-          riskTypeName: "Moderado",
-          profitabilityName: "Rentabilidade (6m)",
-          profitabilityValue: "6%",
-          profitabilityIndicator: ProfitabilityIndicator.high,
-          showArrow: true,
-        ),
-      );
+      expect(widget.name, "test");
+      expect(widget.typeName, "Fundo");
+      expect(widget.riskType, RiskType.conservative);
+      expect(widget.riskTypeName, "Moderado");
+      expect(widget.profitabilityName, "Rentabilidade (6m)");
+      expect(widget.profitabilityValue, "6%");
+      expect(widget.profitabilityIndicator, ProfitabilityIndicator.high);
+      expect(widget.showArrow, true);
     });
   });
 }
