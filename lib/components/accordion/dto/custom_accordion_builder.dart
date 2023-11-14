@@ -1,5 +1,6 @@
 import "package:child_builder/child_builder.dart";
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:client_app_design_system/utils/enums/control_affinity_enum.dart";
 import "package:deep_pick/deep_pick.dart";
 import "package:flutter/material.dart";
 import "package:json_dynamic_widget/json_dynamic_widget.dart";
@@ -15,11 +16,13 @@ class CustomAccordionBuilder extends JsonWidgetBuilder {
 
   final Color? iconColor;
   final double? borderRadius;
+  final ListTileControlAffinity? controlAffinity;
 
   const CustomAccordionBuilder({
     required this.title,
     required this.backgroundColor,
     required this.collapsedBackgroundColor,
+    this.controlAffinity,
     this.iconColor,
     this.borderRadius,
     this.initiallyExpanded = false,
@@ -45,6 +48,9 @@ class CustomAccordionBuilder extends JsonWidgetBuilder {
         (pick) => ThemeDecoder.decodeColor(pick.asStringOrThrow())!,
       ),
       borderRadius: pick(json, "border_radius").asDoubleOrNull(),
+      controlAffinity: pick(json, "control_affinity").letOrNull(
+        (p0) => ListTileControlAffinityEnum().parse(p0.asStringOrThrow()),
+      ),
       initiallyExpanded: pick(json, "initially_expanded").asBoolOrFalse(),
       title: Container(),
     );
@@ -75,6 +81,7 @@ class CustomAccordionBuilder extends JsonWidgetBuilder {
       initiallyExpanded: initiallyExpanded,
       title: JsonWidgetData.fromDynamic(title)?.build(context: context) ??
           Container(),
+      controlAffinity: controlAffinity ?? ListTileControlAffinity.trailing,
       children: [
         // builds a list of widgets from a json list present
         // in the component's children property
