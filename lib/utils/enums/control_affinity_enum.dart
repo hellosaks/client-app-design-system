@@ -7,7 +7,7 @@ class ListTileControlAffinityEnum implements EnumDto<ListTileControlAffinity> {
     switch (enumType) {
       case "leading":
         return ListTileControlAffinity.leading;
-      case "custom":
+      case "trailing":
         return ListTileControlAffinity.trailing;
       case "platform":
         return ListTileControlAffinity.platform;
