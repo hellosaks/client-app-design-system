@@ -13,6 +13,7 @@ class CustomAccordion extends StatelessWidget {
   final double? borderRadius;
 
   final bool initiallyExpanded;
+  final ListTileControlAffinity controlAffinity;
 
   const CustomAccordion({
     super.key,
@@ -20,6 +21,7 @@ class CustomAccordion extends StatelessWidget {
     required this.title,
     required this.backgroundColor,
     required this.collapsedBackgroundColor,
+    this.controlAffinity = ListTileControlAffinity.trailing,
     this.iconColor,
     this.borderRadius,
     this.initiallyExpanded = false,
@@ -30,10 +32,11 @@ class CustomAccordion extends StatelessWidget {
     return Theme(
       data: ThemeData(dividerColor: Colors.white),
       child: ClipRRect(
-        borderRadius:
-            BorderRadius.circular(borderRadius ?? ThemeSAKS.shape.borderRadius),
+        borderRadius: BorderRadius.circular(
+          borderRadius ?? ThemeSAKS.shape.borderRadius,
+        ),
         child: ExpansionTile(
-          controlAffinity: ListTileControlAffinity.leading,
+          controlAffinity: controlAffinity,
           initiallyExpanded: initiallyExpanded,
           expandedCrossAxisAlignment: CrossAxisAlignment.end,
           backgroundColor: backgroundColor,
@@ -43,7 +46,8 @@ class CustomAccordion extends StatelessWidget {
           expandedAlignment: Alignment.topRight,
           title: title,
           childrenPadding:
-              const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+          tilePadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
           children: children,
         ),
       ),
