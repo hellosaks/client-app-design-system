@@ -13,6 +13,7 @@ class CustomTypographyBuilder extends JsonWidgetBuilder {
   final Color? color;
   final TextAlign? align;
   final Mix<Attribute>? mix;
+  final bool selectable;
 
   static const type = "custom_typography";
 
@@ -21,6 +22,7 @@ class CustomTypographyBuilder extends JsonWidgetBuilder {
     this.color,
     this.align,
     this.mix,
+    this.selectable = false,
     required this.variant,
     required this.text,
     required super.numSupportedChildren,
@@ -46,6 +48,7 @@ class CustomTypographyBuilder extends JsonWidgetBuilder {
       color: pick(json, "color").letOrNull(
         (p0) => ThemeDecoder.decodeColor(p0.asStringOrThrow())!,
       ),
+      selectable: pick(json, "selectable").asBoolOrFalse(),
     );
   }
 
@@ -63,6 +66,8 @@ class CustomTypographyBuilder extends JsonWidgetBuilder {
       align: align,
       mix: mix,
       color: color,
+      selectable: selectable,
+      key: key,
     );
   }
 }
