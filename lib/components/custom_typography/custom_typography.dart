@@ -1,8 +1,7 @@
-
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:client_app_design_system/components/custom_typography/selectable.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:mix/mix.dart";
 
 @docWidget
@@ -14,11 +13,13 @@ class CustomTypography extends StatelessWidget {
   final Color? color;
   final TextAlign? align;
   final Mix<Attribute>? mix;
+  final bool selectable;
 
   const CustomTypography({
     super.key,
     required this.variant,
     required this.text,
+    this.selectable = false,
     this.weight = FontWeight.w400,
     this.color = Colors.black,
     this.align = TextAlign.left,
@@ -27,6 +28,17 @@ class CustomTypography extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (selectable) {
+      return Selectable(
+        text: text,
+        variant: variant,
+        align: align,
+        color: color,
+        weight: weight,
+        key: key,
+      );
+    }
+
     final style = Mix.combine(
       Mix(fontWeight(weight)),
       _getFontVariant(),
@@ -42,34 +54,28 @@ class CustomTypography extends StatelessWidget {
     return TextMix(text, mix: style);
   }
 
-  Mix<TextAttributes> _adjustFontSize(Mix<TextAttributes> type) {
-    final double fontSizeAdjust = AppSize(context: Get.context)
-        .getHeight(type.attributes[1].style!.fontSize!);
-    return Mix.combine(type, Mix(fontSize(fontSizeAdjust)));
-  }
-
   Mix<TextAttributes> _getFontVariant() {
     switch (variant) {
       case TypographyVariant.h1:
-        return _adjustFontSize(ThemeSAKS.typography.h1Typo);
+        return ThemeSAKS.typography.h1Typo;
       case TypographyVariant.h2:
-        return _adjustFontSize(ThemeSAKS.typography.h2Typo);
+        return ThemeSAKS.typography.h2Typo;
       case TypographyVariant.h3:
-        return _adjustFontSize(ThemeSAKS.typography.h3Typo);
+        return ThemeSAKS.typography.h3Typo;
       case TypographyVariant.h4:
-        return _adjustFontSize(ThemeSAKS.typography.h4Typo);
+        return ThemeSAKS.typography.h4Typo;
       case TypographyVariant.h5:
-        return _adjustFontSize(ThemeSAKS.typography.h5Typo);
+        return ThemeSAKS.typography.h5Typo;
       case TypographyVariant.h6:
-        return _adjustFontSize(ThemeSAKS.typography.h6Typo);
+        return ThemeSAKS.typography.h6Typo;
       case TypographyVariant.h7:
-        return _adjustFontSize(ThemeSAKS.typography.h7Typo);
+        return ThemeSAKS.typography.h7Typo;
       case TypographyVariant.cta:
-        return _adjustFontSize(ThemeSAKS.typography.ctaTypo);
+        return ThemeSAKS.typography.ctaTypo;
       case TypographyVariant.underline:
-        return _adjustFontSize(ThemeSAKS.typography.underlineTypo);
+        return ThemeSAKS.typography.underlineTypo;
       case TypographyVariant.strikethrough:
-        return _adjustFontSize(ThemeSAKS.typography.strikethroughTypo);
+        return ThemeSAKS.typography.strikethroughTypo;
     }
   }
 }
