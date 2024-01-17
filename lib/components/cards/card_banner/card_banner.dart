@@ -1,4 +1,3 @@
-import "package:cached_network_image/cached_network_image.dart";
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
@@ -54,10 +53,10 @@ class CardBanner extends StatelessWidget {
     return ClipRRect(
       borderRadius:
           BorderRadius.all(Radius.circular(ThemeSAKS.shape.borderRadiusCard)),
-      child: CachedNetworkImage(
-        imageUrl: backgroundImage,
+      child: Image.network(
+        backgroundImage,
         fit: BoxFit.fill,
-        progressIndicatorBuilder: (context, url, progress) {
+        loadingBuilder: (context, url, progress) {
           return _loadingImage(context);
         },
       ),
@@ -75,10 +74,10 @@ class CardBanner extends StatelessWidget {
       child: VBox(
         mix: style,
         children: [
-          CachedNetworkImage(
-            imageUrl: backgroundImage,
+          Image.network(
+            backgroundImage,
             fit: BoxFit.cover,
-            progressIndicatorBuilder: (context, url, progress) {
+            loadingBuilder: (context, url, progress) {
               return _loadingImage(context);
             },
           ),

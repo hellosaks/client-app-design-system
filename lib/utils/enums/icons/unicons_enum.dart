@@ -715,8 +715,8 @@ class UniconsLineEnum implements EnumDto<IconData> {
         return UniconsLine.compress;
       case "confused":
         return UniconsLine.confused;
-      case "constructor_1":
-        return UniconsLine.constructor_1;
+      // case "constructor_1":
+      //   return UniconsLine.constructor_1;
       case "copy_alt":
         return UniconsLine.copy_alt;
       case "copy_landscape":
@@ -959,8 +959,8 @@ class UniconsLineEnum implements EnumDto<IconData> {
         return UniconsLine.expand_left;
       case "expand_right":
         return UniconsLine.expand_right;
-      case "export_icon":
-        return UniconsLine.export_icon;
+      // case "export_icon":
+      //   return UniconsLine.export_icon;
       case "exposure_alt":
         return UniconsLine.exposure_alt;
       case "exposure_increase":
@@ -1331,8 +1331,8 @@ class UniconsLineEnum implements EnumDto<IconData> {
         return UniconsLine.image;
       case "images":
         return UniconsLine.images;
-      case "import_icon":
-        return UniconsLine.import_icon;
+      // case "import_icon":
+      //   return UniconsLine.import_icon;
       case "inbox":
         return UniconsLine.inbox;
       case "incoming_call":
@@ -2101,8 +2101,8 @@ class UniconsLineEnum implements EnumDto<IconData> {
         return UniconsLine.sync_exclamation;
       case "sync_slash":
         return UniconsLine.sync_slash;
-      case "sync_icon":
-        return UniconsLine.sync_icon;
+      // case "sync_icon":
+      //   return UniconsLine.sync_icon;
       case "syringe":
         return UniconsLine.syringe;
       case "table_tennis":
@@ -2365,8 +2365,8 @@ class UniconsLineEnum implements EnumDto<IconData> {
         return UniconsLine.weight;
       case "whatsapp_alt":
         return UniconsLine.whatsapp_alt;
-      case "whatsapp":
-        return UniconsLine.whatsapp;
+      // case "whatsapp":
+      //   return UniconsLine.whatsapp;
       case "wheel_barrow":
         return UniconsLine.wheel_barrow;
       case "wheelchair_alt":
