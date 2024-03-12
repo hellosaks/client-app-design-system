@@ -80,6 +80,7 @@ class CommonModal extends StatelessWidget {
       CustomTypography(
         variant: TypographyVariant.h6,
         text: description,
+        selectable: true,
         color: ThemeSAKS.colors.grayscale.strongGrey,
         align: TextAlign.center,
       ),
