@@ -4,20 +4,6 @@ enum RiskType { conservative, moderate, aggressive }
 
 class RiskTypeEnum extends EnumDto<RiskType> {
   @override
-  RiskType parse(String enumType) {
-    switch (enumType) {
-      case "conservative":
-        return RiskType.conservative;
-      case "moderate":
-        return RiskType.moderate;
-      case "aggressive":
-        return RiskType.aggressive;
-      default:
-        return RiskType.conservative;
-    }
-  }
-
-  @override
   String stringfy(RiskType enumType) {
     switch (enumType) {
       case RiskType.conservative:
@@ -28,4 +14,21 @@ class RiskTypeEnum extends EnumDto<RiskType> {
         return "aggressive";
     }
   }
+
+  @override
+  RiskType? canParse(String enumType) {
+    switch (enumType) {
+      case "conservative":
+        return RiskType.conservative;
+      case "moderate":
+        return RiskType.moderate;
+      case "aggressive":
+        return RiskType.aggressive;
+    }
+    return null;
+  }
+
+  @override
+  // TODO: implement defaultEnum
+  RiskType get defaultEnum => RiskType.conservative;
 }
