@@ -1,8 +1,8 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 
-class CustomIconEnum implements EnumDto<CustomIcons> {
+class CustomIconEnum extends EnumDto<CustomIcons> {
   @override
-  CustomIcons parse(String enumType) {
+  CustomIcons? canParse(String enumType) {
     switch (enumType) {
       case "icWhatsapp":
         return CustomIcons.icWhatsapp;
@@ -16,9 +16,8 @@ class CustomIconEnum implements EnumDto<CustomIcons> {
         return CustomIcons.icPiggyBank;
       case "icWorld":
         return CustomIcons.icWorld;
-      default:
-        return CustomIcons.icMultimedia;
     }
+    return null;
   }
 
   @override
@@ -38,4 +37,7 @@ class CustomIconEnum implements EnumDto<CustomIcons> {
         return "icWorld";
     }
   }
+
+  @override
+  CustomIcons get defaultEnum => CustomIcons.icMultimedia;
 }

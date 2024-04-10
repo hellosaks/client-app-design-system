@@ -3,9 +3,9 @@ import "package:client_app_design_system/client_app_design_system.dart";
 import "package:flutter/widgets.dart" show IconData;
 
 /// This class has the line version of the icons
-class UniconsLineEnum implements EnumDto<IconData> {
+class UniconsLineEnum extends EnumDto<IconData> {
   @override
-  IconData parse(String enumType) {
+  IconData? canParse(String enumType) {
     switch (enumType) {
       case "zero_plus":
         return UniconsLine.zero_plus;
@@ -2419,13 +2419,15 @@ class UniconsLineEnum implements EnumDto<IconData> {
         return UniconsLine.yin_yang;
       case "youtube":
         return UniconsLine.youtube;
-      default:
-        return UniconsLine.youtube;
     }
+    return null;
   }
 
   @override
   String stringfy(IconData enumType) {
     throw UnimplementedError();
   }
+
+  @override
+  IconData get defaultEnum => UniconsLine.youtube;
 }
