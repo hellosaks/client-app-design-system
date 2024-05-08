@@ -6,6 +6,7 @@ enum CustomIcons {
   icProfileIcon._("profile_icon"),
 
   icPiggyBank._("piggy_bank"),
+  icPdf._("pdf_icon"),
   icWorld._("world");
 
   final String name;
