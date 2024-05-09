@@ -16,6 +16,8 @@ class CustomIconEnum extends EnumDto<CustomIcons> {
         return CustomIcons.icPiggyBank;
       case "icWorld":
         return CustomIcons.icWorld;
+      case "icPdf":
+        return CustomIcons.icPdf;
     }
     return null;
   }
@@ -35,6 +37,8 @@ class CustomIconEnum extends EnumDto<CustomIcons> {
         return "icPiggyBank";
       case CustomIcons.icWorld:
         return "icWorld";
+      case CustomIcons.icPdf:
+        return "icPdf";
     }
   }
 

@@ -22,6 +22,8 @@ import 'package:playground/widgets/indication_filters.dart';
 import 'package:playground/widgets/notification_bell.dart';
 import 'package:playground/widgets/referral_button.dart';
 import 'package:playground/widgets/referral_card.dart';
+import 'package:playground/widgets/simple_download.dart';
+import 'package:playground/widgets/simple_transaction.dart';
 import 'package:playground/widgets/skeleton.dart';
 import 'package:playground/widgets/special_button.dart';
 
@@ -51,7 +53,7 @@ void main() {
             secondaryButtonDoc,
             tertiaryButtonDoc,
             specialButtonDoc,
-            auxButtonDoc
+            auxButtonDoc,
           ],
         ),
         ElementsSection(
@@ -83,7 +85,9 @@ void main() {
             commonModalDoc,
             circularLoadingDoc,
             notificationBell,
-            avatar
+            avatar,
+            simpleDownloadDoc,
+            simpleTransactionDoc,
           ],
         ),
       ],
