@@ -10,9 +10,17 @@ final simpleTransactionDoc = ElementPreview(
       widget: const SimpleTransaction(
         type: TransactionType.entrance,
         value: "US\$ 20,00",
+        transactionName: "Refund USB-C cable",
+      ),
+      description: 'Simple transaction component',
+    ),
+    WidgetPreview(
+      widget: const SimpleTransaction(
+        type: TransactionType.withdrawal,
+        value: "US\$ 20,00",
         transactionName: "USB-C cable",
       ),
-      description: 'Skeleton with height and radius',
+      description: 'Simple transaction component withdrawal',
     ),
   ],
 );
