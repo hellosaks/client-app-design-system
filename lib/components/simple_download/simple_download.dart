@@ -1,27 +1,42 @@
+import "dart:async";
+
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 
 @docWidget
-class SimpleDownload extends StatelessWidget {
+class SimpleDownload extends StatefulWidget {
   final String fileName;
-  final VoidCallback onPressed;
-  final bool downloading;
+  final Future<void> Function() onPressed;
+  final bool? downloading;
+  final Future<bool> Function() checkPermission;
+  final Future<void> Function() requestPermission;
+  final VoidCallback onDeniedPermissionCallback;
 
   const SimpleDownload({
     super.key,
     required this.fileName,
     required this.onPressed,
-    required this.downloading,
+    required this.checkPermission,
+    required this.requestPermission,
+    required this.onDeniedPermissionCallback,
+    this.downloading,
   });
 
   static const double _iconSize = 24;
 
   @override
+  State<SimpleDownload> createState() => _SimpleDownloadState();
+}
+
+class _SimpleDownloadState extends State<SimpleDownload> {
+  bool _downloading = false;
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(12),
-      onTap: onPressed,
+      onTap: onDownload,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
         child: Row(
@@ -40,7 +55,7 @@ class SimpleDownload extends StatelessWidget {
                     customIconsProps: CustomIconsProps(
                       icon: CustomIcons.icPdf,
                       color: ThemeSAKS.colors.special.rose,
-                      size: _iconSize,
+                      size: SimpleDownload._iconSize,
                     ),
                   ),
                 ),
@@ -49,13 +64,13 @@ class SimpleDownload extends StatelessWidget {
             const SizedBox(width: 16),
             CustomTypography(
               variant: TypographyVariant.h5,
-              text: fileName,
+              text: widget.fileName,
             ),
             const Spacer(),
             if (downloading)
               const SizedBox(
-                height: _iconSize,
-                width: _iconSize,
+                height: SimpleDownload._iconSize,
+                width: SimpleDownload._iconSize,
                 child: CircularLoading(),
               )
             else
@@ -65,7 +80,7 @@ class SimpleDownload extends StatelessWidget {
                   uniconsProps: UniconsProps(
                     icon: UniconsLine.cloud_download,
                     color: ThemeSAKS.colors.primary.saks,
-                    size: _iconSize,
+                    size: SimpleDownload._iconSize,
                   ),
                 ),
               ),
@@ -73,5 +88,29 @@ class SimpleDownload extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  bool get downloading {
+    return widget.downloading ?? _downloading;
+  }
+
+  Future<bool> requestPermissionAndCheck() async {
+    await widget.requestPermission();
+    return widget.checkPermission();
+  }
+
+  Future<void> onDownload() async {
+    final isPermitted = await widget.checkPermission();
+    if (!isPermitted) {
+      final permissionRequestedAndGranted = await requestPermissionAndCheck();
+      if (!permissionRequestedAndGranted) {
+        widget.onDeniedPermissionCallback();
+        return;
+      }
+    }
+
+    setState(() => _downloading = true);
+    await widget.onPressed();
+    setState(() => _downloading = false);
   }
 }
