@@ -8,15 +8,24 @@ final simpleDownloadDoc = ElementPreview(
     WidgetPreview(
       widget: SimpleDownload(
         fileName: "isin_id_saks_global.pdf",
-        onPressed: () {},
-        downloading: false,
+        onPressed: () async {
+          await Future.delayed(const Duration(seconds: 5));
+        },
+        checkPermission: () async {
+          return true;
+        },
+        onDeniedPermissionCallback: () {},
+        requestPermission: () {},
       ),
       description: 'Simple download',
     ),
     WidgetPreview(
       widget: SimpleDownload(
         fileName: "isin_id_saks_global.pdf",
-        onPressed: () {},
+        onPressed: () async {},
+        checkPermission: () async => true,
+        onDeniedPermissionCallback: () {},
+        requestPermission: () {},
         downloading: true,
       ),
       description: 'Simple download with loading',
