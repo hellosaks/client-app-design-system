@@ -18,6 +18,7 @@ export "custom_divider/custom_divider.dart";
 export "custom_tabs.dart";
 export "custom_typography/custom_typography.dart";
 export "export_builder.dart";
+export "fullscreen_notice/fullscreen_notice.dart";
 export "icon/custom_icons.dart";
 export "icon/dto/icon_dto.dart";
 export "icon/icon.dart";

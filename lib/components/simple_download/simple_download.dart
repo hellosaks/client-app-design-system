@@ -10,7 +10,7 @@ class SimpleDownload extends StatefulWidget {
   final Future<void> Function() onPressed;
   final bool? downloading;
   final Future<bool> Function() checkPermission;
-  final VoidCallback requestPermission;
+  final Future<void> Function() requestPermission;
   final VoidCallback onDeniedPermissionCallback;
 
   const SimpleDownload({
@@ -95,7 +95,7 @@ class _SimpleDownloadState extends State<SimpleDownload> {
   }
 
   Future<bool> requestPermissionAndCheck() async {
-    widget.requestPermission();
+    await widget.requestPermission();
     return widget.checkPermission();
   }
 
