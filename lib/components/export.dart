@@ -25,4 +25,6 @@ export "indication_filters.dart";
 export "line_chart/line_chart.dart";
 export "notification_bell/notification_bell.dart";
 export "referral_button.dart";
+export "simple_download/simple_download.dart";
+export "simple_transaction/simple_transaction.dart";
 export "skeleton/skeleton.dart";
