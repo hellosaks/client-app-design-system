@@ -7,7 +7,7 @@ final informationCardDoc =
   WidgetPreview(
       widget: InformationCard(rows: [
     InformationCardRow(info: "ISIN", value: "12345"),
-    InformationCardRow(info: "Periodidade do plano", value: "Semestral"),
+    InformationCardRow(info: "Periodicidade do cupom", value: "Semestral"),
     InformationCardRow(info: "Data de Emissão", value: "22/05/2022"),
     InformationCardRow(info: "Data de Vencimento", value: "22/05/2025")
   ]))

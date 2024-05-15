@@ -2,6 +2,9 @@ import "package:client_app_design_system/utils/enums/enums.dart";
 import "package:flutter/material.dart";
 import "package:doc_widget/doc_widget.dart";
 import "../custom_typography/custom_typography.dart";
+import "package:client_app_design_system/theme/old_palette.dart";
+import "package:client_app_design_system/theme/palette.dart";
+import "package:client_app_design_system/theme/shape.dart";
 
 @docWidget
 class InformationCard extends StatelessWidget {
@@ -11,16 +14,13 @@ class InformationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(16)),
-            color: Color.fromRGBO(246, 246, 246, 1)),
-        child: ListView(
-          shrinkWrap: true,
-          children: rows.map((row) => row).toList(),
-        ),
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius:
+              BorderRadius.all(Radius.circular(Shape().borderRadiusCard)),
+          color: SecondaryColor().cards),
+      child: Column(
+        children: rows.map((row) => row).toList(),
       ),
     );
   }
@@ -36,14 +36,14 @@ class InformationCardRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomTypography(
             variant: TypographyVariant.h6,
             text: info,
-            color: Color.fromRGBO(109, 109, 109, 1),
+            color: GrayTone().colorGray09,
           ),
           CustomTypography(variant: TypographyVariant.h6, text: value),
         ],
