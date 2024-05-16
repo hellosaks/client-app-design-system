@@ -29,3 +29,4 @@ export "referral_button.dart";
 export "simple_download/simple_download.dart";
 export "simple_transaction/simple_transaction.dart";
 export "skeleton/skeleton.dart";
+export "information_card/information_card.dart";

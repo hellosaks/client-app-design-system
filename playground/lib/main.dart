@@ -19,6 +19,7 @@ import 'package:playground/widgets/custom_tabs.dart';
 import 'package:playground/widgets/custom_typography.dart';
 import 'package:playground/widgets/icons.dart';
 import 'package:playground/widgets/indication_filters.dart';
+import 'package:playground/widgets/information_card.dart';
 import 'package:playground/widgets/notification_bell.dart';
 import 'package:playground/widgets/referral_button.dart';
 import 'package:playground/widgets/referral_card.dart';
@@ -88,6 +89,7 @@ void main() {
             avatar,
             simpleDownloadDoc,
             simpleTransactionDoc,
+            informationCardDoc,
           ],
         ),
       ],
