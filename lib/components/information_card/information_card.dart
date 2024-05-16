@@ -1,10 +1,9 @@
+import "package:client_app_design_system/theme/old_palette.dart";
 import "package:client_app_design_system/utils/enums/enums.dart";
 import "package:flutter/material.dart";
 import "package:doc_widget/doc_widget.dart";
 import "../custom_typography/custom_typography.dart";
-import "package:client_app_design_system/theme/old_palette.dart";
-import "package:client_app_design_system/theme/palette.dart";
-import "package:client_app_design_system/theme/shape.dart";
+import "package:client_app_design_system/theme/theme_saks.dart";
 
 @docWidget
 class InformationCard extends StatelessWidget {
@@ -16,9 +15,9 @@ class InformationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius:
-              BorderRadius.all(Radius.circular(Shape().borderRadiusCard)),
-          color: SecondaryColor().cards),
+          borderRadius: BorderRadius.all(
+              Radius.circular(ThemeSAKS.shape.borderRadiusCard)),
+          color: ThemeSAKS.colors.secondary.cards),
       child: Column(
         children: rows.map((row) => row).toList(),
       ),
@@ -41,10 +40,9 @@ class InformationCardRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomTypography(
-            variant: TypographyVariant.h6,
-            text: info,
-            color: GrayTone().colorGray09,
-          ),
+              variant: TypographyVariant.h6,
+              text: info,
+              color: OldPalette().grayTone.colorGray09),
           CustomTypography(variant: TypographyVariant.h6, text: value),
         ],
       ),
