@@ -2,7 +2,6 @@ import "package:client_app_design_system/components/custom_divider/custom_divide
 import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
-import "package:mix/mix.dart";
 
 @docWidget
 class CustomTabs extends StatefulWidget {
@@ -42,68 +41,60 @@ class _CustomTabsState extends State<CustomTabs> {
   }
 
   Widget _buildBody({required int totalTabs, required BuildContext context}) {
-    final styles = Mix(flex(1), bgColor(Colors.transparent));
-
-    final stylesTabBar = Mix(
-      py(20),
-      px(10),
-    );
     return DefaultTabController(
       length: totalTabs,
       initialIndex: widget.currentTabIndex,
       child: Builder(
         builder: (BuildContext context) {
           onChangeTab(context);
-          return VBox(
-            mix: styles,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Box(
-                      mix: stylesTabBar,
-                      child: MediaQuery(
-                        data: MediaQuery.of(context).copyWith(
-                          textScaleFactor:
-                              OldThemeSAKS.typography.textScaleFactor,
-                        ),
-                        child: TabBar(
-                          indicator: BoxDecoration(
-                            color: OldThemeSAKS.colors.blueTone.colorBlue08,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(20),
-                            ),
+          return Expanded(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 10),
+                        child: MediaQuery(
+                          data: MediaQuery.of(context).copyWith(
+                            textScaleFactor:
+                                OldThemeSAKS.typography.textScaleFactor,
                           ),
-                          unselectedLabelColor:
-                              OldThemeSAKS.colors.blackTone.colorBlack01,
-                          labelStyle:
-                              const TextStyle(fontWeight: FontWeight.w600),
-                          indicatorSize: TabBarIndicatorSize.label,
-                          indicatorWeight: 0,
-                          isScrollable: true,
-                          tabs: _buildTabs(),
+                          child: TabBar(
+                            indicator: BoxDecoration(
+                              color: OldThemeSAKS.colors.blueTone.colorBlue08,
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                            ),
+                            unselectedLabelColor:
+                                OldThemeSAKS.colors.blackTone.colorBlack01,
+                            labelStyle:
+                                const TextStyle(fontWeight: FontWeight.w600),
+                            indicatorSize: TabBarIndicatorSize.label,
+                            indicatorWeight: 0,
+                            isScrollable: true,
+                            tabs: _buildTabs(),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  if (widget.rightButton != null) ...[
-                    widget.rightButton!,
-                    const SizedBox(
-                      width: 20,
-                    )
-                  ]
-                ],
-              ),
-              const CustomDivider(),
-              Expanded(
-                child: Box(
+                    if (widget.rightButton != null) ...[
+                      widget.rightButton!,
+                      const SizedBox(width: 20),
+                    ]
+                  ],
+                ),
+                const CustomDivider(),
+                Expanded(
                   child: TabBarView(
                     children: widget.listTabView,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),
@@ -111,16 +102,16 @@ class _CustomTabsState extends State<CustomTabs> {
   }
 
   List<Widget> _buildTabs() {
-    final styles = Mix(
-      height(30),
-      px(15),
-      py(5),
-      borderWidth(0.5),
-      rounded(20),
-      borderColor(OldThemeSAKS.colors.grayTone.colorGray03),
-    );
     return widget.listTabNames
-        .map((name) => Box(mix: styles, child: Tab(text: name)))
+        .map((name) => Container(
+            height: 30,
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                    width: 0.5,
+                    color: OldThemeSAKS.colors.grayTone.colorGray03)),
+            child: Tab(text: name)))
         .toList();
   }
 
