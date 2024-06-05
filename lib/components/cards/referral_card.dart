@@ -136,11 +136,13 @@ class _ReferralCardState extends State<ReferralCard>
         Container(
           width: 130,
           child: CustomTypography(
-              variant: TypographyVariant.h6,
-              weight: FontWeight.bold,
-              text: widget.name,
-              color: ThemeSAKS.colors.primary.sea,
-              mix: styleTypo),
+            variant: TypographyVariant.h6,
+            weight: FontWeight.bold,
+            text: widget.name,
+            color: ThemeSAKS.colors.primary.sea,
+            // mix: styleTypo,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         SizedBox(
           height: AppSize(context: Get.context).getHeight(7),
@@ -148,7 +150,7 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           variant: TypographyVariant.h7,
           text: widget.textPaid,
-          mix: widget.payment == ReferralPaymentType.paid ? null : styleTypo,
+          // mix: widget.payment == ReferralPaymentType.paid ? null : styleTypo,
           weight: FontWeight.w600,
           color: widget.payment == ReferralPaymentType.paid
               ? ThemeSAKS.colors.utility.conservative
