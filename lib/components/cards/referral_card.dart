@@ -2,7 +2,6 @@ import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:get/get.dart";
-import "package:mix/mix.dart";
 
 @docWidget
 class ReferralCard extends StatefulWidget {
@@ -117,10 +116,6 @@ class _ReferralCardState extends State<ReferralCard>
       );
 
   Widget _buildTexts() {
-    final styleTypo = Mix(
-      textOverflow(TextOverflow.ellipsis),
-    );
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -140,7 +135,6 @@ class _ReferralCardState extends State<ReferralCard>
             weight: FontWeight.bold,
             text: widget.name,
             color: ThemeSAKS.colors.primary.sea,
-            // mix: styleTypo,
             overflow: TextOverflow.ellipsis,
           ),
         ),
@@ -150,7 +144,6 @@ class _ReferralCardState extends State<ReferralCard>
         CustomTypography(
           variant: TypographyVariant.h7,
           text: widget.textPaid,
-          // mix: widget.payment == ReferralPaymentType.paid ? null : styleTypo,
           weight: FontWeight.w600,
           color: widget.payment == ReferralPaymentType.paid
               ? ThemeSAKS.colors.utility.conservative
@@ -316,7 +309,7 @@ class _ReferralCardState extends State<ReferralCard>
         key: ReferralCard.circleKey,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          VBox(
+          Column(
             children: [
               circle,
               SizedBox(
