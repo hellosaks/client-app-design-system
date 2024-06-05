@@ -1,7 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
-import "package:mix/mix.dart";
 
 @docWidget
 class AuxiliarButton extends StatelessWidget {
@@ -18,28 +17,33 @@ class AuxiliarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = Mix(
-      rounded(ThemeSAKS.shape.borderRadius),
-      bgColor(ThemeSAKS.colors.primary.saks),
-      animated(),
-    );
-    final stylePressed = Mix(
-      press(bgColor(ThemeSAKS.colors.secondary.bay)),
-    );
-    final styleDisabled = Mix(opacity(0.5));
-
-    return Pressable(
-      mix: Mix.combine(style, disabled ? styleDisabled : stylePressed),
+    return ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> states) {
+            if (states.contains(MaterialState.pressed)) {
+              return ThemeSAKS.colors.secondary.bay;
+            } else if (states.contains(MaterialState.disabled)) {
+              return ThemeSAKS.colors.primary.saks.withOpacity(0.5);
+            }
+            return ThemeSAKS.colors.primary.saks;
+          },
+        ),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(ThemeSAKS.shape.borderRadius),
+          ),
+        ),
+        animationDuration: Duration(milliseconds: 100),
+      ),
       onPressed: disabled ? null : onPressed,
       child: _buildContainer(),
     );
   }
 
   Widget _buildContainer() {
-    final style = Mix(px(12), py(7));
-
-    return Box(
-      mix: style,
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),
       child: CustomTypography(
         text: label,
         variant: TypographyVariant.h7,

@@ -1,6 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:flutter/material.dart" hide Icon;
-import "package:mix/mix.dart";
 
 class CoreButton extends StatelessWidget {
   final String text;
@@ -32,12 +31,8 @@ class CoreButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final styles = Mix(
-      bgColor(Colors.transparent),
-    );
-
-    return Box(
-      mix: styles,
+    return ColoredBox(
+      color: Colors.transparent,
       child: Row(
         key: keyContent,
         mainAxisSize: MainAxisSize.min,
@@ -56,7 +51,7 @@ class CoreButton extends StatelessWidget {
   }
 
   Widget _buildContent() {
-    final HBox content = HBox(
+    final Row content = Row(
       children: [
         if (leftIcon != null) ...[
           _buildLeftIcon(),
@@ -67,7 +62,7 @@ class CoreButton extends StatelessWidget {
       ],
     );
 
-    return Box(
+    return Container(
       child: content,
     );
   }

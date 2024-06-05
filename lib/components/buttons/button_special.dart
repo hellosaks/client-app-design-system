@@ -1,7 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
-import "package:mix/mix.dart";
 
 @docWidget
 class SpecialButton extends StatefulWidget {
@@ -44,22 +43,18 @@ class _SpecialButtonState extends State<SpecialButton> {
   }
 
   Widget _buildButton() {
-    final style = Mix(
-      bgColor(backgroundColor),
-      px(28),
-      py(16),
-      rounded(ThemeSAKS.shape.borderRadiusSpecialButton),
-      widget.disabled(opacity(0.5)),
-      w(170),
-      animated(),
-    );
-    final styleHbox = Mix(mainAxisSize(MainAxisSize.min));
-
-    return Box(
+    return Container(
       key: SpecialButton.boxContainerKey,
-      mix: style,
-      child: HBox(
-        mix: styleHbox,
+      width: 170,
+      padding: EdgeInsets.symmetric(horizontal: 28, vertical: 16),
+      decoration: BoxDecoration(
+          borderRadius:
+              BorderRadius.circular(ThemeSAKS.shape.borderRadiusSpecialButton),
+          color: widget.disabled
+              ? backgroundColor.withOpacity(0.5)
+              : backgroundColor),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
             props: IconProps(

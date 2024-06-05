@@ -1,7 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
-import "package:mix/mix.dart";
 
 class ButtonProperties {
   final void Function() onPressed;
@@ -91,15 +90,16 @@ class CommonModal extends StatelessWidget {
     final icon = currentIconProps.copyWith(
       size: 56,
     );
-    final styles = Mix(
-      height(8),
-      width(40),
-      bgColor(OldThemeSAKS.colors.grayTone.colorGray01),
-      rounded(5),
-    );
     return [
       const SizedBox(height: 10),
-      Box(key: const Key("line-header"), mix: styles),
+      Container(
+        key: const Key("line-header"),
+        height: 8,
+        width: 40,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: OldThemeSAKS.colors.grayTone.colorGray01),
+      ),
       const SizedBox(height: 40),
       Icon(props: icon)
     ];

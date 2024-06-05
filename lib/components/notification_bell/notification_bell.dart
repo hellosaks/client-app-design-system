@@ -1,7 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
-import "package:mix/mix.dart";
 
 @docWidget
 class NotificationBell extends StatelessWidget {
@@ -21,15 +20,15 @@ class NotificationBell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Mix style = Mix(width(35), height(35));
     return Stack(
       children: [
         IconButton(
           key: Key(NotificationBell.bellKey),
           onPressed: onPressed,
           splashRadius: ThemeSAKS.shape.iconButtonSplashRadius,
-          icon: Box(
-            mix: style,
+          icon: SizedBox(
+            width: 35,
+            height: 35,
             child: Icon(
               props: iconProps,
             ),
@@ -41,13 +40,6 @@ class NotificationBell extends StatelessWidget {
   }
 
   Widget _buildNotificationIcon() {
-    final style = Mix(
-      bgColor(OldThemeSAKS.colors.error),
-      width(20),
-      height(20),
-      rounded(50),
-    );
-
     return Positioned(
       key: Key(NotificationBell.badgeKey),
       top: 5,
@@ -55,7 +47,13 @@ class NotificationBell extends StatelessWidget {
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          Box(mix: style),
+          Container(
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: OldThemeSAKS.colors.error),
+          ),
           CustomTypography(
             variant: TypographyVariant.h7,
             color: Colors.white,
