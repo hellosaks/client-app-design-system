@@ -21,7 +21,6 @@ dependencies:
   google_fonts: 4.0.3
   heroicons: 0.8.0
   intl: ^0.18.1
-  mix: 0.0.6
   path: ^1.8.2
   shimmer: 3.0.0
   skeletons: 0.0.3
