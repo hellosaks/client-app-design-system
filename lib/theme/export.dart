@@ -1,3 +1,4 @@
+export "magnolia/theme_magnolia.dart";
 export "old_palette.dart";
 export "palette.dart";
 export "shape.dart";

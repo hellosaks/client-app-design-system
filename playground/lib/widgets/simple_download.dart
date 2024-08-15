@@ -15,7 +15,7 @@ final simpleDownloadDoc = ElementPreview(
           return true;
         },
         onDeniedPermissionCallback: () {},
-        requestPermission: () {},
+        requestPermission: () async {},
       ),
       description: 'Simple download',
     ),
@@ -25,7 +25,7 @@ final simpleDownloadDoc = ElementPreview(
         onPressed: () async {},
         checkPermission: () async => true,
         onDeniedPermissionCallback: () {},
-        requestPermission: () {},
+        requestPermission: () async {},
         downloading: true,
       ),
       description: 'Simple download with loading',
