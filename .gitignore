@@ -33,5 +33,5 @@ playground/pubspec.lock
 build/
 **/*.doc_widget.dart
 coverage/html
-.fvm/flutter_sdk
+.fvm/
 
