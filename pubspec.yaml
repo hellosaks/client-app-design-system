@@ -9,7 +9,6 @@ environment:
 
 dependencies:
   cached_network_image: 3.2.3
-  child_builder: 2.0.1
   circular_chart_flutter: 0.0.2
   deep_pick: 1.0.0
   doc_widget: 0.4.0
