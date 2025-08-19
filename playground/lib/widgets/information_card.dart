@@ -10,7 +10,9 @@ final informationCardDoc = ElementPreview(
         rows: [
           InformationCardRow(info: "ISIN", value: "12345"),
           InformationCardRow(
-              info: "Periodicidade do cupom", value: "Semestral"),
+            info: "Periodicidade do cupom",
+            value: "Semestral",
+          ),
           InformationCardRow(info: "Data de Emissão", value: "22/05/2022"),
           InformationCardRow(info: "Data de Vencimento", value: "22/05/2025")
         ],
