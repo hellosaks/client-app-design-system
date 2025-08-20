@@ -56,7 +56,7 @@ class _CustomTabsState extends State<CustomTabs> {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 20, horizontal: 10),
+                            vertical: 20, horizontal: 10,),
                         child: MediaQuery(
                           data: MediaQuery.of(context).copyWith(
                             textScaleFactor:
@@ -110,8 +110,8 @@ class _CustomTabsState extends State<CustomTabs> {
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
                     width: 0.5,
-                    color: OldThemeSAKS.colors.grayTone.colorGray03)),
-            child: Tab(text: name)))
+                    color: OldThemeSAKS.colors.grayTone.colorGray03,),),
+            child: Tab(text: name),),)
         .toList();
   }
 

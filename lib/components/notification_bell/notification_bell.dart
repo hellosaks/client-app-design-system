@@ -52,7 +52,7 @@ class NotificationBell extends StatelessWidget {
             height: 20,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: OldThemeSAKS.colors.error),
+                color: OldThemeSAKS.colors.error,),
           ),
           CustomTypography(
             variant: TypographyVariant.h7,

@@ -34,7 +34,7 @@ class AuxiliarButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(ThemeSAKS.shape.borderRadius),
           ),
         ),
-        animationDuration: Duration(milliseconds: 100),
+        animationDuration: const Duration(milliseconds: 100),
       ),
       onPressed: disabled ? null : onPressed,
       child: _buildContainer(),
@@ -43,7 +43,7 @@ class AuxiliarButton extends StatelessWidget {
 
   Widget _buildContainer() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
       child: CustomTypography(
         text: label,
         variant: TypographyVariant.h7,

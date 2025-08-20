@@ -6,7 +6,6 @@ on:
 
 jobs:
   analyze-and-test:
-    if: ${{ github.event.label.name == 'ready-for-merge' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Step

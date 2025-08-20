@@ -41,13 +41,14 @@ class _ReferralButtonState extends State<ReferralButton> {
         children: [
           Container(
             key: ReferralButton.containerKey,
-            margin: EdgeInsets.only(top: 0),
+            margin: EdgeInsets.zero,
             decoration: BoxDecoration(
               color: ThemeSAKS.colors.primary.saks,
               borderRadius: BorderRadius.all(
-                  Radius.circular(ThemeSAKS.shape.borderRadiusCard)),
+                Radius.circular(ThemeSAKS.shape.borderRadiusCard),
+              ),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -93,11 +94,11 @@ class _ReferralButtonState extends State<ReferralButton> {
         opacity: copied ? 1 : 0,
         child: Container(
           key: ReferralButton.tagFeedbackKey,
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 7),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 7),
           decoration: BoxDecoration(
-              color: ThemeSAKS.colors.utility.conservative,
-              borderRadius:
-                  BorderRadius.circular(ThemeSAKS.shape.borderRadius)),
+            color: ThemeSAKS.colors.utility.conservative,
+            borderRadius: BorderRadius.circular(ThemeSAKS.shape.borderRadius),
+          ),
           child: CustomTypography(
             text: widget.feedbackOnCopy,
             variant: TypographyVariant.h6,

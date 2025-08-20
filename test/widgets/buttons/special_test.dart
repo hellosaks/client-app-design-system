@@ -1,7 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
-import "package:mix/mix.dart";
 
 import "../../utils/test_wrappers.dart";
 
@@ -29,14 +28,13 @@ void main() {
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-        final findedWidget =
-            tester.widget<Box>(find.byKey(SpecialButton.boxContainerKey));
-        final List<Attribute> attributes = findedWidget.mix.attributes;
+        final foundWidget =
+            tester.widget<Container>(find.byKey(SpecialButton.boxContainerKey));
 
-        expect(
-          (attributes[0] as BoxAttributes).color,
-          ThemeSAKS.colors.utility.conservative,
-        );
+        final BoxDecoration decoration =
+            foundWidget.decoration! as BoxDecoration;
+
+        expect(decoration.color, ThemeSAKS.colors.utility.conservative);
 
         expect(
           find.byWidgetPredicate(
@@ -57,14 +55,12 @@ void main() {
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-        final findedWidget =
-            tester.widget<Box>(find.byKey(SpecialButton.boxContainerKey));
-        final List<Attribute> attributes = findedWidget.mix.attributes;
+        final foundWidget =
+            tester.widget<Container>(find.byKey(SpecialButton.boxContainerKey));
+        final BoxDecoration decoration =
+            foundWidget.decoration! as BoxDecoration;
 
-        expect(
-          (attributes[0] as BoxAttributes).color,
-          ThemeSAKS.colors.primary.sea,
-        );
+        expect(decoration.color, ThemeSAKS.colors.primary.sea);
 
         expect(
           find.byWidgetPredicate(
@@ -129,41 +125,32 @@ void main() {
         expect(find.byType(AnimatedOpacity), findsNothing);
 
         // initial state
-        Box findedWidget =
-            tester.widget<Box>(find.byKey(SpecialButton.boxContainerKey));
-        List<Attribute> attributes = findedWidget.mix.attributes;
+        Container foundWidget =
+            tester.widget<Container>(find.byKey(SpecialButton.boxContainerKey));
+        BoxDecoration decoration = foundWidget.decoration! as BoxDecoration;
 
-        expect(
-          (attributes[0] as BoxAttributes).color,
-          ThemeSAKS.colors.primary.sea,
-        );
+        expect(decoration.color, ThemeSAKS.colors.primary.sea);
 
         // press down button
         final actionPress = await tester.press(find.byType(SpecialButton));
         await tester.pump();
 
-        findedWidget =
-            tester.widget<Box>(find.byKey(SpecialButton.boxContainerKey));
-        attributes = findedWidget.mix.attributes;
+        foundWidget =
+            tester.widget<Container>(find.byKey(SpecialButton.boxContainerKey));
+        decoration = foundWidget.decoration! as BoxDecoration;
 
-        expect(
-          (attributes[0] as BoxAttributes).color,
-          ThemeSAKS.colors.secondary.anchor,
-        );
+        expect(decoration.color, ThemeSAKS.colors.secondary.anchor);
 
         // release press button
         await actionPress.up();
         await tester.pump();
 
-        findedWidget =
-            tester.widget<Box>(find.byKey(SpecialButton.boxContainerKey));
-        attributes = findedWidget.mix.attributes;
+        foundWidget =
+            tester.widget<Container>(find.byKey(SpecialButton.boxContainerKey));
+        decoration = foundWidget.decoration! as BoxDecoration;
 
         // verify return to initial state
-        expect(
-          (attributes[0] as BoxAttributes).color,
-          ThemeSAKS.colors.primary.sea,
-        );
+        expect(decoration.color, ThemeSAKS.colors.primary.sea);
       });
 
       testWidgets("for whatsapp variant when disabled", (tester) async {
@@ -176,11 +163,14 @@ void main() {
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
 
+        final foundWidget =
+            tester.widget<Container>(find.byKey(SpecialButton.boxContainerKey));
+        final BoxDecoration decoration =
+            foundWidget.decoration! as BoxDecoration;
+
         expect(
-          find.byWidgetPredicate(
-            (widget) => widget is AnimatedOpacity && widget.opacity == 0.5,
-          ),
-          findsOneWidget,
+          decoration.color,
+          ThemeSAKS.colors.utility.conservative.withOpacity(0.5),
         );
       });
 
@@ -194,11 +184,12 @@ void main() {
 
         await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-        final findedWidget =
-            tester.widget<Box>(find.byKey(SpecialButton.boxContainerKey));
-        final List<Attribute> attributes = findedWidget.mix.attributes;
+        final foundWidget =
+            tester.widget<Container>(find.byKey(SpecialButton.boxContainerKey));
+        final BoxDecoration decoration =
+            foundWidget.decoration! as BoxDecoration;
 
-        expect((attributes[4] as OpacityDecorator).opacity, 0.5);
+        expect(decoration.color, ThemeSAKS.colors.primary.sea.withOpacity(0.5));
       });
     });
 

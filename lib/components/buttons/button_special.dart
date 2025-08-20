@@ -46,13 +46,14 @@ class _SpecialButtonState extends State<SpecialButton> {
     return Container(
       key: SpecialButton.boxContainerKey,
       width: 170,
-      padding: EdgeInsets.symmetric(horizontal: 28, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 16),
       decoration: BoxDecoration(
-          borderRadius:
-              BorderRadius.circular(ThemeSAKS.shape.borderRadiusSpecialButton),
-          color: widget.disabled
-              ? backgroundColor.withOpacity(0.5)
-              : backgroundColor),
+        borderRadius:
+            BorderRadius.circular(ThemeSAKS.shape.borderRadiusSpecialButton),
+        color: widget.disabled
+            ? backgroundColor.withOpacity(0.5)
+            : backgroundColor,
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

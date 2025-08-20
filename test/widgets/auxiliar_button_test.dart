@@ -1,6 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
-import "package:mix/mix.dart";
 
 import "../utils/test_wrappers.dart";
 
@@ -11,7 +11,7 @@ void main() {
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      expect(find.byType(Pressable), findsOneWidget);
+      expect(find.byType(ElevatedButton), findsOneWidget);
       expect(find.text("label"), findsOneWidget);
     });
 
@@ -41,10 +41,16 @@ void main() {
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      final Pressable pressable = tester.widget(find.byType(Pressable));
-      final List<Attribute> attributes = pressable.mix.attributes;
+      final ElevatedButton pressable =
+          tester.widget(find.byType(ElevatedButton));
 
-      expect((attributes[3] as OpacityDecorator).opacity, 0.5);
+      final backgroundColor =
+          pressable.style?.backgroundColor?.resolve({MaterialState.disabled});
+
+      expect(
+        backgroundColor,
+        ThemeSAKS.colors.primary.saks.withOpacity(0.5),
+      );
     });
 
     testWidgets("should render correctly styles when pressed", (tester) async {
@@ -54,19 +60,17 @@ void main() {
       );
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
-      await tester.tap(find.byType(Pressable));
+      await tester.tap(find.byType(ElevatedButton));
       await tester.pump();
 
-      final Pressable pressable = tester.widget(find.byType(Pressable));
-      final List<Attribute> attributes = pressable.mix.attributes;
+      final ElevatedButton pressable =
+          tester.widget(find.byType(ElevatedButton));
+
+      final backgroundColor =
+          pressable.style?.backgroundColor?.resolve({MaterialState.pressed});
 
       // verify color on click
-      expect(
-        ((attributes[3] as VariantAttribute<Attribute>).attributes[0]
-                as BoxAttributes)
-            .color,
-        ThemeSAKS.colors.secondary.bay,
-      );
+      expect(backgroundColor, ThemeSAKS.colors.secondary.bay);
 
       await tester.pumpAndSettle();
     });

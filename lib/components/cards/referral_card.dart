@@ -128,14 +128,13 @@ class _ReferralCardState extends State<ReferralCard>
         SizedBox(
           height: AppSize(context: Get.context).getHeight(7),
         ),
-        Container(
+        SizedBox(
           width: 130,
           child: CustomTypography(
             variant: TypographyVariant.h6,
             weight: FontWeight.bold,
             text: widget.name,
             color: ThemeSAKS.colors.primary.sea,
-            overflow: TextOverflow.ellipsis,
           ),
         ),
         SizedBox(
@@ -186,7 +185,7 @@ class _ReferralCardState extends State<ReferralCard>
             height: AppSize(context: Get.context).getHeight(10),
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(0, 20, 0, 30),
+            padding: const EdgeInsets.fromLTRB(0, 20, 0, 30),
             child: Column(
               children: [
                 _textWithIcon(),
@@ -287,7 +286,7 @@ class _ReferralCardState extends State<ReferralCard>
   }
 
   Widget _buildCircleIcon() {
-    return Container(
+    return SizedBox(
       height: 24,
       width: 24,
       child: Container(
@@ -295,7 +294,7 @@ class _ReferralCardState extends State<ReferralCard>
         width: 19.5,
         decoration: BoxDecoration(
             color: ThemeSAKS.colors.primary.sea.withOpacity(0.2),
-            borderRadius: BorderRadius.circular(ThemeSAKS.shape.borderRadius)),
+            borderRadius: BorderRadius.circular(ThemeSAKS.shape.borderRadius),),
         child: const Center(),
       ),
     );

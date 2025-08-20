@@ -2,7 +2,6 @@ import "package:client_app_design_system/components/custom_tabs.dart";
 import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
-import "package:mix/mix.dart";
 
 import "../utils/test_wrappers.dart";
 
@@ -27,7 +26,8 @@ void main() {
           onChangeTabIndex: (index) {},
         );
 
-        await tester.pumpWidget(wrapWithMaterialApp(VBox(children: [widget])));
+        await tester
+            .pumpWidget(wrapWithMaterialApp(Column(children: [widget])));
 
         expect(find.byType(CustomTabs), findsOneWidget);
       },
@@ -42,7 +42,8 @@ void main() {
           onChangeTabIndex: (index) {},
         );
 
-        await tester.pumpWidget(wrapWithMaterialApp(VBox(children: [widget])));
+        await tester
+            .pumpWidget(wrapWithMaterialApp(Column(children: [widget])));
 
         expect(find.byType(Tab), findsNWidgets(2));
       },
@@ -57,7 +58,8 @@ void main() {
           onChangeTabIndex: (index) {},
         );
 
-        await tester.pumpWidget(wrapWithMaterialApp(VBox(children: [widget])));
+        await tester
+            .pumpWidget(wrapWithMaterialApp(Column(children: [widget])));
         final tabs = find.byType(Tab);
 
         final Tab firsTab = tester.widget(tabs.first) as Tab;
@@ -77,7 +79,8 @@ void main() {
           onChangeTabIndex: (index) {},
         );
 
-        await tester.pumpWidget(wrapWithMaterialApp(VBox(children: [widget])));
+        await tester
+            .pumpWidget(wrapWithMaterialApp(Column(children: [widget])));
         final TabBar tabBar = tester.widget(find.byType(TabBar));
 
         expect(tabBar.isScrollable, true);
@@ -121,7 +124,8 @@ void main() {
           onChangeTabIndex: (index) {},
         );
 
-        await tester.pumpWidget(wrapWithMaterialApp(VBox(children: [widget])));
+        await tester
+            .pumpWidget(wrapWithMaterialApp(Column(children: [widget])));
 
         final tabs = find.byType(Tab);
 
@@ -143,7 +147,8 @@ void main() {
           onChangeTabIndex: (index) {},
         );
 
-        await tester.pumpWidget(wrapWithMaterialApp(VBox(children: [widget])));
+        await tester
+            .pumpWidget(wrapWithMaterialApp(Column(children: [widget])));
         final TabBarView tabBarView = tester.widget(find.byType(TabBarView));
 
         final Text textScreen = tabBarView.children.first as Text;
@@ -161,7 +166,8 @@ void main() {
           currentTabIndex: 1,
         );
 
-        await tester.pumpWidget(wrapWithMaterialApp(VBox(children: [widget])));
+        await tester
+            .pumpWidget(wrapWithMaterialApp(Column(children: [widget])));
 
         final tabs = find.byType(Tab);
 
@@ -188,7 +194,8 @@ void main() {
           currentTabIndex: indexTab,
         );
 
-        await tester.pumpWidget(wrapWithMaterialApp(VBox(children: [widget])));
+        await tester
+            .pumpWidget(wrapWithMaterialApp(Column(children: [widget])));
 
         final tabs = find.byType(Tab);
 
@@ -219,7 +226,8 @@ void main() {
           ),
         );
 
-        await tester.pumpWidget(wrapWithMaterialApp(VBox(children: [widget])));
+        await tester
+            .pumpWidget(wrapWithMaterialApp(Column(children: [widget])));
 
         expect(find.byKey(const Key("sizebox")), findsOneWidget);
       },

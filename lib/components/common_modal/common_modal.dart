@@ -98,7 +98,7 @@ class CommonModal extends StatelessWidget {
         width: 40,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
-            color: OldThemeSAKS.colors.grayTone.colorGray01),
+            color: OldThemeSAKS.colors.grayTone.colorGray01,),
       ),
       const SizedBox(height: 40),
       Icon(props: icon)

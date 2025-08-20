@@ -7,7 +7,7 @@ class Typography {
   final fontPlusJakartaTextTheme = GoogleFonts.plusJakartaSansTextTheme;
   static const fontPlusJakarta = GoogleFonts.plusJakartaSans;
 
-  static final _defaultFont = const TextStyle(fontFamily: Constants.fontFamily);
+  static const _defaultFont = TextStyle(fontFamily: Constants.fontFamily);
 
   final double textScaleFactor = 1.0;
 
@@ -27,7 +27,7 @@ class Typography {
   final h7TypoF = fontPlusJakarta(fontSize: 12);
 
   final ctaTypo = _defaultFont.copyWith(
-      fontSize: 14, fontWeight: FontWeight.w800, letterSpacing: 2);
+      fontSize: 14, fontWeight: FontWeight.w800, letterSpacing: 2,);
 
   final ctaTypoF = fontPlusJakarta(
     fontSize: 14,
