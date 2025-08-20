@@ -8,7 +8,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  cached_network_image: 3.2.3
+  cached_network_image: 3.4.1
   circular_chart_flutter: 0.0.2
   deep_pick: 1.0.0
   doc_widget: 0.4.0
