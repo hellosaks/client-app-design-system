@@ -1,12 +1,11 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:flutter/painting.dart";
+import "package:flutter/material.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
-import "package:mix/mix.dart";
 
 import "../utils/test_wrappers.dart";
 
 void main() {
-  group("RefferalCard", () {
+  group("ReferralCard", () {
     testWidgets(
       "render component",
       (WidgetTester tester) async {
@@ -229,16 +228,10 @@ void main() {
 
       expect(find.byKey(ReferralCard.circleKey), findsOneWidget);
 
-      final Box box = tester.widget(find.byKey(ReferralCard.cardKey));
-      final List<Attribute> boxAttributes = box.mix.attributes;
-      expect(
-        (boxAttributes[0] as BoxAttributes).color,
-        ThemeSAKS.colors.special.leaf,
-      );
-      expect(
-        (boxAttributes[2] as BoxAttributes).width,
-        double.infinity,
-      );
+      final Container box = tester.widget(find.byKey(ReferralCard.cardKey));
+      final BoxDecoration decoration = box.decoration! as BoxDecoration;
+      expect(decoration.color, ThemeSAKS.colors.special.leaf);
+      expect(box.constraints?.minWidth, double.infinity);
     });
     testWidgets(
         "expected ReferralPaymentType pending colors, data and input with equal size ",
@@ -318,12 +311,9 @@ void main() {
         findsNothing,
       );
 
-      final Box box = tester.widget(find.byKey(ReferralCard.cardKey));
-      final List<Attribute> boxAttributes = box.mix.attributes;
-      expect(
-        (boxAttributes[0] as BoxAttributes).color,
-        ThemeSAKS.colors.primary.sky,
-      );
+      final Container box = tester.widget(find.byKey(ReferralCard.cardKey));
+      final BoxDecoration decoration = box.decoration! as BoxDecoration;
+      expect(decoration.color, ThemeSAKS.colors.primary.sky);
     });
   });
 }

@@ -1,7 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
-import "package:mix/mix.dart";
 
 @docWidget
 class Avatar extends StatelessWidget {
@@ -19,8 +18,8 @@ class Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Pressable(
-      onPressed: onPressed,
+    return GestureDetector(
+      onTap: onPressed,
       child: CircleAvatar(
         key: ValueKey(Avatar.containerKey),
         backgroundColor: ThemeSAKS.colors.secondary.ice,

@@ -1,7 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
-import "package:mix/mix.dart";
 
 @docWidget
 class PrimaryButton extends StatefulWidget {
@@ -94,22 +93,20 @@ class _PrimaryButtonState extends State<PrimaryButton> {
   }
 
   Widget _buildContainer() {
-    final styles = Mix(
-      bgColor(
-        currentColor!,
-      ),
-      rounded(ThemeSAKS.shape.borderRadius),
-      width(double.infinity),
-      opacity(widget.disabled == true ? 0.5 : 1),
-      paddingHorizontal(15),
-      paddingVertical(
-        (widget.leftIcon != null || widget.rightIcon != null) ? 9 : 12.5,
-      ),
-    );
-
-    return Box(
+    return Container(
       key: PrimaryButton.boxContainerKey,
-      mix: styles,
+      padding: EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical:
+            (widget.leftIcon != null || widget.rightIcon != null) ? 9 : 12.5,
+      ),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(ThemeSAKS.shape.borderRadius),
+        color: (widget.disabled == true)
+            ? currentColor!.withOpacity(0.5)
+            : currentColor,
+      ),
       child: CoreButton(
         cta: true,
         leftIcon: widget.leftIcon,

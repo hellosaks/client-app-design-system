@@ -1,8 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:flutter/services.dart";
+import "package:flutter/material.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
-import "package:mix/mix.dart";
-import "package:mix/src/dto/border_radius.dto.dart";
 
 import "../utils/test_wrappers.dart";
 
@@ -19,7 +17,7 @@ void main() {
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
       expect(find.byType(ReferralButton), findsOneWidget);
-      expect(find.byType(Pressable), findsOneWidget);
+      expect(find.byType(GestureDetector), findsOneWidget);
 
       // verify title
       expect(
@@ -58,17 +56,17 @@ void main() {
       );
 
       // verify styles for container box
-      final Box containerWidget =
+      final Container containerWidget =
           tester.widget(find.byKey(ReferralButton.containerKey));
-      final List<Attribute> containerAttributes =
-          containerWidget.mix.attributes;
+      final BoxDecoration decoration =
+          containerWidget.decoration! as BoxDecoration;
+
+      expect(decoration.color, ThemeSAKS.colors.primary.saks);
       expect(
-        (containerAttributes[0] as BoxAttributes).color,
-        ThemeSAKS.colors.primary.saks,
-      );
-      expect(
-        (containerAttributes[4] as BoxAttributes).borderRadius,
-        BorderRadiusDto.all(ThemeSAKS.shape.borderRadiusCard),
+        decoration.borderRadius,
+        BorderRadius.all(
+          Radius.circular(ThemeSAKS.shape.borderRadiusCard),
+        ),
       );
     });
 
@@ -85,20 +83,17 @@ void main() {
 
         expect(find.byKey(ReferralButton.tagFeedbackKey), findsOneWidget);
 
-        final Box tagFeedbackWidget =
+        final Container tagFeedbackWidget =
             tester.widget(find.byKey(ReferralButton.tagFeedbackKey));
-        final List<Attribute> tagStyleAttributes =
-            tagFeedbackWidget.mix.attributes;
+        final BoxDecoration decoration =
+            tagFeedbackWidget.decoration! as BoxDecoration;
+        expect(decoration.color, ThemeSAKS.colors.utility.conservative);
 
         expect(
-          (tagStyleAttributes[0] as BoxAttributes).color,
-          ThemeSAKS.colors.utility.conservative,
+          decoration.borderRadius,
+          BorderRadius.circular(ThemeSAKS.shape.borderRadius),
         );
-        expect((tagStyleAttributes[4] as OpacityDecorator).opacity, 0);
-        expect(
-          (tagStyleAttributes[3] as BoxAttributes).borderRadius,
-          BorderRadiusDto.all(ThemeSAKS.shape.borderRadius),
-        );
+        expect(tester.widget<Opacity>(find.byType(Opacity)).opacity, 0);
 
         expect(
           find.byWidgetPredicate(
@@ -126,12 +121,7 @@ void main() {
         await tester.tap(find.byType(ReferralButton));
         await tester.pumpAndSettle();
 
-        final Box tagFeedbackWidget =
-            tester.widget(find.byKey(ReferralButton.tagFeedbackKey));
-        final List<Attribute> tagStyleAttributes =
-            tagFeedbackWidget.mix.attributes;
-
-        expect((tagStyleAttributes[4] as OpacityDecorator).opacity, 1);
+        expect(tester.widget<Opacity>(find.byType(Opacity)).opacity, 1);
 
         // wait for animation to finish
         await tester.pumpAndSettle(const Duration(seconds: 2));

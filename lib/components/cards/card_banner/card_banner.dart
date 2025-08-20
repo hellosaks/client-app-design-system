@@ -3,7 +3,6 @@ import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
 import "package:flutter_blurhash/flutter_blurhash.dart";
-import "package:mix/mix.dart";
 import "package:skeletons/skeletons.dart";
 
 @docWidget
@@ -42,8 +41,8 @@ class CardBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Pressable(
-      onPressed: onPressed,
+    return GestureDetector(
+      onTap: onPressed,
       child: title == null
           ? _buildBackgroundImage(context)
           : _buildBackgroundImageWithTitle(context),
@@ -65,37 +64,38 @@ class CardBanner extends StatelessWidget {
   }
 
   Widget _buildBackgroundImageWithTitle(BuildContext context) {
-    final style = Mix(bgColor(ThemeSAKS.colors.primary.sky));
-    final styleHbox =
-        Mix(px(25), py(20), mainAxis(MainAxisAlignment.spaceBetween));
-
     return ClipRRect(
       borderRadius:
           BorderRadius.all(Radius.circular(ThemeSAKS.shape.borderRadiusCard)),
-      child: VBox(
-        mix: style,
-        children: [
-          CachedNetworkImage(
-            imageUrl: backgroundImage,
-            fit: BoxFit.cover,
-            progressIndicatorBuilder: (context, url, progress) {
-              return _loadingImage(context);
-            },
-          ),
-          HBox(
-            mix: styleHbox,
-            children: [
-              CustomTypography(
-                variant: TypographyVariant.h6,
-                text: title!,
-                weight: FontWeight.w700,
-                color: ThemeSAKS.colors.primary.sea,
+      child: ColoredBox(
+        color: ThemeSAKS.colors.primary.sky,
+        child: Column(
+          children: [
+            CachedNetworkImage(
+              imageUrl: backgroundImage,
+              fit: BoxFit.cover,
+              progressIndicatorBuilder: (context, url, progress) {
+                return _loadingImage(context);
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomTypography(
+                    variant: TypographyVariant.h6,
+                    text: title!,
+                    weight: FontWeight.w700,
+                    color: ThemeSAKS.colors.primary.sea,
+                  ),
+                  if (buttonLabel != null)
+                    AuxiliarButton(label: buttonLabel!, onPressed: onPressed!),
+                ],
               ),
-              if (buttonLabel != null)
-                AuxiliarButton(label: buttonLabel!, onPressed: onPressed!),
-            ],
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
