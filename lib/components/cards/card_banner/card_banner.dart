@@ -3,7 +3,6 @@ import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
 import "package:flutter_blurhash/flutter_blurhash.dart";
-import "package:skeletons/skeletons.dart";
 
 @docWidget
 class CardBanner extends StatelessWidget {
@@ -102,13 +101,13 @@ class CardBanner extends StatelessWidget {
 
   Widget _loadingImage(BuildContext context) {
     return AspectRatio(
-      aspectRatio: aspectRatio,
-      child: blurHash != null
-          ? BlurHash(hash: blurHash!)
-          : const SkeletonAvatar(
-              style:
-                  SkeletonAvatarStyle(width: double.infinity, minHeight: 100),
-            ),
-    );
+        aspectRatio: aspectRatio,
+        // TODO add here the skeleton
+        child: blurHash != null ? BlurHash(hash: blurHash!) : const SizedBox()
+        // : const SkeletonAvatar(
+        //     style:
+        //         SkeletonAvatarStyle(width: double.infinity, minHeight: 100),
+        //   ),
+        );
   }
 }

@@ -37,6 +37,7 @@ class _ChartState extends State<CustomLineChart> {
   bool isClicked = false;
   Map<String, bool> serieEnabled = {};
   FLHorizontalAlignment positionLabel = FLHorizontalAlignment.center;
+
   void updateSeriesEnabled() {
     for (final serie in widget.series) {
       setState(() {
@@ -94,22 +95,20 @@ class _ChartState extends State<CustomLineChart> {
         lineBarsData: _buildLineChart(),
         lineTouchData: widget.interactive
             ? LineTouchData(
-                enabled: true,
                 getTouchedSpotIndicator:
                     (LineChartBarData barData, List<int> spotIndexes) {
                   return spotIndexes.map((spotIndex) {
                     return TouchedSpotIndicatorData(
                       FlLine(
                         color: ThemeSAKS.colors.primary.sea,
-                        strokeWidth: 2,
                         dashArray: [10, 5],
                       ),
                       FlDotData(
                         getDotPainter: (spot, percent, barData, index) {
                           return FlDotCirclePainter(
-                            color: barData.color,
-                            strokeWidth: 0,
-                          );
+                              // color: barData.color,
+
+                              );
                         },
                       ),
                     );
@@ -121,7 +120,7 @@ class _ChartState extends State<CustomLineChart> {
                   fitInsideVertically: true,
                   fitInsideHorizontally: true,
                   tooltipHorizontalOffset: _offsetTooltipPosition(),
-                  tooltipBgColor: ThemeSAKS.colors.primary.sky,
+                  // tooltipBgColor: ThemeSAKS.colors.primary.sky,
                   getTooltipItems: (touchedSpots) {
                     touchedSpots
                         .sort((a, b) => a.barIndex.compareTo(b.barIndex));
@@ -147,8 +146,8 @@ class _ChartState extends State<CustomLineChart> {
         gridData: _buildGridData(),
         borderData: FlBorderData(show: false),
       ),
-      swapAnimationDuration: const Duration(milliseconds: 250), // Optional
-      swapAnimationCurve: Curves.easeInOutSine, // Optional
+      // swapAnimationDuration: const Duration(milliseconds: 250), // Optional
+      // swapAnimationCurve: Curves.easeInOutSine, // Optional
     );
   }
 
@@ -159,8 +158,8 @@ class _ChartState extends State<CustomLineChart> {
         spots: chartData,
         isCurved: true,
         color: serie.color,
-        show: serieEnabled[serie.name],
-        dotData: FlDotData(
+        // show: serieEnabled[serie.name],
+        dotData: const FlDotData(
           show: false,
         ),
         belowBarData: widget.interactive
@@ -176,7 +175,6 @@ class _ChartState extends State<CustomLineChart> {
                   show: !isClicked,
                   flLineStyle: FlLine(
                     color: ThemeSAKS.colors.primary.sea,
-                    strokeWidth: 2,
                     dashArray: [10, 5],
                   ),
                   checkToShowSpotLine: (spot) {
@@ -213,10 +211,10 @@ class _ChartState extends State<CustomLineChart> {
         axisNameSize: 40,
       ),
       // hide axis right values
-      rightTitles: AxisTitles(),
-      leftTitles: AxisTitles(),
+      rightTitles: const AxisTitles(),
+      leftTitles: const AxisTitles(),
 
-      bottomTitles: AxisTitles(),
+      bottomTitles: const AxisTitles(),
     );
   }
 
