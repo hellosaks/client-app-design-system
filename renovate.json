@@ -3,5 +3,17 @@
   "extends": [
     "config:recommended"
   ],
-  "prConcurrentLimit": 5
+  "prConcurrentLimit": 5,
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "^\\.github/workflows/[^/]+\\.ya?ml$"
+      ],
+      "matchStrings": [
+        "flutter-version:\\s*'?(?<currentValue>.+?)'?[\\s]*"
+      ],
+      "depNameTemplate": "flutter/flutter",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
 }
