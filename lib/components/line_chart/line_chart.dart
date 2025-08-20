@@ -95,14 +95,12 @@ class _ChartState extends State<CustomLineChart> {
         lineBarsData: _buildLineChart(),
         lineTouchData: widget.interactive
             ? LineTouchData(
-                enabled: true,
                 getTouchedSpotIndicator:
                     (LineChartBarData barData, List<int> spotIndexes) {
                   return spotIndexes.map((spotIndex) {
                     return TouchedSpotIndicatorData(
                       FlLine(
                         color: ThemeSAKS.colors.primary.sea,
-                        strokeWidth: 2,
                         dashArray: [10, 5],
                       ),
                       FlDotData(
@@ -161,7 +159,7 @@ class _ChartState extends State<CustomLineChart> {
         isCurved: true,
         color: serie.color,
         // show: serieEnabled[serie.name],
-        dotData: FlDotData(
+        dotData: const FlDotData(
           show: false,
         ),
         belowBarData: widget.interactive
@@ -177,7 +175,6 @@ class _ChartState extends State<CustomLineChart> {
                   show: !isClicked,
                   flLineStyle: FlLine(
                     color: ThemeSAKS.colors.primary.sea,
-                    strokeWidth: 2,
                     dashArray: [10, 5],
                   ),
                   checkToShowSpotLine: (spot) {
@@ -214,10 +211,10 @@ class _ChartState extends State<CustomLineChart> {
         axisNameSize: 40,
       ),
       // hide axis right values
-      rightTitles: AxisTitles(),
-      leftTitles: AxisTitles(),
+      rightTitles: const AxisTitles(),
+      leftTitles: const AxisTitles(),
 
-      bottomTitles: AxisTitles(),
+      bottomTitles: const AxisTitles(),
     );
   }
 
