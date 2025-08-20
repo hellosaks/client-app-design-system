@@ -37,6 +37,7 @@ class _ChartState extends State<CustomLineChart> {
   bool isClicked = false;
   Map<String, bool> serieEnabled = {};
   FLHorizontalAlignment positionLabel = FLHorizontalAlignment.center;
+
   void updateSeriesEnabled() {
     for (final serie in widget.series) {
       setState(() {
@@ -107,9 +108,9 @@ class _ChartState extends State<CustomLineChart> {
                       FlDotData(
                         getDotPainter: (spot, percent, barData, index) {
                           return FlDotCirclePainter(
-                            color: barData.color,
-                            strokeWidth: 0,
-                          );
+                              // color: barData.color,
+
+                              );
                         },
                       ),
                     );
@@ -121,7 +122,7 @@ class _ChartState extends State<CustomLineChart> {
                   fitInsideVertically: true,
                   fitInsideHorizontally: true,
                   tooltipHorizontalOffset: _offsetTooltipPosition(),
-                  tooltipBgColor: ThemeSAKS.colors.primary.sky,
+                  // tooltipBgColor: ThemeSAKS.colors.primary.sky,
                   getTooltipItems: (touchedSpots) {
                     touchedSpots
                         .sort((a, b) => a.barIndex.compareTo(b.barIndex));
@@ -147,8 +148,8 @@ class _ChartState extends State<CustomLineChart> {
         gridData: _buildGridData(),
         borderData: FlBorderData(show: false),
       ),
-      swapAnimationDuration: const Duration(milliseconds: 250), // Optional
-      swapAnimationCurve: Curves.easeInOutSine, // Optional
+      // swapAnimationDuration: const Duration(milliseconds: 250), // Optional
+      // swapAnimationCurve: Curves.easeInOutSine, // Optional
     );
   }
 
@@ -159,7 +160,7 @@ class _ChartState extends State<CustomLineChart> {
         spots: chartData,
         isCurved: true,
         color: serie.color,
-        show: serieEnabled[serie.name],
+        // show: serieEnabled[serie.name],
         dotData: FlDotData(
           show: false,
         ),
