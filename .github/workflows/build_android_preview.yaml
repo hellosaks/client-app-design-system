@@ -10,30 +10,31 @@ jobs:
     name: Build APK
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
 
-    - name: Java Install Step
-      uses: actions/setup-java@v4
-      with:
-        java-version: '12.x'
+      - name: Java Install Step
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17.x'
 
-    - name: Install flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '3.7.7'
-        channel: 'stable'
+      - name: Install flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.7'
+          channel: 'stable'
 
-    - name: Flutter Package Install
-      run: flutter pub get
+      - name: Flutter Package Install
+        run: flutter pub get
 
-    - name: Flutter Generate Docs
-      run: flutter pub run build_runner build --delete-conflicting-outputs
+      - name: Flutter Generate Docs
+        run: flutter pub run build_runner build --delete-conflicting-outputs
 
-    - name: Build apk android
-      run: cd playground && flutter build apk --no-tree-shake-icons
+      - name: Build apk android
+        run: cd playground && flutter build apk --no-tree-shake-icons
 
-    - name: Create a Release APK
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "playground/build/app/outputs/flutter-apk/*.apk"
-        token: ${{ secrets.TOKEN_ACCESS_DOWNLOAD }}
+      - name: Create a Release APK
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "playground/build/app/outputs/flutter-apk/*.apk"
+          token: ${{ secrets.TOKEN_ACCESS_DOWNLOAD }}

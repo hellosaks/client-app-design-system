@@ -12,7 +12,8 @@ jobs:
       - name: Java Install Step
         uses: actions/setup-java@v4
         with:
-          java-version: '12.x'
+          distribution: 'temurin'
+          java-version: '17.x'
 
       - name: Install flutter
         uses: subosito/flutter-action@v2
