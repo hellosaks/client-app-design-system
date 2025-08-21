@@ -12,8 +12,8 @@
       "matchStrings": [
         "flutter-version:\\s*['\"]?(?<currentValue>\\d+\\.\\d+\\.\\d+)['\"]?"
       ],
-      "depNameTemplate": "flutter/flutter",
-      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "flutter",
+      "datasourceTemplate": "flutter-version",
       "versioningTemplate": "semver"
     }
   ]
