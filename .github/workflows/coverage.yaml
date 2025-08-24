@@ -7,10 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Step
-        uses: actions/checkout@v1
+        uses: actions/checkout@v5
+
+      - name: Install lcov
+        run: sudo apt-get update && sudo apt-get install -y lcov
 
       - name: Report code coverage
-        uses: zgosalvez/github-actions-report-lcov@v1
+        uses: zgosalvez/github-actions-report-lcov@v4
         with:
           coverage-files: coverage/lcov.info
           minimum-coverage: 50

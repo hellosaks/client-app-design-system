@@ -1,7 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:flutter/cupertino.dart";
 import "package:flutter_test/flutter_test.dart";
-import "package:get/get.dart";
-import "package:mix/mix.dart";
 
 import "../../utils/test_wrappers.dart";
 
@@ -41,64 +40,16 @@ void main() {
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      final Box finded =
-          tester.widget<Box>(find.byKey(PrimaryButton.boxContainerKey));
+      final Container found =
+          tester.widget<Container>(find.byKey(PrimaryButton.boxContainerKey));
 
-      final Attribute? boxAttributes =
-          finded.mix.attributes.firstWhereOrNull((element) {
-        try {
-          return (element as BoxAttributes).color != null;
-        } catch (e) {
-          return false;
-        }
-      });
+      final BoxDecoration decoration = found.decoration! as BoxDecoration;
 
-      expect(
-        (boxAttributes as BoxAttributes?)?.color,
-        ThemeSAKS.colors.primary.sea,
-      );
-
-      final Attribute? opacityAttributes =
-          finded.mix.attributes.firstWhereOrNull((element) {
-        try {
-          return (element as OpacityDecorator).opacity >= 0;
-        } catch (e) {
-          return false;
-        }
-      });
-
-      expect(
-        (opacityAttributes as OpacityDecorator?)?.opacity,
-        1,
-      );
+      expect(decoration.color, ThemeSAKS.colors.primary.sea);
 
       // testing padding
-      final List<Attribute> listBoxAttributes =
-          finded.mix.attributes.where((element) {
-        try {
-          return (element as BoxAttributes).padding != null;
-        } catch (e) {
-          return false;
-        }
-      }).toList();
-
-      expect(
-        (listBoxAttributes.first as BoxAttributes).padding?.left,
-        15,
-      );
-      expect(
-        (listBoxAttributes.first as BoxAttributes).padding?.right,
-        15,
-      );
-
-      expect(
-        (listBoxAttributes.last as BoxAttributes).padding?.top,
-        12.5,
-      );
-      expect(
-        (listBoxAttributes.last as BoxAttributes).padding?.bottom,
-        12.5,
-      );
+      expect(found.padding?.horizontal, 30);
+      expect(found.padding?.vertical, 25);
     });
 
     testWidgets("should set correctly properties when it is disabled ",
@@ -111,21 +62,12 @@ void main() {
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      final Box finded =
-          tester.widget<Box>(find.byKey(SecondaryButton.boxContainerKey));
-      final Attribute? opacityAttributes =
-          finded.mix.attributes.firstWhereOrNull((element) {
-        try {
-          return (element as OpacityDecorator).opacity >= 0;
-        } catch (e) {
-          return false;
-        }
-      });
+      final Container found =
+          tester.widget<Container>(find.byKey(SecondaryButton.boxContainerKey));
 
-      expect(
-        (opacityAttributes as OpacityDecorator?)?.opacity,
-        0.5,
-      );
+      final BoxDecoration decoration = found.decoration! as BoxDecoration;
+
+      expect(decoration.color, ThemeSAKS.colors.primary.sea.withOpacity(0.5));
     });
 
     group("CTA variante", () {

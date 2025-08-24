@@ -2,7 +2,6 @@ import "package:client_app_design_system/client_app_design_system.dart";
 import "package:client_app_design_system/components/custom_typography/selectable.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart";
-import "package:mix/mix.dart";
 
 @docWidget
 class CustomTypography extends StatelessWidget {
@@ -12,8 +11,8 @@ class CustomTypography extends StatelessWidget {
   final FontWeight? weight;
   final Color? color;
   final TextAlign? align;
-  final Mix<Attribute>? mix;
   final bool selectable;
+  final TextOverflow? overflow;
 
   const CustomTypography({
     super.key,
@@ -23,7 +22,7 @@ class CustomTypography extends StatelessWidget {
     this.weight = FontWeight.w400,
     this.color = Colors.black,
     this.align = TextAlign.left,
-    this.mix,
+    this.overflow = TextOverflow.ellipsis,
   });
 
   @override
@@ -38,23 +37,23 @@ class CustomTypography extends StatelessWidget {
         key: key,
       );
     }
-
-    final style = Mix.combine(
-      Mix(fontWeight(weight)),
-      _getFontVariant(),
-      Mix(
-        (variant == TypographyVariant.cta)(upperCase()),
-        textColor(color),
-        textAlign(align),
-        textScaleFactor(ThemeSAKS.typography.textScaleFactor),
-      ),
-      mix,
+    final displayText =
+        variant == TypographyVariant.cta ? text.toUpperCase() : text;
+    final style = _getFontVariant().copyWith(
+      fontWeight: weight,
+      color: color,
     );
 
-    return TextMix(text, mix: style);
+    return Text(
+      displayText,
+      style: style,
+      textAlign: align,
+      textScaleFactor: ThemeSAKS.typography.textScaleFactor,
+      overflow: overflow,
+    );
   }
 
-  Mix<TextAttributes> _getFontVariant() {
+  TextStyle _getFontVariant() {
     switch (variant) {
       case TypographyVariant.h1:
         return ThemeSAKS.typography.h1Typo;

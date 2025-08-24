@@ -1,7 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
-import "package:mix/mix.dart";
 
 @docWidget
 class ReferralButton extends StatefulWidget {
@@ -30,18 +29,8 @@ class _ReferralButtonState extends State<ReferralButton> {
 
   @override
   Widget build(BuildContext context) {
-    final style = Mix(
-      bgColor(ThemeSAKS.colors.primary.saks),
-      px(30),
-      py(20),
-      mt(15),
-      rounded(ThemeSAKS.shape.borderRadiusCard),
-    );
-    final styleVBox = Mix(crossAxis(CrossAxisAlignment.start));
-    final styleHbox = Mix(mainAxis(MainAxisAlignment.spaceBetween));
-
-    return Pressable(
-      onPressed: () {
+    return GestureDetector(
+      onTap: () {
         widget.onCopy(widget.linkToCopy);
         setState(() => copied = true);
         Future.delayed(const Duration(seconds: 2)).then((value) {
@@ -50,14 +39,21 @@ class _ReferralButtonState extends State<ReferralButton> {
       },
       child: Stack(
         children: [
-          Box(
+          Container(
             key: ReferralButton.containerKey,
-            mix: style,
-            child: HBox(
-              mix: styleHbox,
+            margin: EdgeInsets.zero,
+            decoration: BoxDecoration(
+              color: ThemeSAKS.colors.primary.saks,
+              borderRadius: BorderRadius.all(
+                Radius.circular(ThemeSAKS.shape.borderRadiusCard),
+              ),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                VBox(
-                  mix: styleVBox,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomTypography(
                       variant: TypographyVariant.h4,
@@ -91,26 +87,24 @@ class _ReferralButtonState extends State<ReferralButton> {
   }
 
   Widget _buildTagFeedback() {
-    final style = Mix(
-      bgColor(ThemeSAKS.colors.utility.conservative),
-      px(24),
-      py(7),
-      rounded(ThemeSAKS.shape.borderRadius),
-      opacity(copied ? 1 : 0),
-      animated(),
-    );
-
     return Positioned(
       right: 20,
       top: 0,
-      child: Box(
-        key: ReferralButton.tagFeedbackKey,
-        mix: style,
-        child: CustomTypography(
-          text: widget.feedbackOnCopy,
-          variant: TypographyVariant.h6,
-          color: ThemeSAKS.colors.primary.sky,
-          weight: FontWeight.w500,
+      child: Opacity(
+        opacity: copied ? 1 : 0,
+        child: Container(
+          key: ReferralButton.tagFeedbackKey,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 7),
+          decoration: BoxDecoration(
+            color: ThemeSAKS.colors.utility.conservative,
+            borderRadius: BorderRadius.circular(ThemeSAKS.shape.borderRadius),
+          ),
+          child: CustomTypography(
+            text: widget.feedbackOnCopy,
+            variant: TypographyVariant.h6,
+            color: ThemeSAKS.colors.primary.sky,
+            weight: FontWeight.w500,
+          ),
         ),
       ),
     );

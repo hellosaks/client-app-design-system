@@ -1,8 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
-import "package:get/get.dart";
-import "package:mix/mix.dart";
 
 import "../../utils/test_wrappers.dart";
 
@@ -99,32 +97,24 @@ void main() {
       );
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      final Box finded =
-          tester.widget<Box>(find.byKey(CenterButton.boxContainerKey));
+      final Container found =
+          tester.widget<Container>(find.byKey(CenterButton.boxContainerKey));
 
-      // testing color
-      final Attribute? boxAttributes =
-          finded.mix.attributes.firstWhereOrNull((element) {
-        try {
-          return (element as BoxAttributes).color != null;
-        } catch (e) {
-          return false;
-        }
-      });
+      final BoxDecoration decoration = found.decoration! as BoxDecoration;
 
       expect(
-        (boxAttributes as BoxAttributes?)?.color,
+        decoration.color,
         ThemeSAKS.colors.primary.saks,
       );
 
-      final Icon findedIcon = tester.widget<Icon>(find.byType(Icon));
+      final Icon foundIcon = tester.widget<Icon>(find.byType(Icon));
       expect(
-        findedIcon.props.uniconsProps?.color,
+        foundIcon.props.uniconsProps?.color,
         Colors.white,
       );
 
       expect(
-        findedIcon.props.uniconsProps?.size,
+        foundIcon.props.uniconsProps?.size,
         40,
       );
     });
@@ -138,32 +128,21 @@ void main() {
         );
         await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-        final Box finded =
-            tester.widget<Box>(find.byKey(CenterButton.boxContainerKey));
+        final Container found =
+            tester.widget<Container>(find.byKey(CenterButton.boxContainerKey));
 
-        // testing color
-        final Attribute? boxAttributes =
-            finded.mix.attributes.firstWhereOrNull((element) {
-          try {
-            return (element as BoxAttributes).color != null;
-          } catch (e) {
-            return false;
-          }
-        });
+        final BoxDecoration decoration = found.decoration! as BoxDecoration;
 
+        expect(decoration.color, Colors.transparent);
+
+        final Icon foundIcon = tester.widget<Icon>(find.byType(Icon));
         expect(
-          (boxAttributes as BoxAttributes?)?.color,
-          null,
-        );
-
-        final Icon findedIcon = tester.widget<Icon>(find.byType(Icon));
-        expect(
-          findedIcon.props.uniconsProps?.color,
+          foundIcon.props.uniconsProps?.color,
           ThemeSAKS.colors.primary.saks,
         );
 
         expect(
-          findedIcon.props.uniconsProps?.size,
+          foundIcon.props.uniconsProps?.size,
           40,
         );
       });

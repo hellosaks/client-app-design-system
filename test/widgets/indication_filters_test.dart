@@ -1,8 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:flutter/material.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
-import "package:get/get.dart";
-import "package:mix/mix.dart";
 
 import "../utils/test_wrappers.dart";
 
@@ -42,20 +40,14 @@ void main() {
       await tester.pumpAndSettle();
       expect(pressed, true);
 
-      final finded = tester.widget<VBox>(find.byKey(IndicationFilters.vboxKey));
-
-      final Attribute? boxAttributes =
-          finded.mix.attributes.firstWhereOrNull((element) {
-        try {
-          return (element as BoxAttributes).color != null;
-        } catch (e) {
-          return false;
-        }
-      });
-
       expect(
-        (boxAttributes as BoxAttributes?)?.color,
-        ThemeSAKS.colors.primary.sea.withOpacity(0.15),
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Container &&
+              (widget.decoration as BoxDecoration?)?.color ==
+                  ThemeSAKS.colors.primary.sea.withOpacity(0.15),
+        ),
+        findsOneWidget,
       );
     });
 
@@ -119,27 +111,20 @@ void main() {
       );
 
       final circle =
-          tester.widget<Box>(find.byKey(IndicationFilters.circleKey));
-      final List<Attribute> attributes = circle.mix.attributes;
-      expect(
-        (attributes[2] as BoxAttributes).color,
-        ThemeSAKS.colors.primary.sea,
-      );
+          tester.widget<Container>(find.byKey(IndicationFilters.circleKey));
+      final BoxDecoration decoration = circle.decoration! as BoxDecoration;
+      expect(decoration.color, ThemeSAKS.colors.primary.sea);
 
-      final Pressable vbox =
-          tester.widget(find.byKey(IndicationFilters.pressableKey));
-
-      final Attribute? boxAttributes =
-          vbox.mix.attributes.firstWhereOrNull((element) {
-        try {
-          return (element as BoxAttributes).color != null;
-        } catch (e) {
-          return false;
-        }
-      });
       expect(
-        (boxAttributes as BoxAttributes?)?.color,
-        ThemeSAKS.colors.primary.sky,
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is GestureDetector &&
+              (widget.child is Container) &&
+              ((widget.child as Container?)?.decoration as BoxDecoration?)
+                      ?.color ==
+                  ThemeSAKS.colors.primary.sky,
+        ),
+        findsOneWidget,
       );
     });
 
@@ -153,27 +138,20 @@ void main() {
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
       final circle =
-          tester.widget<Box>(find.byKey(IndicationFilters.circleKey));
-      final List<Attribute> attributes = circle.mix.attributes;
-      expect(
-        (attributes[2] as BoxAttributes).color,
-        ThemeSAKS.colors.utility.conservative,
-      );
-
-      final Pressable vbox =
-          tester.widget(find.byKey(IndicationFilters.pressableKey));
-      final Attribute? boxAttributes =
-          vbox.mix.attributes.firstWhereOrNull((element) {
-        try {
-          return (element as BoxAttributes).color != null;
-        } catch (e) {
-          return false;
-        }
-      });
+          tester.widget<Container>(find.byKey(IndicationFilters.circleKey));
+      final BoxDecoration decoration = circle.decoration! as BoxDecoration;
+      expect(decoration.color, ThemeSAKS.colors.utility.conservative);
 
       expect(
-        (boxAttributes as BoxAttributes?)?.color,
-        ThemeSAKS.colors.special.leaf,
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is GestureDetector &&
+              (widget.child is Container) &&
+              ((widget.child as Container?)?.decoration as BoxDecoration?)
+                      ?.color ==
+                  ThemeSAKS.colors.special.leaf,
+        ),
+        findsOneWidget,
       );
     });
   });

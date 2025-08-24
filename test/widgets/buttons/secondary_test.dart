@@ -1,27 +1,11 @@
 import "package:client_app_design_system/client_app_design_system.dart";
+import "package:flutter/cupertino.dart";
 import "package:flutter_test/flutter_test.dart";
-import "package:get/get.dart";
-import "package:mix/mix.dart";
 
 import "../../utils/test_wrappers.dart";
 
 void main() {
   const text = "Button";
-
-  final withSeaColorProps = ColorAttributesButton(
-    bgColor: ThemeSAKS.colors.primary.sea,
-    pressColor: ThemeSAKS.colors.secondary.anchor,
-  );
-
-  final withDangerColorProps = ColorAttributesButton(
-    bgColor: ThemeSAKS.colors.utility.aggressive,
-    pressColor: ThemeSAKS.colors.special.rose,
-  );
-  final borderColor = ColorAttributesButton(
-    bgColor: ThemeSAKS.colors.utility.aggressive,
-    pressColor: ThemeSAKS.colors.special.rose,
-    borderColor: ThemeSAKS.colors.primary.saks,
-  );
 
   void onPressed() {}
   group("Secondary Button", () {
@@ -56,51 +40,16 @@ void main() {
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      final Box finded =
-          tester.widget<Box>(find.byKey(SecondaryButton.boxContainerKey));
+      final Container found =
+          tester.widget<Container>(find.byKey(SecondaryButton.boxContainerKey));
 
-      // testing color
-      final Attribute? boxAttributes =
-          finded.mix.attributes.firstWhereOrNull((element) {
-        try {
-          return (element as BoxAttributes).color != null;
-        } catch (e) {
-          return false;
-        }
-      });
+      final BoxDecoration decoration = found.decoration! as BoxDecoration;
 
-      expect(
-        (boxAttributes as BoxAttributes?)?.color,
-        ThemeSAKS.colors.primary.saks,
-      );
+      expect(decoration.color, ThemeSAKS.colors.primary.saks);
 
       // testing padding
-      final List<Attribute> listBoxAttributes =
-          finded.mix.attributes.where((element) {
-        try {
-          return (element as BoxAttributes).padding != null;
-        } catch (e) {
-          return false;
-        }
-      }).toList();
-
-      expect(
-        (listBoxAttributes.first as BoxAttributes).padding?.left,
-        10,
-      );
-      expect(
-        (listBoxAttributes.first as BoxAttributes).padding?.right,
-        10,
-      );
-
-      expect(
-        (listBoxAttributes.last as BoxAttributes).padding?.top,
-        9,
-      );
-      expect(
-        (listBoxAttributes.last as BoxAttributes).padding?.bottom,
-        9,
-      );
+      expect(found.padding?.horizontal, 20);
+      expect(found.padding?.vertical, 18);
     });
 
     testWidgets("should set correctly properties when it is disabled ",
@@ -113,179 +62,24 @@ void main() {
 
       await tester.pumpWidget(wrapWithMaterialApp(widget));
 
-      final Box finded =
-          tester.widget<Box>(find.byKey(SecondaryButton.boxContainerKey));
-      final Attribute? opacityAttributes =
-          finded.mix.attributes.firstWhereOrNull((element) {
-        try {
-          return (element as OpacityDecorator).opacity >= 0;
-        } catch (e) {
-          return false;
-        }
+      expect(tester.widget<Opacity>(find.byType(Opacity)).opacity, 0.5);
+    });
+
+    group("CTA variant", () {
+      testWidgets("should render correctly", (tester) async {
+        final widget = SecondaryButton(
+          text: text,
+          onPressed: onPressed,
+        );
+
+        await tester.pumpWidget(wrapWithMaterialApp(widget));
+
+        final CustomTypography found =
+            tester.widget(find.byType(CustomTypography));
+
+        expect(found.text, text);
+        expect(found.variant, TypographyVariant.cta);
       });
-
-      expect(
-        (opacityAttributes as OpacityDecorator?)?.opacity,
-        0.5,
-      );
-    });
-
-    testWidgets("should set correctly properties with property selected",
-        (tester) async {
-      final widget = SecondaryButton(
-        text: text,
-        selected: true,
-        onPressed: () {},
-      );
-
-      await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-      final Box finded =
-          tester.widget<Box>(find.byKey(SecondaryButton.boxContainerKey));
-
-      // testing padding
-      final List<Attribute> listBoxAttributes =
-          finded.mix.attributes.where((element) {
-        try {
-          return (element as BoxAttributes).padding != null;
-        } catch (e) {
-          return false;
-        }
-      }).toList();
-
-      expect(
-        (listBoxAttributes.first as BoxAttributes).padding?.left,
-        10,
-      );
-      expect(
-        (listBoxAttributes.first as BoxAttributes).padding?.right,
-        10,
-      );
-
-      expect(
-        (listBoxAttributes.last as BoxAttributes).padding?.top,
-        6,
-      );
-      expect(
-        (listBoxAttributes.last as BoxAttributes).padding?.bottom,
-        6,
-      );
-    });
-  });
-
-  group("SecondaryButton variant colors", () {
-    testWidgets("should render SEA color", (WidgetTester tester) async {
-      final widget = SecondaryButton(
-        onPressed: () {},
-        colorAttributes: withSeaColorProps,
-        text: text,
-      );
-
-      await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-      final SecondaryButton finded =
-          tester.widget(find.byType(SecondaryButton));
-
-      expect(finded.colorAttributes?.bgColor, ThemeSAKS.colors.primary.sea);
-      expect(
-        finded.colorAttributes?.pressColor,
-        ThemeSAKS.colors.secondary.anchor,
-      );
-    });
-
-    testWidgets("should render DANGER color", (WidgetTester tester) async {
-      final widget = SecondaryButton(
-        onPressed: () {},
-        colorAttributes: withDangerColorProps,
-        text: text,
-      );
-
-      await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-      final SecondaryButton finded =
-          tester.widget(find.byType(SecondaryButton));
-      expect(
-        finded.colorAttributes?.bgColor,
-        ThemeSAKS.colors.utility.aggressive,
-      );
-      expect(finded.colorAttributes?.pressColor, ThemeSAKS.colors.special.rose);
-    });
-  });
-
-  group("Outlined", () {
-    testWidgets("should render correctly", (tester) async {
-      final widget = SecondaryButton(
-        text: text,
-        onPressed: onPressed,
-        outlined: true,
-        colorAttributes: ColorAttributesButton(
-          pressColor: ThemeSAKS.colors.utility.aggressive,
-          insideColor: ThemeSAKS.colors.special.rose,
-        ),
-      );
-
-      await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-      expect(find.byType(SecondaryButton), findsOneWidget);
-    });
-
-    testWidgets("should render outline color", (WidgetTester tester) async {
-      final widget = SecondaryButton(
-        onPressed: () {},
-        colorAttributes: borderColor,
-        text: text,
-      );
-
-      await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-      final SecondaryButton finded =
-          tester.widget(find.byType(SecondaryButton));
-
-      expect(
-        finded.colorAttributes?.borderColor,
-        ThemeSAKS.colors.primary.saks,
-      );
-    });
-
-    testWidgets("should set correctly ", (tester) async {
-      final widget = SecondaryButton(
-        text: text,
-        outlined: true,
-        colorAttributes: ColorAttributesButton(
-          pressColor: ThemeSAKS.colors.utility.aggressive,
-          insideColor: ThemeSAKS.colors.special.rose,
-        ),
-        onPressed: () {},
-      );
-
-      await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-      final Box finded =
-          tester.widget<Box>(find.byKey(SecondaryButton.boxContainerKey));
-
-      // testing padding
-      final List<Attribute> listBoxAttributes =
-          finded.mix.attributes.where((element) {
-        try {
-          return (element as BoxAttributes).border != null;
-        } catch (e) {
-          return false;
-        }
-      }).toList();
-
-      final border = (listBoxAttributes.first as BoxAttributes?)?.border;
-
-      expect(border?.bottom?.width, 1);
-      expect(border?.top?.width, 1);
-      expect(border?.left?.width, 1);
-      expect(border?.right?.width, 1);
-
-      final borderStyle = (listBoxAttributes.last as BoxAttributes?)?.border;
-
-      expect(borderStyle?.bottom?.color, ThemeSAKS.colors.grayscale.division);
-      expect(borderStyle?.top?.color, ThemeSAKS.colors.grayscale.division);
-      expect(borderStyle?.left?.color, ThemeSAKS.colors.grayscale.division);
-      expect(borderStyle?.right?.color, ThemeSAKS.colors.grayscale.division);
     });
   });
 }

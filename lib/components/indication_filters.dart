@@ -1,7 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
 import "package:flutter/material.dart" hide Icon;
-import "package:mix/mix.dart";
 
 @docWidget
 class IndicationFilters extends StatelessWidget {
@@ -9,7 +8,6 @@ class IndicationFilters extends StatelessWidget {
   final int number;
   final Filter filter;
   final bool isSelected;
-
   final void Function() onPressed;
 
   const IndicationFilters({
@@ -22,67 +20,52 @@ class IndicationFilters extends StatelessWidget {
   });
 
   static const ValueKey circleKey = ValueKey("circleKey");
-
   static const ValueKey vboxKey = ValueKey("vboxKey");
   static const ValueKey pressableKey = ValueKey("pressableKey");
 
   @override
   Widget build(BuildContext context) {
-    final hboxStyles = Mix(
-      mainAxis(MainAxisAlignment.spaceBetween),
-      crossAxis(CrossAxisAlignment.end),
-    );
-
-    final isNotSelectedStyles = Mix(
-      bgColor(
-        filter == Filter.activated
-            ? ThemeSAKS.colors.special.leaf
-            : ThemeSAKS.colors.primary.sky,
-      ),
-    );
-
-    final pressableStyles = Mix(
-      rounded(10),
-      w(155),
-    );
-    final Mix vboxStyles = Mix(
-      rounded(10),
-      mainAxis(MainAxisAlignment.start),
-      crossAxis(CrossAxisAlignment.start),
-      padding(20),
-      bgColor(
-        isSelected
-            ? ThemeSAKS.colors.primary.sea.withOpacity(0.15)
-            : Colors.transparent,
-      ),
-      animated(),
-    );
-
-    final styles = Mix.combine(
-      pressableStyles,
-      isNotSelectedStyles,
-    );
-
-    return Pressable(
+    return GestureDetector(
       key: IndicationFilters.pressableKey,
-      mix: styles,
-      onPressed: () {
-        onPressed();
-      },
-      child: VBox(
-        key: IndicationFilters.vboxKey,
-        mix: vboxStyles,
-        children: [
-          _buildTitle(),
-          const SizedBox(height: 16),
-          HBox(
-            mix: hboxStyles,
-            children: [
-              _buildCircle(),
-              _buildArrow(),
-            ],
-          ),
-        ],
+      onTap: onPressed,
+      child: Container(
+        width: 155,
+        decoration: BoxDecoration(
+          color: filter == Filter.activated
+              ? ThemeSAKS.colors.special.leaf
+              : ThemeSAKS.colors.primary.sky,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          key: IndicationFilters.vboxKey,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: isSelected
+                    ? ThemeSAKS.colors.primary.sea.withOpacity(0.15)
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildTitle(),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      _buildCircle(),
+                      _buildArrow(),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -97,20 +80,16 @@ class IndicationFilters extends StatelessWidget {
   }
 
   Widget _buildCircle() {
-    final circleStyle = Mix(
-      height(40),
-      width(40),
-      bgColor(
-        filter == Filter.activated
+    return Container(
+      key: IndicationFilters.circleKey,
+      height: 40,
+      width: 40,
+      decoration: BoxDecoration(
+        color: filter == Filter.activated
             ? ThemeSAKS.colors.utility.conservative
             : ThemeSAKS.colors.primary.sea,
+        borderRadius: BorderRadius.circular(ThemeSAKS.shape.borderRadius),
       ),
-      rounded(ThemeSAKS.shape.borderRadius),
-    );
-
-    return Box(
-      key: IndicationFilters.circleKey,
-      mix: circleStyle,
       child: Center(
         child: CustomTypography(
           text: number.toString(),
