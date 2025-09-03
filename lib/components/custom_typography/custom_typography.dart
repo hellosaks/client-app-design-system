@@ -22,7 +22,7 @@ class CustomTypography extends StatelessWidget {
     this.weight = FontWeight.w400,
     this.color = Colors.black,
     this.align = TextAlign.left,
-    this.overflow = TextOverflow.ellipsis,
+    this.overflow = TextOverflow.visible,
   });
 
   @override
