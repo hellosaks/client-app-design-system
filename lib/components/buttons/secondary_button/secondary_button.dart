@@ -134,7 +134,6 @@ class _SecondaryButtonState extends State<SecondaryButton> {
           text: widget.text,
           checked: widget.selected,
           color: _color,
-          cta: true,
         ),
       ),
     );

@@ -64,22 +64,5 @@ void main() {
 
       expect(tester.widget<Opacity>(find.byType(Opacity)).opacity, 0.5);
     });
-
-    group("CTA variant", () {
-      testWidgets("should render correctly", (tester) async {
-        final widget = SecondaryButton(
-          text: text,
-          onPressed: onPressed,
-        );
-
-        await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-        final CustomTypography found =
-            tester.widget(find.byType(CustomTypography));
-
-        expect(found.text, text);
-        expect(found.variant, TypographyVariant.cta);
-      });
-    });
   });
 }
