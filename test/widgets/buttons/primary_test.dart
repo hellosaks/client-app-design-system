@@ -69,22 +69,5 @@ void main() {
 
       expect(decoration.color, ThemeSAKS.colors.primary.sea.withOpacity(0.5));
     });
-
-    group("CTA variante", () {
-      testWidgets("should render correctly", (tester) async {
-        final widget = PrimaryButton(
-          text: text,
-          onPressed: onPressed,
-        );
-
-        await tester.pumpWidget(wrapWithMaterialApp(widget));
-
-        final CustomTypography finded =
-            tester.widget(find.byType(CustomTypography));
-
-        expect(finded.text, text);
-        expect(finded.variant, TypographyVariant.cta);
-      });
-    });
   });
 }

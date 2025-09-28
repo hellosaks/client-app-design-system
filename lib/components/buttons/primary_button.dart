@@ -108,7 +108,6 @@ class _PrimaryButtonState extends State<PrimaryButton> {
             : currentColor,
       ),
       child: CoreButton(
-        cta: true,
         leftIcon: widget.leftIcon,
         rightIcon: widget.rightIcon,
         text: widget.text,
