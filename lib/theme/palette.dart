@@ -1,11 +1,11 @@
 import "package:flutter/material.dart";
 
 class PrimaryColor {
-  /// #5274D8 ![](https://dummyimage.com/24/5274D8.png&text=+)
-  final saks = const Color(0xFF5274D8);
+  /// #0B4CAD ![](https://dummyimage.com/24/0B4CAD.png&text=+)
+  final saks = const Color(0xFF0B4CAD);
 
-  /// #131C2F ![](https://dummyimage.com/24/131C2F.png&text=+)
-  final sea = const Color(0xFF131C2F);
+  /// #051842 ![](https://dummyimage.com/24/051842.png&text=+)
+  final sea = const Color(0xFF051842);
 
   /// #F0F7FD ![](https://dummyimage.com/24/F0F7FD.png&text=+)
   final sky = const Color(0xFFF0F7FD);
