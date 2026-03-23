@@ -18,7 +18,7 @@ dependencies:
   flutter_blurhash: ^0.9.1
   flutter_svg: ^2.2.0
   get: ^4.7.2
-  google_fonts: 7.0.2
+  google_fonts: 8.0.2
   heroicons: ^0.11.0
   intl: ^0.20.2
   path: ^1.8.2
