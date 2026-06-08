@@ -3,7 +3,7 @@
   "extends": [
     "config:recommended"
   ],
-  "prConcurrentLimit": 5,
+  "rebaseWhen": "behind-base-branch",
   "prHourlyLimit": 0,
   "regexManagers": [
     {
