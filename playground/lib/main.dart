@@ -1,5 +1,5 @@
 import 'package:doc_widget/doc_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:playground/widgets/avatar.dart';
 import 'package:playground/widgets/buttons/auxiliar_button.dart';
 import 'package:playground/widgets/buttons/center_button.dart';

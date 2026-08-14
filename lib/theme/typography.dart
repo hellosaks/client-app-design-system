@@ -1,5 +1,5 @@
 import "package:client_app_design_system/utils/constants.dart";
-import "package:flutter/material.dart";
+import "package:material_ui/material_ui.dart";
 import "package:google_fonts/google_fonts.dart";
 
 class Typography {

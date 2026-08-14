@@ -1,7 +1,7 @@
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
-import "package:flutter/material.dart" as material_icon show Icon;
-import "package:flutter/material.dart" hide Icon;
+import "package:material_ui/material_ui.dart" as material_icon show Icon;
+import "package:material_ui/material_ui.dart" hide Icon;
 import "package:flutter_svg/flutter_svg.dart";
 import "package:path/path.dart" as p;
 

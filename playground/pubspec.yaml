@@ -38,6 +38,7 @@ dependencies:
   flutter:
     sdk: flutter
   intl: ^0.20.2
+  material_ui: any
 dev_dependencies:
   dashbook: ^0.1.12
   flutter_test:

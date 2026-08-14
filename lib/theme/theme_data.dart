@@ -1,7 +1,7 @@
 // coverage:ignore-file
 
 import "package:client_app_design_system/theme/theme_saks.dart";
-import "package:flutter/material.dart";
+import "package:material_ui/material_ui.dart";
 
 ThemeData createTheme(BuildContext context) {
   return ThemeData(

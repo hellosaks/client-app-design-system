@@ -1,6 +1,6 @@
 import "package:client_app_design_system/components/custom_tabs.dart";
 import "package:client_app_design_system/theme/theme_saks.dart";
-import "package:flutter/material.dart";
+import "package:material_ui/material_ui.dart";
 import "package:flutter_test/flutter_test.dart";
 
 import "../utils/test_wrappers.dart";

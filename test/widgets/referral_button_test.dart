@@ -1,5 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:flutter/material.dart" hide Icon;
+import "package:material_ui/material_ui.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
 
 import "../utils/test_wrappers.dart";

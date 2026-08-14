@@ -3,7 +3,7 @@ import "package:client_app_design_system/theme/old_palette.dart";
 import "package:client_app_design_system/theme/theme_saks.dart";
 import "package:client_app_design_system/utils/enums/enums.dart";
 import "package:doc_widget/doc_widget.dart";
-import "package:flutter/material.dart";
+import "package:material_ui/material_ui.dart";
 
 @docWidget
 class InformationCard extends StatelessWidget {
