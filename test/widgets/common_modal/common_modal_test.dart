@@ -1,7 +1,7 @@
 import "package:client_app_design_system/client_app_design_system.dart"
     hide DropdownValue;
-import "package:flutter/material.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
+import "package:material_ui/material_ui.dart" hide Icon;
 
 import "../../utils/test_wrappers.dart";
 

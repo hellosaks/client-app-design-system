@@ -1,7 +1,7 @@
 // this class is responsible for resizing pixels based on device size, used for spacing and fonts
 
-import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:material_ui/material_ui.dart";
 
 class AppSize {
   BuildContext? context;

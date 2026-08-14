@@ -1,5 +1,5 @@
 import 'package:doc_widget/doc_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:playground/widgets/avatar.dart';
 import 'package:playground/widgets/buttons/auxiliar_button.dart';
 import 'package:playground/widgets/buttons/center_button.dart';
@@ -28,55 +28,57 @@ import 'package:playground/widgets/special_button.dart';
 
 void main() {
   runApp(
-    DocPreview(
-      sections: [
-        ElementsSection(
-          title: 'Buttons',
-          elements: [
-            centerButtonDoc,
-            primaryButtonDoc,
-            secondaryButtonDoc,
-            tertiaryButtonDoc,
-            specialButtonDoc,
-            auxButtonDoc,
-          ],
-        ),
-        ElementsSection(
-          title: 'Cards',
-          elements: [referralCardDoc, cardBannerDoc, cardInvestmentDoc],
-        ),
-        ElementsSection(
-          elements: [
-            circularChart,
-            customLineChart,
-          ],
-          title: "chart",
-        ),
-        ElementsSection(
-          title: 'CustomTypography',
-          elements: [
-            customTypographyDoc,
-          ],
-        ),
-        ElementsSection(
-          title: 'Widgets',
-          elements: [
-            customAccordion,
-            iconDoc,
-            referralButtonDoc,
-            indicationFiltersDoc,
-            customTabsDoc,
-            skeletonDoc,
-            commonModalDoc,
-            circularLoadingDoc,
-            notificationBell,
-            avatar,
-            simpleDownloadDoc,
-            simpleTransactionDoc,
-            informationCardDoc,
-          ],
-        ),
-      ],
+    Material(
+      child: DocPreview(
+        sections: [
+          ElementsSection(
+            title: 'Buttons',
+            elements: [
+              centerButtonDoc,
+              primaryButtonDoc,
+              secondaryButtonDoc,
+              tertiaryButtonDoc,
+              specialButtonDoc,
+              auxButtonDoc,
+            ],
+          ),
+          ElementsSection(
+            title: 'Cards',
+            elements: [referralCardDoc, cardBannerDoc, cardInvestmentDoc],
+          ),
+          ElementsSection(
+            elements: [
+              circularChart,
+              customLineChart,
+            ],
+            title: "chart",
+          ),
+          ElementsSection(
+            title: 'CustomTypography',
+            elements: [
+              customTypographyDoc,
+            ],
+          ),
+          ElementsSection(
+            title: 'Widgets',
+            elements: [
+              customAccordion,
+              iconDoc,
+              referralButtonDoc,
+              indicationFiltersDoc,
+              customTabsDoc,
+              skeletonDoc,
+              commonModalDoc,
+              circularLoadingDoc,
+              notificationBell,
+              avatar,
+              simpleDownloadDoc,
+              simpleTransactionDoc,
+              informationCardDoc,
+            ],
+          ),
+        ],
+      ),
     ),
   );
 }

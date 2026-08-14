@@ -10,6 +10,7 @@ environment:
 dependencies:
   cached_network_image: ^3.3.1
   circular_chart_flutter: ^0.0.5
+  cupertino_ui: ^1.0.0
   deep_pick: ^1.1.0
   doc_widget: 0.4.0
   fl_chart: ^1.0.0
@@ -21,6 +22,7 @@ dependencies:
   google_fonts: 8.2.1
   heroicons: ^0.11.0
   intl: ^0.20.2
+  material_ui: ^1.0.0
   path: ^1.8.2
   shimmer: 3.0.0
   unicons: ^3.0.0
