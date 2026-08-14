@@ -28,55 +28,57 @@ import 'package:playground/widgets/special_button.dart';
 
 void main() {
   runApp(
-    DocPreview(
-      sections: [
-        ElementsSection(
-          title: 'Buttons',
-          elements: [
-            centerButtonDoc,
-            primaryButtonDoc,
-            secondaryButtonDoc,
-            tertiaryButtonDoc,
-            specialButtonDoc,
-            auxButtonDoc,
-          ],
-        ),
-        ElementsSection(
-          title: 'Cards',
-          elements: [referralCardDoc, cardBannerDoc, cardInvestmentDoc],
-        ),
-        ElementsSection(
-          elements: [
-            circularChart,
-            customLineChart,
-          ],
-          title: "chart",
-        ),
-        ElementsSection(
-          title: 'CustomTypography',
-          elements: [
-            customTypographyDoc,
-          ],
-        ),
-        ElementsSection(
-          title: 'Widgets',
-          elements: [
-            customAccordion,
-            iconDoc,
-            referralButtonDoc,
-            indicationFiltersDoc,
-            customTabsDoc,
-            skeletonDoc,
-            commonModalDoc,
-            circularLoadingDoc,
-            notificationBell,
-            avatar,
-            simpleDownloadDoc,
-            simpleTransactionDoc,
-            informationCardDoc,
-          ],
-        ),
-      ],
+    Material(
+      child: DocPreview(
+        sections: [
+          ElementsSection(
+            title: 'Buttons',
+            elements: [
+              centerButtonDoc,
+              primaryButtonDoc,
+              secondaryButtonDoc,
+              tertiaryButtonDoc,
+              specialButtonDoc,
+              auxButtonDoc,
+            ],
+          ),
+          ElementsSection(
+            title: 'Cards',
+            elements: [referralCardDoc, cardBannerDoc, cardInvestmentDoc],
+          ),
+          ElementsSection(
+            elements: [
+              circularChart,
+              customLineChart,
+            ],
+            title: "chart",
+          ),
+          ElementsSection(
+            title: 'CustomTypography',
+            elements: [
+              customTypographyDoc,
+            ],
+          ),
+          ElementsSection(
+            title: 'Widgets',
+            elements: [
+              customAccordion,
+              iconDoc,
+              referralButtonDoc,
+              indicationFiltersDoc,
+              customTabsDoc,
+              skeletonDoc,
+              commonModalDoc,
+              circularLoadingDoc,
+              notificationBell,
+              avatar,
+              simpleDownloadDoc,
+              simpleTransactionDoc,
+              informationCardDoc,
+            ],
+          ),
+        ],
+      ),
     ),
   );
 }
