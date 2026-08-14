@@ -3,7 +3,7 @@ import 'package:client_app_design_system/components/accordion/custom_accordion.d
 import 'package:client_app_design_system/components/line_chart/data_point.dart';
 import 'package:client_app_design_system/components/line_chart/data_serie.dart';
 import 'package:doc_widget/doc_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class CustomAccordionView extends StatefulWidget {
   const CustomAccordionView({super.key});

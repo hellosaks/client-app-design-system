@@ -1,11 +1,11 @@
 // coverage:ignore-file
 
 import "package:client_app_design_system/theme/theme_saks.dart";
-import "package:flutter/material.dart";
+import "package:material_ui/material_ui.dart";
 
 ThemeData createTheme(BuildContext context) {
   return ThemeData(
-    textTheme: ThemeSAKS.typography.fontPlusJakartaTextTheme(
+    textTheme: ThemeSAKS.typography.applyPlusJakartaFont(
       Theme.of(context).textTheme,
     ),
     primaryColor: ThemeSAKS.colors.primary.saks,
@@ -18,7 +18,7 @@ ThemeData createTheme(BuildContext context) {
 
 ThemeData createThemeOld(BuildContext context) {
   return ThemeData(
-    textTheme: OldThemeSAKS.typography.fontPlusJakartaTextTheme(
+    textTheme: OldThemeSAKS.typography.applyPlusJakartaFont(
       Theme.of(context).textTheme,
     ),
     primaryColor: OldThemeSAKS.colors.primary,

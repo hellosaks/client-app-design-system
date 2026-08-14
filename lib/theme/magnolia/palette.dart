@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import "package:material_ui/material_ui.dart";
 
 class PrimaryColor {
   /// #5274D8 ![](https://dummyimage.com/24/78E6BE.png&text=+)

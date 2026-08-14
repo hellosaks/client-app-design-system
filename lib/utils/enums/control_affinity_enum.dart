@@ -1,5 +1,5 @@
 import "package:client_app_design_system/utils/enums/enums_dto.dart";
-import "package:flutter/material.dart";
+import "package:material_ui/material_ui.dart";
 
 class ListTileControlAffinityEnum extends EnumDto<ListTileControlAffinity> {
   @override

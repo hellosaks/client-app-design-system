@@ -1,5 +1,5 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:flutter/material.dart" hide Typography;
+import "package:material_ui/material_ui.dart" hide Typography;
 
 class Selectable extends StatelessWidget {
   final TypographyVariant variant;

@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Step
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Java Install Step
         uses: actions/setup-java@v5
@@ -18,8 +18,9 @@ jobs:
       - name: Install flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.38.7'
+          flutter-version: '3.47.0'
           channel: 'stable'
+          cache: true
 
       - name: Flutter Package Install
         run: flutter pub get && cd playground && flutter pub get

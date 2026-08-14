@@ -1,11 +1,20 @@
 import "package:client_app_design_system/utils/constants.dart";
-import "package:flutter/material.dart";
+import "package:flutter/material.dart" as flutter;
 import "package:google_fonts/google_fonts.dart";
+import "package:material_ui/material_ui.dart";
 
 class Typography {
   /// Font used in project
-  final fontPlusJakartaTextTheme = GoogleFonts.plusJakartaSansTextTheme;
+  final flutter.TextTheme Function(flutter.TextTheme?) fontPlusJakartaTextTheme =
+      GoogleFonts.plusJakartaSansTextTheme;
   static const fontPlusJakarta = GoogleFonts.plusJakartaSans;
+
+  /// Applies the Plus Jakarta Sans font to a Material UI [TextTheme],
+  /// preserving its original style values.
+  TextTheme applyPlusJakartaFont(TextTheme textTheme) {
+    final result = fontPlusJakartaTextTheme(_fromMaterialUi(textTheme));
+    return _toMaterialUi(result);
+  }
 
   static const _defaultFont = TextStyle(fontFamily: Constants.fontFamily);
 
@@ -80,3 +89,39 @@ class Typography {
     fontSize: 16,
   );
 }
+
+flutter.TextTheme _fromMaterialUi(TextTheme textTheme) => flutter.TextTheme(
+      displayLarge: textTheme.displayLarge,
+      displayMedium: textTheme.displayMedium,
+      displaySmall: textTheme.displaySmall,
+      headlineLarge: textTheme.headlineLarge,
+      headlineMedium: textTheme.headlineMedium,
+      headlineSmall: textTheme.headlineSmall,
+      titleLarge: textTheme.titleLarge,
+      titleMedium: textTheme.titleMedium,
+      titleSmall: textTheme.titleSmall,
+      bodyLarge: textTheme.bodyLarge,
+      bodyMedium: textTheme.bodyMedium,
+      bodySmall: textTheme.bodySmall,
+      labelLarge: textTheme.labelLarge,
+      labelMedium: textTheme.labelMedium,
+      labelSmall: textTheme.labelSmall,
+    );
+
+TextTheme _toMaterialUi(flutter.TextTheme textTheme) => TextTheme(
+      displayLarge: textTheme.displayLarge,
+      displayMedium: textTheme.displayMedium,
+      displaySmall: textTheme.displaySmall,
+      headlineLarge: textTheme.headlineLarge,
+      headlineMedium: textTheme.headlineMedium,
+      headlineSmall: textTheme.headlineSmall,
+      titleLarge: textTheme.titleLarge,
+      titleMedium: textTheme.titleMedium,
+      titleSmall: textTheme.titleSmall,
+      bodyLarge: textTheme.bodyLarge,
+      bodyMedium: textTheme.bodyMedium,
+      bodySmall: textTheme.bodySmall,
+      labelLarge: textTheme.labelLarge,
+      labelMedium: textTheme.labelMedium,
+      labelSmall: textTheme.labelSmall,
+    );

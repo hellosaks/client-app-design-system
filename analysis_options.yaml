@@ -11,6 +11,13 @@ analyzer:
     deprecated_member_use_from_same_package: ignore
   exclude:
     - "**/*.doc_widget.dart"
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 
 # You can customize the lint rules set to your own liking. A list of all rules
 # can be found at https://dart-lang.github.io/linter/lints/options/options.html

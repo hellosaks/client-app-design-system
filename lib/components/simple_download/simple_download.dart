@@ -2,7 +2,7 @@ import "dart:async";
 
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
-import "package:flutter/material.dart" hide Icon;
+import "package:material_ui/material_ui.dart" hide Icon;
 
 @docWidget
 class SimpleDownload extends StatefulWidget {
