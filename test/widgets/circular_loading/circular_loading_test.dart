@@ -2,8 +2,8 @@ import "package:client_app_design_system/client_app_design_system.dart"
     hide DropdownValue;
 import "package:cupertino_ui/cupertino_ui.dart";
 import "package:flutter/foundation.dart";
-import "package:material_ui/material_ui.dart";
 import "package:flutter_test/flutter_test.dart";
+import "package:material_ui/material_ui.dart";
 
 import "../../utils/test_wrappers.dart";
 

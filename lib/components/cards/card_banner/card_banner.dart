@@ -1,8 +1,8 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:client_app_design_system/client_app_design_system.dart";
 import "package:doc_widget/doc_widget.dart";
-import "package:material_ui/material_ui.dart";
 import "package:flutter_blurhash/flutter_blurhash.dart";
+import "package:material_ui/material_ui.dart";
 
 @docWidget
 class CardBanner extends StatelessWidget {

@@ -1,7 +1,7 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:material_ui/material_ui.dart";
 import "package:flutter_blurhash/flutter_blurhash.dart";
 import "package:flutter_test/flutter_test.dart";
+import "package:material_ui/material_ui.dart";
 
 import "../../../utils/test_wrappers.dart";
 

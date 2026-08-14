@@ -1,6 +1,6 @@
 import "package:client_app_design_system/client_app_design_system.dart";
-import "package:material_ui/material_ui.dart" hide Icon;
 import "package:flutter_test/flutter_test.dart";
+import "package:material_ui/material_ui.dart" hide Icon;
 import "package:network_image_mock/network_image_mock.dart";
 
 import "../../../utils/test_wrappers.dart";
