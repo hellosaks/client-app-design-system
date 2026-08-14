@@ -20,6 +20,7 @@ jobs:
         with:
           flutter-version: '3.44.1'
           channel: 'stable'
+          cache: true
 
       - name: Flutter Package Install
         run: flutter pub get && cd playground && flutter pub get
