@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Step
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install lcov
         run: sudo apt-get update && sudo apt-get install -y lcov
