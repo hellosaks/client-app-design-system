@@ -10,7 +10,6 @@ abstract class EnumDto<T> {
 }
 
 abstract class SerializableJson<T> {
-  // ignore: avoid_unused_constructor_parameters
   T fromJson(Map<String, dynamic> json);
   Map<String, dynamic> toJson();
 }

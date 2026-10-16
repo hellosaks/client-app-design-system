@@ -96,7 +96,7 @@ class _SimpleDownloadState extends State<SimpleDownload> {
 
   Future<bool> requestPermissionAndCheck() async {
     await widget.requestPermission();
-    return widget.checkPermission();
+    return await widget.checkPermission();
   }
 
   Future<void> onDownload() async {
